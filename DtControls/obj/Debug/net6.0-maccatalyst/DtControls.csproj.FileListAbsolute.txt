@@ -1,0 +1,13 @@
+/Users/curtisconner/Projects/MauiDtControls/DtControls/obj/Debug/net6.0-maccatalyst/actool/_PartialAppManifest.items
+/Users/curtisconner/Projects/MauiDtControls/DtControls/obj/Debug/net6.0-maccatalyst/actool/_BundleResourceWithLogicalName.items
+/Users/curtisconner/Projects/MauiDtControls/DtControls/obj/Debug/net6.0-maccatalyst/actool/_ProcessedImageAssetsPath.items
+/Users/curtisconner/Projects/MauiDtControls/DtControls/obj/Debug/net6.0-maccatalyst/coremlc/_PartialAppManifest.items
+/Users/curtisconner/Projects/MauiDtControls/DtControls/obj/Debug/net6.0-maccatalyst/coremlc/_BundleResourceWithLogicalName.items
+/Users/curtisconner/Projects/MauiDtControls/DtControls/obj/Debug/net6.0-maccatalyst/coremlc/_ProcessedCoreMLModelsPath.items
+/Users/curtisconner/Projects/MauiDtControls/DtControls/obj/Debug/net6.0-maccatalyst/_ProcessedBundleResourcesPath.items
+/Users/curtisconner/Projects/MauiDtControls/DtControls/obj/Debug/net6.0-maccatalyst/_ProcessedContentPath.items
+/Users/curtisconner/Projects/MauiDtControls/DtControls/obj/Debug/net6.0-maccatalyst/DtControls.csproj.AssemblyReference.cache
+/Users/curtisconner/Projects/MauiDtControls/DtControls/obj/Debug/net6.0-maccatalyst/DtControls.GeneratedMSBuildEditorConfig.editorconfig
+/Users/curtisconner/Projects/MauiDtControls/DtControls/obj/Debug/net6.0-maccatalyst/DtControls.AssemblyInfoInputs.cache
+/Users/curtisconner/Projects/MauiDtControls/DtControls/obj/Debug/net6.0-maccatalyst/DtControls.AssemblyInfo.cs
+/Users/curtisconner/Projects/MauiDtControls/DtControls/obj/Debug/net6.0-maccatalyst/DtControls.csproj.CoreCompileInputs.cache

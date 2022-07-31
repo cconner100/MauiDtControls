@@ -1,0 +1,36 @@
+﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{B571D224-F321-47E3-A849-E78B80DD7B6C}|Default">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.MauiDtControls PreferredExecutionTarget="MyAppleMacCatalystID" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="DtNavigationView/DtNavigationViewHandler.cs/DtNavigationView.Handler.cs">
+    <Files>
+      <File FileName="DtNavigationView/User Controls/ZtNavigationView.cs" Line="3" Column="34" />
+      <File FileName="DtNavigationView/Platforms/Windows/DtNavigationViewHandler.cs" Line="1" Column="42" />
+      <File FileName="DtNavigationView/Platforms/MacCatalyst/DtNavigationView.cs" Line="17" Column="93" />
+      <File FileName="DtNavigationView/Platforms/MacCatalyst/DtWebTabViewHandler.cs" Line="11" Column="79" />
+      <File FileName="DtNavigationView/Platforms/MacCatalyst/DtWindowTabViewItemViewHandler.cs" Line="11" Column="102" />
+      <File FileName="DtNavigationView/Platforms/Windows/ZtWebTabViewHandler.cs" Line="24" Column="69" />
+      <File FileName="DtNavigationView/Platforms/Windows/ZtWebTabViewItemViewHandler.cs" Line="12" Column="86" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MauiDtControls" expanded="True">
+            <Node name="DtControls" expanded="True">
+              <Node name="User Controls" expanded="True">
+                <Node name="DtNavigationView.Handler.cs" selected="True" />
+              </Node>
+            </Node>
+            <Node name="MauiDtControls" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <Xamarin.Addins.Core.Project ActiveDebugTarget="MyAppleMacCatalystID" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

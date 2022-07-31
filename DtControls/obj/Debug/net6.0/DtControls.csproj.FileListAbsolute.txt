@@ -1,0 +1,5 @@
+/Users/curtisconner/Projects/MauiDtControls/DtControls/obj/Debug/net6.0/DtControls.csproj.AssemblyReference.cache
+/Users/curtisconner/Projects/MauiDtControls/DtControls/obj/Debug/net6.0/DtControls.GeneratedMSBuildEditorConfig.editorconfig
+/Users/curtisconner/Projects/MauiDtControls/DtControls/obj/Debug/net6.0/DtControls.AssemblyInfoInputs.cache
+/Users/curtisconner/Projects/MauiDtControls/DtControls/obj/Debug/net6.0/DtControls.AssemblyInfo.cs
+/Users/curtisconner/Projects/MauiDtControls/DtControls/obj/Debug/net6.0/DtControls.csproj.CoreCompileInputs.cache
