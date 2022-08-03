@@ -3,7 +3,7 @@
     using DtControls.UserControls;
 
 
-    public partial class DtNavigationViewHandler //: IZtNavigationViewHandler
+    public partial class DtNavigationViewHandler //: IDtNavigationViewHandler
     {
 
         public static IPropertyMapper<IDtNavigationView, IDtNavigationViewHandler> DtNavigationViewMapper => new PropertyMapper<IDtNavigationView, IDtNavigationViewHandler>()
