@@ -2,6 +2,7 @@
 
 namespace DtControls.Handlers
 {
+#if WINDOWS || NET6_0
     using System.Windows.Input;
 
     using DtControls.UserControls;
@@ -13,7 +14,7 @@ namespace DtControls.Handlers
     {
         private TabView _tabView = new TabView();
 
-        IDtWindowTabView IDtWindowTavViewHandler.VirtualView => VirtualView;
+        IDtWindowTabView IDtWindowTabViewHandler.VirtualView => VirtualView;
 
         protected override TabView CreatePlatformView()
         {         
@@ -108,27 +109,27 @@ namespace DtControls.Handlers
         #endregion
 
         #region Properties
-        public static void MapAddTabButtonCommand(IDtWindowTavViewHandler viewHandler, IDtWindowTabView virtualView)
+        public static void MapAddTabButtonCommand(IDtWindowTabViewHandler viewHandler, IDtWindowTabView virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).AddTabButtonCommand = (ICommand)virtualView.AddTabButtonCommand;
         }
-        public static void MapAddTabButtonCommandParameter(IDtWindowTavViewHandler viewHandler, IDtWindowTabView virtualView)
+        public static void MapAddTabButtonCommandParameter(IDtWindowTabViewHandler viewHandler, IDtWindowTabView virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).AddTabButtonCommandParameter = virtualView.AddTabButtonCommandParameter;
         }
-        public static void MapAllowDropTabs(IDtWindowTavViewHandler viewHandler, IDtWindowTabView virtualView)
+        public static void MapAllowDropTabs(IDtWindowTabViewHandler viewHandler, IDtWindowTabView virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).AllowDropTabs = virtualView.AllowDropTabs;
         }
-        public static void MapCanDragTabs(IDtWindowTavViewHandler viewHandler, IDtWindowTabView virtualView)
+        public static void MapCanDragTabs(IDtWindowTabViewHandler viewHandler, IDtWindowTabView virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).CanDragTabs = virtualView.CanDragTabs;
         }
-        public static void MapCanReorderTabs(IDtWindowTavViewHandler viewHandler, IDtWindowTabView virtualView)
+        public static void MapCanReorderTabs(IDtWindowTabViewHandler viewHandler, IDtWindowTabView virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).CanReorderTabs = virtualView.CanReorderTabs;
         }
-        public static void MapCloseButtonOverlayMode(IDtWindowTavViewHandler viewHandler, IDtWindowTabView virtualView)
+        public static void MapCloseButtonOverlayMode(IDtWindowTabViewHandler viewHandler, IDtWindowTabView virtualView)
         {
             TabViewCloseButtonOverlayMode mode = TabViewCloseButtonOverlayMode.Always;
             switch (virtualView.CloseButtonOverlayMode)
@@ -145,32 +146,32 @@ namespace DtControls.Handlers
             }
             ((TabView)(viewHandler?.PlatformView)).CloseButtonOverlayMode = mode;
         }
-        public static void MapIsAddTabButtonVisible(IDtWindowTavViewHandler viewHandler, IDtWindowTabView virtualView)
+        public static void MapIsAddTabButtonVisible(IDtWindowTabViewHandler viewHandler, IDtWindowTabView virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).IsAddTabButtonVisible = virtualView.IsAddTabButtonVisible;
         }
-        public static void MapSelectedIndex(IDtWindowTavViewHandler viewHandler, IDtWindowTabView virtualView)
+        public static void MapSelectedIndex(IDtWindowTabViewHandler viewHandler, IDtWindowTabView virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).SelectedIndex = virtualView.SelectedIndex;
         }
-        public static void MapSelectedItem(IDtWindowTavViewHandler viewHandler, IDtWindowTabView virtualView)
+        public static void MapSelectedItem(IDtWindowTabViewHandler viewHandler, IDtWindowTabView virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).SelectedItem = virtualView.SelectedItem;
         }
 
-        public static void MapTabItems(IDtWindowTavViewHandler viewHandler, IDtWindowTabView virtualView)
+        public static void MapTabItems(IDtWindowTabViewHandler viewHandler, IDtWindowTabView virtualView)
         {
              virtualView.TabItems =((TabView)(viewHandler?.PlatformView)).TabItems;
         }
-        public static void MapTabItemsSource(IDtWindowTavViewHandler viewHandler, IDtWindowTabView virtualView)
+        public static void MapTabItemsSource(IDtWindowTabViewHandler viewHandler, IDtWindowTabView virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).TabItemsSource = virtualView.TabItemsSource;
         }
-        public static void MapTabStripFooter(IDtWindowTavViewHandler viewHandler, IDtWindowTabView virtualView)
+        public static void MapTabStripFooter(IDtWindowTabViewHandler viewHandler, IDtWindowTabView virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).TabStripFooter = virtualView.TabStripFooter;
         }
-        public static void MapTabWidthMode(IDtWindowTavViewHandler viewHandler, IDtWindowTabView virtualView)
+        public static void MapTabWidthMode(IDtWindowTabViewHandler viewHandler, IDtWindowTabView virtualView)
         {
             TabViewWidthMode mode = TabViewWidthMode.Compact;
             switch(virtualView.TabWidthMode)
@@ -190,4 +191,5 @@ namespace DtControls.Handlers
 
     }
     #endregion
+#endif
 }

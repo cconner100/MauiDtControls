@@ -1,6 +1,6 @@
 ﻿
 
-namespace DtControls.DtNavigationView
+namespace DtControls.Handlers
 {
     using System;
     using System.Collections.Generic;
@@ -14,7 +14,7 @@ namespace DtControls.DtNavigationView
     using Microsoft.Maui.Primitives;
     using UIKit;
 
-    public class DtNavigationViewHandler : ViewHandler<IDtNavigationView, UIKit.UIView>, IElementHandler
+    public partial class DtNavigationViewHandler : ViewHandler<IDtNavigationView, UIKit.UIView>, IElementHandler
     {
         public DtNavigationViewHandler(IPropertyMapper mapper, CommandMapper commandMapper = null) : base(mapper, commandMapper)
         {

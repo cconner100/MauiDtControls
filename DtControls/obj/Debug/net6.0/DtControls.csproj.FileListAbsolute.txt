@@ -3,3 +3,8 @@
 /Users/curtisconner/Projects/MauiDtControls/DtControls/obj/Debug/net6.0/DtControls.AssemblyInfoInputs.cache
 /Users/curtisconner/Projects/MauiDtControls/DtControls/obj/Debug/net6.0/DtControls.AssemblyInfo.cs
 /Users/curtisconner/Projects/MauiDtControls/DtControls/obj/Debug/net6.0/DtControls.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Source\Repos\cconner100\MauiDtControls\DtControls\obj\Debug\net6.0\DtControls.csproj.AssemblyReference.cache
+C:\Users\Admin\Source\Repos\cconner100\MauiDtControls\DtControls\obj\Debug\net6.0\DtControls.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Source\Repos\cconner100\MauiDtControls\DtControls\obj\Debug\net6.0\DtControls.AssemblyInfoInputs.cache
+C:\Users\Admin\Source\Repos\cconner100\MauiDtControls\DtControls\obj\Debug\net6.0\DtControls.AssemblyInfo.cs
+C:\Users\Admin\Source\Repos\cconner100\MauiDtControls\DtControls\obj\Debug\net6.0\DtControls.csproj.CoreCompileInputs.cache

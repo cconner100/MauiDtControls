@@ -1,6 +1,4 @@
-﻿using static DtControls.UserControls.DtNavigationView;
-
-namespace DtControls.UserControls
+﻿namespace DtControls.UserControls
 {
     using System.Collections.Generic;
 

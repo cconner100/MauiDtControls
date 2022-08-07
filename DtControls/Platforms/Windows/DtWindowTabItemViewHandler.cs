@@ -2,6 +2,7 @@
 
 namespace DtControls.Handlers
 {
+#if WINDOWS || NET6_0
     using DtControls.UserControls;
 
     using Microsoft.Maui;
@@ -85,5 +86,6 @@ namespace DtControls.Handlers
 #endif
         }
         #endregion
+#endif
     }
 }

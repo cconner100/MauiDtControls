@@ -71,7 +71,7 @@ namespace DtControls.Handlers
 
         public bool InputTransparent => throw new NotImplementedException();
 
-        IElementHandler IElement.Handler { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+       // IElementHandler IElement.Handler { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public IElement Parent => throw new NotImplementedException();
 

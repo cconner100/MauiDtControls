@@ -1,9 +1,10 @@
 ﻿
 #if MACCATALYST
-namespace ClientApp.Handlers
+namespace DtControls.Handlers
 {
     using System;
 
+    using DtControls.Handlers;
     using DtControls.UserControls;
 
     using Microsoft.Maui.Handlers;
