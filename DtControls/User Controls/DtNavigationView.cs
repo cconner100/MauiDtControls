@@ -4,121 +4,322 @@
 
     using Microsoft.Maui.Graphics;
 
+    /// <summary>
+    /// 
+    /// </summary>
     [ContentProperty("Content")]
-
     public partial class DtNavigationView : View, IContentView, IDtNavigationView
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public DtNavigationView()
         {
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public enum BackButtonVisable
         {
+            /// <summary>
+            /// 
+            /// </summary>
             Visible,
+            
+            /// <summary>
+            /// 
+            /// </summary>
             Collapsed,
+            
+            /// <summary>
+            /// 
+            /// </summary>
             Auto
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         public enum ViewDisplayMode
         {
+            /// <summary>
+            /// 
+            /// </summary>
             Compact,
+
+            /// <summary>
+            /// 
+            /// </summary>
             Expanded,
+
+            /// <summary>
+            /// 
+            /// </summary>
             Minimal
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public enum ViewOverflowLabelMode
         {
+            /// <summary>
+            /// 
+            /// </summary>
             MoreLabel,
+
+            /// <summary>
+            /// 
+            /// </summary>
             NoLabel
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public enum ViewPaneDisplayMode
         {
+            /// <summary>
+            /// 
+            /// </summary>
             Auto,
+
+            /// <summary>
+            /// 
+            /// </summary>
             Left,
+
+            /// <summary>
+            /// 
+            /// </summary>
             LeftCompact,
+
+            /// <summary>
+            /// 
+            /// </summary>
             LeftMinimal,
+
+            /// <summary>
+            /// 
+            /// </summary>
             Top
         }
 
         #region Events
+        /// <summary>
+        /// 
+        /// </summary>
         public event EventHandler BackRequested;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public event EventHandler Collapsed;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public event EventHandler DisplayModeChanged;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public event EventHandler Expanding;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public event EventHandler ItemInvoked;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public event EventHandler PaneClosed;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public event EventHandler PaneClosing;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public event EventHandler PaneOpened;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public event EventHandler PaneOpening;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public event EventHandler SelectionChanged;
         #endregion
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         public void WinBackRequested(object sender, object args)
         {
             BackRequested?.Invoke(sender, (EventArgs)args);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         public void WinCollapsed(object sender, object args)
         {
             Collapsed?.Invoke(sender, (EventArgs)args);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         public void WinDisplayModeChanged(object sender, object args)
         {
             DisplayModeChanged?.Invoke(sender, (EventArgs)args);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         public void WinExpanding(object sender, object args)
         {
             Expanding?.Invoke(sender, (EventArgs)args);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         public void WinItemInvoked(object sender, object args)
         {
             ItemInvoked?.Invoke(sender, (EventArgs)args);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         public void WinPaneClosed(object sender, object args)
         {
             PaneClosed?.Invoke(sender, (EventArgs)args);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         public void WinPaneClosing(object sender, object args)
         {
             PaneClosing?.Invoke(sender, (EventArgs)args);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         public void WinPaneOpened(object sender, object args)
         {
             PaneOpened?.Invoke(sender, (EventArgs)args);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         public void WinPaneOpening(object sender, object args)
         {
             PaneOpening?.Invoke(sender, (EventArgs)args);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         public void WinSelectionChanged(object sender, object args)
         {
             SelectionChanged?.Invoke(sender, (EventArgs)args);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="widthConstraint"></param>
+        /// <param name="heightConstraint"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
         public Size CrossPlatformMeasure(double widthConstraint, double heightConstraint)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bounds"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
         public Size CrossPlatformArrange(Rect bounds)
         {
             throw new NotImplementedException();
         }
 
         #region Properties
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static readonly BindableProperty HeaderProperty = BindableProperty.Create("Header", typeof(string), typeof(DtNavigationView));
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public string Header
         {
             get { return (string)GetValue(HeaderProperty); }
             set { SetValue(HeaderProperty, value); }
         }
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public static readonly BindableProperty AlwaysShowHeaderProperty = BindableProperty.Create("AlwaysShowHeader", typeof(bool), typeof(DtNavigationView), true);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public bool AlwaysShowHeader
         {
             get { return (bool)GetValue(AlwaysShowHeaderProperty); }
             set { SetValue(AlwaysShowHeaderProperty, value); }
         }
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public static readonly BindableProperty IsBackButtonVisableProperty = BindableProperty.Create("IsBackButtonVisable", typeof(BackButtonVisable), typeof(DtNavigationView), BackButtonVisable.Auto);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public BackButtonVisable IsBackButtonVisable
         {
             get
@@ -130,7 +331,15 @@
                 SetValue(IsBackButtonVisableProperty, value);
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static readonly BindableProperty IsBackButtonEnabledProperty = BindableProperty.Create("IsBackButtonEnabled", typeof(bool), typeof(DtNavigationView), false);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsBackButtonEnabled
         {
             get
@@ -143,7 +352,14 @@
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static readonly BindableProperty CompactModeThresholdWidthProperty = BindableProperty.Create("CompactModeThresholdWidth", typeof(double), typeof(DtNavigationView), 641.0);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public double CompactModeThresholdWidth
         {
             get
@@ -155,7 +371,15 @@
                 SetValue(CompactModeThresholdWidthProperty, value);
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static readonly BindableProperty CompactPaneLengthProperty = BindableProperty.Create("CompactPaneLength", typeof(double), typeof(DtNavigationView), 48.0);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public double CompactPaneLength
         {
             get
@@ -168,14 +392,28 @@
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static readonly BindableProperty ContentProperty = BindableProperty.Create("Content", typeof(object), typeof(DtNavigationView));
+       
+        /// <summary>
+        /// 
+        /// </summary>
         public object Content
         {
             get { return (View)GetValue(ContentProperty); }
             set { SetValue(ContentProperty, value); }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static readonly BindableProperty DisplayModeProperty = BindableProperty.Create("DisplayMode", typeof(ViewDisplayMode), typeof(DtNavigationView), ViewDisplayMode.Minimal);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public ViewDisplayMode DisplayMode
         {
             get
@@ -187,7 +425,15 @@
                 SetValue(DisplayModeProperty, value);
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static readonly BindableProperty ExpandedModeThresholdWidthProperty = BindableProperty.Create("ExpandedModeThresholdWidth", typeof(double), typeof(DtNavigationView), 1008.0);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public double ExpandedModeThresholdWidth
         {
             get
@@ -199,7 +445,15 @@
                 SetValue(ExpandedModeThresholdWidthProperty, value);
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static readonly BindableProperty FooterMenuItemsProperty = BindableProperty.Create("FooterMenuItems", typeof(List<object>), typeof(DtNavigationView));
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public List<object> FooterMenuItems
         {
             get
@@ -212,7 +466,14 @@
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static readonly BindableProperty FooterMenuItemsSourceProperty = BindableProperty.Create("FooterMenuItemsSource", typeof(object), typeof(DtNavigationView));
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public object FooterMenuItemsSource
         {
             get
@@ -224,9 +485,21 @@
                 SetValue(FooterMenuItemsSourceProperty, value);
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public DataTemplate HeaderTemplate { get; set; }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static readonly BindableProperty IsPaneOpenProperty = BindableProperty.Create("IsPaneOpen", typeof(bool), typeof(DtNavigationView), true);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsPaneOpen
         {
             get
@@ -238,7 +511,15 @@
                 SetValue(IsPaneOpenProperty, value);
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static readonly BindableProperty IsPaneToggleButtonVisibleProperty = BindableProperty.Create("IsPaneToggleButtonVisible", typeof(bool), typeof(DtNavigationView), true);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsPaneToggleButtonVisible
         {
             get
@@ -251,7 +532,14 @@
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static readonly BindableProperty IsSettingsVisibleProperty = BindableProperty.Create("IsSettingsVisible", typeof(bool), typeof(DtNavigationView), true);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsSettingsVisible
         {
             get
@@ -263,7 +551,15 @@
                 SetValue(IsSettingsVisibleProperty, value);
             }
         }
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public static readonly BindableProperty IsTitleBarAutoPaddingEnabledProperty = BindableProperty.Create("IsTitleBarAutoPaddingEnabled", typeof(bool), typeof(DtNavigationView), true);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsTitleBarAutoPaddingEnabled
         {
             get
@@ -275,7 +571,15 @@
                 SetValue(IsTitleBarAutoPaddingEnabledProperty, value);
             }
         }
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public static readonly BindableProperty MenuItemContainerStyleProperty = BindableProperty.Create("MenuItemContainerStyle", typeof(Style), typeof(DtNavigationView));
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public Style MenuItemContainerStyle
         {
             get
@@ -288,7 +592,14 @@
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static readonly BindableProperty MenuItemsProperty = BindableProperty.Create("MenuItems", typeof(IList<object>), typeof(DtNavigationView),null,BindingMode.TwoWay);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public IList<object> MenuItems
         {
             get
@@ -301,7 +612,15 @@
             }
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static readonly BindableProperty MenuItemsSourceProperty = BindableProperty.Create("MenuItemsSource", typeof(object), typeof(DtNavigationView));
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public object MenuItemsSource
         {
             get
@@ -314,9 +633,19 @@
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public DataTemplate MenuItemsTemplate { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static readonly BindableProperty OpenPaneLengthProperty = BindableProperty.Create("OpenPaneLength", typeof(double), typeof(DtNavigationView), 320.0);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public double OpenPaneLength
         {
             get
@@ -329,7 +658,15 @@
             }
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static readonly BindableProperty OverflowLabelModeProperty = BindableProperty.Create("OverflowLabelMode", typeof(ViewOverflowLabelMode), typeof(DtNavigationView), ViewOverflowLabelMode.MoreLabel);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public ViewOverflowLabelMode OverflowLabelMode
         {
             get
@@ -341,7 +678,15 @@
                 SetValue(OverflowLabelModeProperty, value);
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static readonly BindableProperty PaneDisplayModeProperty = BindableProperty.Create("PaneDisplayMode", typeof(ViewPaneDisplayMode), typeof(DtNavigationView), ViewPaneDisplayMode.Auto);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public ViewPaneDisplayMode PaneDisplayMode
         {
             get
@@ -354,7 +699,14 @@
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static readonly BindableProperty SelectedItemProperty = BindableProperty.Create("SelectedItem", typeof(object), typeof(DtNavigationView));
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public object SelectedItem
         {
             get
@@ -367,6 +719,9 @@
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Thickness Padding
         {
             get;
@@ -374,8 +729,14 @@
         }
 
 #nullable enable
+        /// <summary>
+        /// 
+        /// </summary>
         object? IContentView.Content => Content;
 
+        /// <summary>
+        /// 
+        /// </summary>
         IView? IContentView.PresentedContent => (View)Content;
 #nullable disable
         #endregion

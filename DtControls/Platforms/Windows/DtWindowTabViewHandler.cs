@@ -1,8 +1,7 @@
-﻿
-
+﻿#if WINDOWS
 namespace DtControls.Handlers
 {
-#if WINDOWS || NET6_0
+
     using System.Windows.Input;
 
     using DtControls.UserControls;
@@ -16,12 +15,22 @@ namespace DtControls.Handlers
 
         IDtWindowTabView IDtWindowTabViewHandler.VirtualView => VirtualView;
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         protected override TabView CreatePlatformView()
         {         
             return _tabView;
         }
 
         #region Events
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="platformView"></param>
         protected override void ConnectHandler(TabView platformView)
         {
             base.ConnectHandler(platformView);
@@ -37,6 +46,11 @@ namespace DtControls.Handlers
             platformView.TabStripDrop += PlatformView_TabStripDrop;
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="platformView"></param>
         protected override void DisconnectHandler(TabView platformView)
         {
             base.DisconnectHandler(platformView);
@@ -52,56 +66,119 @@ namespace DtControls.Handlers
             platformView.TabStripDrop += PlatformView_TabStripDrop;
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mauiContext"></param>
         public override void SetMauiContext(IMauiContext mauiContext)
         {
             base.SetMauiContext(mauiContext);
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PlatformView_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
             VirtualView.WinLoaded(sender, e);
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PlatformView_TabStripDrop(object sender, Microsoft.UI.Xaml.DragEventArgs e)
         {
             VirtualView.WinTabStripDrop(sender, e);
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PlatformView_TabStripDragOver(object sender, Microsoft.UI.Xaml.DragEventArgs e)
         {
             VirtualView.WinTabStripDragOver(sender, e);
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         private void PlatformView_TabItemsChanged(TabView sender, Windows.Foundation.Collections.IVectorChangedEventArgs args)
         {
             VirtualView.WinTabItemsChanged(sender, args);
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         private void PlatformView_TabDroppedOutside(TabView sender, TabViewTabDroppedOutsideEventArgs args)
         {
             VirtualView.WinTabDroppedOutSide(sender, args);
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         private void PlatformView_TabDragStarting(TabView sender, TabViewTabDragStartingEventArgs args)
         {
             VirtualView.WinTabDragStarting(sender, args);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         private void PlatformView_TabDragCompleted(TabView sender, TabViewTabDragCompletedEventArgs args)
         {
             VirtualView.WinTabDragCompleted(sender, args);
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         private void PlatformView_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
         {
             VirtualView.WinTabCloseRequested(sender, args);
         }
 
+        /// <summary>
+        /// /
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PlatformView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             VirtualView.WinSelectionChanged(sender, e);
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         private void PlatformView_AddTabButtonClick(TabView sender, object args)
         {
             VirtualView.WinAddTabButtonClick(sender, args);
@@ -109,26 +186,62 @@ namespace DtControls.Handlers
         #endregion
 
         #region Properties
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="viewHandler"></param>
+        /// <param name="virtualView"></param>
         public static void MapAddTabButtonCommand(IDtWindowTabViewHandler viewHandler, IDtWindowTabView virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).AddTabButtonCommand = (ICommand)virtualView.AddTabButtonCommand;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="viewHandler"></param>
+        /// <param name="virtualView"></param>
         public static void MapAddTabButtonCommandParameter(IDtWindowTabViewHandler viewHandler, IDtWindowTabView virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).AddTabButtonCommandParameter = virtualView.AddTabButtonCommandParameter;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="viewHandler"></param>
+        /// <param name="virtualView"></param>
         public static void MapAllowDropTabs(IDtWindowTabViewHandler viewHandler, IDtWindowTabView virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).AllowDropTabs = virtualView.AllowDropTabs;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="viewHandler"></param>
+        /// <param name="virtualView"></param>
         public static void MapCanDragTabs(IDtWindowTabViewHandler viewHandler, IDtWindowTabView virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).CanDragTabs = virtualView.CanDragTabs;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="viewHandler"></param>
+        /// <param name="virtualView"></param>
         public static void MapCanReorderTabs(IDtWindowTabViewHandler viewHandler, IDtWindowTabView virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).CanReorderTabs = virtualView.CanReorderTabs;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="viewHandler"></param>
+        /// <param name="virtualView"></param>
         public static void MapCloseButtonOverlayMode(IDtWindowTabViewHandler viewHandler, IDtWindowTabView virtualView)
         {
             TabViewCloseButtonOverlayMode mode = TabViewCloseButtonOverlayMode.Always;
@@ -146,31 +259,73 @@ namespace DtControls.Handlers
             }
             ((TabView)(viewHandler?.PlatformView)).CloseButtonOverlayMode = mode;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="viewHandler"></param>
+        /// <param name="virtualView"></param>
         public static void MapIsAddTabButtonVisible(IDtWindowTabViewHandler viewHandler, IDtWindowTabView virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).IsAddTabButtonVisible = virtualView.IsAddTabButtonVisible;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="viewHandler"></param>
+        /// <param name="virtualView"></param>
         public static void MapSelectedIndex(IDtWindowTabViewHandler viewHandler, IDtWindowTabView virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).SelectedIndex = virtualView.SelectedIndex;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="viewHandler"></param>
+        /// <param name="virtualView"></param>
         public static void MapSelectedItem(IDtWindowTabViewHandler viewHandler, IDtWindowTabView virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).SelectedItem = virtualView.SelectedItem;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="viewHandler"></param>
+        /// <param name="virtualView"></param>
         public static void MapTabItems(IDtWindowTabViewHandler viewHandler, IDtWindowTabView virtualView)
         {
              virtualView.TabItems =((TabView)(viewHandler?.PlatformView)).TabItems;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="viewHandler"></param>
+        /// <param name="virtualView"></param>
         public static void MapTabItemsSource(IDtWindowTabViewHandler viewHandler, IDtWindowTabView virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).TabItemsSource = virtualView.TabItemsSource;
         }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="viewHandler"></param>
+        /// <param name="virtualView"></param>
         public static void MapTabStripFooter(IDtWindowTabViewHandler viewHandler, IDtWindowTabView virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).TabStripFooter = virtualView.TabStripFooter;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="viewHandler"></param>
+        /// <param name="virtualView"></param>
         public static void MapTabWidthMode(IDtWindowTabViewHandler viewHandler, IDtWindowTabView virtualView)
         {
             TabViewWidthMode mode = TabViewWidthMode.Compact;
@@ -191,5 +346,5 @@ namespace DtControls.Handlers
 
     }
     #endregion
-#endif
 }
+#endif

@@ -12,10 +12,18 @@ using PlatformView = UIKit.UIView;
 #elif NETSTANDARD || (NET6_0 && !IOS && !ANDROID)
 using PlatformView = System.Object;
 #endif
-
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IDtNavigationViewHandler : IViewHandler
     {
+        /// <summary>
+        /// 
+        /// </summary>
         new IDtNavigationView VirtualView { get; }
+        /// <summary>
+        /// 
+        /// </summary>
         new PlatformView PlatformView { get; }
     }
 }

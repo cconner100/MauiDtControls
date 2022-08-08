@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
+# Visual Studio Version 17
 VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiDtControlSample", "MauiDtControlSample\MauiDtControlSample.csproj", "{F151FF51-47FD-4C4D-B324-5AF4D9AEEBD2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DtControls", "..\DtControls\DtControls.csproj", "{E798835B-17EA-470B-8854-9BFBE56D521B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +19,10 @@ Global
 		{F151FF51-47FD-4C4D-B324-5AF4D9AEEBD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F151FF51-47FD-4C4D-B324-5AF4D9AEEBD2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F151FF51-47FD-4C4D-B324-5AF4D9AEEBD2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E798835B-17EA-470B-8854-9BFBE56D521B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E798835B-17EA-470B-8854-9BFBE56D521B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E798835B-17EA-470B-8854-9BFBE56D521B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E798835B-17EA-470B-8854-9BFBE56D521B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

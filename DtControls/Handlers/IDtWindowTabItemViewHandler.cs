@@ -12,9 +12,18 @@
     using PlatformView = System.Object;
 #endif
 
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IDtWindowTabItemViewHandler : IViewHandler
     {
+        /// <summary>
+        /// 
+        /// </summary>
         new IDtWindowTabItemView VirtualView { get; }
+        /// <summary>
+        /// 
+        /// </summary>
         new PlatformView PlatformView { get; }
     }
 }

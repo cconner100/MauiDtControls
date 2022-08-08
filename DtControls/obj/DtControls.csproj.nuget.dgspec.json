@@ -1,28 +1,29 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\Source\\Repos\\cconner100\\MauiDtControls\\DtControls\\DtControls.csproj": {}
+    "C:\\Users\\CurtisConner\\Repos\\cconner100\\MauiDtControls\\DtControls\\DtControls.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\Source\\Repos\\cconner100\\MauiDtControls\\DtControls\\DtControls.csproj": {
+    "C:\\Users\\CurtisConner\\Repos\\cconner100\\MauiDtControls\\DtControls\\DtControls.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Source\\Repos\\cconner100\\MauiDtControls\\DtControls\\DtControls.csproj",
+        "projectUniqueName": "C:\\Users\\CurtisConner\\Repos\\cconner100\\MauiDtControls\\DtControls\\DtControls.csproj",
         "projectName": "DtControls",
-        "projectPath": "C:\\Users\\Admin\\Source\\Repos\\cconner100\\MauiDtControls\\DtControls\\DtControls.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Source\\Repos\\cconner100\\MauiDtControls\\DtControls\\obj\\",
+        "projectPath": "C:\\Users\\CurtisConner\\Repos\\cconner100\\MauiDtControls\\DtControls\\DtControls.csproj",
+        "packagesPath": "C:\\Users\\CurtisConner\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\CurtisConner\\Repos\\cconner100\\MauiDtControls\\DtControls\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\CurtisConner\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
+          "net6.0",
           "net6.0-android",
           "net6.0-ios",
           "net6.0-maccatalyst",
@@ -31,9 +32,15 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Users\\CurtisConner\\Repos\\cconner100\\MauiDtControls\\DtControls\\bin\\Debug": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-eng/nuget/v3/index.json": {}
         },
         "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          },
           "net6.0-android31.0": {
             "targetAlias": "net6.0-android",
             "projectReferences": {}
@@ -58,6 +65,49 @@
         }
       },
       "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Maui.Dependencies": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.486, )",
+              "autoReferenced": true
+            },
+            "Microsoft.Maui.Extensions": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.486, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.Maui.Controls": {
+              "privateAssets": "all"
+            },
+            "Microsoft.Maui.Core": {
+              "privateAssets": "all"
+            },
+            "Microsoft.Maui.Essentials": {
+              "privateAssets": "all"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400-preview.22330.6\\RuntimeIdentifierGraph.json"
+        },
         "net6.0-android31.0": {
           "targetAlias": "net6.0-android",
           "dependencies": {
@@ -264,6 +314,11 @@
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400-preview.22330.6\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "ios-arm64": {
+          "#import": []
         }
       }
     }

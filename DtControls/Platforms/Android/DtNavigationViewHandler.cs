@@ -1,4 +1,4 @@
-﻿#if __ANDROID__
+﻿#if ANDROID
 namespace DtControls.Handlers
 {
     using System;

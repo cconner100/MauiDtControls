@@ -1,6 +1,7 @@
-﻿
+﻿#if ANDROID
 namespace DtControls.Handlers
 {
+
     using System;
 
     using DtControls.UserControls;
@@ -16,7 +17,7 @@ namespace DtControls.Handlers
             throw new NotImplementedException();
         }
 
-        #region Events
+    #region Events
         protected override void ConnectHandler(Android.Views.View platformView)
         {
             base.ConnectHandler(platformView);
@@ -30,32 +31,33 @@ namespace DtControls.Handlers
         }
 
 
-        #endregion
+    #endregion
 
-        #region PropertyMaps
-        public static void MapHeader(IDtWindowTabItemViewHandler handler, IDtWindowTabItemView virtualView)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static void MapIconSource(IDtWindowTabItemViewHandler handler, IDtWindowTabItemView virtualView)
+    #region PropertyMaps
+        public static void MapHeader(IDtWindowTabItemViewHandler viewHandler, IDtWindowTabItemView virtualView)
         {
             throw new NotImplementedException();
         }
 
-        public static void MapIsClosable(IDtWindowTabItemViewHandler handler, IDtWindowTabItemView virtualView)
+        public static void MapIconSource(IDtWindowTabItemViewHandler viewHandler, IDtWindowTabItemView virtualView)
         {
             throw new NotImplementedException();
         }
 
-        public static void MapContent(IDtWindowTabItemViewHandler handler, IDtWindowTabItemView virtualView)
+        public static void MapIsClosable(IDtWindowTabItemViewHandler viewHandler, IDtWindowTabItemView virtualView)
         {
             throw new NotImplementedException();
         }
-        public static void MapPlatformObject(IDtWindowTabItemViewHandler handler, IDtWindowTabItemView virtualView)
+
+        public static void MapContent(IDtWindowTabItemViewHandler viewHandler, IDtWindowTabItemView virtualView)
         {
             throw new NotImplementedException();
         }
-        #endregion
+        public static void MapPlatformObject(IDtWindowTabItemViewHandler viewHandler, IDtWindowTabItemView virtualView)
+        {
+            throw new NotImplementedException();
+        }
+    #endregion
     }
 }
+#endif

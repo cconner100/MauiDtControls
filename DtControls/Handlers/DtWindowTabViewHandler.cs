@@ -3,9 +3,14 @@ namespace DtControls.Handlers
 {
     using DtControls.UserControls;
 
-
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class DtWindowTabViewHandler
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public static IPropertyMapper<IDtWindowTabView, IDtWindowTabViewHandler> DtWindowTabViewPropertyMapper => new PropertyMapper<IDtWindowTabView, IDtWindowTabViewHandler>()
         {
             [nameof(IDtWindowTabView.AddTabButtonCommand)] = MapAddTabButtonCommand,
@@ -22,17 +27,24 @@ namespace DtControls.Handlers
             [nameof(IDtWindowTabView.TabStripFooter)] = MapTabStripFooter,
             [nameof(IDtWindowTabView.TabWidthMode)] = MapTabWidthMode,
         };
-
+        /// <summary>
+        /// 
+        /// </summary>
         public static CommandMapper<IDtWindowTabView, IDtWindowTabViewHandler> DtWindowTabViewCommandMapper => new CommandMapper<IDtWindowTabView, IDtWindowTabViewHandler>();
-
+        /// <summary>
+        /// 
+        /// </summary>
         public DtWindowTabViewHandler() : base(DtWindowTabViewPropertyMapper, DtWindowTabViewCommandMapper)
         {
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mapper"></param>
         public DtWindowTabViewHandler(IPropertyMapper mapper = null) : base(mapper ?? DtWindowTabViewPropertyMapper, DtWindowTabViewCommandMapper)
         {
         }
     }
-
 }
+

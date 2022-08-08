@@ -1,0 +1,597 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ACCOUNTINGMAINTENANCE" xml:space="preserve">
+    <value>Maintenance</value>
+  </data>
+  <data name="ACCOUNTINGREPORTSGROUP" xml:space="preserve">
+    <value>Accounting Reports</value>
+  </data>
+  <data name="ACCOUNTING_CUSTOMER" xml:space="preserve">
+    <value>Receivable</value>
+  </data>
+  <data name="ACCOUNTING_VENDOR" xml:space="preserve">
+    <value>Payable</value>
+  </data>
+  <data name="APARGROUP" xml:space="preserve">
+    <value>AP/AR</value>
+  </data>
+  <data name="BANKDEPOSITS" xml:space="preserve">
+    <value>Bank Deposits</value>
+  </data>
+  <data name="PACKINGSLIPS" xml:space="preserve">
+    <value>Packing Slips</value>
+  </data>
+  <data name="BILL" xml:space="preserve">
+    <value>Create Bill</value>
+  </data>
+  <data name="BILLPAYMENT" xml:space="preserve">
+    <value>Bill Payment</value>
+  </data>
+  <data name="BODYTYPEMANAGEMENT_LIST" xml:space="preserve">
+    <value>Body Type Management</value>
+  </data>
+  <data name="BUNDLE_LIST" xml:space="preserve">
+    <value>MU Package</value>
+  </data>
+  <data name="CASHANDBANK" xml:space="preserve">
+    <value>Cash and Bank</value>
+  </data>
+  <data name="CASHIERMANAGEMENT" xml:space="preserve">
+    <value>Cashier Management</value>
+  </data>
+  <data name="CASHIER_OPENCLOSE" xml:space="preserve">
+    <value>Open/Close Cashier</value>
+  </data>
+  <data name="CATEGORY_DETAIL" xml:space="preserve">
+    <value>Category Detail</value>
+  </data>
+  <data name="CHANGE_DEALERSHIP" xml:space="preserve">
+    <value>Change Dealership</value>
+  </data>
+  <data name="CHART_OF_ACCOUNTS" xml:space="preserve">
+    <value>Chart of Accounts</value>
+  </data>
+  <data name="CONSOLE" xml:space="preserve">
+    <value>Console</value>
+  </data>
+  <data name="CONTACT_LIST" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="CREATECHECK" xml:space="preserve">
+    <value>Create Check</value>
+  </data>
+  <data name="CREDITCARDCREDIT" xml:space="preserve">
+    <value>Add Credit Card Credit</value>
+  </data>
+  <data name="CREDITMEMO" xml:space="preserve">
+    <value>Create Credit Memo</value>
+  </data>
+  <data name="CUSTOMER_LIST" xml:space="preserve">
+    <value>Customer</value>
+  </data>
+  <data name="CUSTOM_LABEL" xml:space="preserve">
+    <value>Label Editor</value>
+  </data>
+  <data name="DEAD_LEAD_LIST" xml:space="preserve">
+    <value>Closed Leads</value>
+  </data>
+  <data name="DEALERSHIP_SETTING" xml:space="preserve">
+    <value>Dealership Setting</value>
+  </data>
+  <data name="DEALERSHIP_SETUP_LIST" xml:space="preserve">
+    <value>Dealership Setup</value>
+  </data>
+  <data name="CONTROL_TEST_PAGE" xml:space="preserve">
+    <value>Control Test Page</value>
+  </data>
+  <data name="EMPLOYEE_LIST" xml:space="preserve">
+    <value>Employee</value>
+  </data>
+  <data name="ESTIMATE" xml:space="preserve">
+    <value>Create Estimate</value>
+  </data>
+  <data name="EXPENSETRANSACTIONS" xml:space="preserve">
+    <value>Expense Transactions</value>
+  </data>
+  <data name="FANDI_LIST" xml:space="preserve">
+    <value>F&amp;I</value>
+  </data>
+  <data name="FEE_LIST" xml:space="preserve">
+    <value>Fee</value>
+  </data>
+  <data name="GENERAL_LEDGER_GROUP" xml:space="preserve">
+    <value>General Ledger</value>
+  </data>
+  <data name="GERNAL_LEDGER" xml:space="preserve">
+    <value>General Ledger</value>
+  </data>
+  <data name="GROUP_ACCOUNTING" xml:space="preserve">
+    <value>Accounting</value>
+  </data>
+  <data name="GROUP_CUSTOMER" xml:space="preserve">
+    <value>Contacts</value>
+  </data>
+  <data name="GROUP_DLRSETTING" xml:space="preserve">
+    <value>Misc.</value>
+  </data>
+  <data name="GROUP_MAJORUNITS" xml:space="preserve">
+    <value>Major Units</value>
+  </data>
+  <data name="GROUP_PARTS" xml:space="preserve">
+    <value>Parts</value>
+  </data>
+  <data name="GROUP_SERVICE" xml:space="preserve">
+    <value>Service</value>
+  </data>
+  <data name="GROUP_TESTING" xml:space="preserve">
+    <value>Testing Pages</value>
+  </data>
+  <data name="IMPORTPARTSPRICEFILE" xml:space="preserve">
+    <value>Import Parts Price File</value>
+  </data>
+  <data name="INCENTIVE_LIST" xml:space="preserve">
+    <value>Incentive</value>
+  </data>
+  <data name="INVENTORYRECEIVING_LIST" xml:space="preserve">
+    <value>Receiving</value>
+  </data>
+  <data name="INVENTORY_LIST" xml:space="preserve">
+    <value>Inventory</value>
+  </data>
+  <data name="INVOICE" xml:space="preserve">
+    <value>Create Invoice</value>
+  </data>
+  <data name="INVOICE_LIST" xml:space="preserve">
+    <value>Invoice</value>
+  </data>
+  <data name="ITEM_LIST" xml:space="preserve">
+    <value>Items</value>
+  </data>
+  <data name="JOB_TEMPLATE_LIST" xml:space="preserve">
+    <value>Standard Job Template</value>
+  </data>
+  <data name="JOURNAL_ENTRY" xml:space="preserve">
+    <value>Journal Entry</value>
+  </data>
+  <data name="LABEL_PRINTING" xml:space="preserve">
+    <value>Label Printing</value>
+  </data>
+  <data name="LEADS" xml:space="preserve">
+    <value>Leads</value>
+  </data>
+  <data name="LEAD_LIST" xml:space="preserve">
+    <value>Leads</value>
+  </data>
+  <data name="MAJORUNITMANAGEMENT_GROUP" xml:space="preserve">
+    <value>MU Management</value>
+  </data>
+  <data name="MAJORUNITREPORTS" xml:space="preserve">
+    <value>MU Reports</value>
+  </data>
+  <data name="MANUAL_CHECKS" xml:space="preserve">
+    <value>Manual Checks</value>
+  </data>
+  <data name="MANUAL_GL_POSTING" xml:space="preserve">
+    <value>Manual GL Posting</value>
+  </data>
+  <data name="MASS_UPDATE" xml:space="preserve">
+    <value>Mass Update</value>
+  </data>
+  <data name="MISC_LIST" xml:space="preserve">
+    <value>Miscellaneous</value>
+  </data>
+  <data name="MODELMANAGEMENT_LIST" xml:space="preserve">
+    <value>Model Management</value>
+  </data>
+  <data name="MODEL_LIST" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="MUINVENTORY_LIST" xml:space="preserve">
+    <value>MU Inventory</value>
+  </data>
+  <data name="MURECEIVINGWITHOUTPO" xml:space="preserve">
+    <value>MU Receiving w/o PO</value>
+  </data>
+  <data name="MURECEIVINGWITHPO" xml:space="preserve">
+    <value>MU Receiving - NEW</value>
+  </data>
+  <data name="MUSALES_LIST" xml:space="preserve">
+    <value>MU Sales</value>
+  </data>
+  <data name="MU_INVOICE_LIST" xml:space="preserve">
+    <value>MU Invoice List</value>
+  </data>
+  <data name="MU_CATEGORY_LIST" xml:space="preserve">
+    <value>MU Category</value>
+  </data>
+  <data name="NAVIGATE_TO" xml:space="preserve">
+    <value>Navigate To</value>
+  </data>
+  <data name="ORDERING" xml:space="preserve">
+    <value>MU Ordering</value>
+  </data>
+  <data name="ORDERING_LIST" xml:space="preserve">
+    <value>Ordering List</value>
+  </data>
+  <data name="ORGANIZATION_SETUP_DETAIL" xml:space="preserve">
+    <value>Organization Setup</value>
+  </data>
+  <data name="ORGANIZATION_SETUP_LIST" xml:space="preserve">
+    <value>Organization Setup</value>
+  </data>
+  <data name="PARTSINVENTORY_LIST" xml:space="preserve">
+    <value>Parts Inventory</value>
+  </data>
+  <data name="PARTSMANAGEMENT_GROUP" xml:space="preserve">
+    <value>Parts Management</value>
+  </data>
+  <data name="PARTSORDERING" xml:space="preserve">
+    <value>Parts Ordering</value>
+  </data>
+  <data name="PARTSRECEIVING" xml:space="preserve">
+    <value>Parts Receiving</value>
+  </data>
+  <data name="PARTSREPORTS" xml:space="preserve">
+    <value>Parts Reports</value>
+  </data>
+  <data name="PARTSSALES_LIST" xml:space="preserve">
+    <value>Parts Sales</value>
+  </data>
+  <data name="PART_INVOICE_LIST" xml:space="preserve">
+    <value>Parts Invoice List</value>
+  </data>
+  <data name="PARTSVENDORRETURN" xml:space="preserve">
+    <value>Supplier Return</value>
+  </data>
+  <data name="PART_CATEGORY_LIST" xml:space="preserve">
+    <value>Parts Category</value>
+  </data>
+  <data name="PAYBILLS" xml:space="preserve">
+    <value>Pay Bills</value>
+  </data>
+  <data name="PAYMENTMETHOD_LIST" xml:space="preserve">
+    <value>Payment Methods</value>
+  </data>
+  <data name="PHYSICALINVENTORY" xml:space="preserve">
+    <value>Physical Inventory</value>
+  </data>
+  <data name="POST_VEHICLE_SALES" xml:space="preserve">
+    <value>Post Vehicle Sales</value>
+  </data>
+  <data name="PRINTCHECKS" xml:space="preserve">
+    <value>Print Checks</value>
+  </data>
+  <data name="PROFITMARGIN" xml:space="preserve">
+    <value>Profit Margin Rule</value>
+  </data>
+  <data name="RECEIVEPAYMENT" xml:space="preserve">
+    <value>Receive Payments</value>
+  </data>
+  <data name="RECONCILECHECKINGACCOUNTS" xml:space="preserve">
+    <value>Reconcile</value>
+  </data>
+  <data name="REFUNDRECEIPT" xml:space="preserve">
+    <value>Create Refund Receipt</value>
+  </data>
+  <data name="SALESRECEIPT" xml:space="preserve">
+    <value>Create Sales Receipt</value>
+  </data>
+  <data name="SCHEDULES" xml:space="preserve">
+    <value>Schedules</value>
+  </data>
+  <data name="SCHEDULE_RECONCILIATION" xml:space="preserve">
+    <value>Schedule Reconciliation</value>
+  </data>
+  <data name="SCHEDULING" xml:space="preserve">
+    <value>Scheduling</value>
+  </data>
+  <data name="SERVICERATE" xml:space="preserve">
+    <value>Service Labor</value>
+  </data>
+  <data name="SERVICEREPORTS" xml:space="preserve">
+    <value>Service Reports</value>
+  </data>
+  <data name="SERVICERO_LIST" xml:space="preserve">
+    <value>Service Sales</value>
+  </data>
+  <data name="SERVICE_INVOICE_LIST" xml:space="preserve">
+    <value>Service Invoice List</value>
+  </data>
+  <data name="SETTINGS" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="SIGNOUT" xml:space="preserve">
+    <value>Signout</value>
+  </data>
+  <data name="STATEMENTS" xml:space="preserve">
+    <value>Statements</value>
+  </data>
+  <data name="TECHNICIANRATE" xml:space="preserve">
+    <value>Technician Rates</value>
+  </data>
+  <data name="TECHNICIANTIMECLOCK" xml:space="preserve">
+    <value>Technician Time Clock</value>
+  </data>
+  <data name="TERM_LIST" xml:space="preserve">
+    <value>Terms</value>
+  </data>
+  <data name="TEST_DATAGRID" xml:space="preserve">
+    <value>Test DataGrid</value>
+  </data>
+  <data name="TEST_WEBVIEW" xml:space="preserve">
+    <value>Test WebView</value>
+  </data>
+  <data name="TRANSFERINTOINVENTORY" xml:space="preserve">
+    <value>Transfer Into Inventory</value>
+  </data>
+  <data name="TRANSFEROUTOFINVENTORY" xml:space="preserve">
+    <value>Transfer Out of Inventory</value>
+  </data>
+  <data name="TRANSFERS" xml:space="preserve">
+    <value>Transfers</value>
+  </data>
+  <data name="VENDORCREDIT" xml:space="preserve">
+    <value>Add Vendor Credit</value>
+  </data>
+  <data name="VENDOR_LIST" xml:space="preserve">
+    <value>Vendor</value>
+  </data>
+  <data name="VIEWCHECKREGISTER" xml:space="preserve">
+    <value>View Check Registers</value>
+  </data>
+  <data name="WEBSITEORDERINPORT" xml:space="preserve">
+    <value>Website Order Import</value>
+  </data>
+  <data name="RECURRINGTRANSACTION" xml:space="preserve">
+    <value>Recurring Transaction</value>
+  </data>
+  <data name="NONSTOCKCATEGORY" xml:space="preserve">
+    <value>Non Stock Category</value>
+  </data>
+  <data name="NONSTOCKITEM" xml:space="preserve">
+    <value>Non Stock Item</value>
+  </data>
+  <data name="SERVICESUBLET" xml:space="preserve">
+    <value>Service Sublet</value>
+  </data>
+  <data name="PART_PACKAGE" xml:space="preserve">
+    <value>Parts Package</value>
+  </data>
+  <data name="PART_TRANSFER_IN" xml:space="preserve">
+    <value>Receive Transfer</value>
+  </data>
+  <data name="SEASONAL_ORDERING" xml:space="preserve">
+    <value>Seasonal Ordering</value>
+  </data>
+  <data name="SEARCH_TRANSACTIONS" xml:space="preserve">
+    <value>Search Transactions</value>
+  </data>
+  <data name="APINQUIRY" xml:space="preserve">
+    <value>Vendor Inquiry</value>
+  </data>
+  <data name="ARINQUIRY" xml:space="preserve">
+    <value>A/R Customer Inquiry</value>
+  </data>
+  <data name="INCOMING_REQUEEST_TRANSFER" xml:space="preserve">
+    <value>Requested Transfers</value>
+  </data>
+  <data name="SUPPLIER_LIST" xml:space="preserve">
+    <value>Supplier</value>
+  </data>
+  <data name="SERVICEMANAGEMENT_GROUP" xml:space="preserve">
+    <value>Service Management</value>
+  </data>
+  <data name="SCHEDULE_ACCOUNT" xml:space="preserve">
+    <value>View Scheduled Account</value>
+  </data>
+  <data name="LAUNCHPAD" xml:space="preserve">
+    <value>Launch Pad</value>
+  </data>
+  <data name="IMPORTPAYROLL" xml:space="preserve">
+    <value>Import Payroll JE's</value>
+  </data>
+  <data name="TIMECLOCK" xml:space="preserve">
+    <value>Time Clock</value>
+  </data>
+  <data name="ACCOUNTDEPARTMENT" xml:space="preserve">
+    <value>Department</value>
+  </data>
+  <data name="TIMECLOCKMANAGEMENT" xml:space="preserve">
+    <value>Time Clock Management</value>
+  </data>
+  <data name="INITIATE_TRANSFER" xml:space="preserve">
+    <value>Initiate Transfer</value>
+  </data>
+  <data name="GROUP_CASHIER_FUNCTION" xml:space="preserve">
+    <value>Cashier</value>
+  </data>
+  <data name="MISC_RECEIPT_PAID_OUT" xml:space="preserve">
+    <value>Misc Receipt / Paid Out</value>
+  </data>
+  <data name="CASHIER_RECEIVEPAYMENT" xml:space="preserve">
+    <value>Receive Payments</value>
+  </data>
+  <data name="MU_RECEIVE_TRANSFER" xml:space="preserve">
+    <value>MU Receive Transfer</value>
+  </data>
+  <data name="GROUP_CHANGE_DEALERSHIP" xml:space="preserve">
+    <value>Dealerships</value>
+  </data>
+  <data name="GROUP_LAUNCHPAD" xml:space="preserve">
+    <value>Launch Pad</value>
+  </data>
+  <data name="GROUP_NAVIGATE_TO" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="GROUP_SETTINGS" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="GROUP_SIGNOUT" xml:space="preserve">
+    <value>Sign Out</value>
+  </data>
+  <data name="GROUP_TIME" xml:space="preserve">
+    <value>Time Clock</value>
+  </data>
+  <data name="ACCOUNTING_BUSINESS_DASHBOARD" xml:space="preserve">
+    <value>Business Dashboard</value>
+  </data>
+  <data name="ACCOUNTING_HOURLY_DASHBOARD" xml:space="preserve">
+    <value>Hourly Dashboard</value>
+  </data>
+  <data name="PARTS_INVENTORY_DASHBOARD" xml:space="preserve">
+    <value>Inventory Dashboard</value>
+  </data>
+  <data name="PARTS_SALES_DASHBOARD" xml:space="preserve">
+    <value>Sales Dashboard</value>
+  </data>
+  <data name="SERVICE_SALES_DASHBOARD" xml:space="preserve">
+    <value>Sales Dashboard</value>
+  </data>
+  <data name="SERVICE_STATIC_DASHBOARD" xml:space="preserve">
+    <value>Static Dashboard</value>
+  </data>
+  <data name="WARRANTY_PROCESSING" xml:space="preserve">
+    <value>Warranty Processing</value>
+  </data>
+  <data name="TAXRATES" xml:space="preserve">
+    <value>Tax Rates</value>
+  </data>
+  <data name="EXPENSE" xml:space="preserve">
+    <value>Create Expense</value>
+  </data>
+  <data name="QUICKBILL" xml:space="preserve">
+    <value>Quick Bill</value>
+  </data>
+  <data name="PRICEFILEUPLOAD" xml:space="preserve">
+    <value>Price File Upload</value>
+  </data>
+  <data name="NEWFISALE" xml:space="preserve">
+    <value>F &amp; I Sales</value>
+  </data>
+  <data name="MURECEIVINGUSEDUNIT" xml:space="preserve">
+    <value>MU Receiving - USED</value>
+  </data>
+  <data name="MAJOR_UNITS" xml:space="preserve">
+    <value>Major Units</value>
+  </data>
+  <data name="MAJOR_UNITS_INVOICING" xml:space="preserve">
+    <value>Major Unit Invoicing</value>
+  </data>
+</root>

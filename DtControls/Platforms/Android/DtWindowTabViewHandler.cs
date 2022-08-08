@@ -1,5 +1,4 @@
-﻿
-#if __ANDROID__
+﻿#if ANDROID
 namespace DtControls.Handlers
 {
     using System;
@@ -19,7 +18,7 @@ namespace DtControls.Handlers
         }
 
 
-        #region Properties
+#region Properties
         public static void MapAddTabButtonCommand(IDtWindowTabViewHandler viewHandler, IDtWindowTabView virtualView)
         {
             throw new NotImplementedException();
@@ -75,7 +74,7 @@ namespace DtControls.Handlers
         }
 
     }
-    #endregion
+#endregion
 }
 #endif
 

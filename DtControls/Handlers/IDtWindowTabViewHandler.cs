@@ -12,9 +12,18 @@ namespace DtControls.Handlers
     using PlatformView = System.Object;
 #endif
 
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IDtWindowTabViewHandler : IViewHandler
     {
+        /// <summary>
+        /// 
+        /// </summary>
         new IDtWindowTabView VirtualView { get; }
+        /// <summary>
+        /// 
+        /// </summary>
         new PlatformView PlatformView { get; }
     }
 

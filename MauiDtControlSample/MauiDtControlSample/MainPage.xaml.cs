@@ -1,24 +1,30 @@
 ﻿namespace MauiDtControlSample;
 
+using MauiDtControlSample.Models;
+
 public partial class MainPage : ContentPage
 {
-	int count = 0;
 
 	public MainPage()
 	{
 		InitializeComponent();
 	}
 
-	private void OnCounterClicked(object sender, EventArgs e)
+	private void WindowTabView_Loaded(object sender, EventArgs e)
 	{
-		count++;
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
+	}
 
-		SemanticScreenReader.Announce(CounterBtn.Text);
+	private void ContentPage_Appearing(object sender, EventArgs e)
+	{
+
+	}
+
+	private void ContentPage_Loaded(object sender, EventArgs e)
+	{
+		var menu = new DtMenuData();
+		var menucontext = new DtBuildMenuContext();
+		menucontext.BuildPlatformMenus(NavView, menu.GetPlatformMenu());
 	}
 }
 
