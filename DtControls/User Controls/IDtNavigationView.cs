@@ -1,5 +1,6 @@
 ﻿namespace DtControls.UserControls
 {
+    using DtControls.Models;
 
     using System.Collections.Generic;
 
@@ -35,7 +36,7 @@
         /// <summary>
         /// 
         /// </summary>
-        event EventHandler ItemInvoked;
+        event EventHandler<DtNavigationViewItemInvokedEventArgs> ItemInvoked;
 
         /// <summary>
         /// 
@@ -96,7 +97,7 @@
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        void WinItemInvoked(object sender, object args);
+        void WinItemInvoked(object sender, DtNavigationViewItemInvokedEventArgs args);
 
         /// <summary>
         /// 
@@ -178,7 +179,7 @@
         /// <summary>
         /// 
         /// </summary>
-        List<object> FooterMenuItems { get; }
+        IList<object> FooterMenuItems { get; set; }
 
         /// <summary>
         /// 

@@ -5,7 +5,7 @@
         public int Id { get; set; }
         public int ParentId { get; set; }
         public string NameResource { get; set; }
-        public string IconName { get; set; }
+        public object IconObject { get; set; }
         public string ToolTipResource { get; set; }
         public Type Screen { get; set; }
 
@@ -15,12 +15,13 @@
         /// <param name="id"></param>
         /// <param name="parentid"></param>
         /// <param name="nameresource"></param>
+        /// <param name="iconObject"></param>
         /// <param name="screen"></param>
         /// <returns></returns>
-        public static DtMenuItem MakeMenuItem(int id, int parentid, string nameresource, Type screen = null)
+        public static DtMenuItem MakeMenuItem(int id, int parentid, string nameresource, object iconObject = null, Type screen = null)
         {
-            var resname = nameresource.ToLower();
-            return new DtMenuItem() { Id = id, ParentId = parentid, NameResource = resname, IconName = resname + "icon", ToolTipResource = resname + "tooltip", Screen = screen };
+            var resname = nameresource;
+            return new DtMenuItem() { Id = id, ParentId = parentid, NameResource = resname, IconObject = iconObject, ToolTipResource = resname + "_TOOLTIP", Screen = screen };
         }
     }
 

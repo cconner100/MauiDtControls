@@ -132,10 +132,17 @@ namespace DtControls.Handlers
         {
             throw new NotImplementedException();
         }
-        //public static void MapFooterMenuItems(IDtNavigationViewHandler viewHandler, IDtNavigationView virtualView)
-        //{
-        //     virtualView.FooterMenuItems = ((NavigationView)(viewHandler?.PlatformView)).FooterMenuItems; = virtualView.FooterMenuItems;
-        //}
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="viewHandler"></param>
+        /// <param name="virtualView"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        public static void MapFooterMenuItems(IDtNavigationViewHandler viewHandler, IDtNavigationView virtualView)
+        {
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         /// 

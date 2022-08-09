@@ -1,7 +1,7 @@
 ﻿#if WINDOWS
 namespace DtControls.Handlers
 {
-
+    using DtControls.Models;
     using DtControls.UserControls;
 
     using Microsoft.Maui;
@@ -74,7 +74,8 @@ namespace DtControls.Handlers
         /// <param name="args"></param>
         private void PlatformView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
-            VirtualView?.WinItemInvoked(sender, args);
+            var narg = new DtNavigationViewItemInvokedEventArgs { InvokedItem = args.InvokedItem.ToString(), IsSettingsInvoked = args.IsSettingsInvoked };
+            VirtualView?.WinItemInvoked(sender, narg);
         }
 
         /// <summary>
@@ -105,7 +106,7 @@ namespace DtControls.Handlers
         /// <param name="e"></param>
         private void PlatformView_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
-            Trace.WriteLine("OnLoaded");
+            Trace.WriteLine("OnLoaded");           
         }
 
         /// <summary>
@@ -180,15 +181,14 @@ namespace DtControls.Handlers
         /// <exception cref="InvalidOperationException"></exception>
         public static void MapContent(IDtNavigationViewHandler handler, IDtNavigationView virtualView)
         {
-            //((NavigationView)(viewHandler?.PlatformView)).Content = virtualView.Content;
             _ = handler.PlatformView ?? throw new InvalidOperationException($"{nameof(PlatformView)} should have been set by base class.");
             _ = handler.VirtualView ?? throw new InvalidOperationException($"{nameof(VirtualView)} should have been set by base class.");
             _ = handler.MauiContext ?? throw new InvalidOperationException($"{nameof(MauiContext)} should have been set by base class.");
 
-#if WINDOWS
             if (handler.VirtualView.PresentedContent is IView view)
+            {
                 handler.PlatformView.Content = view.ToPlatform(handler.MauiContext);
-#endif
+            }
         }
 
         /// <summary>
@@ -304,10 +304,15 @@ namespace DtControls.Handlers
             ((NavigationView)(viewHandler?.PlatformView)).ExpandedModeThresholdWidth = virtualView.ExpandedModeThresholdWidth;
         }
 
-        //public static void MapFooterMenuItems(IDtNavigationViewHandler viewHandler, IDtNavigationView virtualView)
-        //{
-        //     virtualView.FooterMenuItems = ((NavigationView)(viewHandler?.PlatformView)).FooterMenuItems; = virtualView.FooterMenuItems;
-        //}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="viewHandler"></param>
+        /// <param name="virtualView"></param>
+        public static void MapFooterMenuItems(IDtNavigationViewHandler viewHandler, IDtNavigationView virtualView)
+        {
+            virtualView.FooterMenuItems = (IList<object>)((NavigationView)(viewHandler?.PlatformView)).FooterMenuItems;
+        }
 
 
         /// <summary>
@@ -376,10 +381,7 @@ namespace DtControls.Handlers
         /// <param name="virtualView"></param>
         public static void MapMenuItems(IDtNavigationViewHandler viewHandler, IDtNavigationView virtualView)
         {
-            var x = ((NavigationView)(viewHandler?.PlatformView)).MenuItems;
-
             virtualView.MenuItems = (IList<object>)((NavigationView)(viewHandler?.PlatformView)).MenuItems;
-
         }
 
         /// <summary>

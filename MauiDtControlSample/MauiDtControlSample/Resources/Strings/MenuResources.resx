@@ -594,4 +594,103 @@
   <data name="MAJOR_UNITS_INVOICING" xml:space="preserve">
     <value>Major Unit Invoicing</value>
   </data>
+  <data name="BUNDLE_LIST_TOOLTIP" xml:space="preserve">
+    <value>Create Major Unit Bundles, Add accessories or service to a unit</value>
+  </data>
+  <data name="GROUP_PARTS_TOOLTIP" xml:space="preserve">
+    <value>Parts and Accessories </value>
+  </data>
+  <data name="INCENTIVE_LIST_TOOLTIP" xml:space="preserve">
+    <value>Manage OEM Incentives New, Modify, Delete</value>
+  </data>
+  <data name="INVOICE_TOOLTIP" xml:space="preserve">
+    <value>Create or Update Parts Invoices</value>
+  </data>
+  <data name="MAJORUNITMANAGEMENT_GROUP_TOOLTIP" xml:space="preserve">
+    <value>Major Unit Management Menu</value>
+  </data>
+  <data name="MAJORUNITREPORTS_TOOLTIP" xml:space="preserve">
+    <value>Major Unit Reporting System</value>
+  </data>
+  <data name="MAJOR_UNITS_INVOICING_TOOLTIP" xml:space="preserve">
+    <value>Create a new major unit invoice</value>
+  </data>
+  <data name="MAJOR_UNITS_TOOLTIP" xml:space="preserve">
+    <value>Major Units</value>
+  </data>
+  <data name="MODELMANAGEMENT_LIST_TOOLTIP" xml:space="preserve">
+    <value>Model Management New, Modify, Delete</value>
+  </data>
+  <data name="MUINVENTORY_LIST_TOOLTIP" xml:space="preserve">
+    <value>Major Unit Inventory New, Modify, Delete</value>
+  </data>
+  <data name="MURECEIVINGWITHPO_TOOLTIP" xml:space="preserve">
+    <value>Major Units Receiving</value>
+  </data>
+  <data name="MUSALES_LIST_TOOLTIP" xml:space="preserve">
+    <value>List Major Units sales in process or completed</value>
+  </data>
+  <data name="MU_CATEGORY_LIST_TOOLTIP" xml:space="preserve">
+    <value>Category Management New, Modify, Delete</value>
+  </data>
+  <data name="MU_RECEIVE_TRANSFER_TOOLTIP" xml:space="preserve">
+    <value>Receive a Major Unit Transfer from another dealership</value>
+  </data>
+  <data name="NEWFISALE_TOOLTIP" xml:space="preserve">
+    <value>Finance and Insurance Management New, Modify, Delete</value>
+  </data>
+  <data name="ORDERING_TOOLTIP" xml:space="preserve">
+    <value>Major Units Ordering</value>
+  </data>
+  <data name="PARTSINVENTORY_LIST_TOOLTIP" xml:space="preserve">
+    <value>Parts Inventory Management New, Modify, Delete</value>
+  </data>
+  <data name="PARTSMANAGEMENT_GROUP_TOOLTIP" xml:space="preserve">
+    <value>Parts Management sub menu</value>
+  </data>
+  <data name="PARTSORDERING_TOOLTIP" xml:space="preserve">
+    <value>Ordering screen for parts and accessories</value>
+  </data>
+  <data name="PARTSRECEIVING_TOOLTIP" xml:space="preserve">
+    <value>Receive parts and accessories from ordering</value>
+  </data>
+  <data name="PARTSREPORTS_TOOLTIP" xml:space="preserve">
+    <value>Parts Reporting System</value>
+  </data>
+  <data name="PARTSVENDORRETURN_TOOLTIP" xml:space="preserve">
+    <value>Return parts to the vendor for credit</value>
+  </data>
+  <data name="PART_CATEGORY_LIST_TOOLTIP" xml:space="preserve">
+    <value>Manage Parts Categories New, Modify, Delete</value>
+  </data>
+  <data name="PART_INVOICE_LIST_TOOLTIP" xml:space="preserve">
+    <value>List Parts Invoices in progress or completed</value>
+  </data>
+  <data name="PART_TRANSFER_IN_TOOLTIP" xml:space="preserve">
+    <value>Transfer Parts IN from another dealership</value>
+  </data>
+  <data name="PHYSICALINVENTORY_TOOLTIP" xml:space="preserve">
+    <value>Take physical inventory of your dealership stock</value>
+  </data>
+  <data name="PROFITMARGIN_TOOLTIP" xml:space="preserve">
+    <value>Profit Margin management, Rounders and Esclators</value>
+  </data>
+  <data name="SEASONAL_ORDERING_TOOLTIP" xml:space="preserve">
+    <value>Create or Modify Seasonal Ordering of parts and accessories</value>
+  </data>
+  <data name="TRANSFEROUTOFINVENTORY_TOOLTIP" xml:space="preserve">
+    <value>Transfer Parts OUT to another dealership</value>
+  </data>
+  <data name="ACCOUNT" xml:space="preserve">
+    <value>User Account</value>
+  </data>
+  <data name="ACCOUNT_TOOLTIP" xml:space="preserve">
+    <value>User Account Info</value>
+  </data>
+  <data name="HELP" xml:space="preserve">
+    <value>Help and Support</value>
+  </data>
+  <data name="HELP_TOOLTIP" xml:space="preserve">
+    <value>Help and Support</value>
+  </data>
 </root>

@@ -46,11 +46,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="DtControls" Version="1.0.0" />
+	  <Folder Include="ViewModels\" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="ViewModels\" />
+	  <ProjectReference Include="..\..\DtControls\DtControls.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

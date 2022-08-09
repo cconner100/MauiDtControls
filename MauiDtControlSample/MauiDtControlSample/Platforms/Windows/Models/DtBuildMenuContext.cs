@@ -2,6 +2,8 @@
 {
     using DtControls.UserControls;
 
+    using MauiDtControlSample.Helpers;
+
     using Microsoft.UI.Xaml.Controls;
 
     using System.Collections.Generic;
@@ -9,13 +11,29 @@
 
     public partial class DtBuildMenuContext
     {
-        public void BuildPlatformMenus(DtNavigationView nv, List<DtMenuItem> menulist)
+        public enum MenuArea
+        {
+            main,
+            footer
+        }
+        public void BuildPlatformMenus(DtNavigationView nv, List<DtMenuItem> menulist, MenuArea area)
         {
 
+            // if footer area then only list with no sublists
+            if(area == MenuArea.footer)
+            {
+                foreach(var item in menulist)
+                {
+                    nv?.FooterMenuItems.Add(MakeMenuItem(item));
+                }
+                return;
+            }
+
             var toplevel = menulist.Where(o => o.Id == o.ParentId).ToList();
+            NavigationViewItem Level0Menu = null;
             foreach (var rootMenu in toplevel)
             {
-                var Level0Menu = MakeMenuItem(rootMenu);
+                Level0Menu = MakeMenuItem(rootMenu);
                 var subitem = menulist.Where(o => o.ParentId == rootMenu.Id).ToList();
 
                 foreach (var subsubitem in subitem)
@@ -41,7 +59,7 @@
                     }
                     Level0Menu.MenuItems.Add(Level2Menu);
                 }
-                nv?.MenuItems?.Add(Level0Menu);
+                    nv?.MenuItems?.Add(Level0Menu);
             }
         }
 
@@ -49,12 +67,12 @@
         {
             var tooltip = new ToolTip
             {
-                Content = item.ToolTipResource
+                Content = LanguageResourceHelper.GetDisplayText(item.ToolTipResource)
             };
             var ret = new NavigationViewItem
             {
-                Content = item.NameResource,
-                Icon = new SymbolIcon() { Symbol = Symbol.Account },
+                Content = LanguageResourceHelper.GetDisplayText(item.NameResource),
+                Icon = new SymbolIcon() { Symbol = (Symbol)item.IconObject },
                 Tag = item.Screen
             };
             ToolTipService.SetToolTip(ret, tooltip);

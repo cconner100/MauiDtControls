@@ -1,6 +1,7 @@
 ﻿namespace DtControls.UserControls
 {
     using System.Collections.Generic;
+    using DtControls.Models;
 
     using Microsoft.Maui.Graphics;
 
@@ -131,7 +132,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public event EventHandler ItemInvoked;
+        public event EventHandler<DtNavigationViewItemInvokedEventArgs> ItemInvoked;
 
         /// <summary>
         /// 
@@ -204,9 +205,9 @@
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        public void WinItemInvoked(object sender, object args)
+        public void WinItemInvoked(object sender, DtNavigationViewItemInvokedEventArgs args)
         {
-            ItemInvoked?.Invoke(sender, (EventArgs)args);
+            ItemInvoked?.Invoke(sender, args);
         }
 
         /// <summary>
@@ -226,7 +227,7 @@
         /// <param name="args"></param>
         public void WinPaneClosing(object sender, object args)
         {
-            PaneClosing?.Invoke(sender, (EventArgs)args);
+            PaneClosing?.Invoke(sender, null);
         }
 
         /// <summary>
@@ -449,20 +450,20 @@
         /// <summary>
         /// 
         /// </summary>
-        public static readonly BindableProperty FooterMenuItemsProperty = BindableProperty.Create("FooterMenuItems", typeof(List<object>), typeof(DtNavigationView));
+        public static readonly BindableProperty FooterMenuItemsProperty = BindableProperty.Create("FooterMenuItems", typeof(IList<object>), typeof(DtNavigationView));
         
         /// <summary>
         /// 
         /// </summary>
-        public List<object> FooterMenuItems
+        public IList<object> FooterMenuItems
         {
             get
             {
-                return (List<object>)GetValue(FooterMenuItemsProperty);
+                return (IList<object>)GetValue(FooterMenuItemsProperty);
             }
             set
             {
-
+                SetValue(FooterMenuItemsProperty, value);
             }
         }
 

@@ -13,7 +13,8 @@
                              IsBackButtonEnabled="True" 
                              IsBackButtonVisable="Auto" 
                              IsSettingsVisible="True"
-                             PaneDisplayMode="LeftCompact">
+                             PaneDisplayMode="LeftCompact"
+                             >
 
             <dt:DtWindowTabView x:Name="WindowTabView" Loaded="WindowTabView_Loaded">
 

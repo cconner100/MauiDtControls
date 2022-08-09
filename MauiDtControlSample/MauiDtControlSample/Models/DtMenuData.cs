@@ -1,46 +1,49 @@
 ﻿namespace MauiDtControlSample.Models
 {
+    using Microsoft.UI.Xaml.Controls;
+
     using System.Collections.Generic;
 
     public class DtMenuData : IDtMenu
     {
         readonly List<DtMenuItem> dtmenudata = new List<DtMenuItem>();
 
+        readonly List<DtMenuItem> dtmenufooterdata = new List<DtMenuItem>();
         public DtMenuData()
         {
             // create the static menu
             // Major Units
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(0, 0, "MAJOR_UNITS"));
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(1, 0, "MAJOR_UNITS_INVOICING", typeof(int)));
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(2, 0, "MUSALES_LIST", typeof(int)));
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(3, 0, "ORDERING", typeof(int)));
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(4, 0, "MURECEIVINGWITHPO", typeof(int)));
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(5, 0, "MAJORUNITMANAGEMENT_GROUP", typeof(int)));
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(6, 5, "MUINVENTORY_LIST", typeof(int)));
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(7, 5, "MU_RECEIVE_TRANSFER", typeof(int)));
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(8, 5, "MODELMANAGEMENT_LIST"));
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(9, 5, "MU_CATEGORY_LIST", typeof(int)));
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(10, 5, "BUNDLE_LIST", typeof(int)));
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(11, 5, "INCENTIVE_LIST", typeof(int)));
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(12, 5, "NEWFISALE", typeof(int)));
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(20, 0, "MAJORUNITREPORTS", typeof(int)));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(0, 0, "MAJOR_UNITS", Symbol.Page));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(1, 0, "MAJOR_UNITS_INVOICING", Symbol.OtherUser, typeof(int)));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(2, 0, "MUSALES_LIST", Symbol.SwitchApps,typeof(int)));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(3, 0, "ORDERING", Symbol.Street, typeof(int)));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(4, 0, "MURECEIVINGWITHPO", Symbol.Sort,typeof(int)));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(5, 0, "MAJORUNITMANAGEMENT_GROUP", Symbol.WebCam,typeof(int)));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(6, 5, "MUINVENTORY_LIST", Symbol.WebCam, typeof(int)));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(7, 5, "MU_RECEIVE_TRANSFER", Symbol.WebCam, typeof(int)));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(8, 5, "MODELMANAGEMENT_LIST", Symbol.WebCam, typeof(int)));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(9, 5, "MU_CATEGORY_LIST", Symbol.WebCam, typeof(int)));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(10, 5, "BUNDLE_LIST", Symbol.WebCam, typeof(int)));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(11, 5, "INCENTIVE_LIST", Symbol.WebCam, typeof(int)));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(12, 5, "NEWFISALE", Symbol.WebCam, typeof(int)));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(20, 0, "MAJORUNITREPORTS", Symbol.WebCam, typeof(int)));
 
             // parts
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(100, 100, "GROUP_PARTS"));
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(101, 100, "INVOICE", typeof(int)));
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(102, 100, "PART_INVOICE_LIST", typeof(int)));
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(103, 100, "PARTSREPORTS", typeof(int)));
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(104, 100, "PARTSRECEIVING", typeof(int)));
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(105, 100, "PARTSMANAGEMENT_GROUP"));
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(106, 105, "PARTSINVENTORY_LIST", typeof(int)));
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(107, 105, "PART_TRANSFER_IN", typeof(int)));
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(108, 105, "TRANSFEROUTOFINVENTORY", typeof(int)));
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(109, 105, "PARTSVENDORRETURN", typeof(int)));
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(110, 105, "PHYSICALINVENTORY", typeof(int)));
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(111, 105, "PART_CATEGORY_LIST", typeof(int)));
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(112, 105, "SEASONAL_ORDERING", typeof(int)));
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(113, 105, "PROFITMARGIN", typeof(int)));
-            dtmenudata.Add(DtMenuItem.MakeMenuItem(120, 100, "PARTSREPORTS", typeof(int)));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(100, 100, "GROUP_PARTS", Symbol.WebCam));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(101, 100, "INVOICE", Symbol.WebCam, typeof(int)));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(102, 100, "PART_INVOICE_LIST", Symbol.WebCam, typeof(int)));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(103, 100, "PARTSORDERING", Symbol.WebCam, typeof(int)));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(104, 100, "PARTSRECEIVING", Symbol.WebCam, typeof(int)));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(105, 100, "PARTSMANAGEMENT_GROUP",Symbol.WebCam));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(106, 105, "PARTSINVENTORY_LIST", Symbol.WebCam, typeof(int)));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(107, 105, "PART_TRANSFER_IN", Symbol.WebCam, typeof(int)));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(108, 105, "TRANSFEROUTOFINVENTORY", Symbol.WebCam, typeof(int)));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(109, 105, "PARTSVENDORRETURN", Symbol.WebCam, typeof(int)));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(110, 105, "PHYSICALINVENTORY", Symbol.WebCam, typeof(int)));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(111, 105, "PART_CATEGORY_LIST", Symbol.WebCam, typeof(int)));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(112, 105, "SEASONAL_ORDERING", Symbol.WebCam, typeof(int)));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(113, 105, "PROFITMARGIN", Symbol.WebCam, typeof(int)));
+            dtmenudata.Add(DtMenuItem.MakeMenuItem(120, 100, "PARTSREPORTS", Symbol.WebCam, typeof(int)));
 
             //// service
             //dtmenudata.Add(DtMenuItem.MakeMenuItem(200, 200, "service"));
@@ -110,11 +113,21 @@
             //dtmenudata.Add(DtMenuItem.MakeMenuItem(606, 600, "misclabelprinting", typeof(int)));
             //dtmenudata.Add(DtMenuItem.MakeMenuItem(607, 600, "misclabeleditor", typeof(int)));
             //dtmenudata.Add(DtMenuItem.MakeMenuItem(608, 600, "miscdealershipsetup", typeof(int)));
+
+            // Footer data menu
+            dtmenufooterdata.Add(DtMenuItem.MakeMenuItem(0, 0, "HELP", Symbol.Help, typeof(int)));
+            dtmenufooterdata.Add(DtMenuItem.MakeMenuItem(1, 0, "ACCOUNT", Symbol.Account, typeof(int)));
         }
 
         public List<DtMenuItem> GetPlatformMenu()
         {
             return dtmenudata;
         }
+
+        public List<DtMenuItem> GetPlatformFooterMenu()
+        {
+            return dtmenufooterdata;
+        }
+
     }
 }

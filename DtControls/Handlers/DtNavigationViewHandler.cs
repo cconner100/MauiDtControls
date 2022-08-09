@@ -22,7 +22,7 @@
             [nameof(IContentView.Content)] = MapContent,
             [nameof(DtNavigationView.DisplayMode)] = MapDisplayMode,
             [nameof(DtNavigationView.ExpandedModeThresholdWidth)] = MapExpandedModeThresholdWidth,
-            //[nameof(ZtNavigationView.FooterMenuItems)] = MapFooterMenuItems,
+            [nameof(DtNavigationView.FooterMenuItems)] = MapFooterMenuItems,
             [nameof(DtNavigationView.FooterMenuItemsSource)] = MapFooterMenuItemsSource,
             //[nameof(ZtNavigationView.HeaderTemplate)] = MapHeaderTemplate,
             [nameof(DtNavigationView.IsPaneOpen)] = MapIsPaneOpen,

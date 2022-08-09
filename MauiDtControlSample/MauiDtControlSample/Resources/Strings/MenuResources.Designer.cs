@@ -61,6 +61,24 @@ namespace MauiDtControlSample.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User Account.
+        /// </summary>
+        public static string ACCOUNT {
+            get {
+                return ResourceManager.GetString("ACCOUNT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Account Info.
+        /// </summary>
+        public static string ACCOUNT_TOOLTIP {
+            get {
+                return ResourceManager.GetString("ACCOUNT_TOOLTIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Department.
         /// </summary>
         public static string ACCOUNTDEPARTMENT {
@@ -192,6 +210,15 @@ namespace MauiDtControlSample.Resources.Strings {
         public static string BUNDLE_LIST {
             get {
                 return ResourceManager.GetString("BUNDLE_LIST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create Major Unit Bundles, Add accessories or service to a unit.
+        /// </summary>
+        public static string BUNDLE_LIST_TOOLTIP {
+            get {
+                return ResourceManager.GetString("BUNDLE_LIST_TOOLTIP", resourceCulture);
             }
         }
         
@@ -511,6 +538,15 @@ namespace MauiDtControlSample.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Parts and Accessories .
+        /// </summary>
+        public static string GROUP_PARTS_TOOLTIP {
+            get {
+                return ResourceManager.GetString("GROUP_PARTS_TOOLTIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Service.
         /// </summary>
         public static string GROUP_SERVICE {
@@ -556,6 +592,24 @@ namespace MauiDtControlSample.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Help and Support.
+        /// </summary>
+        public static string HELP {
+            get {
+                return ResourceManager.GetString("HELP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help and Support.
+        /// </summary>
+        public static string HELP_TOOLTIP {
+            get {
+                return ResourceManager.GetString("HELP_TOOLTIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Import Parts Price File.
         /// </summary>
         public static string IMPORTPARTSPRICEFILE {
@@ -579,6 +633,15 @@ namespace MauiDtControlSample.Resources.Strings {
         public static string INCENTIVE_LIST {
             get {
                 return ResourceManager.GetString("INCENTIVE_LIST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manage OEM Incentives New, Modify, Delete.
+        /// </summary>
+        public static string INCENTIVE_LIST_TOOLTIP {
+            get {
+                return ResourceManager.GetString("INCENTIVE_LIST_TOOLTIP", resourceCulture);
             }
         }
         
@@ -633,6 +696,15 @@ namespace MauiDtControlSample.Resources.Strings {
         public static string INVOICE_LIST {
             get {
                 return ResourceManager.GetString("INVOICE_LIST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create or Update Parts Invoices.
+        /// </summary>
+        public static string INVOICE_TOOLTIP {
+            get {
+                return ResourceManager.GetString("INVOICE_TOOLTIP", resourceCulture);
             }
         }
         
@@ -718,6 +790,24 @@ namespace MauiDtControlSample.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create a new major unit invoice.
+        /// </summary>
+        public static string MAJOR_UNITS_INVOICING_TOOLTIP {
+            get {
+                return ResourceManager.GetString("MAJOR_UNITS_INVOICING_TOOLTIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Major Units.
+        /// </summary>
+        public static string MAJOR_UNITS_TOOLTIP {
+            get {
+                return ResourceManager.GetString("MAJOR_UNITS_TOOLTIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to MU Management.
         /// </summary>
         public static string MAJORUNITMANAGEMENT_GROUP {
@@ -727,11 +817,29 @@ namespace MauiDtControlSample.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Major Unit Management Menu.
+        /// </summary>
+        public static string MAJORUNITMANAGEMENT_GROUP_TOOLTIP {
+            get {
+                return ResourceManager.GetString("MAJORUNITMANAGEMENT_GROUP_TOOLTIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to MU Reports.
         /// </summary>
         public static string MAJORUNITREPORTS {
             get {
                 return ResourceManager.GetString("MAJORUNITREPORTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Major Unit Reporting System.
+        /// </summary>
+        public static string MAJORUNITREPORTS_TOOLTIP {
+            get {
+                return ResourceManager.GetString("MAJORUNITREPORTS_TOOLTIP", resourceCulture);
             }
         }
         
@@ -799,11 +907,29 @@ namespace MauiDtControlSample.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Model Management New, Modify, Delete.
+        /// </summary>
+        public static string MODELMANAGEMENT_LIST_TOOLTIP {
+            get {
+                return ResourceManager.GetString("MODELMANAGEMENT_LIST_TOOLTIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to MU Category.
         /// </summary>
         public static string MU_CATEGORY_LIST {
             get {
                 return ResourceManager.GetString("MU_CATEGORY_LIST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Category Management New, Modify, Delete.
+        /// </summary>
+        public static string MU_CATEGORY_LIST_TOOLTIP {
+            get {
+                return ResourceManager.GetString("MU_CATEGORY_LIST_TOOLTIP", resourceCulture);
             }
         }
         
@@ -826,11 +952,29 @@ namespace MauiDtControlSample.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Receive a Major Unit Transfer from another dealership.
+        /// </summary>
+        public static string MU_RECEIVE_TRANSFER_TOOLTIP {
+            get {
+                return ResourceManager.GetString("MU_RECEIVE_TRANSFER_TOOLTIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to MU Inventory.
         /// </summary>
         public static string MUINVENTORY_LIST {
             get {
                 return ResourceManager.GetString("MUINVENTORY_LIST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Major Unit Inventory New, Modify, Delete.
+        /// </summary>
+        public static string MUINVENTORY_LIST_TOOLTIP {
+            get {
+                return ResourceManager.GetString("MUINVENTORY_LIST_TOOLTIP", resourceCulture);
             }
         }
         
@@ -862,11 +1006,29 @@ namespace MauiDtControlSample.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Major Units Receiving.
+        /// </summary>
+        public static string MURECEIVINGWITHPO_TOOLTIP {
+            get {
+                return ResourceManager.GetString("MURECEIVINGWITHPO_TOOLTIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to MU Sales.
         /// </summary>
         public static string MUSALES_LIST {
             get {
                 return ResourceManager.GetString("MUSALES_LIST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List Major Units sales in process or completed.
+        /// </summary>
+        public static string MUSALES_LIST_TOOLTIP {
+            get {
+                return ResourceManager.GetString("MUSALES_LIST_TOOLTIP", resourceCulture);
             }
         }
         
@@ -885,6 +1047,15 @@ namespace MauiDtControlSample.Resources.Strings {
         public static string NEWFISALE {
             get {
                 return ResourceManager.GetString("NEWFISALE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Finance and Insurance Management New, Modify, Delete.
+        /// </summary>
+        public static string NEWFISALE_TOOLTIP {
+            get {
+                return ResourceManager.GetString("NEWFISALE_TOOLTIP", resourceCulture);
             }
         }
         
@@ -925,6 +1096,15 @@ namespace MauiDtControlSample.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Major Units Ordering.
+        /// </summary>
+        public static string ORDERING_TOOLTIP {
+            get {
+                return ResourceManager.GetString("ORDERING_TOOLTIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Organization Setup.
         /// </summary>
         public static string ORGANIZATION_SETUP_DETAIL {
@@ -961,11 +1141,29 @@ namespace MauiDtControlSample.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Manage Parts Categories New, Modify, Delete.
+        /// </summary>
+        public static string PART_CATEGORY_LIST_TOOLTIP {
+            get {
+                return ResourceManager.GetString("PART_CATEGORY_LIST_TOOLTIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Parts Invoice List.
         /// </summary>
         public static string PART_INVOICE_LIST {
             get {
                 return ResourceManager.GetString("PART_INVOICE_LIST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List Parts Invoices in progress or completed.
+        /// </summary>
+        public static string PART_INVOICE_LIST_TOOLTIP {
+            get {
+                return ResourceManager.GetString("PART_INVOICE_LIST_TOOLTIP", resourceCulture);
             }
         }
         
@@ -984,6 +1182,15 @@ namespace MauiDtControlSample.Resources.Strings {
         public static string PART_TRANSFER_IN {
             get {
                 return ResourceManager.GetString("PART_TRANSFER_IN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transfer Parts IN from another dealership.
+        /// </summary>
+        public static string PART_TRANSFER_IN_TOOLTIP {
+            get {
+                return ResourceManager.GetString("PART_TRANSFER_IN_TOOLTIP", resourceCulture);
             }
         }
         
@@ -1015,11 +1222,29 @@ namespace MauiDtControlSample.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Parts Inventory Management New, Modify, Delete.
+        /// </summary>
+        public static string PARTSINVENTORY_LIST_TOOLTIP {
+            get {
+                return ResourceManager.GetString("PARTSINVENTORY_LIST_TOOLTIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Parts Management.
         /// </summary>
         public static string PARTSMANAGEMENT_GROUP {
             get {
                 return ResourceManager.GetString("PARTSMANAGEMENT_GROUP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parts Management sub menu.
+        /// </summary>
+        public static string PARTSMANAGEMENT_GROUP_TOOLTIP {
+            get {
+                return ResourceManager.GetString("PARTSMANAGEMENT_GROUP_TOOLTIP", resourceCulture);
             }
         }
         
@@ -1033,6 +1258,15 @@ namespace MauiDtControlSample.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ordering screen for parts and accessories.
+        /// </summary>
+        public static string PARTSORDERING_TOOLTIP {
+            get {
+                return ResourceManager.GetString("PARTSORDERING_TOOLTIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Parts Receiving.
         /// </summary>
         public static string PARTSRECEIVING {
@@ -1042,11 +1276,29 @@ namespace MauiDtControlSample.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Receive parts and accessories from ordering.
+        /// </summary>
+        public static string PARTSRECEIVING_TOOLTIP {
+            get {
+                return ResourceManager.GetString("PARTSRECEIVING_TOOLTIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Parts Reports.
         /// </summary>
         public static string PARTSREPORTS {
             get {
                 return ResourceManager.GetString("PARTSREPORTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parts Reporting System.
+        /// </summary>
+        public static string PARTSREPORTS_TOOLTIP {
+            get {
+                return ResourceManager.GetString("PARTSREPORTS_TOOLTIP", resourceCulture);
             }
         }
         
@@ -1065,6 +1317,15 @@ namespace MauiDtControlSample.Resources.Strings {
         public static string PARTSVENDORRETURN {
             get {
                 return ResourceManager.GetString("PARTSVENDORRETURN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Return parts to the vendor for credit.
+        /// </summary>
+        public static string PARTSVENDORRETURN_TOOLTIP {
+            get {
+                return ResourceManager.GetString("PARTSVENDORRETURN_TOOLTIP", resourceCulture);
             }
         }
         
@@ -1092,6 +1353,15 @@ namespace MauiDtControlSample.Resources.Strings {
         public static string PHYSICALINVENTORY {
             get {
                 return ResourceManager.GetString("PHYSICALINVENTORY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Take physical inventory of your dealership stock.
+        /// </summary>
+        public static string PHYSICALINVENTORY_TOOLTIP {
+            get {
+                return ResourceManager.GetString("PHYSICALINVENTORY_TOOLTIP", resourceCulture);
             }
         }
         
@@ -1128,6 +1398,15 @@ namespace MauiDtControlSample.Resources.Strings {
         public static string PROFITMARGIN {
             get {
                 return ResourceManager.GetString("PROFITMARGIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profit Margin management, Rounders and Esclators.
+        /// </summary>
+        public static string PROFITMARGIN_TOOLTIP {
+            get {
+                return ResourceManager.GetString("PROFITMARGIN_TOOLTIP", resourceCulture);
             }
         }
         
@@ -1236,6 +1515,15 @@ namespace MauiDtControlSample.Resources.Strings {
         public static string SEASONAL_ORDERING {
             get {
                 return ResourceManager.GetString("SEASONAL_ORDERING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create or Modify Seasonal Ordering of parts and accessories.
+        /// </summary>
+        public static string SEASONAL_ORDERING_TOOLTIP {
+            get {
+                return ResourceManager.GetString("SEASONAL_ORDERING_TOOLTIP", resourceCulture);
             }
         }
         
@@ -1434,6 +1722,15 @@ namespace MauiDtControlSample.Resources.Strings {
         public static string TRANSFEROUTOFINVENTORY {
             get {
                 return ResourceManager.GetString("TRANSFEROUTOFINVENTORY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transfer Parts OUT to another dealership.
+        /// </summary>
+        public static string TRANSFEROUTOFINVENTORY_TOOLTIP {
+            get {
+                return ResourceManager.GetString("TRANSFEROUTOFINVENTORY_TOOLTIP", resourceCulture);
             }
         }
         

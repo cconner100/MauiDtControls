@@ -3,7 +3,9 @@ namespace DtControls.Handlers
 {
     using System;
 
+    using DtControls.Models;
     using DtControls.UserControls;
+    using Google.Android.Material.Navigation;
 
     using Microsoft.Maui.Handlers;
     public partial class DtNavigationViewHandler : ViewHandler<IDtNavigationView, Android.Views.View>, IElementHandler
@@ -12,6 +14,14 @@ namespace DtControls.Handlers
         {
             throw new NotImplementedException();
         }
+        #region Events
+        private void PlatformView_ItemInvoked(NavigationView sender, EventArgs args)
+        {
+            var narg = new DtNavigationViewItemInvokedEventArgs ();
+            VirtualView?.WinItemInvoked(sender, narg);
+        }
+
+        #endregion
 
         #region Properties
         public static void MapContent(IDtNavigationViewHandler viewHandler, IDtNavigationView virtualView)
@@ -50,10 +60,11 @@ namespace DtControls.Handlers
         {
             throw new NotImplementedException();
         }
-        //public static void MapFooterMenuItems(IDtNavigationViewHandler viewHandler, IDtNavigationView virtualView)
-        //{
-        //     virtualView.FooterMenuItems = ((NavigationView)(viewHandler?.PlatformView)).FooterMenuItems; = virtualView.FooterMenuItems;
-        //}
+
+        public static void MapFooterMenuItems(IDtNavigationViewHandler viewHandler, IDtNavigationView virtualView)
+        {
+            throw new NotImplementedException();
+        }
 
         public static void MapFooterMenuItemsSource(IDtNavigationViewHandler viewHandler, IDtNavigationView virtualView)
         {
