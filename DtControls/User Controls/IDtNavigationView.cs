@@ -21,7 +21,7 @@
         /// <summary>
         /// 
         /// </summary>
-        event EventHandler Collapsed;
+        event EventHandler<DtNavigationViewItemCollapsedEventArgs> Collapsed;
 
         /// <summary>
         /// 
@@ -31,7 +31,7 @@
         /// <summary>
         /// 
         /// </summary>
-        event EventHandler Expanding;
+        event EventHandler<DtNavigationViewItemExpandingEventArgs> Expanding;
 
         /// <summary>
         /// 
@@ -61,7 +61,7 @@
         /// <summary>
         /// 
         /// </summary>
-        event EventHandler SelectionChanged;
+        event EventHandler<DtNavigationViewSelectionChangedEventArgs> SelectionChanged;
         #endregion
 
         /// <summary>
@@ -76,7 +76,7 @@
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        void WinCollapsed(object sender, object args);
+        void WinCollapsed(object sender, DtNavigationViewItemCollapsedEventArgs args);
 
         /// <summary>
         /// 
@@ -90,7 +90,7 @@
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        void WinExpanding(object sender, object args);
+        void WinExpanding(object sender, DtNavigationViewItemExpandingEventArgs args);
 
         /// <summary>
         /// 
@@ -132,7 +132,7 @@
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        void WinSelectionChanged(object sender, object args);
+        void WinSelectionChanged(object sender, DtNavigationViewSelectionChangedEventArgs args);
         
         #region Properties
 
@@ -145,6 +145,11 @@
         /// 
         /// </summary>
         bool AlwaysShowHeader { get; set; }
+
+        /// <summary>
+        /// Autosuggest box from maui
+        /// </summary>
+        public SearchBar AutoSuggestBox { get; set; }
 
         /// <summary>
         /// 

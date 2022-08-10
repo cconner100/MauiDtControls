@@ -11,16 +11,11 @@
 
     public partial class DtBuildMenuContext
     {
-        public enum MenuArea
-        {
-            main,
-            footer
-        }
-        public void BuildPlatformMenus(DtNavigationView nv, List<DtMenuItem> menulist, MenuArea area)
+        public void BuildPlatformMenus(DtNavigationView nv, List<DtMenuItem> menulist, DtNavigationView.MenuArea area)
         {
 
             // if footer area then only list with no sublists
-            if(area == MenuArea.footer)
+            if(area == DtNavigationView.MenuArea.footer)
             {
                 foreach(var item in menulist)
                 {

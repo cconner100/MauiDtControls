@@ -15,6 +15,7 @@
         {
             [nameof(DtNavigationView.Header)] = MapHeader,
             [nameof(DtNavigationView.AlwaysShowHeader)] = MapAlwaysShowHeader,
+            [nameof(DtNavigationView.AutoSuggestBox)] = MapAutoSuggestBox,
             [nameof(DtNavigationView.IsBackButtonVisable)] = MapIsBackButtonVisable,
             [nameof(DtNavigationView.IsBackButtonEnabled)] = MapBackButtonEnabled,
             [nameof(DtNavigationView.CompactModeThresholdWidth)] = MapCompactModeThresholdWidth,

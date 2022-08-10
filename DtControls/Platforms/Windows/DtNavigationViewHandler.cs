@@ -14,7 +14,7 @@ namespace DtControls.Handlers
     public partial class DtNavigationViewHandler : ViewHandler<DtNavigationView, NavigationView>, IDtNavigationViewHandler
     {
         private NavigationView _navigationView = new NavigationView();
-         
+
         IDtNavigationView IDtNavigationViewHandler.VirtualView => VirtualView;
 
         /// <summary>
@@ -34,17 +34,19 @@ namespace DtControls.Handlers
         protected override void ConnectHandler(NavigationView platformView)
         {
             base.ConnectHandler(platformView);
-            platformView.Loaded += PlatformView_Loaded;            
             platformView.BackRequested += PlatformView_BackRequested;
+            platformView.Collapsed += PlatformView_Collapsed;
             platformView.DisplayModeChanged += PlatformView_DisplayModeChanged;
             platformView.Expanding += PlatformView_Expanding;
             platformView.ItemInvoked += PlatformView_ItemInvoked;
+            platformView.Loaded += PlatformView_Loaded;
             platformView.PaneClosed += PlatformView_PaneClosed;
             platformView.PaneClosing += PlatformView_PaneClosing;
             platformView.PaneOpened += PlatformView_PaneOpened;
             platformView.PaneOpening += PlatformView_PaneOpening;
             platformView.SelectionChanged += PlatformView_SelectionChanged;
         }
+
 
         /// <summary>
         /// 
@@ -53,11 +55,12 @@ namespace DtControls.Handlers
         protected override void DisconnectHandler(NavigationView platformView)
         {
             base.DisconnectHandler(platformView);
-            platformView.Loaded -= PlatformView_Loaded;
             platformView.BackRequested -= PlatformView_BackRequested;
+            platformView.Collapsed -= PlatformView_Collapsed;
             platformView.DisplayModeChanged -= PlatformView_DisplayModeChanged;
             platformView.Expanding -= PlatformView_Expanding;
             platformView.ItemInvoked -= PlatformView_ItemInvoked;
+            platformView.Loaded -= PlatformView_Loaded;
             platformView.PaneClosed -= PlatformView_PaneClosed;
             platformView.PaneClosing -= PlatformView_PaneClosing;
             platformView.PaneOpened -= PlatformView_PaneOpened;
@@ -65,18 +68,7 @@ namespace DtControls.Handlers
             platformView.SelectionChanged -= PlatformView_SelectionChanged;
         }
 
-#region Events
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="args"></param>
-        private void PlatformView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
-        {
-            var narg = new DtNavigationViewItemInvokedEventArgs { InvokedItem = args.InvokedItem.ToString(), IsSettingsInvoked = args.IsSettingsInvoked };
-            VirtualView?.WinItemInvoked(sender, narg);
-        }
+        #region Events
 
         /// <summary>
         /// 
@@ -94,9 +86,21 @@ namespace DtControls.Handlers
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
+        private void PlatformView_Collapsed(NavigationView sender, NavigationViewItemCollapsedEventArgs args)
+        {
+            var nargs = new DtNavigationViewItemCollapsedEventArgs { InvokedItem = args.CollapsedItem.ToString() };
+            VirtualView?.WinCollapsed(sender, nargs);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         private void PlatformView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
-            VirtualView?.WinSelectionChanged(sender, args);
+            var nargs = new DtNavigationViewSelectionChangedEventArgs { InvokedItem = args.SelectedItem.ToString(), IsSettingsInvoked = args.IsSettingsSelected };
+            VirtualView?.WinSelectionChanged(sender, nargs);
         }
 
         /// <summary>
@@ -106,7 +110,7 @@ namespace DtControls.Handlers
         /// <param name="e"></param>
         private void PlatformView_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
-            Trace.WriteLine("OnLoaded");           
+            Trace.WriteLine("OnLoaded");
         }
 
         /// <summary>
@@ -156,7 +160,8 @@ namespace DtControls.Handlers
         /// <param name="args"></param>
         private void PlatformView_Expanding(NavigationView sender, NavigationViewItemExpandingEventArgs args)
         {
-            VirtualView?.WinExpanding(sender, args);
+            var nargs = new DtNavigationViewItemExpandingEventArgs { InvokedItem = args.ExpandingItem.ToString() };
+            VirtualView?.WinExpanding(sender, nargs);
         }
 
 
@@ -169,9 +174,20 @@ namespace DtControls.Handlers
         {
             VirtualView?.WinDisplayModeChanged(sender, args);
         }
-#endregion
 
-#region Properties
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        private void PlatformView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        {
+            var narg = new DtNavigationViewItemInvokedEventArgs { InvokedItem = args.InvokedItem.ToString(), IsSettingsInvoked = args.IsSettingsInvoked };
+            VirtualView?.WinItemInvoked(sender, narg);
+        }
+        #endregion
+
+        #region Properties
 
         /// <summary>
         /// 
@@ -191,12 +207,15 @@ namespace DtControls.Handlers
             }
         }
 
+        static IMauiContext mcontext;
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="mauiContext"></param>
         public override void SetMauiContext(IMauiContext mauiContext)
         {
+            mcontext = mauiContext;
             base.SetMauiContext(mauiContext);
         }
 
@@ -218,6 +237,19 @@ namespace DtControls.Handlers
         public static void MapAlwaysShowHeader(IDtNavigationViewHandler viewHandler, IDtNavigationView virtualView)
         {
             ((NavigationView)(viewHandler?.PlatformView)).AlwaysShowHeader = virtualView.AlwaysShowHeader;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="viewHandler"></param>
+        /// <param name="virtualView"></param>
+        public static void MapAutoSuggestBox(IDtNavigationViewHandler viewHandler, IDtNavigationView virtualView)
+        {
+            if(virtualView.AutoSuggestBox != null)
+            {
+                ((NavigationView)(viewHandler?.PlatformView)).AutoSuggestBox = (AutoSuggestBox)virtualView.AutoSuggestBox.ToHandler(mcontext).PlatformView;
+            } 
         }
 
         /// <summary>
@@ -475,7 +507,7 @@ namespace DtControls.Handlers
                 ((NavigationView)(viewHandler?.PlatformView)).SelectedItem = virtualView.SelectedItem;
             }
         }
-#endregion
+        #endregion
     }
 }
 #endif

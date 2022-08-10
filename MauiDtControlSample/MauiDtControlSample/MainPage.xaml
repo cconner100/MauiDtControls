@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dt="clr-namespace:DtControls.UserControls;assembly=DtControls"
              x:Class="MauiDtControlSample.MainPage"
-             Appearing="ContentPage_Appearing"
              Loaded="ContentPage_Loaded"
              Title="">
     <Grid>
@@ -15,8 +14,13 @@
                              IsSettingsVisible="True"
                              PaneDisplayMode="LeftCompact"
                              >
-
-            <dt:DtWindowTabView x:Name="WindowTabView" Loaded="WindowTabView_Loaded">
+            <dt:DtNavigationView.AutoSuggestBox>
+                <SearchBar x:Name="AutoSuggest" 
+                           SearchCommand="{Binding TextToSearchCommand}"
+                           SearchCommandParameter="{Binding Text, Source={x:Reference AutoSuggest}}"
+                           TextChanged="AutoSuggest_TextChanged"/>
+            </dt:DtNavigationView.AutoSuggestBox>
+            <dt:DtWindowTabView x:Name="WindowTabView" Loaded="ContentPage_Loaded">
 
             </dt:DtWindowTabView>
 

@@ -6,7 +6,7 @@
 
     public partial class DtBuildMenuContext
     {
-        public void BuildPlatformMenus(DtNavigationView nv, List<DtMenuItem> menulist)
+        public void BuildPlatformMenus(DtNavigationView nv, List<DtMenuItem> menulist, DtNavigationView.MenuArea area)
         {
         }
     }

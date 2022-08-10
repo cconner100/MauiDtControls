@@ -5,6 +5,7 @@ namespace DtControls.Handlers
 
     using DtControls.Models;
     using DtControls.UserControls;
+
     using Google.Android.Material.Navigation;
 
     using Microsoft.Maui.Handlers;
@@ -15,12 +16,38 @@ namespace DtControls.Handlers
             throw new NotImplementedException();
         }
         #region Events
-        private void PlatformView_ItemInvoked(NavigationView sender, EventArgs args)
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        private void PlatformView_ItemInvoked(NavigationView sender, DtNavigationViewSelectionChangedEventArgs args)
         {
-            var narg = new DtNavigationViewItemInvokedEventArgs ();
+            var narg = new DtNavigationViewItemInvokedEventArgs();
             VirtualView?.WinItemInvoked(sender, narg);
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        private void PlatformView_SelectionChanged(NavigationView sender, DtNavigationViewSelectionChangedEventArgs args)
+        {
+            VirtualView?.WinSelectionChanged(sender, args);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        private void PlatformView_Expanding(NavigationView sender, DtNavigationViewItemExpandingEventArgs args)
+        {
+            VirtualView?.WinExpanding(sender, args);
+        }
         #endregion
 
         #region Properties
@@ -28,6 +55,12 @@ namespace DtControls.Handlers
         {
             throw new NotImplementedException();
         }
+
+        public static void MapAutoSuggestBox(IDtNavigationViewHandler viewHandler, IDtNavigationView virtualView)
+        {
+            throw new NotImplementedException();
+        }
+
         public static void MapHeader(IDtNavigationViewHandler viewHandler, IDtNavigationView virtualView)
         {
             throw new NotImplementedException();

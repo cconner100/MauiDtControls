@@ -2,7 +2,7 @@
 
 using DtControls.Models;
 
-using MauiDtControlSample.Models;
+using MauiDtControlSample.ViewModels;
 
 public partial class MainPage : ContentPage
 {
@@ -10,24 +10,28 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
+		BindingContext = new MainPageViewModel(NavView);
 	}
 
 	private void WindowTabView_Loaded(object sender, EventArgs e)
 	{
+        Console.WriteLine("DEBUG -- ContentPage_Appearing");
+    }
 
-	}
-
-	private void ContentPage_Appearing(object sender, EventArgs e)
-	{
-
-	}
-
+	bool loaded;
 	private void ContentPage_Loaded(object sender, EventArgs e)
 	{
-		var menu = new DtMenuData();
-		var menucontext = new DtBuildMenuContext();
-		menucontext.BuildPlatformMenus(NavView, menu.GetPlatformMenu(), DtBuildMenuContext.MenuArea.main);
-        menucontext.BuildPlatformMenus(NavView, menu.GetPlatformFooterMenu(), DtBuildMenuContext.MenuArea.footer);
+		// strange bug on loading content page called 2 times
+		if(loaded)
+		{
+			return;
+		}
+		loaded = true;
+
+		if (BindingContext is MainPageViewModel viewModel)
+		{
+			viewModel.OnLoadOfNavView();
+		}
 
 		// setup events for clicks
 		NavView.ItemInvoked += NavView_ItemInvoked;
@@ -41,56 +45,72 @@ public partial class MainPage : ContentPage
 		NavView.PaneOpened += NavView_PaneOpened;
 		NavView.PaneOpening += NavView_PaneOpening;
 
+        Console.WriteLine("DEBUG -- ContentPage_Loaded");
+
+
     }
 
-	private async void NavView_PaneOpening(object sender, EventArgs e)
+    private void NavView_PaneOpening(object sender, EventArgs e)
 	{
-        await DisplayAlert("Event Debug", "PaneOpening", "OK");
+        Console.WriteLine("DEBUG -- PaneOpening");
     }
 
-	private async void NavView_PaneOpened(object sender, EventArgs e)
+	private void NavView_PaneOpened(object sender, EventArgs e)
 	{
-        await DisplayAlert("Event Debug", "PaneOpened", "OK");
+        Console.WriteLine("DEBUG -- PaneOpened");
     }
 
-	private async void NavView_PaneClosing(object sender, EventArgs e)
-	{
-        await DisplayAlert("Event Debug", "PaneClosing", "OK");
+	private void NavView_PaneClosing(object sender, EventArgs e)
+	{      
+        Console.WriteLine("DEBUG -- PaneClosing");
     }
 
-	private async void NavView_PaneClosed(object sender, EventArgs e)
+	private void NavView_PaneClosed(object sender, EventArgs e)
 	{
-        await DisplayAlert("Event Debug", "PaneClosed", "OK");
+        Console.WriteLine("DEBUG -- PaneClosed");
     }
 
-	private async void NavView_Expanding(object sender, EventArgs e)
+	private void NavView_Expanding(object sender, DtNavigationViewItemExpandingEventArgs e)
 	{
-        await DisplayAlert("Event Debug", "Expanding", "OK");
+        Console.WriteLine("DEBUG -- Expanding");
     }
 
-	private async void NavView_DisplayModeChanged(object sender, EventArgs e)
+	private void NavView_DisplayModeChanged(object sender, EventArgs e)
 	{
-        await DisplayAlert("Event Debug", "DisplayModeChanged", "OK");
+        Console.WriteLine("DEBUG -- DisplayModeChanged");
     }
 
-	private async void NavView_Collapsed(object sender, EventArgs e)
+	private void NavView_Collapsed(object sender, DtNavigationViewItemCollapsedEventArgs e)
 	{
-        await DisplayAlert("Event Debug", "Collasped", "OK");
+        Console.WriteLine("DEBUG -- Collapsed");
     }
 
-	private async void NavView_BackRequested(object sender, EventArgs e)
+	private void NavView_BackRequested(object sender, EventArgs e)
 	{
-        await DisplayAlert("Event Debug", "BackRequested", "OK");
+        Console.WriteLine("DEBUG -- BackRequested");
     }
 
-	private async void NavView_SelectionChanged(object sender, EventArgs e)
+	private void NavView_SelectionChanged(object sender, DtNavigationViewSelectionChangedEventArgs e)
 	{
-        await DisplayAlert("Event Debug", "SelectionChanged", "OK");
+        Console.WriteLine("DEBUG -- SelectionChanged");
     }
 
-	private async void NavView_ItemInvoked(object sender, DtNavigationViewItemInvokedEventArgs e)
+	private void NavView_ItemInvoked(object sender, DtNavigationViewItemInvokedEventArgs e)
 	{
-        await DisplayAlert("Event Debug", "ItemInvoked", "OK");
+		Console.WriteLine("DEBUG -- ItemInvoked");
+    }
+
+	private void AutoSuggest_TextChanged(object sender, TextChangedEventArgs e)	
+	{
+		if(e.NewTextValue == e.OldTextValue)
+		{
+			return;
+		}
+
+        if (BindingContext is MainPageViewModel viewModel)
+        {			
+            viewModel.TextToSearch(e.NewTextValue);
+        }
     }
 }
 

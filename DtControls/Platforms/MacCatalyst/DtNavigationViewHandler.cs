@@ -58,6 +58,19 @@ namespace DtControls.Handlers
         /// <param name="viewHandler"></param>
         /// <param name="virtualView"></param>
         /// <exception cref="NotImplementedException"></exception>
+        public static void MapAutoSuggestBox(IDtNavigationViewHandler viewHandler, IDtNavigationView virtualView)
+        {
+            if (virtualView.AutoSuggestBox != null)
+            {
+                throw new NotImplementedException();
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="viewHandler"></param>
+        /// <param name="virtualView"></param>
+        /// <exception cref="NotImplementedException"></exception>
         public static void MapAlwaysShowHeader(IDtNavigationViewHandler viewHandler, IDtNavigationView virtualView)
         {
             throw new NotImplementedException();
