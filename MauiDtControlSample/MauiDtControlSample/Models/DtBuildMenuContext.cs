@@ -1,6 +1,5 @@
-﻿namespace MauiDtControlSample.Models
+﻿namespace MauiDtControlSample.Models;
+
+public partial class DtBuildMenuContext
 {
-    public partial class DtBuildMenuContext
-    {
-    }
 }

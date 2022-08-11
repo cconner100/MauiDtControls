@@ -1,7 +1,6 @@
-﻿namespace MauiDtControlSample.Models
+﻿namespace MauiDtControlSample.Models;
+
+public interface IZtBuildMenuContext
 {
-    public interface IZtBuildMenuContext
-    {
-        void BuildPlatformMenus(object nv, List<DtMenuItem> menulist);
-    }
+    void BuildPlatformMenus(object nv, List<DtMenuItem> menulist);
 }

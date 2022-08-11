@@ -1,9 +1,8 @@
-﻿namespace MauiDtControlSample.Models
-{
-    using System.Collections.Generic;
+﻿namespace MauiDtControlSample.Models;
 
-    public interface IDtMenu
-    {
-        List<DtMenuItem> GetPlatformMenu();
-    }
+using System.Collections.Generic;
+
+public interface IDtMenu
+{
+    List<DtMenuItem> GetPlatformMenu();
 }

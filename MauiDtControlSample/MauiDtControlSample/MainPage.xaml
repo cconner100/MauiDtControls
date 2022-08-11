@@ -16,12 +16,13 @@
                              >
             <dt:DtNavigationView.AutoSuggestBox>
                 <SearchBar x:Name="AutoSuggest" 
-                           SearchCommand="{Binding TextToSearchCommand}"
-                           SearchCommandParameter="{Binding Text, Source={x:Reference AutoSuggest}}"
-                           TextChanged="AutoSuggest_TextChanged"/>
+                            TextChanged="AutoSuggest_TextChanged"/>
             </dt:DtNavigationView.AutoSuggestBox>
-            <dt:DtWindowTabView x:Name="WindowTabView" Loaded="ContentPage_Loaded">
-
+            <dt:DtWindowTabView x:Name="WindowTabView" 
+                                Loaded="ContentPage_Loaded"
+                                AddTabButtonClick="WindowTabView_AddTabButtonClick"
+                                TabCloseRequested="WindowTabView_TabCloseRequested">
+            
             </dt:DtWindowTabView>
 
         </dt:DtNavigationView>
