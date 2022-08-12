@@ -17,6 +17,7 @@ public partial class MainPageViewModel
     public MainPageViewModel(DtNavigationView navView)
     {
         NavView = navView;
+        menu.InitMenuData();
     }
 
     public void SearchBarOnLoad(SearchBar searchBar)

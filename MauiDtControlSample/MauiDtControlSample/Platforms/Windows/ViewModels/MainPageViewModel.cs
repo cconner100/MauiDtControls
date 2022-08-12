@@ -18,6 +18,7 @@ public partial class MainPageViewModel
     public MainPageViewModel(DtNavigationView navView)
     {
         NavView = navView;
+        menu.InitMenuData();
     }
 
     #region NavigationView
