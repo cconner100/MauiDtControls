@@ -29,6 +29,10 @@
 	  <None Remove="Handlers\" />
 	</ItemGroup>
 	<ItemGroup>
+	  <Folder Include="Platforms\Android\Models\" />
+	  <Folder Include="Platforms\iOS\Models\" />
+	  <Folder Include="Platforms\MacCatalyst\Models\" />
+	  <Folder Include="Platforms\Windows\Models\" />
 	  <Folder Include="User Controls\" />
 	</ItemGroup>
 </Project>
