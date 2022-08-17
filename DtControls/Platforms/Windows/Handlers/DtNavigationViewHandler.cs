@@ -78,7 +78,7 @@ public partial class DtNavigationViewHandler : ViewHandler<DtNavigationView, Nav
 
     private void PlatformView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
     {
-        VirtualView?.WinBackRequested(sender.VirtualView, args);
+        VirtualView?.WinBackRequested(sender, args);
     }
 
     /// <summary>
@@ -89,7 +89,7 @@ public partial class DtNavigationViewHandler : ViewHandler<DtNavigationView, Nav
     private void PlatformView_Collapsed(NavigationView sender, NavigationViewItemCollapsedEventArgs args)
     {
         var nargs = new DtNavigationViewItemCollapsedEventArgs { InvokedItem = args.CollapsedItem.ToString() };
-        VirtualView?.WinCollapsed(sender.VirtualView, nargs);
+        VirtualView?.WinCollapsed(sender, nargs);
     }
 
     /// <summary>
@@ -100,7 +100,7 @@ public partial class DtNavigationViewHandler : ViewHandler<DtNavigationView, Nav
     private void PlatformView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
     {
         var nargs = new DtNavigationViewSelectionChangedEventArgs { InvokedItem = args.SelectedItem.ToString(), IsSettingsInvoked = args.IsSettingsSelected };
-        VirtualView?.WinSelectionChanged(sender.VirtualView, nargs);
+        VirtualView?.WinSelectionChanged(sender, nargs);
     }
 
     /// <summary>
@@ -120,7 +120,7 @@ public partial class DtNavigationViewHandler : ViewHandler<DtNavigationView, Nav
     /// <param name="args"></param>
     private void PlatformView_PaneOpening(NavigationView sender, object args)
     {
-        VirtualView?.WinPaneOpening(sender.VirtualView, args);
+        VirtualView?.WinPaneOpening(sender, args);
     }
 
     /// <summary>
@@ -130,7 +130,7 @@ public partial class DtNavigationViewHandler : ViewHandler<DtNavigationView, Nav
     /// <param name="args"></param>
     private void PlatformView_PaneOpened(NavigationView sender, object args)
     {
-        VirtualView?.WinPaneOpening(sender.VirtualView, args);
+        VirtualView?.WinPaneOpening(sender, args);
     }
 
     /// <summary>
@@ -140,7 +140,7 @@ public partial class DtNavigationViewHandler : ViewHandler<DtNavigationView, Nav
     /// <param name="args"></param>
     private void PlatformView_PaneClosing(NavigationView sender, NavigationViewPaneClosingEventArgs args)
     {
-        VirtualView?.WinPaneClosing(sender.VirtualView, args);
+        VirtualView?.WinPaneClosing(sender, args);
     }
 
     /// <summary>
@@ -150,7 +150,7 @@ public partial class DtNavigationViewHandler : ViewHandler<DtNavigationView, Nav
     /// <param name="args"></param>
     private void PlatformView_PaneClosed(NavigationView sender, object args)
     {
-        VirtualView?.WinPaneClosed(sender.VirtualView, args);
+        VirtualView?.WinPaneClosed(sender, args);
     }
 
     /// <summary>
@@ -161,7 +161,7 @@ public partial class DtNavigationViewHandler : ViewHandler<DtNavigationView, Nav
     private void PlatformView_Expanding(NavigationView sender, NavigationViewItemExpandingEventArgs args)
     {
         var nargs = new DtNavigationViewItemExpandingEventArgs { InvokedItem = args.ExpandingItem.ToString() };
-        VirtualView?.WinExpanding(sender.VirtualView, nargs);
+        VirtualView?.WinExpanding(sender, nargs);
     }
 
 
@@ -172,7 +172,7 @@ public partial class DtNavigationViewHandler : ViewHandler<DtNavigationView, Nav
     /// <param name="args"></param>
     private void PlatformView_DisplayModeChanged(NavigationView sender, NavigationViewDisplayModeChangedEventArgs args)
     {
-        VirtualView?.WinDisplayModeChanged(sender.VirtualView, args);
+        VirtualView?.WinDisplayModeChanged(sender, args);
     }
 
     /// <summary>
@@ -183,7 +183,7 @@ public partial class DtNavigationViewHandler : ViewHandler<DtNavigationView, Nav
     private void PlatformView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
     {
         var narg = new DtNavigationViewItemInvokedEventArgs { InvokedItem = args.InvokedItem.ToString(), IsSettingsInvoked = args.IsSettingsInvoked };
-        VirtualView?.WinItemInvoked(sender.VirtualView, narg);
+        VirtualView?.WinItemInvoked(sender, narg);
     }
     #endregion
 

@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 /// <summary>
 /// 
 /// </summary>
+[ContentProperty("Content")]
 public partial class DtWindowTabView : View, IContentView, IDtWindowTabView
 {
     /// <summary>
@@ -341,7 +342,7 @@ public partial class DtWindowTabView : View, IContentView, IDtWindowTabView
     /// <summary>
     /// 
     /// </summary>
-    public ObservableCollection<DtWindowTabItemView> TabItems { get; set; }
+    public ObservableCollection<DtWindowTabItem> TabItems { get; set; }
 
     /// <summary>
     /// 

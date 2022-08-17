@@ -7,10 +7,10 @@ using DtControls.UserControls;
 
 using Microsoft.Maui.Handlers;
 
-public partial class DtWindowTabItemViewHandler : ViewHandler<IDtWindowTabItemView, Android.Views.View>, IDtWindowTabItemViewHandler
+public partial class DtWindowTabItemHandler : ViewHandler<DtWindowTabItem, Android.Views.View>, IDtWindowTabItemHandler
 {
 
-    IDtWindowTabItemView IDtWindowTabItemViewHandler.VirtualView => VirtualView;
+    IDtWindowTabItem IDtWindowTabItemHandler.VirtualView => VirtualView;
     protected override Android.Views.View CreatePlatformView()
     {
         throw new NotImplementedException();
@@ -33,26 +33,26 @@ public partial class DtWindowTabItemViewHandler : ViewHandler<IDtWindowTabItemVi
 #endregion
 
 #region PropertyMaps
-    public static void MapHeader(IDtWindowTabItemViewHandler viewHandler, IDtWindowTabItemView virtualView)
+    public static void MapHeader(IDtWindowTabItemHandler viewHandler, IDtWindowTabItem virtualView)
     {
         throw new NotImplementedException();
     }
 
-    public static void MapIconSource(IDtWindowTabItemViewHandler viewHandler, IDtWindowTabItemView virtualView)
+    public static void MapIconSource(IDtWindowTabItemHandler viewHandler, IDtWindowTabItem virtualView)
     {
         throw new NotImplementedException();
     }
 
-    public static void MapIsClosable(IDtWindowTabItemViewHandler viewHandler, IDtWindowTabItemView virtualView)
+    public static void MapIsClosable(IDtWindowTabItemHandler viewHandler, IDtWindowTabItem virtualView)
     {
         throw new NotImplementedException();
     }
 
-    public static void MapContent(IDtWindowTabItemViewHandler viewHandler, IDtWindowTabItemView virtualView)
+    public static void MapContent(IDtWindowTabItemHandler viewHandler, IDtWindowTabItem virtualView)
     {
         throw new NotImplementedException();
     }
-    public static void MapPlatformObject(IDtWindowTabItemViewHandler viewHandler, IDtWindowTabItemView virtualView)
+    public static void MapPlatformObject(IDtWindowTabItemHandler viewHandler, IDtWindowTabItem virtualView)
     {
         throw new NotImplementedException();
     }

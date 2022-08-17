@@ -179,7 +179,7 @@ public interface IDtWindowTabView : IView
     /// <summary>
     /// 
     /// </summary>
-    ObservableCollection<DtWindowTabItemView> TabItems { get; set; }
+    ObservableCollection<DtWindowTabItem> TabItems { get; set; }
 
     /// <summary>
     /// 

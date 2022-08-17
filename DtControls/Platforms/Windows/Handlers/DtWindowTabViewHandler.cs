@@ -14,7 +14,7 @@ public partial class DtWindowTabViewHandler : ViewHandler<DtWindowTabView, TabVi
     TabView _tabView = new TabView();
     IDtWindowTabView IDtWindowTabViewHandler.VirtualView => VirtualView;
 
-    ObservableCollection<DtWindowTabItemView> dtWindowTabItemViews { get; set; } = new ObservableCollection<DtWindowTabItemView>();
+    ObservableCollection<DtWindowTabItem> dtWindowTabItemViews { get; set; } = new ObservableCollection<DtWindowTabItem>();
 
 
     /// <summary>
@@ -313,7 +313,7 @@ public partial class DtWindowTabViewHandler : ViewHandler<DtWindowTabView, TabVi
             {
                 foreach (var item in e.NewItems)
                 {
-                    if (item is DtWindowTabItemView tiv)
+                    if (item is DtWindowTabItem tiv)
                     {
                         var t = tiv.Handler.PlatformView;
                         _tabView.TabItems.Add(t);
@@ -324,7 +324,7 @@ public partial class DtWindowTabViewHandler : ViewHandler<DtWindowTabView, TabVi
 
         if(e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove)
         {
-            if (sender is DtWindowTabItemView tabItemView)
+            if (sender is DtWindowTabItem tabItemView)
             {
                 var t = tabItemView.Handler.PlatformView;
                 _tabView.TabItems.Remove(t);

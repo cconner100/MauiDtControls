@@ -1,33 +1,35 @@
 ﻿
 namespace DtControls.UserControls;
 
+using Microsoft.Maui.Controls;
 using Microsoft.Maui.Graphics;
 
 /// <summary>
 /// 
 /// </summary>
 [ContentProperty("Content")]
-public partial class DtWindowTabItemView : View, IContentView, IDtWindowTabItemView
+public partial class DtWindowTabItem : View, IContentView, IElement, IDtWindowTabItem
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public DtWindowTabItemView()
+    readonly Lazy<PlatformConfigurationRegistry<DtWindowTabItem>> platformConfigurationRegistry;
+    public DtWindowTabItem() //: this(UseMauiHandler)
     {
-
+        platformConfigurationRegistry = new Lazy<PlatformConfigurationRegistry<DtWindowTabItem>>(() => new(this));
     }
-
+    public IPlatformElementConfiguration<T, DtWindowTabItem> On<T>() where T : IConfigPlatform
+    {
+        return platformConfigurationRegistry.Value.On<T>();
+    }
     #region Properties
 
     /// <summary>
     /// 
     /// </summary>
-    public static readonly BindableProperty HeaderProperty = BindableProperty.Create("Header", typeof(string), typeof(DtWindowTabItemView));
-    
+    public static readonly BindableProperty HeaderProperty = BindableProperty.Create("Header", typeof(string), typeof(DtWindowTabItem));
+
     /// <summary>
     /// 
     /// </summary>
-    public string Header 
+    public string Header
     {
         get { return (string)GetValue(HeaderProperty); }
         set { SetValue(HeaderProperty, value); }
@@ -37,8 +39,8 @@ public partial class DtWindowTabItemView : View, IContentView, IDtWindowTabItemV
     /// <summary>
     /// 
     /// </summary>
-    public static readonly BindableProperty IconSourceProperty = BindableProperty.Create("IconSource", typeof(object), typeof(DtWindowTabItemView));
-    
+    public static readonly BindableProperty IconSourceProperty = BindableProperty.Create("IconSource", typeof(object), typeof(DtWindowTabItem));
+
     /// <summary>
     /// 
     /// </summary>
@@ -51,8 +53,8 @@ public partial class DtWindowTabItemView : View, IContentView, IDtWindowTabItemV
     /// <summary>
     /// 
     /// </summary>
-    public static readonly BindableProperty IsClosableProperty = BindableProperty.Create("IsClosable", typeof(bool), typeof(DtWindowTabItemView));
-    
+    public static readonly BindableProperty IsClosableProperty = BindableProperty.Create("IsClosable", typeof(bool), typeof(DtWindowTabItem));
+
     /// <summary>
     /// 
     /// </summary>
@@ -65,8 +67,8 @@ public partial class DtWindowTabItemView : View, IContentView, IDtWindowTabItemV
     /// <summary>
     /// 
     /// </summary>
-    public static readonly BindableProperty ContentProperty = BindableProperty.Create("Content", typeof(object), typeof(DtWindowTabItemView));
-    
+    public static readonly BindableProperty ContentProperty = BindableProperty.Create("Content", typeof(object), typeof(DtWindowTabItem));
+
     /// <summary>
     /// 
     /// </summary>
@@ -79,8 +81,8 @@ public partial class DtWindowTabItemView : View, IContentView, IDtWindowTabItemV
     /// <summary>
     /// 
     /// </summary>
-    public static readonly BindableProperty PlatformObjectProperty = BindableProperty.Create("PlatformObject", typeof(object), typeof(DtWindowTabItemView));
-    
+    public static readonly BindableProperty PlatformObjectProperty = BindableProperty.Create("PlatformObject", typeof(object), typeof(DtWindowTabItem));
+
     /// <summary>
     /// 
     /// </summary>

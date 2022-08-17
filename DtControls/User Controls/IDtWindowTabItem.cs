@@ -5,7 +5,7 @@ namespace DtControls.UserControls;
 /// <summary>
 /// 
 /// </summary>
-public interface IDtWindowTabItemView : IContentView
+public interface IDtWindowTabItem : IContentView
 {
     #region Events
 

@@ -9,14 +9,14 @@ using Microsoft.Maui.Handlers;
 using Microsoft.Maui.Platform;
 using Microsoft.UI.Xaml.Controls;
 
-public partial class DtWindowTabItemViewHandler : ViewHandler<DtWindowTabItemView, TabViewItem>, IDtWindowTabItemViewHandler
+public partial class DtWindowTabItemHandler : ViewHandler<DtWindowTabItem, TabViewItem>, IDtWindowTabItemHandler
 {
     private TabViewItem _tabViewItem = new TabViewItem();
 
     /// <summary>
     /// 
     /// </summary>
-    IDtWindowTabItemView IDtWindowTabItemViewHandler.VirtualView => VirtualView;
+    IDtWindowTabItem IDtWindowTabItemHandler.VirtualView => VirtualView;
 
 
     /// <summary>
@@ -89,7 +89,7 @@ public partial class DtWindowTabItemViewHandler : ViewHandler<DtWindowTabItemVie
     /// </summary>
     /// <param name="handler"></param>
     /// <param name="virtualView"></param>
-    public static void MapHeader(IDtWindowTabItemViewHandler handler, IDtWindowTabItemView virtualView)
+    public static void MapHeader(IDtWindowTabItemHandler handler, IDtWindowTabItem virtualView)
     {
         ((TabViewItem)(handler?.PlatformView)).Header = virtualView.Header;
     }
@@ -100,7 +100,7 @@ public partial class DtWindowTabItemViewHandler : ViewHandler<DtWindowTabItemVie
     /// </summary>
     /// <param name="handler"></param>
     /// <param name="virtualView"></param>
-    public static void MapIconSource(IDtWindowTabItemViewHandler handler, IDtWindowTabItemView virtualView)
+    public static void MapIconSource(IDtWindowTabItemHandler handler, IDtWindowTabItem virtualView)
     {
         ((TabViewItem)(handler?.PlatformView)).IconSource = (IconSource)virtualView.IconSource;
     }
@@ -110,7 +110,7 @@ public partial class DtWindowTabItemViewHandler : ViewHandler<DtWindowTabItemVie
     /// </summary>
     /// <param name="handler"></param>
     /// <param name="virtualView"></param>
-    public static void MapIsClosable(IDtWindowTabItemViewHandler handler, IDtWindowTabItemView virtualView)
+    public static void MapIsClosable(IDtWindowTabItemHandler handler, IDtWindowTabItem virtualView)
     {
         ((TabViewItem)(handler?.PlatformView)).IsClosable = virtualView.IsClosable;
     }
@@ -122,7 +122,7 @@ public partial class DtWindowTabItemViewHandler : ViewHandler<DtWindowTabItemVie
     /// <param name="handler"></param>
     /// <param name="virtualView"></param>
     /// <exception cref="InvalidOperationException"></exception>
-    public static void MapContent(IDtWindowTabItemViewHandler handler, IDtWindowTabItemView virtualView)
+    public static void MapContent(IDtWindowTabItemHandler handler, IDtWindowTabItem virtualView)
     {
         _ = handler.PlatformView ?? throw new InvalidOperationException($"{nameof(PlatformView)} should have been set by base class.");
         _ = handler.VirtualView ?? throw new InvalidOperationException($"{nameof(VirtualView)} should have been set by base class.");
@@ -143,7 +143,7 @@ public partial class DtWindowTabItemViewHandler : ViewHandler<DtWindowTabItemVie
     /// <param name="handler"></param>
     /// <param name="virtualView"></param>
     /// <exception cref="InvalidOperationException"></exception>
-    public static void MapPlatformObject(IDtWindowTabItemViewHandler handler, IDtWindowTabItemView virtualView)
+    public static void MapPlatformObject(IDtWindowTabItemHandler handler, IDtWindowTabItem virtualView)
     {
         _ = handler.PlatformView ?? throw new InvalidOperationException($"{nameof(PlatformView)} should have been set by base class.");
         _ = handler.VirtualView ?? throw new InvalidOperationException($"{nameof(VirtualView)} should have been set by base class.");

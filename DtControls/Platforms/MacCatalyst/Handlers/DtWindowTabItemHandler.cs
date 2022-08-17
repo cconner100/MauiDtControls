@@ -9,10 +9,10 @@ using Microsoft.Maui.Handlers;
 
 using UIKit;
 
-public partial class DtWindowTabItemViewHandler : ViewHandler<DtWindowTabItemView, UIView>, IDtWindowTabItemViewHandler
+public partial class DtWindowTabItemHandler : ViewHandler<DtWindowTabItem, UIView>, IDtWindowTabItemHandler
 {
 
-    IDtWindowTabItemView IDtWindowTabItemViewHandler.VirtualView => VirtualView;
+    IDtWindowTabItem IDtWindowTabItemHandler.VirtualView => VirtualView;
     
     /// <summary>
     /// 
@@ -54,7 +54,7 @@ public partial class DtWindowTabItemViewHandler : ViewHandler<DtWindowTabItemVie
     /// <param name="viewHandler"></param>
     /// <param name="virtualView"></param>
     /// <exception cref="NotImplementedException"></exception>
-    public static void MapHeader(IDtWindowTabItemViewHandler viewHandler, IDtWindowTabItemView virtualView)
+    public static void MapHeader(IDtWindowTabItemHandler viewHandler, IDtWindowTabItem virtualView)
     {
         throw new NotImplementedException();
     }
@@ -66,7 +66,7 @@ public partial class DtWindowTabItemViewHandler : ViewHandler<DtWindowTabItemVie
     /// <param name="virtualView"></param>
     /// <exception cref="NotImplementedException"></exception>
 
-    public static void MapIconSource(IDtWindowTabItemViewHandler viewHandler, IDtWindowTabItemView virtualView)
+    public static void MapIconSource(IDtWindowTabItemHandler viewHandler, IDtWindowTabItem virtualView)
     {
         throw new NotImplementedException();
     }
@@ -77,7 +77,7 @@ public partial class DtWindowTabItemViewHandler : ViewHandler<DtWindowTabItemVie
     /// <param name="viewHandler"></param>
     /// <param name="virtualView"></param>
     /// <exception cref="NotImplementedException"></exception>
-    public static void MapIsClosable(IDtWindowTabItemViewHandler viewHandler, IDtWindowTabItemView virtualView)
+    public static void MapIsClosable(IDtWindowTabItemHandler viewHandler, IDtWindowTabItem virtualView)
     {
         throw new NotImplementedException();
     }
@@ -88,7 +88,7 @@ public partial class DtWindowTabItemViewHandler : ViewHandler<DtWindowTabItemVie
     /// <param name="viewHandler"></param>
     /// <param name="virtualView"></param>
     /// <exception cref="NotImplementedException"></exception>
-    public static void MapContent(IDtWindowTabItemViewHandler viewHandler, IDtWindowTabItemView virtualView)
+    public static void MapContent(IDtWindowTabItemHandler viewHandler, IDtWindowTabItem virtualView)
     {
         throw new NotImplementedException();
     }
@@ -100,7 +100,7 @@ public partial class DtWindowTabItemViewHandler : ViewHandler<DtWindowTabItemVie
     /// <param name="viewHandler"></param>
     /// <param name="virtualView"></param>
     /// <exception cref="NotImplementedException"></exception>
-    public static void MapPlatformObject(IDtWindowTabItemViewHandler viewHandler, IDtWindowTabItemView virtualView)
+    public static void MapPlatformObject(IDtWindowTabItemHandler viewHandler, IDtWindowTabItem virtualView)
     {
         throw new NotImplementedException();
     }

@@ -25,7 +25,7 @@ public partial class DtNavigationViewHandler : ViewHandler<IDtNavigationView, An
     private void PlatformView_ItemInvoked(NavigationView sender, DtNavigationViewSelectionChangedEventArgs args)
     {
         var narg = new DtNavigationViewItemInvokedEventArgs();
-        VirtualView?.WinItemInvoked(sender.VirtualView, narg);
+        VirtualView?.WinItemInvoked(sender, narg);
     }
 
 
@@ -36,7 +36,7 @@ public partial class DtNavigationViewHandler : ViewHandler<IDtNavigationView, An
     /// <param name="args"></param>
     private void PlatformView_SelectionChanged(NavigationView sender, DtNavigationViewSelectionChangedEventArgs args)
     {
-        VirtualView?.WinSelectionChanged(sender.VirtualView, args);
+        VirtualView?.WinSelectionChanged(sender, args);
     }
 
     /// <summary>
@@ -46,7 +46,7 @@ public partial class DtNavigationViewHandler : ViewHandler<IDtNavigationView, An
     /// <param name="args"></param>
     private void PlatformView_Expanding(NavigationView sender, DtNavigationViewItemExpandingEventArgs args)
     {
-        VirtualView?.WinExpanding(sender.VirtualView, args);
+        VirtualView?.WinExpanding(sender, args);
     }
     #endregion
 

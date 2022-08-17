@@ -22,7 +22,7 @@
                                 Loaded="ContentPage_Loaded"
                                 AddTabButtonClick="WindowTabView_AddTabButtonClick"
                                 TabCloseRequested="WindowTabView_TabCloseRequested">
-            
+                <dt:DtWindowTabItem x:Name="item1" Header="New Tab" IsClosable="False"/>
             </dt:DtWindowTabView>
 
         </dt:DtNavigationView>

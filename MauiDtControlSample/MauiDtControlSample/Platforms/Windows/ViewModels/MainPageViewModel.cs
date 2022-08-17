@@ -4,6 +4,7 @@ using DtControls.UserControls;
 
 using MauiDtControlSample.Models;
 
+using Microsoft.Maui.Platform;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 
@@ -76,15 +77,22 @@ public partial class MainPageViewModel
     #endregion 
 
     #region TabView
-    public void AddTabButtonClick(DtWindowTabView sender, EventArgs e)
+    public async void AddTabButtonClick(DtWindowTabView sender, EventArgs e)
     {
-        var newpage = new DtWindowTabItemView() { IconSource = new SymbolIconSource() { Symbol = Symbol.Placeholder }, Header = "New Item", Content = new TabPage1() };
+        NavigationPage page = new NavigationPage();
+        await page.PushAsync(new TabPage1()).ConfigureAwait(true);
+
+        var newpage = new DtWindowTabItem();
+        newpage.IconSource = new SymbolIconSource() { Symbol = Symbol.Placeholder };
+        newpage.Header = "New Item";
+        newpage.Content = page;
+
         sender.TabItems.Add(newpage);
     }
 
     public void TabCloseRequested(DtWindowTabView sender, EventArgs e)
     {
-        //sender.TabItems.Remove(1);
+        //sender.TabItems.Remove(e.tab);
     }
     #endregion
 

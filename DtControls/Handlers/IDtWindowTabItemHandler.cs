@@ -15,12 +15,12 @@ using PlatformView = System.Object;
 /// <summary>
 /// 
 /// </summary>
-public interface IDtWindowTabItemViewHandler : IViewHandler
+public interface IDtWindowTabItemHandler : IViewHandler
 {
     /// <summary>
     /// 
     /// </summary>
-    new IDtWindowTabItemView VirtualView { get; }
+    new IDtWindowTabItem VirtualView { get; }
     /// <summary>
     /// 
     /// </summary>
