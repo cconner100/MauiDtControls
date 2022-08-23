@@ -11,7 +11,7 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
-        BindingContext = new MainPageViewModel(NavView);
+        BindingContext = new MainPageViewModel(this, NavView);
     }
 
     private void WindowTabView_Loaded(object sender, EventArgs e)

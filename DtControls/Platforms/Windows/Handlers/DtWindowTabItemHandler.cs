@@ -2,6 +2,7 @@
 
 namespace DtControls.Handlers;
 
+using DtControls.Models;
 using DtControls.UserControls;
 
 using Microsoft.Maui;
@@ -43,7 +44,7 @@ public partial class DtWindowTabItemHandler : ViewHandler<DtWindowTabItem, TabVi
 
     private void PlatformView_Loading(Microsoft.UI.Xaml.FrameworkElement sender, object args)
     {
-        throw new NotImplementedException();
+        
     }
 
 
@@ -64,6 +65,7 @@ public partial class DtWindowTabItemHandler : ViewHandler<DtWindowTabItem, TabVi
     /// <param name="mauiContext"></param>
     public override void SetMauiContext(IMauiContext mauiContext)
     {
+        DtMauiContext.mauiContext = mauiContext;
         base.SetMauiContext(mauiContext);
     }
 
@@ -152,7 +154,9 @@ public partial class DtWindowTabItemHandler : ViewHandler<DtWindowTabItem, TabVi
 
         if (handler.VirtualView.PresentedContent is IView view)
         {
-            virtualView.PlatformObject = view.ToPlatform(handler.MauiContext);
+            var frame = new Frame();
+            frame.Content = view.ToPlatform(handler.MauiContext);
+            virtualView.PlatformObject = frame;
         }
 
     }

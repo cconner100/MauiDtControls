@@ -1,4 +1,5 @@
-﻿namespace MauiDtControlSample.ViewModels;
+﻿#if IOS
+namespace MauiDtControlSample.ViewModels;
 
 using DtControls.UserControls;
 
@@ -8,17 +9,6 @@ using System;
 
 public partial class MainPageViewModel
 {
-    DtNavigationView NavView;
-    SearchBar SearchBar;
-    DtMenuData menu = new DtMenuData();
-    DtBuildMenuContext menucontext = new DtBuildMenuContext();
-
-
-    public MainPageViewModel(DtNavigationView navView)
-    {
-        NavView = navView;
-        menu.InitMenuData();
-    }
 
     public void SearchBarOnLoad(SearchBar searchBar)
     {
@@ -50,3 +40,4 @@ public partial class MainPageViewModel
     #region TabViewItem
     #endregion
 }
+#endif

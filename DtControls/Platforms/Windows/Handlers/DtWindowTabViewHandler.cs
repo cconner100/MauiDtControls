@@ -4,6 +4,7 @@ namespace DtControls.Handlers;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
+using DtControls.Models;
 using DtControls.UserControls;
 
 using Microsoft.Maui.Handlers;
@@ -14,7 +15,7 @@ public partial class DtWindowTabViewHandler : ViewHandler<DtWindowTabView, TabVi
     TabView _tabView = new TabView();
     IDtWindowTabView IDtWindowTabViewHandler.VirtualView => VirtualView;
 
-    ObservableCollection<DtWindowTabItem> dtWindowTabItemViews { get; set; } = new ObservableCollection<DtWindowTabItem>();
+    ObservableCollection<DtWindowTabItem1> dtWindowTabItemViews { get; set; } = new ObservableCollection<DtWindowTabItem1>();
 
 
     /// <summary>
@@ -77,6 +78,7 @@ public partial class DtWindowTabViewHandler : ViewHandler<DtWindowTabView, TabVi
     /// <param name="mauiContext"></param>
     public override void SetMauiContext(IMauiContext mauiContext)
     {
+        DtMauiContext.mauiContext = mauiContext;
         base.SetMauiContext(mauiContext);
     }
 
@@ -313,10 +315,10 @@ public partial class DtWindowTabViewHandler : ViewHandler<DtWindowTabView, TabVi
             {
                 foreach (var item in e.NewItems)
                 {
-                    if (item is DtWindowTabItem tiv)
+                    if (item is DtWindowTabItem1 tvi)
                     {
-                        var t = tiv.Handler.PlatformView;
-                        _tabView.TabItems.Add(t);
+
+                        _tabView.TabItems.Add(tvi.GetTabViewItem());
                     }
                 }
             }

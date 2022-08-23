@@ -10,15 +10,6 @@ using Microsoft.Maui.Graphics;
 [ContentProperty("Content")]
 public partial class DtWindowTabItem : View, IContentView, IElement, IDtWindowTabItem
 {
-    readonly Lazy<PlatformConfigurationRegistry<DtWindowTabItem>> platformConfigurationRegistry;
-    public DtWindowTabItem() //: this(UseMauiHandler)
-    {
-        platformConfigurationRegistry = new Lazy<PlatformConfigurationRegistry<DtWindowTabItem>>(() => new(this));
-    }
-    public IPlatformElementConfiguration<T, DtWindowTabItem> On<T>() where T : IConfigPlatform
-    {
-        return platformConfigurationRegistry.Value.On<T>();
-    }
     #region Properties
 
     /// <summary>
@@ -120,7 +111,19 @@ public partial class DtWindowTabItem : View, IContentView, IElement, IDtWindowTa
     /// <summary>
     /// 
     /// </summary>
-    IView? IContentView.PresentedContent => (View)Content;
+    IView? IContentView.PresentedContent {
+        get
+        {
+            if (Content is NavigationPage np)
+            {
+                return np.CurrentPage;
+            }
+            else
+            {
+                return (IView)Content;
+            }
+        }
+    }
 #nullable disable
     /// <summary>
     /// 

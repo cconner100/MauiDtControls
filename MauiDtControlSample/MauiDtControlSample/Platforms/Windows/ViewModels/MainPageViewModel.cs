@@ -1,27 +1,16 @@
-﻿namespace MauiDtControlSample.ViewModels;
+﻿#if WINDOWS
+namespace MauiDtControlSample.ViewModels;
 
 using DtControls.UserControls;
 
 using MauiDtControlSample.Models;
 
-using Microsoft.Maui.Platform;
+using Microsoft.Maui;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 
 public partial class MainPageViewModel
 {
-    DtNavigationView NavView;
-    SearchBar SearchBar;
-    DtMenuData menu = new DtMenuData();
-    DtBuildMenuContext menucontext = new DtBuildMenuContext();
-
-
-    public MainPageViewModel(DtNavigationView navView)
-    {
-        NavView = navView;
-        menu.InitMenuData();
-    }
-
     #region NavigationView
     public void SearchBarOnLoad(SearchBar searchBar)
     {
@@ -79,15 +68,14 @@ public partial class MainPageViewModel
     #region TabView
     public async void AddTabButtonClick(DtWindowTabView sender, EventArgs e)
     {
-        NavigationPage page = new NavigationPage();
-        await page.PushAsync(new TabPage1()).ConfigureAwait(true);
+        var newtab = new DtWindowTabItem1();
+        newtab.IconSource = new SymbolIconSource() { Symbol = Symbol.Placeholder };
+        newtab.Heading = "New Item";
+        newtab.Content = "New Page";
 
-        var newpage = new DtWindowTabItem();
-        newpage.IconSource = new SymbolIconSource() { Symbol = Symbol.Placeholder };
-        newpage.Header = "New Item";
-        newpage.Content = page;
+        sender.TabItems.Add(newtab);
 
-        sender.TabItems.Add(newpage);
+        await newtab.Navigate(new TabPage1());
     }
 
     public void TabCloseRequested(DtWindowTabView sender, EventArgs e)
@@ -99,4 +87,4 @@ public partial class MainPageViewModel
     #region TabViewItem
     #endregion
 }
-
+#endif

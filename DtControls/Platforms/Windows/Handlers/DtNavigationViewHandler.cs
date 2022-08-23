@@ -34,6 +34,7 @@ public partial class DtNavigationViewHandler : ViewHandler<DtNavigationView, Nav
     protected override void ConnectHandler(NavigationView platformView)
     {
         base.ConnectHandler(platformView);
+        
         platformView.BackRequested += PlatformView_BackRequested;
         platformView.Collapsed += PlatformView_Collapsed;
         platformView.DisplayModeChanged += PlatformView_DisplayModeChanged;
@@ -207,15 +208,13 @@ public partial class DtNavigationViewHandler : ViewHandler<DtNavigationView, Nav
         }
     }
 
-    static IMauiContext mcontext;
-
     /// <summary>
     /// 
     /// </summary>
     /// <param name="mauiContext"></param>
     public override void SetMauiContext(IMauiContext mauiContext)
     {
-        mcontext = mauiContext;
+        DtMauiContext.mauiContext = mauiContext;
         base.SetMauiContext(mauiContext);
     }
 
@@ -248,7 +247,7 @@ public partial class DtNavigationViewHandler : ViewHandler<DtNavigationView, Nav
     {
         if(virtualView.AutoSuggestBox != null)
         {
-            ((NavigationView)(viewHandler?.PlatformView)).AutoSuggestBox = (AutoSuggestBox)virtualView.AutoSuggestBox.ToHandler(mcontext).PlatformView;
+            ((NavigationView)(viewHandler?.PlatformView)).AutoSuggestBox = (AutoSuggestBox)virtualView.AutoSuggestBox.ToHandler(DtMauiContext.mauiContext).PlatformView;
         } 
     }
 

@@ -2,9 +2,11 @@
 
 using DtControls.UserControls;
 using DtControls.Handlers;
+using Microsoft.Maui.Embedding;
 
 public static class MauiProgram
 {
+	public static IMauiContext mauiContext = null;
 	public static MauiApp CreateMauiApp()
 	{
 		var builder = MauiApp.CreateBuilder();
@@ -21,8 +23,11 @@ public static class MauiProgram
 				handlers.AddHandler<DtWindowTabView, DtWindowTabViewHandler>();
 				handlers.AddHandler<DtWindowTabItem, DtWindowTabItemHandler>();
 			});
+		builder.UseMauiEmbedding<Application>();
+		var mauiapp = builder.Build();
+        mauiContext = new MauiContext(mauiapp.Services);
+		return mauiapp;
 
-		return builder.Build();
 	}
 }
 

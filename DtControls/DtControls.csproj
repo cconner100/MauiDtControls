@@ -29,9 +29,10 @@
 	  <None Remove="Handlers\" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Platforms\Android\Models\" />
-	  <Folder Include="Platforms\iOS\Models\" />
-	  <Folder Include="Platforms\MacCatalyst\Models\" />
-	  <Folder Include="Platforms\Windows\Models\" />
+	  <PackageReference Include="CommunityToolkit.Common" Version="8.0.0" />
+	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Controls\" />
 	</ItemGroup>
 </Project>

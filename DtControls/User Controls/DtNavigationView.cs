@@ -12,12 +12,6 @@ using Microsoft.Maui.Graphics;
 [ContentProperty("Content")]
 public partial class DtNavigationView : View, IContentView, IDtNavigationView
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public DtNavigationView()
-    {
-    }
 
     /// <summary>
     /// 

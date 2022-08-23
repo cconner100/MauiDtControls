@@ -6,4 +6,9 @@ public partial class TabPage1 : ContentPage
 	{
 		InitializeComponent();
 	}
+
+	private void ContentPage_Appearing(object sender, EventArgs e)
+	{
+		Console.WriteLine("hello");
+    }
 }
