@@ -8,6 +8,8 @@ using Microsoft.Maui.Handlers;
 
 using System;
 
+using UIKit;
+
 public partial class DtNavigationViewHandler : ViewHandler<IDtNavigationView, UIKit.UIView>, IElementHandler
 {
     /// <summary>
@@ -19,12 +21,11 @@ public partial class DtNavigationViewHandler : ViewHandler<IDtNavigationView, UI
     {
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <returns></returns>
+    UICollectionView collectionView;
+    UISearchController searchController;
     protected override UIKit.UIView CreatePlatformView()
     {
+        var controller = new DtSidebarViewController();
         return new UIKit.UIView();
     }
 

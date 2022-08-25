@@ -1,6 +1,7 @@
 ﻿#if IOS
 namespace DtControls.Handlers;
 
+using DtControls.Platforms.iOS.Handlers;
 using DtControls.UserControls;
 
 using Microsoft.Maui.Handlers;
@@ -27,7 +28,8 @@ public partial class DtNavigationViewHandler : ViewHandler<IDtNavigationView, UI
     /// <returns></returns>
     protected override UIView CreatePlatformView()
     {
-        return new UIView();
+        var controller = new DtSidebarViewController();
+        return controller.View;
     }
 
     #region Properties
