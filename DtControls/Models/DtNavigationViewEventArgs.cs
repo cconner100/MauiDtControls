@@ -3,7 +3,7 @@
 /// <summary>
 /// Base class for event arguments
 /// </summary>
-public class DtNavigationViewEventArgs
+public class DtNavigationEventArgs
 {
     /// <summary>
     /// String name of item invoked
@@ -19,24 +19,24 @@ public class DtNavigationViewEventArgs
 /// <summary>
 /// Used to convert items invoked args
 /// </summary>
-public class DtNavigationViewItemInvokedEventArgs : DtNavigationViewEventArgs { }
+public class DtNavigationItemInvokedEventArgs : DtNavigationEventArgs { }
 
 /// <summary>
 /// Used to change selection
 /// </summary>
-public class DtNavigationViewSelectionChangedEventArgs : DtNavigationViewEventArgs { }
+public class DtNavigationSelectionChangedEventArgs : DtNavigationEventArgs { }
 
 /// <summary>
 /// Expanding arguments
 /// </summary>
-public class DtNavigationViewItemExpandingEventArgs : DtNavigationViewEventArgs { }
+public class DtNavigationItemExpandingEventArgs : DtNavigationEventArgs { }
 
 /// <summary>
 /// Request back event for page stack
 /// </summary>
-public class DtNavigationViewBackRequestedEventArgs : DtNavigationViewEventArgs { }
+public class DtNavigationBackRequestedEventArgs : DtNavigationEventArgs { }
 
 /// <summary>
 /// Menu items collapsed
 /// </summary>
-public class DtNavigationViewItemCollapsedEventArgs : DtNavigationViewEventArgs { }
+public class DtNavigationItemCollapsedEventArgs : DtNavigationEventArgs { }

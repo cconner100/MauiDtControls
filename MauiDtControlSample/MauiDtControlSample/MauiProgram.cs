@@ -19,8 +19,8 @@ public static class MauiProgram
 			})
             .ConfigureMauiHandlers(handlers =>
 			{
-				handlers.AddHandler<DtNavigationView, DtNavigationViewHandler>();
-				handlers.AddHandler<DtWindowTabView, DtWindowTabViewHandler>();
+				handlers.AddHandler<DtNavigationView, DtNavigationHandler>();
+				handlers.AddHandler<DtWindowTabView, DtWindowTabsHandler>();
 				handlers.AddHandler<DtWindowTabItem, DtWindowTabItemHandler>();
 			});
 		builder.UseMauiEmbedding<Application>();

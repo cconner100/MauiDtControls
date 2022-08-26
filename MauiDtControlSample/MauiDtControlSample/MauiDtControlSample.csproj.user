@@ -3,7 +3,7 @@
   <PropertyGroup>
     <ActiveDebugFramework>net6.0-ios</ActiveDebugFramework>
     <IsFirstTimeProjectOpen>False</IsFirstTimeProjectOpen>
-    <ActiveDebugProfile>iPad Pro (11-inch) (3rd generation) iOS 15.5</ActiveDebugProfile>
+    <ActiveDebugProfile>Simulator</ActiveDebugProfile>
     <SelectedPlatformGroup>Simulator</SelectedPlatformGroup>
     <DefaultDevice>iPad Pro (11-inch) (3rd generation) iOS 15.5</DefaultDevice>
   </PropertyGroup>
