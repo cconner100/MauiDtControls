@@ -17,12 +17,12 @@ public partial class MainPageViewModel
 
     public void TextToSearch(string text, SearchBar sb)
     {
-        throw new NotImplementedException();
+        
     }
 
     public void OnLoadOfNavView()
     {
-        throw new NotImplementedException();
+       
     }
     #endregion
 

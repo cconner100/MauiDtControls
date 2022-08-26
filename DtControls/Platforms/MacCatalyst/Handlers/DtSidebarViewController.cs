@@ -1,25 +1,35 @@
 ﻿#if MACCATALYST
 namespace DtControls.Handlers;
 
+using DtControls.UserControls;
 using UIKit;
 
 public class DtSidebarViewController : UIViewController, IUICollectionViewDelegate
 {
+    IDtNavigationView dtNavigationView;
+    public DtSidebarViewController(IDtNavigationView dtview)
+    {
+        dtNavigationView = dtview;
+    }
+
+    public event EventHandler OnSettingsSelect;
+
     UICollectionView collectionView;
     public override void ViewDidLoad()
     {
         base.ViewDidLoad();
 
-        //this.Title = this.options.Header;
 
-        //this.NavigationItem.LargeTitleDisplayMode = this.macOptions.LargeTitleDisplayMode;
+        Title = "hello"; // dtNavigationView?.Header;
 
-        //if (this.options.ShowSettingsItem)
-        //{
-        //    var settingsButton = new UIBarButtonItem(UIImage.GetSystemImage("gear"), UIBarButtonItemStyle.Plain, this.OpenSettings);
-        //    settingsButton.AccessibilityLabel = this.options.SettingsTitle;
-        //    this.NavigationItem.RightBarButtonItem = settingsButton;
-        //}
+        //NavigationItem.LargeTitleDisplayMode = this.macOptions.LargeTitleDisplayMode;
+
+        if (dtNavigationView?.IsSettingsVisible == true)
+        {
+            var settingsButton = new UIBarButtonItem(UIImage.GetSystemImage("gear"), UIBarButtonItemStyle.Plain, OpenSettings);
+            settingsButton.AccessibilityLabel = "settings";
+            this.NavigationItem.RightBarButtonItem = settingsButton;
+        }
 
         if (View is null)
         {
@@ -46,11 +56,17 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
 
         //SetupNavigationItems(GetNavigationSnapshot(options.DefaultSidebarItems));
 
-        //if (this.options.ShowSearchBar)
-        //{
+        if (dtNavigationView?.AutoSuggestBox != null)
+        {
 
-        //}
+        }
     }
+
+    public void SetHeader(string header)
+    {
+        Title = header;
+    }
+
     UICollectionViewLayout CreateLayout()
     {
         var config = new UICollectionLayoutListConfiguration(UICollectionLayoutListAppearance.Sidebar)
@@ -60,6 +76,11 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
         };
 
         return UICollectionViewCompositionalLayout.GetLayout(config);
+    }
+
+    private void OpenSettings(object? sender, EventArgs e)
+    {
+        OnSettingsSelect?.Invoke(this, EventArgs.Empty);
     }
 }
 

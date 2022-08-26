@@ -83,3 +83,7 @@ apk/
 /._.DS_Store
 /.DS_Store
 /PowerShellScript/AzureSearch
+DtControls/Platforms/iOS/.DS_Store
+DtControls/Platforms/MacCatalyst/.DS_Store
+*/.DS_Store
+.DS_Store
