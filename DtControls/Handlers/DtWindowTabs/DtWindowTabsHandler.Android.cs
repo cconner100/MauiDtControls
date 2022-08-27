@@ -1,12 +1,17 @@
 ﻿#if ANDROID
 namespace DtControls.Handlers
 {
-    using DtControls.Controls;
+    using Android.Widget;
 
+    using DtControls.Controls;
+    using Microsoft.Maui.Handlers;
     using System;
 
-    public partial class DtWindowTabsHandler
+    using static Google.Android.Material.Tabs.TabLayout;
+
+    public partial class DtWindowTabsHandler : ViewHandler<DtWindowTabs, Android.Widget.ImageView>, IDtWindowTabsHandler
     {
+        IDtWindowTabs IDtWindowTabsHandler.VirtualView { get; }
 
         public static void MapAddTabButtonCommand(IDtWindowTabsHandler viewHandler, IDtWindowTabs virtualView)
         {
@@ -69,6 +74,16 @@ namespace DtControls.Handlers
         }
 
         public static void MapSelectedItem(IDtWindowTabsHandler viewHandler, IDtWindowTabs virtualView)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetItemsCollection()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override ImageView CreatePlatformView()
         {
             throw new NotImplementedException();
         }

@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dt="clr-namespace:DtControls.UserControls;assembly=DtControls"
+             xmlns:dt="clr-namespace:DtControls.Controls;assembly=DtControls"
              x:Class="MauiDtControlSample.MainPage"
              Loaded="ContentPage_Loaded"
              Title="">
     <Grid>
-        <dt:DtNavigationView x:Name="NavView" 
+        <dt:DtNavigation x:Name="NavView" 
                              Grid.Column="0"
                              Grid.Row="0"
                              IsBackButtonEnabled="True" 
@@ -14,17 +14,17 @@
                              IsSettingsVisible="True"
                              PaneDisplayMode="LeftCompact"
                              >
-            <dt:DtNavigationView.AutoSuggestBox>
+            <dt:DtNavigation.AutoSuggestBox>
                 <SearchBar x:Name="AutoSuggest" 
                             TextChanged="AutoSuggest_TextChanged"/>
-            </dt:DtNavigationView.AutoSuggestBox>
-            <dt:DtWindowTabView x:Name="WindowTabView" 
+            </dt:DtNavigation.AutoSuggestBox>
+            <dt:DtWindowTabs x:Name="WindowTabView" 
                                 Loaded="ContentPage_Loaded"
                                 AddTabButtonClick="WindowTabView_AddTabButtonClick"
                                 TabCloseRequested="WindowTabView_TabCloseRequested">
-                <dt:DtWindowTabItem x:Name="item1" Header="New Tab" IsClosable="False"/>
-            </dt:DtWindowTabView>
+                <!--<dt:DtWindowTabItems x:Name="item1" Header="New Tab" IsClosable="False"/>-->
+            </dt:DtWindowTabs>
 
-        </dt:DtNavigationView>
+        </dt:DtNavigation>
     </Grid>
 </ContentPage>

@@ -1,7 +1,7 @@
 ﻿#if ANDROID
 namespace MauiDtControlSample.ViewModels;
 
-using DtControls.UserControls;
+using DtControls.Controls;
 
 using MauiDtControlSample.Models;
 

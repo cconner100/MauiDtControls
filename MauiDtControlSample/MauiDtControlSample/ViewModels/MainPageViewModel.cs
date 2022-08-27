@@ -1,19 +1,19 @@
 ﻿namespace MauiDtControlSample.ViewModels;
 
-using DtControls.UserControls;
+using DtControls.Controls;
 
 using MauiDtControlSample.Models;
 
 public partial class MainPageViewModel
 {
-    DtNavigationView NavView;
+    DtNavigation NavView;
     SearchBar SearchBar;
     DtMenuData menu = new DtMenuData();
     DtBuildMenuContext menucontext = new DtBuildMenuContext();
     Page page = null;
 
     private MainPageViewModel() { }
-    public MainPageViewModel(Page thePage, DtNavigationView navView)
+    public MainPageViewModel(Page thePage, DtNavigation navView)
     {
         page = thePage;
         NavView = navView;
@@ -26,10 +26,10 @@ public partial class MainPageViewModel
     public void OnLoadOfNavView()
     {
     }
-    public void TabCloseRequested(DtWindowTabView sender, EventArgs e)
+    public void TabCloseRequested(DtWindowTabs sender, EventArgs e)
     {
     }
-    public void AddTabButtonClick(DtWindowTabView sender, EventArgs e)
+    public void AddTabButtonClick(DtWindowTabs sender, EventArgs e)
     {
     }
     public void TextToSearch(string text, SearchBar sb)

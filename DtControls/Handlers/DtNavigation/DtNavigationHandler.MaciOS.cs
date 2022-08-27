@@ -3,22 +3,17 @@
 namespace DtControls.Handlers;
 
 using DtControls.Controls;
+using DtControls.Models;
 
 using Microsoft.Maui.Handlers;
-using Microsoft.Maui.Platform;
-using System;
+
 using UIKit;
 
-public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIKit.UIView>, IElementHandler
+public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIView>, IElementHandler, IDtNavigationHandler
 {
-    IDtNavigationView IDtNavigationViewHandler.VirtualView => VirtualView;
+    IDtNavigation IDtNavigationHandler.VirtualView => VirtualView;
     DtSidebarViewController dtSidebarController;
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="mapper"></param>
-    /// <param name="commandMapper"></param>
     public DtNavigationHandler(IPropertyMapper mapper, CommandMapper commandMapper = null) : base(mapper, commandMapper)
     {
     }
@@ -32,7 +27,7 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIKit.UIVi
     UISplitViewController splitView;
     DtSidebarViewController dtSidebarViewController;
     Page contentView;
-    protected override UIKit.UIView CreatePlatformView()
+    protected override UIView CreatePlatformView()
     {
         //contentView = new Page();
         //contentView.ForceLayout();
@@ -44,42 +39,23 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIKit.UIVi
         dtSidebarViewController = new DtSidebarViewController(VirtualView);
 
         splitView.ViewControllers = new UIViewController[] { new UINavigationController(dtSidebarViewController) }; //, platformContentView };
-        return splitView.View;
+        return splitView?.View;
     }
 
-#region Properties
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="viewHandler"></param>
-    /// <param name="virtualView"></param>
-    /// <exception cref="NotImplementedException"></exception>
     public static void MapContent(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        return dtSidebarController;
+        //return dtSidebarController;
     }
 
     #region Properties
 
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="viewHandler"></param>
-    /// <param name="virtualView"></param>
-    /// <exception cref="NotImplementedException"></exception>
     public static void MapHeader(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
         
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="viewHandler"></param>
-    /// <param name="virtualView"></param>
-    /// <exception cref="NotImplementedException"></exception>
     public static void MapAutoSuggestBox(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
         if (virtualView.AutoSuggestBox != null)
@@ -87,242 +63,120 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIKit.UIVi
             
         }
     }
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="viewHandler"></param>
-    /// <param name="virtualView"></param>
-    /// <exception cref="NotImplementedException"></exception>
+
     public static void MapAlwaysShowHeader(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
         
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="viewHandler"></param>
-    /// <param name="virtualView"></param>
-    /// <exception cref="NotImplementedException"></exception>
+
     public static void MapIsBackButtonVisable(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
         
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="viewHandler"></param>
-    /// <param name="virtualView"></param>
-    /// <exception cref="NotImplementedException"></exception>
+ 
     public static void MapBackButtonEnabled(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
         
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="viewHandler"></param>
-    /// <param name="virtualView"></param>
-    /// <exception cref="NotImplementedException"></exception>
+
     public static void MapCompactModeThresholdWidth(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
        
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="viewHandler"></param>
-    /// <param name="virtualView"></param>
-    /// <exception cref="NotImplementedException"></exception>
+
     public static void MapCompactPaneLength(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
         
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="viewHandler"></param>
-    /// <param name="virtualView"></param>
-    /// <exception cref="NotImplementedException"></exception>
     public static void MapDisplayMode(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
         
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="viewHandler"></param>
-    /// <param name="virtualView"></param>
-    /// <exception cref="NotImplementedException"></exception>
     public static void MapExpandedModeThresholdWidth(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
         
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="viewHandler"></param>
-    /// <param name="virtualView"></param>
     public static void MapFooterMenuItems(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
         
     }
 
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="viewHandler"></param>
-    /// <param name="virtualView"></param>
-    /// <exception cref="NotImplementedException"></exception>
     public static void MapFooterMenuItemsSource(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
         
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="viewHandler"></param>
-    /// <param name="virtualView"></param>
-    /// <exception cref="NotImplementedException"></exception>
     public static void MapHeaderTemplate(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
         
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="viewHandler"></param>
-    /// <param name="virtualView"></param>
-    /// <exception cref="NotImplementedException"></exception>
+
     public static void MapIsPaneOpen(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
         
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="viewHandler"></param>
-    /// <param name="virtualView"></param>
-    /// <exception cref="NotImplementedException"></exception>
+
     public static void MapIsPaneToggleButtonVisible(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
        
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="viewHandler"></param>
-    /// <param name="virtualView"></param>
-    /// <exception cref="NotImplementedException"></exception>
+
     public static void MapIsSettingsVisible(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
        
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="viewHandler"></param>
-    /// <param name="virtualView"></param>
-    /// <exception cref="NotImplementedException"></exception>
     public static void MapIsTitleBarAutoPaddingEnabled(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
         
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="viewHandler"></param>
-    /// <param name="virtualView"></param>
-    /// <exception cref="NotImplementedException"></exception>
     public static void MapMenuItemContainerStyle(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="viewHandler"></param>
-    /// <param name="virtualView"></param>
-    /// <exception cref="NotImplementedException"></exception>
     public static void MapMenuItems(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
         
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="viewHandler"></param>
-    /// <param name="virtualView"></param>
-    /// <exception cref="NotImplementedException"></exception>
     public static void MapMenuItemsSource(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
        
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="viewHandler"></param>
-    /// <param name="virtualView"></param>
-    /// <exception cref="NotImplementedException"></exception>
     public static void MapMenuItemsTemplate(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
         
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="viewHandler"></param>
-    /// <param name="virtualView"></param>
-    /// <exception cref="NotImplementedException"></exception>
+
     public static void MapOpenPaneLength(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
         
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="viewHandler"></param>
-    /// <param name="virtualView"></param>
-    /// <exception cref="NotImplementedException"></exception>
     public static void MapPaneDisplayMode(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
         
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="viewHandler"></param>
-    /// <param name="virtualView"></param>
-    /// <exception cref="NotImplementedException"></exception>
     public static void MapOverflowLabelMode(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
        
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="viewHandler"></param>
-    /// <param name="virtualView"></param>
-    /// <exception cref="NotImplementedException"></exception>
 
     public static void MapSelectedItem(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {

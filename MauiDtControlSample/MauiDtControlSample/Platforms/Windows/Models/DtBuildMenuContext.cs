@@ -1,6 +1,6 @@
 ﻿namespace MauiDtControlSample.Models;
 
-using DtControls.UserControls;
+using DtControls.Controls;
 
 using MauiDtControlSample.Helpers;
 
@@ -13,11 +13,11 @@ public partial class DtBuildMenuContext
 {
     public List<string> menunames = new List<string>();
 
-    public void BuildPlatformMenus(DtNavigationView nv, List<DtMenuItem> menulist, DtNavigationView.MenuArea area)
+    public void BuildPlatformMenus(DtNavigation nv, List<DtMenuItem> menulist, DtNavigation.MenuArea area)
     {
 
         // if footer area then only list with no sublists
-        if (area == DtNavigationView.MenuArea.footer)
+        if (area == DtNavigation.MenuArea.footer)
         {
             foreach (var item in menulist)
             {

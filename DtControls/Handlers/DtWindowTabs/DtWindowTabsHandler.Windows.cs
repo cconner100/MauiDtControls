@@ -324,9 +324,8 @@ namespace DtControls.Handlers
 
             if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove)
             {
-                if (sender is DtWindowTabItems tabItemView)
+                if (sender is DtWindowTabItems t)
                 {
-                    var t = tabItemView.Handler.PlatformView;
                     _tabView.TabItems.Remove(t);
                 }
             }

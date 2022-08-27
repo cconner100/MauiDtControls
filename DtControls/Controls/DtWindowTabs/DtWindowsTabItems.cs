@@ -1,10 +1,33 @@
-﻿#if NET6_0 && !ANDROID && !IOS && !MACCATALYST && !WINDOWS
+﻿
 namespace DtControls.Controls;
+
+using CommunityToolkit.Mvvm.ComponentModel;
 
 using System;
 
+
+[INotifyPropertyChanged]
 public partial class DtWindowTabItems
 {
+    [ObservableProperty]
+    string heading;
+
+    [ObservableProperty]
+    object iconSource;
+
+    [ObservableProperty]
+    object content;
+
+
+
+    #region Events
+    public event EventHandler CloseRequested;
+    #endregion
+
+    
+
+#if !ANDROID && !MACCATALYST && !IOS && !WINDOWS
+    #region Properties    
     void Connect()
     {
         throw new NotImplementedException();
@@ -13,12 +36,6 @@ public partial class DtWindowTabItems
     {
         throw new NotImplementedException();
     }
-
-    #region Events
-
-    #endregion
-
-    #region Properties
     void HeadingChanged(string value)
     {
         throw new NotImplementedException();
@@ -38,11 +55,11 @@ public partial class DtWindowTabItems
     {
         throw new NotImplementedException();
     }
-    async Task TabNavigate(ContentPage page)
+    void TabNavigate(ContentPage page)
     {
         throw new NotImplementedException();
     }
     #endregion
-}
 #endif
+}
 

@@ -36,7 +36,7 @@ namespace DtControls.Controls
         {
             throw new NotImplementedException();
         }
-        async Task TabNavigate(ContentPage page)
+        void TabNavigate(ContentPage page)
         {
             throw new NotImplementedException();
         }

@@ -1,12 +1,12 @@
 ﻿namespace MauiDtControlSample.Models;
 
-using DtControls.UserControls;
+using DtControls.Controls;
 
 using System.Collections.Generic;
 
 public partial class DtBuildMenuContext
 {
-    public void BuildPlatformMenus(DtNavigationView nv, List<DtMenuItem> menulist, DtNavigationView.MenuArea area)
+    public void BuildPlatformMenus(DtNavigation nv, List<DtMenuItem> menulist, DtNavigation.MenuArea area)
     {
     }
 }

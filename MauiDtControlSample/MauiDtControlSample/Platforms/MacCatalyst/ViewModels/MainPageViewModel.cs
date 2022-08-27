@@ -1,7 +1,7 @@
 ﻿#if MACCATALYST
 namespace MauiDtControlSample.ViewModels;
 
-using DtControls.UserControls;
+using DtControls.Controls;
 
 using MauiDtControlSample.Models;
 
@@ -9,7 +9,7 @@ using System;
 
 public partial class MainPageViewModel
 {
-    #region NavigationView
+    #region DtNavigation
     public void SearchBarOnLoad(SearchBar searchBar)
     {
         SearchBar = searchBar;
@@ -26,7 +26,7 @@ public partial class MainPageViewModel
     }
     #endregion
 
-    #region TabView
+    #region DtWindowTabs
     public void AddTabButtonClick(object sender, EventArgs e)
     {
 
@@ -38,7 +38,7 @@ public partial class MainPageViewModel
     }
     #endregion
 
-    #region TabViewItem
+    #region DtTabItems
     #endregion
 }
 #endif

@@ -1,6 +1,6 @@
 ﻿namespace MauiDtControlSample;
 
-using DtControls.UserControls;
+using DtControls.Controls;
 using DtControls.Handlers;
 using Microsoft.Maui.Embedding;
 
@@ -19,9 +19,8 @@ public static class MauiProgram
 			})
             .ConfigureMauiHandlers(handlers =>
 			{
-				handlers.AddHandler<DtNavigationView, DtNavigationHandler>();
-				handlers.AddHandler<DtWindowTabView, DtWindowTabsHandler>();
-				handlers.AddHandler<DtWindowTabItem, DtWindowTabItemHandler>();
+				handlers.AddHandler<DtNavigation, DtNavigationHandler>();
+				handlers.AddHandler<DtWindowTabs, DtWindowTabsHandler>();
 			});
 		builder.UseMauiEmbedding<Application>();
 		var mauiapp = builder.Build();

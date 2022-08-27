@@ -2,11 +2,20 @@
 namespace DtControls.Handlers
 {
     using DtControls.Controls;
+    using Microsoft.Maui.Controls.PlatformConfiguration;
+    using Microsoft.Maui.Handlers;
 
     using System;
-    public partial class DtWindowTabsHandler
-    {
+    using UIKit;
 
+    public partial class DtWindowTabsHandler : ViewHandler<DtWindowTabs, UIView>, IDtWindowTabsHandler
+    {
+        IDtWindowTabs IDtWindowTabsHandler.VirtualView { get; }
+
+        protected override UIView CreatePlatformView()
+        {
+            throw new NotImplementedException();
+        }
 
         public static void MapAddTabButtonCommand(IDtWindowTabsHandler viewHandler, IDtWindowTabs virtualView)
         {
@@ -69,6 +78,11 @@ namespace DtControls.Handlers
         }
 
         public static void MapSelectedItem(IDtWindowTabsHandler viewHandler, IDtWindowTabs virtualView)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetItemsCollection()
         {
             throw new NotImplementedException();
         }

@@ -1,13 +1,13 @@
 ﻿#if MACCATALYST || IOS
 namespace DtControls.Handlers;
 
-using DtControls.UserControls;
+using DtControls.Controls;
 using UIKit;
 
 public class DtSidebarViewController : UIViewController, IUICollectionViewDelegate
 {
-    IDtNavigationView dtNavigationView;
-    public DtSidebarViewController(IDtNavigationView dtview)
+    IDtNavigation dtNavigationView;
+    public DtSidebarViewController(IDtNavigation dtview)
     {
         dtNavigationView = dtview;
     }
@@ -78,7 +78,7 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
         return UICollectionViewCompositionalLayout.GetLayout(config);
     }
 
-    private void OpenSettings(object? sender, EventArgs e)
+    private void OpenSettings(object sender, EventArgs e)
     {
         OnSettingsSelect?.Invoke(this, EventArgs.Empty);
     }

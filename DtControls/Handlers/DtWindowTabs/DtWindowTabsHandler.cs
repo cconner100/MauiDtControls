@@ -9,7 +9,7 @@ using DtControls.Controls;
 public partial class DtWindowTabsHandler
 {
 
-    public static IPropertyMapper<IDtWindowTabs, IDtWindowTabsHandler> DtWindowTabViewPropertyMapper => new PropertyMapper<IDtWindowTabs, IDtWindowTabsHandler>()
+    public static IPropertyMapper<IDtWindowTabs, IDtWindowTabsHandler> DtWindowTabsPropertyMapper => new PropertyMapper<IDtWindowTabs, IDtWindowTabsHandler>()
     {
         [nameof(IDtWindowTabs.AddTabButtonCommand)] = MapAddTabButtonCommand,
         [nameof(IDtWindowTabs.AddTabButtonCommandParameter)] = MapAddTabButtonCommandParameter,
@@ -26,14 +26,14 @@ public partial class DtWindowTabsHandler
         [nameof(IDtWindowTabs.TabWidthMode)] = MapTabWidthMode,
     };
 
-    public static CommandMapper<IDtWindowTabs, IDtWindowTabsHandler> DtWindowTabViewCommandMapper => new CommandMapper<IDtWindowTabs, IDtWindowTabsHandler>();
+    public static CommandMapper<IDtWindowTabs, IDtWindowTabsHandler> DtWindowTabsCommandMapper => new CommandMapper<IDtWindowTabs, IDtWindowTabsHandler>();
 
-    public DtWindowTabsHandler() : base(DtWindowTabViewPropertyMapper, DtWindowTabViewCommandMapper)
+    public DtWindowTabsHandler() : base(DtWindowTabsPropertyMapper, DtWindowTabsCommandMapper)
     {
 
     }
 
-    public DtWindowTabsHandler(IPropertyMapper mapper = null) : base(mapper ?? DtWindowTabViewPropertyMapper, DtWindowTabViewCommandMapper)
+    public DtWindowTabsHandler(IPropertyMapper mapper = null) : base(mapper ?? DtWindowTabsPropertyMapper, DtWindowTabsCommandMapper)
     {
     }
 }

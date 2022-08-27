@@ -1,7 +1,7 @@
 ﻿#if WINDOWS
 namespace MauiDtControlSample.ViewModels;
 
-using DtControls.UserControls;
+using DtControls.Controls;
 
 using MauiDtControlSample.Models;
 
@@ -60,25 +60,25 @@ public partial class MainPageViewModel
 
     public void OnLoadOfNavView()
     {
-        menucontext.BuildPlatformMenus(NavView, menu.GetPlatformMenu(), DtNavigationView.MenuArea.main);
-        menucontext.BuildPlatformMenus(NavView, menu.GetPlatformFooterMenu(), DtNavigationView.MenuArea.footer);
+        menucontext.BuildPlatformMenus(NavView, menu.GetPlatformMenu(), DtNavigation.MenuArea.main);
+        menucontext.BuildPlatformMenus(NavView, menu.GetPlatformFooterMenu(), DtNavigation.MenuArea.footer);
     }
     #endregion 
 
     #region TabView
-    public async void AddTabButtonClick(DtWindowTabView sender, EventArgs e)
+    public async void AddTabButtonClick(DtWindowTabs sender, EventArgs e)
     {
-        var newtab = new DtWindowTabItem1();
+        var newtab = new DtWindowTabItems();
         newtab.IconSource = new SymbolIconSource() { Symbol = Symbol.Placeholder };
         newtab.Heading = "New Item";
         newtab.Content = "New Page";
 
         sender.TabItems.Add(newtab);
 
-        await newtab.Navigate(new TabPage1());
+        //await newtab.Navigate(new TabPage1());
     }
 
-    public void TabCloseRequested(DtWindowTabView sender, EventArgs e)
+    public void TabCloseRequested(DtWindowTabs sender, EventArgs e)
     {
         //sender.TabItems.Remove(e.tab);
     }

@@ -1,7 +1,7 @@
 ﻿namespace MauiDtControlSample;
 
 using DtControls.Models;
-using DtControls.UserControls;
+using DtControls.Controls;
 
 using MauiDtControlSample.ViewModels;
 
@@ -69,7 +69,7 @@ public partial class MainPage : ContentPage
         Console.WriteLine("DEBUG -- PaneClosed");
     }
 
-    private void NavView_Expanding(object sender, DtNavigationViewItemExpandingEventArgs e)
+    private void NavView_Expanding(object sender, DtNavigationItemExpandingEventArgs e)
     {
         Console.WriteLine("DEBUG -- Expanding");
     }
@@ -79,7 +79,7 @@ public partial class MainPage : ContentPage
         Console.WriteLine("DEBUG -- DisplayModeChanged");
     }
 
-    private void NavView_Collapsed(object sender, DtNavigationViewItemCollapsedEventArgs e)
+    private void NavView_Collapsed(object sender, DtNavigationItemCollapsedEventArgs e)
     {
         Console.WriteLine("DEBUG -- Collapsed");
     }
@@ -89,12 +89,12 @@ public partial class MainPage : ContentPage
         Console.WriteLine("DEBUG -- BackRequested");
     }
 
-    private void NavView_SelectionChanged(object sender, DtNavigationViewSelectionChangedEventArgs e)
+    private void NavView_SelectionChanged(object sender, DtNavigationSelectionChangedEventArgs e)
     {
         Console.WriteLine("DEBUG -- SelectionChanged");
     }
 
-    private void NavView_ItemInvoked(object sender, DtNavigationViewItemInvokedEventArgs e)
+    private void NavView_ItemInvoked(object sender, DtNavigationItemInvokedEventArgs e)
     {
         Console.WriteLine("DEBUG -- ItemInvoked");
     }
@@ -116,7 +116,7 @@ public partial class MainPage : ContentPage
     {
         if (BindingContext is MainPageViewModel viewModel)
         {
-            viewModel.AddTabButtonClick((DtWindowTabView)sender, e);
+            viewModel.AddTabButtonClick((DtWindowTabs)sender, e);
         }
     }
 
@@ -124,7 +124,7 @@ public partial class MainPage : ContentPage
     {
         if (BindingContext is MainPageViewModel viewModel)
         {
-            viewModel.TabCloseRequested((DtWindowTabView)sender, e);
+            viewModel.TabCloseRequested((DtWindowTabs)sender, e);
         }
     }
 }

@@ -87,3 +87,7 @@ DtControls/Platforms/iOS/.DS_Store
 DtControls/Platforms/MacCatalyst/.DS_Store
 */.DS_Store
 .DS_Store
+/MauiDtControlSample/.idea/.idea.MauiDtControlSample/.idea/vcs.xml
+/MauiDtControlSample/.idea/.idea.MauiDtControlSample/.idea/indexLayout.xml
+/MauiDtControlSample/.idea/.idea.MauiDtControlSample/.idea/encodings.xml
+/MauiDtControlSample/.idea/.idea.MauiDtControlSample/.idea/.gitignore
