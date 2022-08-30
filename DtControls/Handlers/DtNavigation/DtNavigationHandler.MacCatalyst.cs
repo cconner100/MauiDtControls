@@ -1,7 +1,8 @@
-﻿#if MACCATALYST || IOS
+﻿#if MACCATALYST
 
 namespace DtControls.Handlers;
 
+using AppKit;
 using DtControls.Controls;
 using DtControls.Models;
 
@@ -36,6 +37,8 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIView>, I
 
         splitView = new UISplitViewController();
         splitView.PrimaryBackgroundStyle = UISplitViewControllerBackgroundStyle.Sidebar;
+
+
         dtSidebarViewController = new DtSidebarViewController(VirtualView);
 
         splitView.ViewControllers = new UIViewController[] { new UINavigationController(dtSidebarViewController) }; //, platformContentView };

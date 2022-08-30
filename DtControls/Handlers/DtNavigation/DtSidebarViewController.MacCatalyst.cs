@@ -1,6 +1,7 @@
-﻿#if MACCATALYST || IOS
+﻿#if MACCATALYST
 namespace DtControls.Handlers;
 
+using AppKit;
 using DtControls.Controls;
 using UIKit;
 
@@ -19,22 +20,21 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
     {
         base.ViewDidLoad();
 
-
-        Title = "hello"; // dtNavigationView?.Header;
-
-        //NavigationItem.LargeTitleDisplayMode = this.macOptions.LargeTitleDisplayMode;
-
-        if (dtNavigationView?.IsSettingsVisible == true)
-        {
-            var settingsButton = new UIBarButtonItem(UIImage.GetSystemImage("gear"), UIBarButtonItemStyle.Plain, OpenSettings);
-            settingsButton.AccessibilityLabel = "settings";
-            this.NavigationItem.RightBarButtonItem = settingsButton;
-        }
-
         if (View is null)
         {
             throw new NullReferenceException(nameof(View));
         }
+
+        Title = "hello"; // dtNavigationView?.Header;
+
+        
+        if (dtNavigationView?.IsSettingsVisible == true)
+        {
+            var settingsButton = new UIBarButtonItem(UIImage.GetSystemImage("gear"), UIBarButtonItemStyle.Plain, OpenSettings);
+            settingsButton.AccessibilityLabel = "Settings";
+            NavigationItem.RightBarButtonItem = settingsButton;
+        }
+
 
         collectionView = new UICollectionView(View.Bounds, CreateLayout());
         collectionView.Delegate = this;
@@ -71,8 +71,9 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
     {
         var config = new UICollectionLayoutListConfiguration(UICollectionLayoutListAppearance.Sidebar)
         {
-            HeaderMode = UICollectionLayoutListHeaderMode.None,
-            ShowsSeparators = false
+            HeaderMode = UICollectionLayoutListHeaderMode.FirstItemInSection,
+            ShowsSeparators = true          
+            
         };
 
         return UICollectionViewCompositionalLayout.GetLayout(config);

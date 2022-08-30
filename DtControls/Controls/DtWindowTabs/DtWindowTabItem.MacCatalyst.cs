@@ -1,4 +1,4 @@
-﻿#if MACCATALYST || IOS
+﻿#if MACCATALYST
 namespace DtControls.Controls
 {
 
