@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiDtControlSample.TabPage1"
              Appearing="ContentPage_Appearing"
+             Loaded="ContentPage_Loaded"
              Title="TabPage1">
     <VerticalStackLayout>
         <Label 

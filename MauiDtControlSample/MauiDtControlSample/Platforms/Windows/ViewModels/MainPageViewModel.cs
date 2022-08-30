@@ -3,9 +3,6 @@ namespace MauiDtControlSample.ViewModels;
 
 using DtControls.Controls;
 
-using MauiDtControlSample.Models;
-
-using Microsoft.Maui;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 
@@ -68,14 +65,15 @@ public partial class MainPageViewModel
     #region TabView
     public async void AddTabButtonClick(DtWindowTabs sender, EventArgs e)
     {
-        var newtab = new DtWindowTabItems();
+        var newtab = new DtWindowTabItem();
+        var page = new TabPage1();
         newtab.IconSource = new SymbolIconSource() { Symbol = Symbol.Placeholder };
-        newtab.Heading = "New Item";
-        newtab.Content = "New Page";
+        newtab.Header = "New Item";
+        newtab.Content = new NavigationPage(page);    // "New Page";
 
         sender.TabItems.Add(newtab);
 
-        //await newtab.Navigate(new TabPage1());
+       //await newtab.TabNavigate(page);
     }
 
     public void TabCloseRequested(DtWindowTabs sender, EventArgs e)

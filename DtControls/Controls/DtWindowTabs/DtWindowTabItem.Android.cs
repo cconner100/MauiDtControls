@@ -1,8 +1,7 @@
-﻿#if MACCATALYST || IOS
+﻿#if ANDROID
 namespace DtControls.Controls
 {
-
-    public partial class DtWindowTabItems
+    public partial class DtWindowTabItem
     {
         void Connect()
         {
@@ -41,6 +40,12 @@ namespace DtControls.Controls
         {
             throw new NotImplementedException();
         }
+
+        
+        #endregion
+
+        #region Commands
+
         #endregion
     }
 }

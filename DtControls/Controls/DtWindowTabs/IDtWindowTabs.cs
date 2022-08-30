@@ -180,7 +180,7 @@ public interface IDtWindowTabs : IView
     /// <summary>
     /// 
     /// </summary>
-    ObservableCollection<DtWindowTabItems> TabItems { get; set; }
+    ObservableCollection<DtWindowTabItem> TabItems { get; set; }
 
     /// <summary>
     /// 

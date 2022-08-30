@@ -11,4 +11,9 @@ public partial class TabPage1 : ContentPage
 	{
 		Console.WriteLine("hello");
     }
+
+	private void ContentPage_Loaded(object sender, EventArgs e)
+	{
+		Console.WriteLine("ContentPage_Loaded");
+    }
 }

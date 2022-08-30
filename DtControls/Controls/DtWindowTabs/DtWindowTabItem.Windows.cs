@@ -3,15 +3,19 @@ namespace DtControls.Controls;
 
 using DtControls.Models;
 
+using Microsoft.Maui.Graphics;
 using Microsoft.Maui.Platform;
 using Microsoft.UI.Xaml.Controls;
 
 using System;
 
-public partial class DtWindowTabItems
+public partial class DtWindowTabItem : View, IElement
 {
     TabViewItem tabViewItem = new TabViewItem();
-    NavigationPage navigationPage = new NavigationPage();
+    
+
+    public IView PresentedContent { get; }
+
     void Connect()
     {
         tabViewItem.CloseRequested += TabViewItem_CloseRequested;
@@ -52,13 +56,16 @@ public partial class DtWindowTabItems
 
     void ContentChanged(object value)
     {
-        tabViewItem.Content = navigationPage.ToPlatform(DtMauiContext.mauiContext);
+        if(value is NavigationPage np)
+        {
+            if(np.Handler == null)
+            {
+                np.ToHandler(DtMauiContext.mauiContext);
+            }
+            tabViewItem.Content = np.Handler.PlatformView;
+        }
     }
-
-    async Task TabNavigate(ContentPage page)
-    {
-        await navigationPage.Navigation.PushAsync(page).ConfigureAwait(true);
-    }
+   
     #endregion
 }
 #endif

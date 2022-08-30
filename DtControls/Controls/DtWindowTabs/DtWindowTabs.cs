@@ -342,7 +342,7 @@ public partial class DtWindowTabs : View, IContentView, IDtWindowTabs
     /// <summary>
     /// 
     /// </summary>
-    public ObservableCollection<DtWindowTabItems> TabItems { get; set; }
+    public ObservableCollection<DtWindowTabItem> TabItems { get; set; }
 
     /// <summary>
     /// 

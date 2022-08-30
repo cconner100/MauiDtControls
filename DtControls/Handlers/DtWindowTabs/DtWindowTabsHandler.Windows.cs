@@ -7,7 +7,6 @@ namespace DtControls.Handlers
     using Microsoft.Maui.Handlers;
     using Microsoft.UI.Xaml.Controls;
 
-    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Windows.Input;
 
@@ -17,7 +16,7 @@ namespace DtControls.Handlers
         TabView _tabView = new TabView();
         IDtWindowTabs IDtWindowTabsHandler.VirtualView => VirtualView;
 
-        ObservableCollection<DtWindowTabItems> dtWindowTabItemViews { get; set; } = new ObservableCollection<DtWindowTabItems>();
+        ObservableCollection<DtWindowTabItem> dtWindowTabItemViews { get; set; } = new ObservableCollection<DtWindowTabItem>();
 
 
         /// <summary>
@@ -35,6 +34,8 @@ namespace DtControls.Handlers
         /// <param name="platformView"></param>
         protected override void ConnectHandler(TabView platformView)
         {
+            _tabView.HorizontalAlignment = Microsoft.UI.Xaml.HorizontalAlignment.Stretch;
+            _tabView.VerticalAlignment = Microsoft.UI.Xaml.VerticalAlignment.Stretch;
             base.ConnectHandler(platformView);
             platformView.Loaded += PlatformView_Loaded;
             platformView.AddTabButtonClick += PlatformView_AddTabButtonClick;
@@ -313,10 +314,11 @@ namespace DtControls.Handlers
                 {
                     foreach (var item in e.NewItems)
                     {
-                        if (item is DtWindowTabItems tvi)
+                        if (item is DtWindowTabItem tvi)
                         {
 
                             _tabView.TabItems.Add(tvi.GetTabViewItem());
+                            _tabView.SelectedIndex = _tabView.TabItems.Count - 1;
                         }
                     }
                 }
@@ -324,7 +326,7 @@ namespace DtControls.Handlers
 
             if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove)
             {
-                if (sender is DtWindowTabItems t)
+                if (sender is DtWindowTabItem t)
                 {
                     _tabView.TabItems.Remove(t);
                 }
