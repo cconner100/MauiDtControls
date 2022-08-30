@@ -1,27 +1,30 @@
 ﻿namespace MauiDtControlSample.Models;
 
 public class DtMenuItem
+#if MACCATALYST
+    : Foundation.NSObject
+#endif
 {
-    public int Id { get; set; }
-    public int ParentId { get; set; }
-    public string NameResource { get; set; }
-    public object IconObject { get; set; }
-    public string ToolTipResource { get; set; }
-    public Type Screen { get; set; }
+    public int id { get; set; }
+    public MenuType menuType { get; set; }
+    public int parentId { get; set; }
+    public string nameResource { get; set; }
+    public object iconObject { get; set; }
+    public string toolTipResource { get; set; }
+    public Type screen { get; set; }
 
-    /// <summary>
-    /// Make the menu resource, will format resource names correctly
-    /// </summary>
-    /// <param name="id"></param>
-    /// <param name="parentid"></param>
-    /// <param name="nameresource"></param>
-    /// <param name="iconObject"></param>
-    /// <param name="screen"></param>
-    /// <returns></returns>
-    public static DtMenuItem MakeMenuItem(int id, int parentid, string nameresource, object iconObject = null, Type screen = null)
+    public static DtMenuItem MakeMenuItem(int id, int parentid, string nameresource, object iconObject = null, Type screen = null, MenuType menuType = MenuType.Row)
     {
         var resname = nameresource;
-        return new DtMenuItem() { Id = id, ParentId = parentid, NameResource = resname, IconObject = iconObject, ToolTipResource = resname + "_TOOLTIP", Screen = screen };
+        return new DtMenuItem() { id = id, parentId = parentid, nameResource = resname, iconObject = iconObject, toolTipResource = resname + "_TOOLTIP", screen = screen, menuType = menuType };
+    }
+
+    public enum MenuType
+    {
+        Header,
+        ExpandableRow,
+        Row,
+        Footer
     }
 }
 

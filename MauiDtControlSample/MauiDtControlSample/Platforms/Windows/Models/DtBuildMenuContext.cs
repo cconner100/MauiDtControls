@@ -26,21 +26,21 @@ public partial class DtBuildMenuContext
             return;
         }
 
-        var toplevel = menulist.Where(o => o.Id == o.ParentId).ToList();
+        var toplevel = menulist.Where(o => o.id == o.parentId).ToList();
         NavigationViewItem Level0Menu = null;
         foreach (var rootMenu in toplevel)
         {
             Level0Menu = MakeMenuItem(rootMenu);
-            var subitem = menulist.Where(o => o.ParentId == rootMenu.Id).ToList();
+            var subitem = menulist.Where(o => o.parentId == rootMenu.id).ToList();
 
             foreach (var subsubitem in subitem)
             {
-                if (subsubitem.Id == subsubitem.ParentId)
+                if (subsubitem.id == subsubitem.parentId)
                 {
                     continue;
                 }
 
-                var second = menulist.Where(o => o.ParentId == subsubitem.Id).ToList();
+                var second = menulist.Where(o => o.parentId == subsubitem.id).ToList();
 
                 if (!second.Any())
                 {
@@ -77,13 +77,13 @@ public partial class DtBuildMenuContext
     {
         var tooltip = new ToolTip
         {
-            Content = LanguageResourceHelper.GetDisplayText(item.ToolTipResource)
+            Content = LanguageResourceHelper.GetDisplayText(item.toolTipResource)
         };
         var ret = new NavigationViewItem
         {
-            Content = LanguageResourceHelper.GetDisplayText(item.NameResource),
-            Icon = new SymbolIcon() { Symbol = (Symbol)item.IconObject },
-            Tag = item.Screen
+            Content = LanguageResourceHelper.GetDisplayText(item.nameResource),
+            Icon = new SymbolIcon() { Symbol = (Symbol)item.iconObject },
+            Tag = item.screen
         };
         ToolTipService.SetToolTip(ret, tooltip);
 
