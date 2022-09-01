@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0;net6.0-android;net6.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks>net6.0;net6.0-maccatalyst</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net6.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net6.0-tizen</TargetFrameworks> -->
@@ -10,7 +10,6 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<AssemblyName>DtControls</AssemblyName>
@@ -26,20 +25,20 @@
 	</PropertyGroup>
 
 	<!-- Android -->
-	<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-android')) != true">
+	<!--<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-android')) != true">
 		<Compile Remove="**\**\*.Android.cs" />
 		<None Include="**\**\*.Android.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 		<Compile Remove="**\Android\**\*.cs" />
 		<None Include="**\Android\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
-	</ItemGroup>
+	</ItemGroup>-->
 
-	<!-- Both iOS and Mac Catalyst -->
+	<!-- Both iOS and Mac Catalyst --><!--
 	<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-ios')) != true AND $(TargetFramework.StartsWith('net6.0-maccatalyst')) != true">
 		<Compile Remove="**\**\*.MaciOS.cs" />
 		<None Include="**\**\*.MaciOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 		<Compile Remove="**\MaciOS\**\*.cs" />
 		<None Include="**\MaciOS\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
-	</ItemGroup>
+	</ItemGroup>-->
 
 	<!-- iOS -->
 <!--	<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-ios')) != true">
@@ -72,10 +71,6 @@
 	  <None Remove="Platforms\**" />
 	</ItemGroup>
 
-	<ItemGroup>
-		<None Remove="User Controls\" />
-		<None Remove="Handlers\" />
-	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Common" Version="8.0.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />

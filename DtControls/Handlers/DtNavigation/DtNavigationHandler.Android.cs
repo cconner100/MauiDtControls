@@ -25,7 +25,7 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, Android.Vi
     private void PlatformView_ItemInvoked(NavigationView sender, DtNavigationSelectionChangedEventArgs args)
     {
         var narg = new DtNavigationItemInvokedEventArgs();
-        VirtualView?.WinItemInvoked(sender, narg);
+        VirtualView?.HandleItemInvoked(sender, narg);
     }
 
 
@@ -36,7 +36,7 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, Android.Vi
     /// <param name="args"></param>
     private void PlatformView_SelectionChanged(NavigationView sender, DtNavigationSelectionChangedEventArgs args)
     {
-        VirtualView?.WinSelectionChanged(sender, args);
+        VirtualView?.HandleSelectionChanged(sender, args);
     }
 
     /// <summary>
@@ -46,7 +46,7 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, Android.Vi
     /// <param name="args"></param>
     private void PlatformView_Expanding(NavigationView sender, DtNavigationItemExpandingEventArgs args)
     {
-        VirtualView?.WinExpanding(sender, args);
+        VirtualView?.HandleExpanding(sender, args);
     }
     #endregion
 

@@ -1,9 +1,7 @@
-﻿namespace DtControls.Models
+﻿namespace DtControls.Models;
+
+
+static class DtMauiContext
 {
-
-
-    static class DtMauiContext
-    {
-        public static IMauiContext mauiContext { get; set; }
-    }
+    public static IMauiContext mauiContext { get; set; }
 }

@@ -13,7 +13,12 @@ using UIKit;
 public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIView>, IElementHandler, IDtNavigationHandler
 {
     IDtNavigation IDtNavigationHandler.VirtualView => VirtualView;
-    DtSidebarViewController dtSidebarController;
+
+    UISplitViewController IDtNavigationHandler.splitView =>splitView;
+    UISplitViewController splitView;
+    DtSidebarViewController dtSidebarViewController;
+    Page contentView;
+
 
     public DtNavigationHandler(IPropertyMapper mapper, CommandMapper commandMapper = null) : base(mapper, commandMapper)
     {
@@ -25,38 +30,45 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIView>, I
         base.SetMauiContext(mauiContext);
     }
 
-    UISplitViewController splitView;
-    DtSidebarViewController dtSidebarViewController;
-    Page contentView;
-    protected override UIView CreatePlatformView()
+        protected override UIView CreatePlatformView()
     {
-        //contentView = new Page();
-        //contentView.ForceLayout();
-        
-        //var platformContentView = contentView.ToUIViewController(DtMauiContext.mauiContext);
-
-        splitView = new UISplitViewController();
-        splitView.PrimaryBackgroundStyle = UISplitViewControllerBackgroundStyle.Sidebar;
+        splitView = new UISplitViewController
+        {
+            PrimaryBackgroundStyle = UISplitViewControllerBackgroundStyle.Sidebar
+        };
 
 
         dtSidebarViewController = new DtSidebarViewController(VirtualView);
 
-        splitView.ViewControllers = new UIViewController[] { new UINavigationController(dtSidebarViewController) }; //, platformContentView };
+        splitView.ViewControllers = new UIViewController[] { new UINavigationController(dtSidebarViewController) };
+        ViewController = dtSidebarViewController;
+
         return splitView?.View;
     }
 
 
     public static void MapContent(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        //return dtSidebarController;
+        if (virtualView.Content is UIView)
+        {
+            viewHandler.splitView.Add((UIView)virtualView.Content);
+        }
     }
 
     #region Properties
 
+    static DtSidebarViewController GetController(IDtNavigationHandler viewHandler)
+    {
+        if (viewHandler.PlatformView is IViewHandler h)
+        {
+            return ((DtSidebarViewController)((DtNavigationHandler)h.PlatformView).ViewController);
+        }
+        return null;
+    }
 
     public static void MapHeader(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        
+        GetController(viewHandler)?.SetHeader(virtualView?.Header);
     }
 
     public static void MapAutoSuggestBox(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
@@ -151,7 +163,8 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIView>, I
 
     public static void MapMenuItems(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        
+        GetController(viewHandler)?.SetHeader(virtualView?.Header);
+
     }
 
     public static void MapMenuItemsSource(IDtNavigationHandler viewHandler, IDtNavigation virtualView)

@@ -2,8 +2,8 @@
 
 using DtControls.Controls;
 
-using Microsoft.Maui.Handlers;
-#if __IOS__ || MACCATALYST
+#if MACCATALYST
+using UIKit;
 using PlatformView = UIKit.UIView;
 #elif ANDROID
 using PlatformView = Android.Widget.ImageView;
@@ -15,6 +15,9 @@ using PlatformView = System.Object;
 
 public interface IDtNavigationHandler : IViewHandler
 {
+#if MACCATALYST
+    UISplitViewController splitView { get; }
+#endif
     /// <summary>
     /// 
     /// </summary>

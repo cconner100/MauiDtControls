@@ -87,8 +87,8 @@ public partial class DtWindowTabItem : View, IContentView, IElement, IDtWindowTa
     #endregion
 
 
-    object? IContentView.Content => Content;
-    IView? IContentView.PresentedContent
+    object IContentView.Content => Content;
+    IView IContentView.PresentedContent
     {
         get
         {

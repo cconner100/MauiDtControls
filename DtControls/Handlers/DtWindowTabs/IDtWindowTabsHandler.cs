@@ -4,7 +4,7 @@ namespace DtControls.Handlers;
 using DtControls.Controls;
 
 using System.Collections.ObjectModel;
-#if __IOS__ || MACCATALYST
+#if MACCATALYST
 using PlatformView = UIKit.UIView;
 #elif ANDROID
 using PlatformView = Android.Widget.ImageView;
