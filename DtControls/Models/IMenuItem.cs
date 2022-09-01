@@ -7,7 +7,8 @@ public class DtMenuItem
 {
     public Guid id { get; set; }
     public MenuType menuType { get; set; }
-    public List<DtMenuItem> childrenItems { get; set; }
+    public List<DtMenuItem> childrenItems { get; set; } = new List<DtMenuItem>();
+    
     public string title { get; set; }
     public string subTitle { get; set; }
     public ImageSource iconImage { get; set; }

@@ -16,6 +16,10 @@ public class DtBuildMenuContext : IDtBuildMenuContext
     }
     public List<object> BuildPlatformMenus(List<DtMenuItem> menulist)
     {
+        if(menulist == null)
+        {
+            return null;
+        }
         List<object> items = new List<object>();
         foreach (var item in menulist)
         {
@@ -50,7 +54,7 @@ public class DtBuildMenuContext : IDtBuildMenuContext
             Tag = item.screen
         };
         ToolTipService.SetToolTip(ret, tooltip);
-        if (item.childrenItems != null)
+        if (item.childrenItems.Any())
         {
             foreach (var child in item.childrenItems)
             {

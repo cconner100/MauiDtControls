@@ -100,7 +100,7 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
         VirtualView?.HandlePaneClosed(sender, args);
     }
 
-     private void PlatformView_Expanding(NavigationView sender, NavigationViewItemExpandingEventArgs args)
+    private void PlatformView_Expanding(NavigationView sender, NavigationViewItemExpandingEventArgs args)
     {
         var nargs = new DtNavigationItemExpandingEventArgs { InvokedItem = args.ExpandingItem.ToString() };
         VirtualView?.HandleExpanding(sender, nargs);
@@ -216,7 +216,15 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
     public static void MapFooterMenuItems(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
         DtBuildMenuContext dtBuildMenuContext = new DtBuildMenuContext();
-        ((NavigationView)(viewHandler?.PlatformView)).FooterMenuItems.Add(dtBuildMenuContext.BuildPlatformMenus(virtualView.FooterMenuItems.ToList()));
+        var menu = dtBuildMenuContext.BuildPlatformMenus(virtualView.FooterMenuItems?.ToList());
+        if (menu != null)
+        {
+            foreach (var menuItem in menu)
+            {
+                ((NavigationView)(viewHandler?.PlatformView)).FooterMenuItems.Add(menuItem);
+            }
+
+        }        
     }
 
 
@@ -250,6 +258,7 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
     {
         ((NavigationView)(viewHandler?.PlatformView)).IsTitleBarAutoPaddingEnabled = virtualView.IsTitleBarAutoPaddingEnabled;
     }
+
     //public static void MapMenuItemContainerStyle(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     //{
     //    ((NavigationView)(viewHandler?.PlatformView)).MenuItemContainerStyle = virtualView.MenuItemContainerStyle;
@@ -258,7 +267,15 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
     public static void MapMenuItems(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
         DtBuildMenuContext dtBuildMenuContext = new DtBuildMenuContext();
-        ((NavigationView)(viewHandler?.PlatformView)).MenuItems.Add(dtBuildMenuContext.BuildPlatformMenus(virtualView.MenuItems.ToList()));
+        var menu = dtBuildMenuContext.BuildPlatformMenus(virtualView.MenuItems?.ToList());
+        if (menu != null)
+        {
+            foreach(var menuItem in menu)
+            {
+                ((NavigationView)(viewHandler?.PlatformView)).MenuItems.Add(menuItem);
+            }
+            
+        }
     }
 
     public static void MapMenuItemsSource(IDtNavigationHandler viewHandler, IDtNavigation virtualView)

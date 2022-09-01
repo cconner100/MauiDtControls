@@ -40,15 +40,15 @@ public class DtMenuData : IDtMenu
             screen = typeof(TabPage1)
         });
 
-        dtmenufooterdata.Add(new DtMenuItem
-        {
-            id = new Guid(),
-            title = "Settings",
-            subTitle = "System Settings",
-            menuType = DtMenuItem.MenuType.Row,
-            iconImage = "settings.png",
-            screen = typeof(TabPage1)
-        });
+        //dtmenufooterdata.Add(new DtMenuItem
+        //{
+        //    id = new Guid(),
+        //    title = "Settings",
+        //    subTitle = "System Settings",
+        //    menuType = DtMenuItem.MenuType.Row,
+        //    iconImage = "settings.png",
+        //    screen = typeof(TabPage1)
+        //});
 
     }
 
