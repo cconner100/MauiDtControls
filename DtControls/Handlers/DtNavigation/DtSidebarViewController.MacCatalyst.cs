@@ -73,7 +73,7 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
     }
 
 
-    void SetupNavigationItems(NSDiffableDataSourceSectionSnapshot<DtMenuItem> snapshot)
+    public void SetupNavigationItems(NSDiffableDataSourceSectionSnapshot<DtMenuItem> snapshot)
     {
         if (dataSource is null)
         {
@@ -85,7 +85,7 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
         dataSource.ApplySnapshot(snapshot, sectionIdentifier, false);
     }
 
-    NSDiffableDataSourceSectionSnapshot<DtMenuItem> GetNavigationSnapshot(IEnumerable<DtMenuItem> items)
+    public NSDiffableDataSourceSectionSnapshot<DtMenuItem> GetNavigationSnapshot(IEnumerable<DtMenuItem> items)
     {
         var snapshot = new NSDiffableDataSourceSectionSnapshot<DtMenuItem>();
 

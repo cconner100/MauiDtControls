@@ -6,6 +6,8 @@ using AppKit;
 using DtControls.Controls;
 using DtControls.Models;
 
+using Foundation;
+
 using Microsoft.Maui.Handlers;
 
 using UIKit;
@@ -17,6 +19,7 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIView>, I
     UISplitViewController IDtNavigationHandler.splitView =>splitView;
     UISplitViewController splitView;
     DtSidebarViewController dtSidebarViewController;
+    private UICollectionViewDiffableDataSource<NSString, DtMenuItem> dataSource;
     Page contentView;
 
 
@@ -163,7 +166,10 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIView>, I
 
     public static void MapMenuItems(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        GetController(viewHandler)?.SetHeader(virtualView?.Header);
+        var controller = GetController(viewHandler);
+
+        var list = controller?.GetNavigationSnapshot(virtualView?.MenuItems);
+        controller.SetupNavigationItems(list);
 
     }
 
