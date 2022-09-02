@@ -17,6 +17,7 @@ public interface IDtNavigationHandler : IViewHandler
 {
 #if MACCATALYST
     UISplitViewController splitView { get; }
+    DtSidebarViewController Controller { get; }
 #endif
     /// <summary>
     /// 

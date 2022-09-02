@@ -2,7 +2,6 @@
 
 namespace DtControls.Handlers;
 
-using AppKit;
 using DtControls.Controls;
 using DtControls.Models;
 
@@ -19,13 +18,14 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIView>, I
     UISplitViewController IDtNavigationHandler.splitView =>splitView;
     UISplitViewController splitView;
     DtSidebarViewController dtSidebarViewController;
-    private UICollectionViewDiffableDataSource<NSString, DtMenuItem> dataSource;
     Page contentView;
 
-
+    
     public DtNavigationHandler(IPropertyMapper mapper, CommandMapper commandMapper = null) : base(mapper, commandMapper)
     {
     }
+
+    DtSidebarViewController IDtNavigationHandler.Controller => dtSidebarViewController;
 
     public override void SetMauiContext(IMauiContext mauiContext)
     {
@@ -60,18 +60,10 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIView>, I
 
     #region Properties
 
-    static DtSidebarViewController GetController(IDtNavigationHandler viewHandler)
-    {
-        if (viewHandler.PlatformView is IViewHandler h)
-        {
-            return ((DtSidebarViewController)((DtNavigationHandler)h.PlatformView).ViewController);
-        }
-        return null;
-    }
 
     public static void MapHeader(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        GetController(viewHandler)?.SetHeader(virtualView?.Header);
+        viewHandler.Controller?.SetHeader(virtualView?.Header);
     }
 
     public static void MapAutoSuggestBox(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
@@ -166,10 +158,23 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIView>, I
 
     public static void MapMenuItems(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        var controller = GetController(viewHandler);
-
-        var list = controller?.GetNavigationSnapshot(virtualView?.MenuItems);
-        controller.SetupNavigationItems(list);
+        if(virtualView.MenuItems == null)
+        {
+            return;
+        }
+        DtBuildMenuContext dtBuildMenuContext = new DtBuildMenuContext();
+        var menu = dtBuildMenuContext.BuildPlatformMenus(virtualView.MenuItems?.ToList());
+        if (menu != null)
+        {
+            // hack copy
+            var x = new List<DtMenuItem>();
+            foreach(var m in menu)
+            {
+                x.Add((DtMenuItem)m);
+            }
+            var list = viewHandler.Controller?.GetNavigationSnapshot(x);
+            viewHandler.Controller?.SetupNavigationItems(list);
+        }
 
     }
 

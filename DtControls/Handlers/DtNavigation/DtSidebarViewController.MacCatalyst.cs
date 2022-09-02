@@ -87,6 +87,7 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
 
     public NSDiffableDataSourceSectionSnapshot<DtMenuItem> GetNavigationSnapshot(IEnumerable<DtMenuItem> items)
     {
+
         var snapshot = new NSDiffableDataSourceSectionSnapshot<DtMenuItem>();
 
         var headers = items.Where(n => n.menuType == DtMenuItem.MenuType.Header);
@@ -98,6 +99,8 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
 
         return snapshot;
     }
+
+
 
     void ConfigureRowSources()
     {
@@ -153,7 +156,7 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
             })
          );
 
-        if (this.collectionView is null)
+        if (collectionView is null)
         {
             throw new NullReferenceException(nameof(this.collectionView));
         }
