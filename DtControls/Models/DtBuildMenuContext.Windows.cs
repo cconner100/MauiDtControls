@@ -53,6 +53,8 @@ public class DtBuildMenuContext : IDtBuildMenuContext
             Icon = (IconElement)(item.iconImage != null ?  item.iconImage.ToIconSource(DtMauiContext.mauiContext)?.CreateIconElement()  : null),
             Tag = item.screen
         };
+
+        
         ToolTipService.SetToolTip(ret, tooltip);
         if (item.childrenItems.Any())
         {

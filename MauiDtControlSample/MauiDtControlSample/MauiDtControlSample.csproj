@@ -45,6 +45,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiIcon Include="Resources\AppIcon\apricots.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Include="..\.editorconfig" Link=".editorconfig" />
 	</ItemGroup>
 

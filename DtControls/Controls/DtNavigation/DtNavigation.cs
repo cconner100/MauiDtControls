@@ -350,7 +350,7 @@ public partial class DtNavigation : View, IContentView, IDtNavigation
     }
 
 
-    public static readonly BindableProperty IsTitleBarAutoPaddingEnabledProperty = BindableProperty.Create("IsTitleBarAutoPaddingEnabled", typeof(bool), typeof(DtNavigation), true);
+    public static readonly BindableProperty IsTitleBarAutoPaddingEnabledProperty = BindableProperty.Create("IsTitleBarAutoPaddingEnabled", typeof(bool), typeof(DtNavigation), false);
     public bool IsTitleBarAutoPaddingEnabled
     {
         get
