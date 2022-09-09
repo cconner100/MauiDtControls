@@ -13,6 +13,7 @@
                              IsBackButtonVisable="Auto" 
                              IsSettingsVisible="True"
                              PaneDisplayMode="LeftCompact"
+                             OnLoaded="NavView_OnLoaded"
                              >
             <dt:DtNavigation.AutoSuggestBox>
                 <SearchBar x:Name="AutoSuggest" 

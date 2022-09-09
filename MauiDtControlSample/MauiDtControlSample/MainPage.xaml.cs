@@ -29,12 +29,6 @@ public partial class MainPage : ContentPage
         }
         loaded = true;
 
-        if (BindingContext is MainPageViewModel viewModel)
-        {
-            viewModel.OnLoadOfNavView();
-            viewModel.SearchBarOnLoad(AutoSuggest);
-        }
-
         // setup events for clicks
         NavView.ItemInvoked += NavView_ItemInvoked;
         NavView.SelectionChanged += NavView_SelectionChanged;
@@ -125,6 +119,15 @@ public partial class MainPage : ContentPage
         if (BindingContext is MainPageViewModel viewModel)
         {
             viewModel.TabCloseRequested((DtWindowTabs)sender, e);
+        }
+    }
+
+    void NavView_OnLoaded(System.Object sender, System.EventArgs e)
+    {
+        if (BindingContext is MainPageViewModel viewModel)
+        {
+            viewModel.OnLoadOfNavView();
+            viewModel.SearchBarOnLoad(AutoSuggest);
         }
     }
 }

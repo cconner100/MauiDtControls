@@ -11,6 +11,8 @@ public interface IDtNavigation : IContentView
 
     #region Events
 
+    event EventHandler OnLoaded;
+
     event EventHandler BackRequested;
 
     event EventHandler<DtNavigationItemCollapsedEventArgs> Collapsed;
@@ -31,6 +33,8 @@ public interface IDtNavigation : IContentView
 
     event EventHandler<DtNavigationSelectionChangedEventArgs> SelectionChanged;
     #endregion
+
+    void HandleOnLoaded(object sender, object args);
 
     void HandleBackRequested(object sender, object args);
 

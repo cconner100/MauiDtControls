@@ -65,6 +65,9 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
         {
 
         }
+
+        // triger control loaded
+        dtNavigationView.HandleOnLoaded(dtNavigationView, null);
     }
 
     public void SetHeader(string header)

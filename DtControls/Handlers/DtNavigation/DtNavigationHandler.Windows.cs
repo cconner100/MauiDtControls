@@ -53,9 +53,13 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
         platformView.PaneOpened -= PlatformView_PaneOpened;
         platformView.PaneOpening -= PlatformView_PaneOpening;
         platformView.SelectionChanged -= PlatformView_SelectionChanged;
+
+        // triger control loaded
+        dtNavigationView.HandleOnLoaded(platformView, null);
+        // call the onloaded
     }
 
-    #region Events
+#region Events
 
 
     private void PlatformView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
@@ -116,9 +120,9 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
         var narg = new DtNavigationItemInvokedEventArgs { InvokedItem = args.InvokedItem.ToString(), IsSettingsInvoked = args.IsSettingsInvoked };
         VirtualView?.HandleItemInvoked(sender, narg);
     }
-    #endregion
+#endregion
 
-    #region Properties
+#region Properties
 
     public static void MapContent(IDtNavigationHandler handler, IDtNavigation virtualView)
     {
@@ -343,6 +347,6 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
             ((NavigationView)(viewHandler?.PlatformView)).SelectedItem = virtualView.SelectedItem;
         }
     }
-    #endregion
+#endregion
 }
 #endif

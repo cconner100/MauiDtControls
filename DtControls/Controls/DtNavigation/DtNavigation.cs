@@ -70,6 +70,7 @@ public partial class DtNavigation : View, IContentView, IDtNavigation
         footer
     }
     #region Events
+    public event EventHandler OnLoaded;
 
     public event EventHandler BackRequested;
 
@@ -98,6 +99,11 @@ public partial class DtNavigation : View, IContentView, IDtNavigation
         {
             return DtMauiContext.mauiContext;
         }
+    }
+
+    public void HandleOnLoaded(object sender, object args)
+    {
+        OnLoaded?.Invoke(sender, null);
     }
 
     public void HandleBackRequested(object sender, object args)
