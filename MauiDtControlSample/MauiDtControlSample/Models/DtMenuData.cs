@@ -18,13 +18,15 @@ public class DtMenuData : IDtMenu
             id = new Guid(),
             title = "Fruits",
             subTitle = "What is a fruit",
+            toolTip = "What are fruits",
+            iconImage = "fruits.png",
             menuType = DtMenuItem.MenuType.ExpandableRow,
             childrenItems =
-            {new DtMenuItem {id=new Guid(), title = "apricots", subTitle = "thats an easy one", toolTip ="thats an easy one",  menuType = DtMenuItem.MenuType.Row, iconImage = "appicon.png", screen = typeof(TabPage1)},
-            {new DtMenuItem { id = new Guid(), title = "grapes", toolTip = "green or purple?", menuType = DtMenuItem.MenuType.Row, iconImage = "grapes.png", screen = typeof(TabPage1)}},
-            {new DtMenuItem { id = new Guid(), title = "These are also fruits", toolTip = "Did you know this", menuType = DtMenuItem.MenuType.ExpandableRow, iconImage = "question.png", childrenItems =
-                {new DtMenuItem { id = new Guid(), title = "almonds", toolTip = "shell items", menuType = DtMenuItem.MenuType.Row, iconImage = "almonds.png", screen = typeof(TabPage1)},
-                {new DtMenuItem { id = new Guid(), title = "acorns", toolTip = "shell items", menuType = DtMenuItem.MenuType.Row, iconImage = "acorns.png", screen = typeof(TabPage1)}}
+            {new DtMenuItem {id=new Guid(), title = "Peach", subTitle = "thats an easy one", toolTip ="thats an easy one",  menuType = DtMenuItem.MenuType.Row, iconImage = "peach.png", screen = typeof(TabPage1)},
+            {new DtMenuItem { id = new Guid(), title = "Grapes", toolTip = "green or purple?", menuType = DtMenuItem.MenuType.Row, iconImage = "grapes.png", screen = typeof(TabPage1)}},
+            {new DtMenuItem { id = new Guid(), title = "These are also fruits", toolTip = "Did you know this", menuType = DtMenuItem.MenuType.ExpandableRow, iconImage = "roundquestionmark.png", childrenItems =
+                {new DtMenuItem { id = new Guid(), title = "Almonds", toolTip = "shell items", menuType = DtMenuItem.MenuType.Row, iconImage = "almond.png", screen = typeof(TabPage1)},
+                {new DtMenuItem { id = new Guid(), title = "Acorns", toolTip = "shell items", menuType = DtMenuItem.MenuType.Row, iconImage = "acorn.png", screen = typeof(TabPage1)}}
             },
         } } }
         });

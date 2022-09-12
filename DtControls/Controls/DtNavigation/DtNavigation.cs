@@ -146,7 +146,7 @@ public partial class DtNavigation : View, IContentView, IDtNavigation
         PaneOpened?.Invoke(sender, (EventArgs)args);
     }
 
-    public void WinPaneOpening(object sender, object args)
+    public void HandlePaneOpening(object sender, object args)
     {
         PaneOpening?.Invoke(sender, (EventArgs)args);
     }
@@ -479,7 +479,29 @@ public partial class DtNavigation : View, IContentView, IDtNavigation
     object? IContentView.Content => Content;
 
     IView? IContentView.PresentedContent => (View)Content;
+
+    public Dictionary<string, DtMenuItem> MenuNames { get; } = new Dictionary<string, DtMenuItem>();
+
+    //Dictionary<string, DtMenuItem> IDtNavigation.MenuNames { get; }
 #nullable disable
     #endregion
+
+
+    public Dictionary<string, DtMenuItem> SearchMenuItems(string name)
+    {
+        var ret = new Dictionary<string, DtMenuItem>();
+        foreach (var item in MenuNames)
+        {
+            if (item.Key.Contains(name, StringComparison.OrdinalIgnoreCase))
+            {
+                ret.Add(item.Key, item.Value);
+            }
+        }
+        return ret;
+    }
+    public void ClearMenus()
+    {
+        MenuNames.Clear();
+    }
 }
 

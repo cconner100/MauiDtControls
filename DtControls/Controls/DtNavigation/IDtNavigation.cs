@@ -52,7 +52,7 @@ public interface IDtNavigation : IContentView
 
     void HandlePaneOpened(object sender, object args);
 
-    void WinPaneOpening(object sender, object args);
+    void HandlePaneOpening(object sender, object args);
 
     void HandleSelectionChanged(object sender, DtNavigationSelectionChangedEventArgs args);
 
@@ -105,6 +105,10 @@ public interface IDtNavigation : IContentView
     ViewPaneDisplayMode PaneDisplayMode { get; set; }
 
     DtMenuItem SelectedItem { get; set; }
+    Dictionary<string, DtMenuItem> MenuNames { get; }
+
+    Dictionary<string, DtMenuItem> SearchMenuItems(string search);
+    void ClearMenus();
     #endregion
 }
 

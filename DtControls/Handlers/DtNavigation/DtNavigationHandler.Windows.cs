@@ -37,6 +37,7 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
         platformView.PaneOpened += PlatformView_PaneOpened;
         platformView.PaneOpening += PlatformView_PaneOpening;
         platformView.SelectionChanged += PlatformView_SelectionChanged;
+        
     }
 
     protected override void DisconnectHandler(NavigationView platformView)
@@ -53,13 +54,9 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
         platformView.PaneOpened -= PlatformView_PaneOpened;
         platformView.PaneOpening -= PlatformView_PaneOpening;
         platformView.SelectionChanged -= PlatformView_SelectionChanged;
-
-        // triger control loaded
-        dtNavigationView.HandleOnLoaded(platformView, null);
-        // call the onloaded
     }
 
-#region Events
+    #region Events
 
 
     private void PlatformView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
@@ -81,17 +78,17 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
 
     private void PlatformView_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        Trace.WriteLine("OnLoaded");
+        VirtualView?.HandleOnLoaded(this, null);
     }
 
     private void PlatformView_PaneOpening(NavigationView sender, object args)
     {
-        VirtualView?.WinPaneOpening(sender, args);
+        VirtualView?.HandlePaneOpening(sender, args);
     }
 
     private void PlatformView_PaneOpened(NavigationView sender, object args)
     {
-        VirtualView?.WinPaneOpening(sender, args);
+        VirtualView?.HandlePaneOpening(sender, args);
     }
 
     private void PlatformView_PaneClosing(NavigationView sender, NavigationViewPaneClosingEventArgs args)
@@ -120,9 +117,9 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
         var narg = new DtNavigationItemInvokedEventArgs { InvokedItem = args.InvokedItem.ToString(), IsSettingsInvoked = args.IsSettingsInvoked };
         VirtualView?.HandleItemInvoked(sender, narg);
     }
-#endregion
+    #endregion
 
-#region Properties
+    #region Properties
 
     public static void MapContent(IDtNavigationHandler handler, IDtNavigation virtualView)
     {
@@ -219,8 +216,12 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
 
     public static void MapFooterMenuItems(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        DtBuildMenuContext dtBuildMenuContext = new DtBuildMenuContext();
-        var menu = dtBuildMenuContext.BuildPlatformMenus(virtualView.FooterMenuItems?.ToList());
+        if(virtualView.FooterMenuItems == null || !virtualView.FooterMenuItems.Any())
+        {
+            return;
+        }
+        ((NavigationView)(viewHandler?.PlatformView)).FooterMenuItems.Clear();
+        var menu = viewHandler.BuildPlatformMenus(virtualView.FooterMenuItems, virtualView);
         if (menu != null)
         {
             foreach (var menuItem in menu)
@@ -228,7 +229,7 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
                 ((NavigationView)(viewHandler?.PlatformView)).FooterMenuItems.Add(menuItem);
             }
 
-        }        
+        }
     }
 
 
@@ -270,15 +271,19 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
 
     public static void MapMenuItems(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        DtBuildMenuContext dtBuildMenuContext = new DtBuildMenuContext();
-        var menu = dtBuildMenuContext.BuildPlatformMenus(virtualView.MenuItems?.ToList());
-        if (menu != null)
+        if(virtualView.MenuItems == null || !virtualView.MenuItems.Any())
         {
-            foreach(var menuItem in menu)
+            return;
+        }
+        var menus = viewHandler.BuildPlatformMenus(virtualView.MenuItems, virtualView);
+
+        if (menus != null)
+        {
+            foreach (var menuItem in menus)
             {
                 ((NavigationView)(viewHandler?.PlatformView)).MenuItems.Add(menuItem);
             }
-            
+
         }
     }
 
@@ -347,6 +352,60 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
             ((NavigationView)(viewHandler?.PlatformView)).SelectedItem = virtualView.SelectedItem;
         }
     }
-#endregion
+    #endregion
+
+    public List<NavigationViewItem> BuildPlatformMenus(IList<DtMenuItem> menulist, IDtNavigation virtualView)
+    {
+        if (menulist == null)
+        {
+            return null;
+        }
+        List<NavigationViewItem> items = new List<NavigationViewItem>();
+        foreach (var item in menulist)
+        {
+            items.Add(MakeMenuItem(item, virtualView));
+        }
+        return items;
+    }
+
+   
+    private NavigationViewItem MakeMenuItem(DtMenuItem item, IDtNavigation virtualView)
+    {
+        var tooltip = new ToolTip
+        {
+            Content = item.toolTip
+        };
+        var ret = new NavigationViewItem
+        {
+            Content = item.title,
+            Tag = item.screen
+        };
+        if (item.iconImage != null)
+        {
+            var iconSource = item.iconImage.ToIconSource(DtMauiContext.mauiContext!);
+            if (PlatformView.Resources.TryGetValue("NavigationViewItemForeground", out object nviForeground) &&
+                            nviForeground is Microsoft.UI.Xaml.Media.Brush brush)
+            {
+                iconSource.Foreground = brush;
+            }
+
+            ret.Icon = iconSource.CreateIconElement();
+        }
+
+
+        ToolTipService.SetToolTip(ret, tooltip);
+        if (item.childrenItems.Any())
+        {
+            foreach (var child in item.childrenItems)
+            {
+                ret.MenuItems.Add(MakeMenuItem(child, virtualView));
+            }
+        }
+        if (item.menuType == DtMenuItem.MenuType.Row)
+        {
+            virtualView.MenuNames.Add(ret.Content.ToString(), item);
+        }
+        return ret;
+    }
 }
 #endif

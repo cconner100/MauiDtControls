@@ -12,13 +12,13 @@ using Microsoft.UI.Xaml.Input;
 #endif
 
 using System;
+using System.Linq;
 
 public partial class MainPageViewModel : IMainPageViewModel
 {
     DtNavigation NavView;
     SearchBar SearchBar;
     DtMenuData menu = new DtMenuData();
-    DtBuildMenuContext menucontext = new DtBuildMenuContext();
     MainPage page = null;
 
     private MainPageViewModel() { }
@@ -69,14 +69,14 @@ public partial class MainPageViewModel : IMainPageViewModel
         if (sb.Handler.PlatformView is AutoSuggestBox asb)
         {
             // get the real control here and use it
-            var ret = menucontext.SearchMenus(text);
+            var ret = NavView.SearchMenuItems(text);
             if (ret?.Count == 0)
             {
                 asb.ItemsSource = new string[] { "No result found" };
             }
             else
             {
-                asb.ItemsSource = ret;
+                asb.ItemsSource = ret.Keys.ToArray<string>();
             }
         }
 #endif

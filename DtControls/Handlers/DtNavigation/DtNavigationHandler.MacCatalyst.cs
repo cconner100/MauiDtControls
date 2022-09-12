@@ -5,8 +5,6 @@ namespace DtControls.Handlers;
 using DtControls.Controls;
 using DtControls.Models;
 
-using Foundation;
-
 using Microsoft.Maui.Handlers;
 
 using UIKit;
@@ -158,12 +156,12 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIView>, I
 
     public static void MapMenuItems(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        if(virtualView.MenuItems == null)
+        if(virtualView.MenuItems == null || !virtualView.MenuItems.Any())
         {
             return;
         }
-        DtBuildMenuContext dtBuildMenuContext = new DtBuildMenuContext();
-        var menu = dtBuildMenuContext.BuildPlatformMenus(virtualView.MenuItems?.ToList());
+
+        var menu = viewHandler.BuildPlatformMenus(virtualView.MenuItems, virtualView);
         if (menu != null)
         {
             // hack copy
@@ -209,6 +207,49 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIView>, I
     {
         
     }
-#endregion
+    #endregion
+
+    public List<DtMenuItem> BuildPlatformMenus(IList<DtMenuItem> menulist, IDtNavigation virtualView)
+    {
+        List<DtMenuItem> menu = new List<DtMenuItem>();
+
+        foreach (var item in menulist)
+        {
+            if (item.menuType == DtMenuItem.MenuType.Header)
+            {
+                menu.Add(item);
+                virtualView.MenuNames.Add(item.title, item);
+                continue;
+            }
+            if (item.menuType == DtMenuItem.MenuType.ExpandableRow)
+            {
+                menu.Add(item);
+                virtualView.MenuNames.Add(item.title, item);
+                if (item.childrenItems.Any())
+                {
+                    AddChildren(menu, item.childrenItems, virtualView);
+                    virtualView.MenuNames.Add(item.title, item);
+                    continue;
+                }
+            }
+            // must be a row
+            menu.Add(item);
+            virtualView.MenuNames.Add(item.title, item);
+        }
+        return menu;
+    }
+
+    void AddChildren(List<DtMenuItem> menu, List<DtMenuItem> items, IDtNavigation virtualView)
+    {
+        foreach (var item in items)
+        {
+            menu.Add(item);
+            virtualView.MenuNames.Add(item.title, item);
+            if (item.childrenItems.Any())
+            {
+                AddChildren(menu, item.childrenItems, virtualView);
+            }
+        }
+    }
 }
 #endif
