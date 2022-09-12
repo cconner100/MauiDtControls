@@ -20,11 +20,11 @@ public class DtMenuData : IDtMenu
             subTitle = "What is a fruit",
             menuType = DtMenuItem.MenuType.ExpandableRow,
             childrenItems =
-            {new DtMenuItem {id=new Guid(), title = "apricots", subTitle = "thats an easy one", menuType = DtMenuItem.MenuType.Row, iconImage = "appicon.png", screen = typeof(TabPage1)},
-            {new DtMenuItem { id = new Guid(), title = "grapes", subTitle = "thats an easy one", menuType = DtMenuItem.MenuType.Row, iconImage = "grapes.png", screen = typeof(TabPage1)}},
-            {new DtMenuItem { id = new Guid(), title = "These are also fruits", subTitle = "Did you know this", menuType = DtMenuItem.MenuType.ExpandableRow, iconImage = "question.png", childrenItems =
-                {new DtMenuItem { id = new Guid(), title = "almonds", subTitle = "shell items", menuType = DtMenuItem.MenuType.Row, iconImage = "almonds.png", screen = typeof(TabPage1)},
-                {new DtMenuItem { id = new Guid(), title = "acorns", subTitle = "shell items", menuType = DtMenuItem.MenuType.Row, iconImage = "acorns.png", screen = typeof(TabPage1)}}
+            {new DtMenuItem {id=new Guid(), title = "apricots", subTitle = "thats an easy one", toolTip ="thats an easy one",  menuType = DtMenuItem.MenuType.Row, iconImage = "appicon.png", screen = typeof(TabPage1)},
+            {new DtMenuItem { id = new Guid(), title = "grapes", toolTip = "green or purple?", menuType = DtMenuItem.MenuType.Row, iconImage = "grapes.png", screen = typeof(TabPage1)}},
+            {new DtMenuItem { id = new Guid(), title = "These are also fruits", toolTip = "Did you know this", menuType = DtMenuItem.MenuType.ExpandableRow, iconImage = "question.png", childrenItems =
+                {new DtMenuItem { id = new Guid(), title = "almonds", toolTip = "shell items", menuType = DtMenuItem.MenuType.Row, iconImage = "almonds.png", screen = typeof(TabPage1)},
+                {new DtMenuItem { id = new Guid(), title = "acorns", toolTip = "shell items", menuType = DtMenuItem.MenuType.Row, iconImage = "acorns.png", screen = typeof(TabPage1)}}
             },
         } } }
         });
