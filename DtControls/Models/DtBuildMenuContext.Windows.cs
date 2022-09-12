@@ -45,7 +45,7 @@ public class DtBuildMenuContext : IDtBuildMenuContext
     {
         var tooltip = new ToolTip
         {
-            Content = item.subTitle
+            Content = item.toolTip
         };
         var ret = new NavigationViewItem
         {

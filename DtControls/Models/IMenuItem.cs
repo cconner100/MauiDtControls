@@ -10,8 +10,14 @@ public class DtMenuItem
     public List<DtMenuItem> childrenItems { get; set; } = new List<DtMenuItem>();
     
     public string title { get; set; }
+    /// <summary>
+    /// Only on maccatalyst
+    /// </summary>
     public string subTitle { get; set; }
     public ImageSource iconImage { get; set; }
+    /// <summary>
+    /// only on winui
+    /// </summary>
     public string toolTip { get; set; }
     public Type screen { get; set; }
 
@@ -20,7 +26,8 @@ public class DtMenuItem
         Header,
         ExpandableRow,
         Row,
-        Footer
+        Footer, 
+        Seperator
     }
 }
 
