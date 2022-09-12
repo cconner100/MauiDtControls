@@ -218,23 +218,27 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIView>, I
             if (item.menuType == DtMenuItem.MenuType.Header)
             {
                 menu.Add(item);
-                virtualView.MenuNames.Add(item.title, item);
                 continue;
             }
             if (item.menuType == DtMenuItem.MenuType.ExpandableRow)
             {
                 menu.Add(item);
-                virtualView.MenuNames.Add(item.title, item);
                 if (item.childrenItems.Any())
                 {
                     AddChildren(menu, item.childrenItems, virtualView);
-                    virtualView.MenuNames.Add(item.title, item);
+                    if (item.menuType == DtMenuItem.MenuType.Row)
+                    {
+                        virtualView.MenuNames.Add(item.title, item);
+                    }
                     continue;
                 }
             }
             // must be a row
             menu.Add(item);
-            virtualView.MenuNames.Add(item.title, item);
+            if (item.menuType == DtMenuItem.MenuType.Row)
+            {
+                virtualView.MenuNames.Add(item.title, item);
+            }
         }
         return menu;
     }
@@ -244,7 +248,10 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIView>, I
         foreach (var item in items)
         {
             menu.Add(item);
-            virtualView.MenuNames.Add(item.title, item);
+            if (item.menuType == DtMenuItem.MenuType.Row)
+            {
+                virtualView.MenuNames.Add(item.title, item);
+            }
             if (item.childrenItems.Any())
             {
                 AddChildren(menu, item.childrenItems, virtualView);
