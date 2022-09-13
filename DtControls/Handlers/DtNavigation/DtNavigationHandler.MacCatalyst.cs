@@ -13,12 +13,12 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIView>, I
 {
     IDtNavigation IDtNavigationHandler.VirtualView => VirtualView;
 
-    UISplitViewController IDtNavigationHandler.splitView =>splitView;
+    UISplitViewController IDtNavigationHandler.splitView => splitView;
     UISplitViewController splitView;
     DtSidebarViewController dtSidebarViewController;
     Page contentView;
 
-    
+
     public DtNavigationHandler(IPropertyMapper mapper, CommandMapper commandMapper = null) : base(mapper, commandMapper)
     {
     }
@@ -31,11 +31,11 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIView>, I
         base.SetMauiContext(mauiContext);
     }
 
-        protected override UIView CreatePlatformView()
+    protected override UIView CreatePlatformView()
     {
-        splitView = new UISplitViewController
+        splitView = new UISplitViewController(UISplitViewControllerStyle.DoubleColumn)
         {
-            PrimaryBackgroundStyle = UISplitViewControllerBackgroundStyle.Sidebar
+            PrimaryBackgroundStyle = UISplitViewControllerBackgroundStyle.Sidebar,            
         };
 
 
@@ -43,7 +43,7 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIView>, I
 
         splitView.ViewControllers = new UIViewController[] { new UINavigationController(dtSidebarViewController) };
         ViewController = dtSidebarViewController;
-
+        
         return splitView?.View;
     }
 
@@ -68,86 +68,86 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIView>, I
     {
         if (virtualView.AutoSuggestBox != null)
         {
-            
+
         }
     }
 
     public static void MapAlwaysShowHeader(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        
+
     }
 
 
     public static void MapIsBackButtonVisable(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        
+
     }
 
- 
+
     public static void MapBackButtonEnabled(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        
+
     }
 
 
     public static void MapCompactModeThresholdWidth(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-       
+
     }
 
 
     public static void MapCompactPaneLength(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        
+
     }
 
     public static void MapDisplayMode(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        
+
     }
 
     public static void MapExpandedModeThresholdWidth(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        
+
     }
 
     public static void MapFooterMenuItems(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        
+
     }
 
 
     public static void MapFooterMenuItemsSource(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        
+
     }
 
     public static void MapHeaderTemplate(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        
+
     }
 
 
     public static void MapIsPaneOpen(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        
+
     }
 
 
     public static void MapIsPaneToggleButtonVisible(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-       
+
     }
 
 
     public static void MapIsSettingsVisible(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-       
+        viewHandler.Controller.ShowSettings(virtualView.IsSettingsVisible);
     }
 
     public static void MapIsTitleBarAutoPaddingEnabled(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        
+
     }
 
     public static void MapMenuItemContainerStyle(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
@@ -156,7 +156,7 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIView>, I
 
     public static void MapMenuItems(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        if(virtualView.MenuItems == null || !virtualView.MenuItems.Any())
+        if (virtualView.MenuItems == null || !virtualView.MenuItems.Any())
         {
             return;
         }
@@ -166,7 +166,7 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIView>, I
         {
             // hack copy
             var x = new List<DtMenuItem>();
-            foreach(var m in menu)
+            foreach (var m in menu)
             {
                 x.Add((DtMenuItem)m);
             }
@@ -178,35 +178,37 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIView>, I
 
     public static void MapMenuItemsSource(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-       
+
     }
 
     public static void MapMenuItemsTemplate(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        
+
     }
 
 
     public static void MapOpenPaneLength(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        
+
     }
 
     public static void MapPaneDisplayMode(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        
+
     }
 
     public static void MapOverflowLabelMode(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-       
+
     }
 
 
     public static void MapSelectedItem(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        
+
     }
+
+
     #endregion
 
     public List<DtMenuItem> BuildPlatformMenus(IList<DtMenuItem> menulist, IDtNavigation virtualView)

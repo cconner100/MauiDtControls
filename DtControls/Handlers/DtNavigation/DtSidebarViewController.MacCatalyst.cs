@@ -31,14 +31,12 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
         }
 
 
-        if (dtNavigationView?.IsSettingsVisible == true)
-        {
-            var settingsButton = new UIBarButtonItem(UIImage.GetSystemImage("gear"), UIBarButtonItemStyle.Plain, OpenSettings)
-            {
-                AccessibilityLabel = "Settings"
-            };
-            NavigationItem.RightBarButtonItem = settingsButton;
-        }
+        //// show the sidebar icon
+        //var sidebarButton = new UIBarButtonItem(UIImage.GetSystemImage("sidebar.left"), UIBarButtonItemStyle.Plain, null)
+        //{
+        //    AccessibilityLabel = "Sidebar"
+        //};
+        //NavigationItem.LeftBarButtonItem = sidebarButton;
 
 
         collectionView = new UICollectionView(View.Bounds, CreateLayout())
@@ -59,12 +57,15 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
 
         NSLayoutConstraint.ActivateConstraints(constraints.ToArray());
 
+
         ConfigureRowSources();
 
         if (dtNavigationView?.AutoSuggestBox != null)
         {
 
         }
+
+        SplitViewController.PreferredDisplayMode = UISplitViewControllerDisplayMode.Automatic;
 
         // triger control loaded
         dtNavigationView.HandleOnLoaded(dtNavigationView, null);
@@ -75,6 +76,31 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
         Title = header;
     }
 
+    void OpenCloseSideBar(object sender, EventArgs e)
+    {
+        bool closed = SplitViewController.Collapsed;
+        
+        if (closed)
+        {
+            SplitViewController.ShowColumn(UISplitViewControllerColumn.Primary);
+        }
+        else
+        {
+            SplitViewController.HideColumn(UISplitViewControllerColumn.Primary);
+        }
+    }
+
+    public void ShowSettings(bool IsSettingsVisible)
+    {
+        if (dtNavigationView?.IsSettingsVisible == true)
+        {
+            var settingsButton = new UIBarButtonItem(UIImage.GetSystemImage("gear"), UIBarButtonItemStyle.Plain, OpenSettings)
+            {
+                AccessibilityLabel = "Settings"
+            };
+            NavigationItem.RightBarButtonItem = settingsButton;
+        }
+    }
 
     public void SetupNavigationItems(NSDiffableDataSourceSectionSnapshot<DtMenuItem> snapshot)
     {
