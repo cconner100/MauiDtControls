@@ -7,6 +7,7 @@ using DtControls.Models;
 using Foundation;
 
 using UIKit;
+using static Microsoft.Maui.Controls.Platform.Compatibility.ShellPageRendererTracker;
 
 public class DtSidebarViewController : UIViewController, IUICollectionViewDelegate
 {
@@ -29,15 +30,6 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
         {
             throw new NullReferenceException(nameof(View));
         }
-
-
-        //// show the sidebar icon
-        //var sidebarButton = new UIBarButtonItem(UIImage.GetSystemImage("sidebar.left"), UIBarButtonItemStyle.Plain, null)
-        //{
-        //    AccessibilityLabel = "Sidebar"
-        //};
-        //NavigationItem.LeftBarButtonItem = sidebarButton;
-
 
         collectionView = new UICollectionView(View.Bounds, CreateLayout())
         {
@@ -76,19 +68,6 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
         Title = header;
     }
 
-    void OpenCloseSideBar(object sender, EventArgs e)
-    {
-        bool closed = SplitViewController.Collapsed;
-        
-        if (closed)
-        {
-            SplitViewController.ShowColumn(UISplitViewControllerColumn.Primary);
-        }
-        else
-        {
-            SplitViewController.HideColumn(UISplitViewControllerColumn.Primary);
-        }
-    }
 
     public void ShowSettings(bool IsSettingsVisible)
     {
@@ -123,10 +102,36 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
         snapshot.AppendItems(headers.ToArray());
         snapshot.ExpandItems(headers.ToArray());
 
-        var rows = items.Where(n => n.menuType == DtMenuItem.MenuType.Row || n.menuType == DtMenuItem.MenuType.ExpandableRow);
-        snapshot.AppendItems(rows.ToArray());
+        IEnumerable<DtMenuItem> rowitems = items.Where(n => n.menuType != DtMenuItem.MenuType.Header);
+        snapshot.AppendItems(rowitems.ToArray());
+
+        foreach (var row in items)
+        {
+            if (row.menuType == DtMenuItem.MenuType.ExpandableRow)
+            {
+                ApplyChildren(row, snapshot);
+            }
+        }
 
         return snapshot;
+    }
+
+    void ApplyChildren(DtMenuItem parent, NSDiffableDataSourceSectionSnapshot<DtMenuItem> snapshot)
+    {
+        List<DtMenuItem> dtMenuItems = new();
+        foreach(var row in parent.childrenItems)
+        {
+            dtMenuItems.Add(row);
+        }
+        snapshot.AppendItems(dtMenuItems.ToArray(), parent);
+
+        foreach(var row in parent.childrenItems)
+        {
+            if(row.childrenItems.Any())
+            {
+                ApplyChildren(row, snapshot);
+            }
+        }
     }
 
 
@@ -144,6 +149,32 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
 
                 var cfg = UIListContentConfiguration.SidebarHeaderConfiguration;
                 cfg.Text = sidebarItem.title;
+                if (sidebarItem.platformImage != null)
+                {
+                    cfg.Image = (UIImage)sidebarItem.platformImage;
+                }
+                else
+                {
+                    if (sidebarItem.mauiIconImage == null)
+                    {
+                        cfg.Image = null;
+                    }
+                    else
+                    {
+                        sidebarItem.mauiIconImage.LoadImage(DtMauiContext.mauiContext, result =>
+                        {
+                            var image = result?.Value;
+                            try
+                            {
+                                cfg.Image = image;
+                            }
+                            catch
+                            {
+                                //UIImage ctor throws on file not found if MonoTouch.ObjCRuntime.Class.ThrowOnInitFailure is true;
+                            }
+                        });
+                    }
+                }
                 cell.ContentConfiguration = cfg;
             })
          );
@@ -157,11 +188,35 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
                     return;
                 }
 
-                var cfg = UIListContentConfiguration.SidebarHeaderConfiguration;
+                var cfg = UIListContentConfiguration.SidebarSubtitleCellConfiguration;
                 cfg.Text = sidebarItem.title;
                 cfg.SecondaryText = sidebarItem.subTitle;
-                //cfg.Image = (UIImage)sidebarItem.iconObject != null ? sidebarItem.iconObject : null;
-
+                if (sidebarItem.platformImage != null)
+                {
+                    cfg.Image = (UIImage)sidebarItem.platformImage;
+                }
+                else
+                {
+                    if (sidebarItem.mauiIconImage == null)
+                    {
+                        cfg.Image = null;
+                    }
+                    else
+                    {
+                        sidebarItem.mauiIconImage.LoadImage(DtMauiContext.mauiContext, result =>
+                        {
+                            var image = result?.Value;
+                            try
+                            {
+                                cfg.Image = image;
+                            }
+                            catch
+                            {
+                                //UIImage ctor throws on file not found if MonoTouch.ObjCRuntime.Class.ThrowOnInitFailure is true;
+                            }
+                        });
+                    }
+                }
                 cell.ContentConfiguration = cfg;
                 ((UICollectionViewListCell)cell).Accessories = new[] { new UICellAccessoryOutlineDisclosure() };
             })
@@ -176,10 +231,36 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
                     return;
                 }
 
-                var cfg = UIListContentConfiguration.SidebarCellConfiguration;
+                var cfg = UIListContentConfiguration.SidebarSubtitleCellConfiguration;
                 cfg.Text = sidebarItem.title;
                 cfg.SecondaryText = sidebarItem.subTitle;
-                //cfg.Image = (UIImage)sidebarItem.iconObject != null ? sidebarItem.iconObject : null;
+
+                if (sidebarItem.platformImage != null)
+                {
+                    cfg.Image = (UIImage)sidebarItem.platformImage;
+                }
+                else
+                {
+                    if (sidebarItem.mauiIconImage == null)
+                    {
+                        cfg.Image = null;
+                    }
+                    else
+                    {
+                        sidebarItem.mauiIconImage.LoadImage(DtMauiContext.mauiContext, result =>
+                        {
+                            var image = result?.Value;
+                            try
+                            {
+                                cfg.Image = image;
+                            }
+                            catch
+                            {
+                                //UIImage ctor throws on file not found if MonoTouch.ObjCRuntime.Class.ThrowOnInitFailure is true;
+                            }
+                        });
+                    }
+                }
 
                 cell.ContentConfiguration = cfg;
             })
@@ -211,6 +292,7 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
             })
         );
     }
+
     UICollectionViewLayout CreateLayout()
     {
         var config = new UICollectionLayoutListConfiguration(UICollectionLayoutListAppearance.Sidebar)

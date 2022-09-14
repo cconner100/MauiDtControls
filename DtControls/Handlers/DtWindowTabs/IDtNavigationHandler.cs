@@ -35,7 +35,7 @@ public interface IDtNavigationHandler : IViewHandler
 #endif
 
 #if MACCATALYST
-    List<DtMenuItem> BuildPlatformMenus(IList<DtMenuItem> menulist, IDtNavigation virtualView);
+    IList<DtMenuItem> BuildPlatformMenus(IList<DtMenuItem> menulist, IDtNavigation virtualView);
 #endif
 
 #if NETSTANDARD || (NET6_0 && !MACCATALYST && !ANDROID && !WINDOWS)

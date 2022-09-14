@@ -14,7 +14,8 @@ public class DtMenuItem
     /// Only on maccatalyst
     /// </summary>
     public string subTitle { get; set; }
-    public ImageSource iconImage { get; set; }
+    public ImageSource mauiIconImage { get; set; }
+    public object platformImage { get; set; }
     /// <summary>
     /// only on winui
     /// </summary>
