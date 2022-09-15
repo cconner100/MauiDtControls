@@ -3,7 +3,12 @@
 using DtControls.Models;
 
 
+
 using System.Collections.Generic;
+
+#if WINDOWS
+using Microsoft.UI.Xaml.Controls;
+#endif
 
 #if MACCATALYST
 using UIKit;
@@ -22,14 +27,15 @@ public class DtMenuData : IDtMenu
             id = Guid.NewGuid(),
             title = "Transportation",
 #if WINDOWS
-
+            platformImage = new SymbolIcon(Symbol.People),
 #endif
+
 #if MACCATALYST
             platformImage = UIImage.GetSystemImage("car.2"),
 #endif
             //mauiIconImage = "fruits.png",
             menuType = DtMenuItem.MenuType.Header,
-        }); ;
+        });
 
         dtmenudata.Add(new DtMenuItem
         {
@@ -37,6 +43,9 @@ public class DtMenuData : IDtMenu
             title = "Ground",
             subTitle = "Traveling on the ground",
             toolTip = "Traveling on the ground",
+#if WINDOWS
+            platformImage = new SymbolIcon(Symbol.World),
+#endif
 #if MACCATALYST
             platformImage = UIImage.GetSystemImage("figure.wave"),
 #endif
@@ -50,6 +59,9 @@ public class DtMenuData : IDtMenu
                 subTitle = null,
                 toolTip ="Ford?",
                 menuType = DtMenuItem.MenuType.Row,
+#if WINDOWS
+            platformImage = new SymbolIcon(Symbol.Repair),
+#endif
 #if MACCATALYST
                 platformImage = UIImage.GetSystemImage("car"),
 #endif
@@ -62,6 +74,9 @@ public class DtMenuData : IDtMenu
                     title = "Bus",
                     toolTip = "Red or Blue Line",
                     menuType = DtMenuItem.MenuType.Row,
+#if WINDOWS
+            platformImage = new SymbolIcon(Symbol.OtherUser),
+#endif
 #if MACCATALYST
                     platformImage = UIImage.GetSystemImage("bus"),
 #endif
@@ -75,6 +90,9 @@ public class DtMenuData : IDtMenu
                     title = "Cable Car",
                     toolTip = "Southern Pacific",
                     menuType = DtMenuItem.MenuType.Row,
+#if WINDOWS
+                    platformImage = new SymbolIcon(Symbol.Phone),
+#endif
 #if MACCATALYST
                     platformImage = UIImage.GetSystemImage("cablecar"),
 #endif
@@ -89,6 +107,9 @@ public class DtMenuData : IDtMenu
                 title = "Other",
                 toolTip = "Water, Air",
                 menuType = DtMenuItem.MenuType.ExpandableRow,
+#if WINDOWS
+            platformImage = new SymbolIcon(Symbol.PhoneBook),
+#endif
 #if MACCATALYST
                 platformImage = UIImage.GetSystemImage("fuelpump"),
 #endif
@@ -101,6 +122,9 @@ public class DtMenuData : IDtMenu
                         title = "Airplane",
                         toolTip = null,
                         menuType = DtMenuItem.MenuType.Row,
+#if WINDOWS
+                        platformImage = new SymbolIcon(Symbol.Pin),
+#endif
 #if MACCATALYST
                         platformImage = UIImage.GetSystemImage("airplane"),
 #endif
@@ -114,6 +138,9 @@ public class DtMenuData : IDtMenu
                         title = "Ferry",
                         toolTip = "Maybe take your car",
                         menuType = DtMenuItem.MenuType.Row,
+#if WINDOWS
+                        platformImage = new SymbolIcon(Symbol.Contact2),
+#endif
 #if MACCATALYST
                         platformImage = UIImage.GetSystemImage("ferry"),
 #endif
@@ -132,6 +159,9 @@ public class DtMenuData : IDtMenu
             title = "Help",
             subTitle = "How to use this",
             menuType = DtMenuItem.MenuType.Row,
+#if WINDOWS
+            platformImage = new SymbolIcon(Symbol.Help),
+#endif
 #if MACCATALYST
             platformImage = UIImage.GetSystemImage("questionmark.circle"),
 #endif

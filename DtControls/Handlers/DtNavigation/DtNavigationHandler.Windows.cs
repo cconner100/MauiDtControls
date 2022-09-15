@@ -380,16 +380,23 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
             Content = item.title,
             Tag = item.screen
         };
-        if (item.iconImage != null)
+        if (item.platformImage != null)
         {
-            var iconSource = item.iconImage.ToIconSource(DtMauiContext.mauiContext!);
-            if (PlatformView.Resources.TryGetValue("NavigationViewItemForeground", out object nviForeground) &&
-                            nviForeground is Microsoft.UI.Xaml.Media.Brush brush)
+            ret.Icon = (IconElement)item.platformImage;
+        }
+        else
+        {
+            if (item.mauiIconImage != null)
             {
-                iconSource.Foreground = brush;
-            }
+                var iconSource = item.mauiIconImage.ToIconSource(DtMauiContext.mauiContext!);
+                if (PlatformView.Resources.TryGetValue("NavigationViewItemForeground", out object nviForeground) &&
+                                nviForeground is Microsoft.UI.Xaml.Media.Brush brush)
+                {
+                    iconSource.Foreground = brush;
+                }
 
-            ret.Icon = iconSource.CreateIconElement();
+                ret.Icon = iconSource.CreateIconElement();
+            }
         }
 
 
