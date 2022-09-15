@@ -104,9 +104,9 @@ public partial class MainPageViewModel : IMainPageViewModel
         sender.TabItems.Add(newtab);
     }
 
-    public void TabCloseRequested(DtWindowTabs sender, EventArgs e)
+    public void TabCloseRequested(DtWindowTabs sender, DtTabWindowItemCloseRequestEventArgs e)
     {
-        //sender.TabItems.Remove(e.tab);
+        sender.TabItems.Remove(e.tab);
     }
 #endregion
 

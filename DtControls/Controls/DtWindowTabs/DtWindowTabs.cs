@@ -2,6 +2,8 @@
 
 namespace DtControls.Controls;
 
+using DtControls.Models;
+
 using Microsoft.Maui.Graphics;
 
 using System.Collections.ObjectModel;
@@ -38,7 +40,7 @@ public partial class DtWindowTabs : View, IContentView, IDtWindowTabs
 
     public event EventHandler SelectionChanged;
 
-    public event EventHandler TabCloseRequested;
+    public event EventHandler<DtTabWindowItemCloseRequestEventArgs> TabCloseRequested;
 
     public event EventHandler TabDragCompleted;
 
@@ -68,9 +70,9 @@ public partial class DtWindowTabs : View, IContentView, IDtWindowTabs
         SelectionChanged?.Invoke(sender, (EventArgs)args);
     }
 
-    public void HandleTabCloseRequested(object sender, object args)
+    public void HandleTabCloseRequested(object sender, DtTabWindowItemCloseRequestEventArgs args)
     {
-        TabCloseRequested?.Invoke(sender, (EventArgs)args);
+        TabCloseRequested?.Invoke(sender, args);
     }
 
     public void HandleTabDragCompleted(object sender, object args)

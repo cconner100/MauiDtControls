@@ -107,7 +107,15 @@ namespace DtControls.Handlers
 
         void PlatformView_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
         {
-            VirtualView.HandleTabCloseRequested(this.VirtualView, args);
+            foreach(var t in VirtualView.TabItems)
+            {
+                if(args.Tab == t.GetTabViewItem())
+                {
+                    var eventargs = new DtTabWindowItemCloseRequestEventArgs(t, args);
+                    VirtualView.HandleTabCloseRequested(this.VirtualView, eventargs);
+                    return;
+                }
+            }
         }
 
         void PlatformView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -204,9 +212,17 @@ namespace DtControls.Handlers
 
             if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove)
             {
-                if (sender is DtWindowTabItem t)
+                if (e.OldItems != null)
                 {
-                    _tabView.TabItems.Remove(t);
+                    var b = _tabView.TabItems.Remove(_tabView.SelectedItem);
+                    if(_tabView.TabItems.Count - 1 > 0)
+                    {
+                        _tabView.SelectedIndex = _tabView.TabItems.Count - 1;
+                    }
+                    else
+                    {
+                        _tabView.SelectedIndex = 0;
+                    }
                 }
             }
         }

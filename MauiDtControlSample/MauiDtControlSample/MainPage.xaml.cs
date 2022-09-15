@@ -114,20 +114,20 @@ public partial class MainPage : ContentPage
         }
     }
 
-    private void WindowTabView_TabCloseRequested(object sender, EventArgs e)
-    {
-        if (BindingContext is MainPageViewModel viewModel)
-        {
-            viewModel.TabCloseRequested((DtWindowTabs)sender, e);
-        }
-    }
-
     void NavView_OnLoaded(System.Object sender, System.EventArgs e)
     {
         if (BindingContext is MainPageViewModel viewModel)
         {
             viewModel.OnLoadOfNavView();
             viewModel.SearchBarOnLoad(AutoSuggest);
+        }
+    }
+
+    private void WindowTabView_TabCloseRequested(object sender, DtTabWindowItemCloseRequestEventArgs e)
+    {
+        if (BindingContext is MainPageViewModel viewModel)
+        {
+            viewModel.TabCloseRequested((DtWindowTabs)sender, e);
         }
     }
 }

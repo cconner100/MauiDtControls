@@ -2,8 +2,15 @@
 namespace DtControls.Controls;
 
 using DtControls.Control;
+using DtControls.Models;
+
+#if WINDOWS
+using Windows.Foundation;
+#endif
 
 using System;
+
+
 
 [ContentProperty("Content")]
 public partial class DtWindowTabItem : View, IContentView, IElement, IDtWindowTabItem, IDisposable
@@ -12,6 +19,7 @@ public partial class DtWindowTabItem : View, IContentView, IElement, IDtWindowTa
     {
         Connect();
     }
+
     #region Properties
     public NavigationPage navigationPage;
     private bool disposedValue;
@@ -70,11 +78,12 @@ public partial class DtWindowTabItem : View, IContentView, IElement, IDtWindowTa
     #endregion
     #region Events
 
-    public event EventHandler CloseRequested;
+    public event EventHandler<DtTabWindowItemCloseRequestEventArgs> CloseRequested;
 
-    public void WinCloseRequested(object sender, object args)
+
+    public void WinCloseRequested(DtWindowTabItem sender, DtTabWindowItemCloseRequestEventArgs args)
     {
-        CloseRequested?.Invoke(sender, (EventArgs)args);
+        CloseRequested?.Invoke(sender, args);
     }
     #endregion
 
@@ -129,6 +138,17 @@ public partial class DtWindowTabItem : View, IContentView, IElement, IDtWindowTa
         // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
         Dispose(disposing: true);
         GC.SuppressFinalize(this);
+    }
+
+#if WINDOWS
+    public Microsoft.Maui.Graphics.Size CrossPlatformArrange(Microsoft.Maui.Graphics.Rect bounds)
+    {
+        throw new NotImplementedException();
+    }
+#endif
+    Microsoft.Maui.Graphics.Size IContentView.CrossPlatformMeasure(double widthConstraint, double heightConstraint)
+    {
+        throw new NotImplementedException();
     }
 
 #if !ANDROID && !MACCATALYST && !IOS && !WINDOWS

@@ -1,6 +1,8 @@
 ﻿
 namespace DtControls.Controls;
 
+using DtControls.Models;
+
 using System;
 using System.Collections.ObjectModel;
 
@@ -15,7 +17,7 @@ public interface IDtWindowTabs : IView
 
     event EventHandler SelectionChanged;
 
-    event EventHandler TabCloseRequested;
+    event EventHandler<DtTabWindowItemCloseRequestEventArgs> TabCloseRequested;
 
     event EventHandler TabDragCompleted;
 
@@ -35,7 +37,7 @@ public interface IDtWindowTabs : IView
 
     void HandleSelectionChanged(object sender, object args);
 
-    void HandleTabCloseRequested(object sender, object args);
+    void HandleTabCloseRequested(object sender, DtTabWindowItemCloseRequestEventArgs args);
 
     void HandleTabDragCompleted(object sender, object args);
 
