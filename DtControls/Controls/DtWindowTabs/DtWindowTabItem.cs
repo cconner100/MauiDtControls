@@ -70,16 +70,8 @@ public partial class DtWindowTabItem : View, IContentView, IElement, IDtWindowTa
     #endregion
     #region Events
 
-    /// <summary>
-    /// 
-    /// </summary>
     public event EventHandler CloseRequested;
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="args"></param>
     public void WinCloseRequested(object sender, object args)
     {
         CloseRequested?.Invoke(sender, (EventArgs)args);

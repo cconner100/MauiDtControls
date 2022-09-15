@@ -21,13 +21,9 @@ public interface IDtNavigationHandler : IViewHandler
     UISplitViewController splitView { get; }
     DtSidebarViewController Controller { get; }
 #endif
-    /// <summary>
-    /// 
-    /// </summary>
+
     new IDtNavigation VirtualView { get; }
-    /// <summary>
-    /// 
-    /// </summary>
+
     new PlatformView PlatformView { get; }
 
 #if WINDOWS

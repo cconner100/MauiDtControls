@@ -19,19 +19,11 @@ namespace DtControls.Handlers
         ObservableCollection<DtWindowTabItem> dtWindowTabItemViews { get; set; } = new ObservableCollection<DtWindowTabItem>();
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
         protected override TabView CreatePlatformView()
         {
             return _tabView;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="platformView"></param>
         protected override void ConnectHandler(TabView platformView)
         {
             _tabView.HorizontalAlignment = Microsoft.UI.Xaml.HorizontalAlignment.Stretch;
@@ -51,10 +43,6 @@ namespace DtControls.Handlers
             dtWindowTabItemViews.CollectionChanged += DtWindowTabItemViews_CollectionChanged;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="platformView"></param>
         protected override void DisconnectHandler(TabView platformView)
         {
             base.DisconnectHandler(platformView);
@@ -73,10 +61,6 @@ namespace DtControls.Handlers
         }
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="mauiContext"></param>
         public override void SetMauiContext(IMauiContext mauiContext)
         {
             DtMauiContext.mauiContext = mauiContext;
@@ -84,169 +68,84 @@ namespace DtControls.Handlers
         }
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void PlatformView_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        void PlatformView_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
-            VirtualView.WinLoaded(this.VirtualView, e);
+            VirtualView.HandleLoaded(this.VirtualView, e);
         }
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void PlatformView_TabStripDrop(object sender, Microsoft.UI.Xaml.DragEventArgs e)
+        void PlatformView_TabStripDrop(object sender, Microsoft.UI.Xaml.DragEventArgs e)
         {
-            VirtualView.WinTabStripDrop(this.VirtualView, e);
+            VirtualView.HandleTabStripDrop(this.VirtualView, e);
+        }
+
+        void PlatformView_TabStripDragOver(object sender, Microsoft.UI.Xaml.DragEventArgs e)
+        {
+            VirtualView.HandleTabStripDragOver(this.VirtualView, e);
         }
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void PlatformView_TabStripDragOver(object sender, Microsoft.UI.Xaml.DragEventArgs e)
+        void PlatformView_TabItemsChanged(TabView sender, Windows.Foundation.Collections.IVectorChangedEventArgs args)
         {
-            VirtualView.WinTabStripDragOver(this.VirtualView, e);
+            VirtualView.HandleTabItemsChanged(this.VirtualView, args);
         }
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="args"></param>
-        private void PlatformView_TabItemsChanged(TabView sender, Windows.Foundation.Collections.IVectorChangedEventArgs args)
+        void PlatformView_TabDroppedOutside(TabView sender, TabViewTabDroppedOutsideEventArgs args)
         {
-            VirtualView.WinTabItemsChanged(this.VirtualView, args);
+            VirtualView.HandleTabDroppedOutSide(this.VirtualView, args);
         }
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="args"></param>
-        private void PlatformView_TabDroppedOutside(TabView sender, TabViewTabDroppedOutsideEventArgs args)
+        void PlatformView_TabDragStarting(TabView sender, TabViewTabDragStartingEventArgs args)
         {
-            VirtualView.WinTabDroppedOutSide(this.VirtualView, args);
+            VirtualView.HandleTabDragStarting(this.VirtualView, args);
         }
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="args"></param>
-        private void PlatformView_TabDragStarting(TabView sender, TabViewTabDragStartingEventArgs args)
+        void PlatformView_TabDragCompleted(TabView sender, TabViewTabDragCompletedEventArgs args)
         {
-            VirtualView.WinTabDragStarting(this.VirtualView, args);
+            VirtualView.HandleTabDragCompleted(this.VirtualView, args);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="args"></param>
-        private void PlatformView_TabDragCompleted(TabView sender, TabViewTabDragCompletedEventArgs args)
+        void PlatformView_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
         {
-            VirtualView.WinTabDragCompleted(this.VirtualView, args);
+            VirtualView.HandleTabCloseRequested(this.VirtualView, args);
         }
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="args"></param>
-        private void PlatformView_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
+        void PlatformView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            VirtualView.WinTabCloseRequested(this.VirtualView, args);
+            VirtualView.HandleSelectionChanged(this.VirtualView, e);
         }
 
-        /// <summary>
-        /// /
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void PlatformView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            VirtualView.WinSelectionChanged(this.VirtualView, e);
-        }
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="args"></param>
         private void PlatformView_AddTabButtonClick(TabView sender, object args)
         {
-            VirtualView.WinAddTabButtonClick(this.VirtualView, args);
+            VirtualView.HandleAddTabButtonClick(this.VirtualView, args);
         }
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="viewHandler"></param>
-        /// <param name="virtualView"></param>
         public static void MapAddTabButtonCommand(IDtWindowTabsHandler viewHandler, IDtWindowTabs virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).AddTabButtonCommand = (ICommand)virtualView.AddTabButtonCommand;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="viewHandler"></param>
-        /// <param name="virtualView"></param>
+
         public static void MapAddTabButtonCommandParameter(IDtWindowTabsHandler viewHandler, IDtWindowTabs virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).AddTabButtonCommandParameter = virtualView.AddTabButtonCommandParameter;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="viewHandler"></param>
-        /// <param name="virtualView"></param>
         public static void MapAllowDropTabs(IDtWindowTabsHandler viewHandler, IDtWindowTabs virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).AllowDropTabs = virtualView.AllowDropTabs;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="viewHandler"></param>
-        /// <param name="virtualView"></param>
         public static void MapCanDragTabs(IDtWindowTabsHandler viewHandler, IDtWindowTabs virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).CanDragTabs = virtualView.CanDragTabs;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="viewHandler"></param>
-        /// <param name="virtualView"></param>
         public static void MapCanReorderTabs(IDtWindowTabsHandler viewHandler, IDtWindowTabs virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).CanReorderTabs = virtualView.CanReorderTabs;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="viewHandler"></param>
-        /// <param name="virtualView"></param>
         public static void MapCloseButtonOverlayMode(IDtWindowTabsHandler viewHandler, IDtWindowTabs virtualView)
         {
             TabViewCloseButtonOverlayMode mode = TabViewCloseButtonOverlayMode.Always;
@@ -265,48 +164,27 @@ namespace DtControls.Handlers
             ((TabView)(viewHandler?.PlatformView)).CloseButtonOverlayMode = mode;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="viewHandler"></param>
-        /// <param name="virtualView"></param>
         public static void MapIsAddTabButtonVisible(IDtWindowTabsHandler viewHandler, IDtWindowTabs virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).IsAddTabButtonVisible = virtualView.IsAddTabButtonVisible;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="viewHandler"></param>
-        /// <param name="virtualView"></param>
         public static void MapSelectedIndex(IDtWindowTabsHandler viewHandler, IDtWindowTabs virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).SelectedIndex = virtualView.SelectedIndex;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="viewHandler"></param>
-        /// <param name="virtualView"></param>
         public static void MapSelectedItem(IDtWindowTabsHandler viewHandler, IDtWindowTabs virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).SelectedItem = virtualView.SelectedItem;
         }
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="viewHandler"></param>
-        /// <param name="virtualView"></param>
         public static void MapTabItems(IDtWindowTabsHandler viewHandler, IDtWindowTabs virtualView)
         {
             viewHandler.GetItemsCollection();
         }
 
-        private void DtWindowTabItemViews_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        void DtWindowTabItemViews_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add)
             {
@@ -333,32 +211,17 @@ namespace DtControls.Handlers
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="viewHandler"></param>
-        /// <param name="virtualView"></param>
         public static void MapTabItemsSource(IDtWindowTabsHandler viewHandler, IDtWindowTabs virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).TabItemsSource = virtualView.TabItemsSource;
         }
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="viewHandler"></param>
-        /// <param name="virtualView"></param>
         public static void MapTabStripFooter(IDtWindowTabsHandler viewHandler, IDtWindowTabs virtualView)
         {
             ((TabView)(viewHandler?.PlatformView)).TabStripFooter = virtualView.TabStripFooter;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="viewHandler"></param>
-        /// <param name="virtualView"></param>
         public static void MapTabWidthMode(IDtWindowTabsHandler viewHandler, IDtWindowTabs virtualView)
         {
             TabViewWidthMode mode = TabViewWidthMode.Compact;

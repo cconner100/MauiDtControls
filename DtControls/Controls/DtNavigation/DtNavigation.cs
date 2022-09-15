@@ -6,9 +6,6 @@ using DtControls.Models;
 
 using Microsoft.Maui.Graphics;
 
-/// <summary>
-/// 
-/// </summary>
 [ContentProperty("Content")]
 public partial class DtNavigation : View, IContentView, IDtNavigation
 {
@@ -28,18 +25,12 @@ public partial class DtNavigation : View, IContentView, IDtNavigation
         Minimal
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
     public enum ViewOverflowLabelMode
     {
         MoreLabel,
         NoLabel
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
     public enum ViewPaneDisplayMode
     {
         Auto,
@@ -49,9 +40,6 @@ public partial class DtNavigation : View, IContentView, IDtNavigation
         Top
     }
 
-    /// <summary>
-    /// Where to place menu items
-    /// </summary>
     public enum MenuArea
     {
         /// <summary>
@@ -473,16 +461,13 @@ public partial class DtNavigation : View, IContentView, IDtNavigation
     }
 
 #nullable enable
-    /// <summary>
-    /// 
-    /// </summary>
+
     object? IContentView.Content => Content;
 
     IView? IContentView.PresentedContent => (View)Content;
 
     public Dictionary<string, DtMenuItem> MenuNames { get; } = new Dictionary<string, DtMenuItem>();
 
-    //Dictionary<string, DtMenuItem> IDtNavigation.MenuNames { get; }
 #nullable disable
     #endregion
 
