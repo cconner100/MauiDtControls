@@ -10,6 +10,7 @@ namespace DtControls.Handlers
     using System.Collections.ObjectModel;
     using System.Windows.Input;
 
+    using static DtControls.Models.DtWindowTabsDragEventArgs;
 
     public partial class DtWindowTabsHandler : ViewHandler<DtWindowTabs, TabView>, IDtWindowTabsHandler
     {
@@ -76,33 +77,36 @@ namespace DtControls.Handlers
 
         void PlatformView_TabStripDrop(object sender, Microsoft.UI.Xaml.DragEventArgs e)
         {
-            VirtualView.HandleTabStripDrop(this.VirtualView, e);
+            VirtualView.HandleTabStripDrop(this.VirtualView, new DtWindowTabsStripDropEventArgs(e));
         }
 
         void PlatformView_TabStripDragOver(object sender, Microsoft.UI.Xaml.DragEventArgs e)
         {
-            VirtualView.HandleTabStripDragOver(this.VirtualView, e);
+            VirtualView.HandleTabStripDragOver(this.VirtualView, new DtWindowTabsStripDragOverEventArgs(e));
         }
 
 
         void PlatformView_TabItemsChanged(TabView sender, Windows.Foundation.Collections.IVectorChangedEventArgs args)
         {
-            VirtualView.HandleTabItemsChanged(this.VirtualView, args);
+            VirtualView.HandleTabItemsChanged(this.VirtualView, new DtWindowTabsItemsChangedEventArgs(args));
         }
 
         void PlatformView_TabDroppedOutside(TabView sender, TabViewTabDroppedOutsideEventArgs args)
         {
-            VirtualView.HandleTabDroppedOutSide(this.VirtualView, args);
+            // lookup tab item
+            VirtualView.HandleTabDroppedOutSide(this.VirtualView, new DtWindowTabsDroppedOutsideEventArgs(this, args));
         }
 
         void PlatformView_TabDragStarting(TabView sender, TabViewTabDragStartingEventArgs args)
         {
-            VirtualView.HandleTabDragStarting(this.VirtualView, args);
+            // lookup tabitem
+            VirtualView.HandleTabDragStarting(this.VirtualView, new DtWindowTabsDragStartingEventArgs(this.VirtualView, args));
         }
 
         void PlatformView_TabDragCompleted(TabView sender, TabViewTabDragCompletedEventArgs args)
         {
-            VirtualView.HandleTabDragCompleted(this.VirtualView, args);
+            // Lookup tab
+            VirtualView.HandleTabDragCompleted(this.VirtualView, new DtWindowTabsItemDragCompletedEventArgs(args));
         }
 
         void PlatformView_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
@@ -111,7 +115,7 @@ namespace DtControls.Handlers
             {
                 if(args.Tab == t.GetTabViewItem())
                 {
-                    var eventargs = new DtTabWindowItemCloseRequestEventArgs(t, args);
+                    var eventargs = new DtWindowTabItemCloseRequestEventArgs(t, args);
                     VirtualView.HandleTabCloseRequested(this.VirtualView, eventargs);
                     return;
                 }
@@ -120,7 +124,7 @@ namespace DtControls.Handlers
 
         void PlatformView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            VirtualView.HandleSelectionChanged(this.VirtualView, e);
+            VirtualView.HandleSelectionChanged(this.VirtualView, new DtWindowTabsSelectionChangedEventArgs(this.VirtualView, e));
         }
 
         private void PlatformView_AddTabButtonClick(TabView sender, object args)

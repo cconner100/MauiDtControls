@@ -12,9 +12,9 @@ public interface IDtWindowTabItem : IContentView
 {
     #region Events
 
-    event EventHandler<DtTabWindowItemCloseRequestEventArgs> CloseRequested;
+    event EventHandler<DtWindowTabItemCloseRequestEventArgs> CloseRequested;
 
-    void WinCloseRequested(DtWindowTabItem sender, DtTabWindowItemCloseRequestEventArgs args);
+    void WinCloseRequested(DtWindowTabItem sender, DtWindowTabItemCloseRequestEventArgs args);
 #endregion
 
     string Header { get; set; }

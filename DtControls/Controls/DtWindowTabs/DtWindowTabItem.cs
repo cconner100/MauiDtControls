@@ -78,10 +78,10 @@ public partial class DtWindowTabItem : View, IContentView, IElement, IDtWindowTa
     #endregion
     #region Events
 
-    public event EventHandler<DtTabWindowItemCloseRequestEventArgs> CloseRequested;
+    public event EventHandler<DtWindowTabItemCloseRequestEventArgs> CloseRequested;
 
 
-    public void WinCloseRequested(DtWindowTabItem sender, DtTabWindowItemCloseRequestEventArgs args)
+    public void WinCloseRequested(DtWindowTabItem sender, DtWindowTabItemCloseRequestEventArgs args)
     {
         CloseRequested?.Invoke(sender, args);
     }

@@ -11,6 +11,6 @@ public interface IMainPageViewModel
     void TextToSearch(string text, SearchBar sb);
     void OnLoadOfNavView();
     void AddTabButtonClick(DtWindowTabs sender, EventArgs e);
-    void TabCloseRequested(DtWindowTabs sender, DtTabWindowItemCloseRequestEventArgs e);
+    void TabCloseRequested(DtWindowTabs sender, DtWindowTabItemCloseRequestEventArgs e);
 
 }

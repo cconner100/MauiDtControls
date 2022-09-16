@@ -7,7 +7,7 @@ using System;
 using System.Collections.ObjectModel;
 
 using static DtControls.Controls.DtWindowTabs;
-
+using static DtControls.Models.DtWindowTabsDragEventArgs;
 
 public interface IDtWindowTabs : IView
 {
@@ -15,41 +15,42 @@ public interface IDtWindowTabs : IView
 
     event EventHandler AddTabButtonClick;
 
-    event EventHandler SelectionChanged;
+ 
+    event EventHandler<DtWindowTabsSelectionChangedEventArgs> SelectionChanged;
 
-    event EventHandler<DtTabWindowItemCloseRequestEventArgs> TabCloseRequested;
+    event EventHandler<DtWindowTabItemCloseRequestEventArgs> TabCloseRequested;
 
-    event EventHandler TabDragCompleted;
+    event EventHandler<DtWindowTabsItemDragCompletedEventArgs> TabDragCompleted;
 
-    event EventHandler TabDragStarting;
+    event EventHandler<DtWindowTabsDragStartingEventArgs> TabDragStarting;
 
-    event EventHandler TabDroppedOutSide;
+    event EventHandler<DtWindowTabsDroppedOutsideEventArgs> TabDroppedOutSide;
 
-    event EventHandler TabItemsChanged;
+    event EventHandler<DtWindowTabsItemsChangedEventArgs> TabItemsChanged;
 
-    event EventHandler TabStripDragOver;
+    event EventHandler<DtWindowTabsStripDragOverEventArgs> TabStripDragOver;
 
-    event EventHandler TabStripDrop;
+    event EventHandler<DtWindowTabsStripDropEventArgs> TabStripDrop;
 
     void HandleLoaded(object sender, object args);
 
     void HandleAddTabButtonClick(object sender, object args);
 
-    void HandleSelectionChanged(object sender, object args);
+    void HandleSelectionChanged(object sender, DtWindowTabsSelectionChangedEventArgs args);
 
-    void HandleTabCloseRequested(object sender, DtTabWindowItemCloseRequestEventArgs args);
+    void HandleTabCloseRequested(object sender, DtWindowTabItemCloseRequestEventArgs args);
 
-    void HandleTabDragCompleted(object sender, object args);
+    void HandleTabDragCompleted(object sender, DtWindowTabsItemDragCompletedEventArgs args);
 
-    void HandleTabDragStarting(object sender, object args);
+    void HandleTabDragStarting(object sender, DtWindowTabsDragStartingEventArgs args);
 
-    void HandleTabDroppedOutSide(object sender, object args);
+    void HandleTabDroppedOutSide(object sender, DtWindowTabsDroppedOutsideEventArgs args);
 
-    void HandleTabItemsChanged(object sender, object args);
+    void HandleTabItemsChanged(object sender, DtWindowTabsItemsChangedEventArgs args);
 
-    void HandleTabStripDragOver(object sender, object args);
+    void HandleTabStripDragOver(object sender, DtWindowTabsStripDragOverEventArgs args);
 
-    void HandleTabStripDrop(object sender, object args);
+    void HandleTabStripDrop(object sender, DtWindowTabsStripDropEventArgs args);
  
     object AddTabButtonCommand { get; set; }
 

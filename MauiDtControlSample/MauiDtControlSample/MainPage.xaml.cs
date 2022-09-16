@@ -123,7 +123,7 @@ public partial class MainPage : ContentPage
         }
     }
 
-    private void WindowTabView_TabCloseRequested(object sender, DtTabWindowItemCloseRequestEventArgs e)
+    private void WindowTabView_TabCloseRequested(object sender, DtWindowTabItemCloseRequestEventArgs e)
     {
         if (BindingContext is MainPageViewModel viewModel)
         {

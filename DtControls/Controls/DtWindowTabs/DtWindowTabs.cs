@@ -8,6 +8,7 @@ using Microsoft.Maui.Graphics;
 
 using System.Collections.ObjectModel;
 
+using static DtControls.Models.DtWindowTabsDragEventArgs;
 
 [ContentProperty("Content")]
 public partial class DtWindowTabs : View, IContentView, IDtWindowTabs
@@ -38,21 +39,21 @@ public partial class DtWindowTabs : View, IContentView, IDtWindowTabs
 
     public event EventHandler AddTabButtonClick;
 
-    public event EventHandler SelectionChanged;
+    public event EventHandler<DtWindowTabsSelectionChangedEventArgs> SelectionChanged;
 
-    public event EventHandler<DtTabWindowItemCloseRequestEventArgs> TabCloseRequested;
+    public event EventHandler<DtWindowTabItemCloseRequestEventArgs> TabCloseRequested;
 
-    public event EventHandler TabDragCompleted;
+    public event EventHandler<DtWindowTabsItemDragCompletedEventArgs> TabDragCompleted;
 
-    public event EventHandler TabDragStarting;
+    public event EventHandler<DtWindowTabsDragStartingEventArgs> TabDragStarting;
 
-    public event EventHandler TabDroppedOutSide;
+    public event EventHandler<DtWindowTabsDroppedOutsideEventArgs> TabDroppedOutSide;
 
-    public event EventHandler TabItemsChanged;
+    public event EventHandler<DtWindowTabsItemsChangedEventArgs> TabItemsChanged;
 
-    public event EventHandler TabStripDragOver;
+    public event EventHandler<DtWindowTabsStripDragOverEventArgs> TabStripDragOver;
 
-    public event EventHandler TabStripDrop;
+    public event EventHandler<DtWindowTabsStripDropEventArgs> TabStripDrop;
 
     public void HandleLoaded(object sender, object args)
     {
@@ -65,44 +66,44 @@ public partial class DtWindowTabs : View, IContentView, IDtWindowTabs
     }
 
 
-    public void HandleSelectionChanged(object sender, object args)
+    public void HandleSelectionChanged(object sender, DtWindowTabsSelectionChangedEventArgs args)
     {
-        SelectionChanged?.Invoke(sender, (EventArgs)args);
+        SelectionChanged?.Invoke(sender, args);
     }
 
-    public void HandleTabCloseRequested(object sender, DtTabWindowItemCloseRequestEventArgs args)
+    public void HandleTabCloseRequested(object sender, DtWindowTabItemCloseRequestEventArgs args)
     {
         TabCloseRequested?.Invoke(sender, args);
     }
 
-    public void HandleTabDragCompleted(object sender, object args)
+    public void HandleTabDragCompleted(object sender, DtWindowTabsItemDragCompletedEventArgs args)
     {
-        TabDragCompleted?.Invoke(sender, (EventArgs)args);
+        TabDragCompleted?.Invoke(sender, args);
     }
 
-    public void HandleTabDragStarting(object sender, object args)
+    public void HandleTabDragStarting(object sender, DtWindowTabsDragStartingEventArgs args)
     {
-        TabDragStarting?.Invoke(sender, (EventArgs)args);
+        TabDragStarting?.Invoke(sender, args);
     }
 
-    public void HandleTabDroppedOutSide(object sender, object args)
+    public void HandleTabDroppedOutSide(object sender, DtWindowTabsDroppedOutsideEventArgs args)
     {
-        TabDroppedOutSide?.Invoke(sender, (EventArgs)args);
+        TabDroppedOutSide?.Invoke(sender, args);
     }
 
-    public void HandleTabItemsChanged(object sender, object args)
+    public void HandleTabItemsChanged(object sender, DtWindowTabsItemsChangedEventArgs args)
     {
-        TabItemsChanged?.Invoke(sender, (EventArgs)args);
+        TabItemsChanged?.Invoke(sender, args);
     }
 
-    public void HandleTabStripDragOver(object sender, object args)
+    public void HandleTabStripDragOver(object sender, DtWindowTabsStripDragOverEventArgs args)
     {
-        TabStripDragOver?.Invoke(sender, (EventArgs)args);
+        TabStripDragOver?.Invoke(sender, args);
     }
 
-    public void HandleTabStripDrop(object sender, object args)
+    public void HandleTabStripDrop(object sender, DtWindowTabsStripDropEventArgs args)
     {
-        TabStripDrop?.Invoke(sender, (EventArgs)args);
+        TabStripDrop?.Invoke(sender, args);
     }
 
     public Size CrossPlatformMeasure(double widthConstraint, double heightConstraint)
