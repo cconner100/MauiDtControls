@@ -1,25 +1,24 @@
-﻿namespace DtControls.Models;
+﻿#if WINDOWS
+namespace DtControls.Models;
 
 using DtControls.Controls;
 
-#if WINDOWS
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+
 using Windows.Foundation.Collections;
-#endif
 
 public class DtWindowTabItemCloseRequestEventArgs
 {
     public object Item { get; protected set; }
     public DtWindowTabItem Tab { get; protected set; }
 
-#if WINDOWS
+
     public DtWindowTabItemCloseRequestEventArgs(DtWindowTabItem dtWindowTabItem, TabViewTabCloseRequestedEventArgs args)
     {
         Item = args.Item;
         Tab = dtWindowTabItem;
     }
-#endif
 }
 
 public class DtWindowTabsItemDragCompletedEventArgs
@@ -36,7 +35,6 @@ public class DtWindowTabsItemDragCompletedEventArgs
     public object Item { get; protected set; }
     public DtWindowTabItem Tab { get; protected set; }
 
-#if WINDOWS
     public DtWindowTabsItemDragCompletedEventArgs(DtWindowTabItem tab, TabViewTabDragCompletedEventArgs args)
     {
         switch (args.DropResult)
@@ -57,8 +55,6 @@ public class DtWindowTabsItemDragCompletedEventArgs
         Item = args.Item;
         Tab = tab;
     }
-#endif
-
 }
 
 public class DtWindowTabsDragStartingEventArgs
@@ -67,7 +63,6 @@ public class DtWindowTabsDragStartingEventArgs
     public object Item { get; protected set; }
     public DtWindowTabItem Tab { get; protected set; }
 
-#if WINDOWS
     public bool Cancel { get { return savedargs.Cancel; } set { savedargs.Cancel = value; } }
 
     private TabViewTabDragStartingEventArgs savedargs { get; set; }
@@ -80,7 +75,7 @@ public class DtWindowTabsDragStartingEventArgs
         Tab = sender;
 
     }
-#endif
+
 }
 
 public class DtWindowTabsDroppedOutsideEventArgs
@@ -88,13 +83,13 @@ public class DtWindowTabsDroppedOutsideEventArgs
     public object Item { get; protected set; }
     public DtWindowTabItem Tab { get; protected set; }
 
-#if WINDOWS
+
     public DtWindowTabsDroppedOutsideEventArgs(DtWindowTabItem sender, TabViewTabDroppedOutsideEventArgs args)
     {
-        Item= args.Item;
-        Tab= sender;
+        Item = args.Item;
+        Tab = sender;
     }
-#endif
+
 }
 public class DtWindowTabsItemsChangedEventArgs
 {
@@ -109,8 +104,7 @@ public class DtWindowTabsItemsChangedEventArgs
     public DtWindowTabCollectionChanged CollectionChange { get; protected set; }
     public uint Index { get; protected set; }
 
-#if WINDOWS
-    public DtWindowTabsItemsChangedEventArgs(IVectorChangedEventArgs args )
+    public DtWindowTabsItemsChangedEventArgs(IVectorChangedEventArgs args)
     {
         switch (args.CollectionChange)
         {
@@ -127,10 +121,9 @@ public class DtWindowTabsItemsChangedEventArgs
                 CollectionChange = DtWindowTabCollectionChanged.ItemInserted;
                 break;
         }
-        
+
         Index = args.Index;
     }
-#endif
 }
 
 public class DtWindowTabsSelectionChangedEventArgs
@@ -139,14 +132,12 @@ public class DtWindowTabsSelectionChangedEventArgs
     public object OrginalSource { get; protected set; }
     public IList<object> RemovedItems { get; protected set; }
 
-#if WINDOWS
     public DtWindowTabsSelectionChangedEventArgs(DtWindowTabs tabs, SelectionChangedEventArgs args)
     {
         AddedItems = args.AddedItems;
         RemovedItems = args.RemovedItems;
         OrginalSource = args.OriginalSource;
     }
-#endif
 }
 
 public class DtWindowTabsDragEventArgs
@@ -175,14 +166,12 @@ public class DtWindowTabsDragEventArgs
     public object Data { get; set; }
     public object DataView { get; protected set; }
     public object DragUIOverride { get; protected set; }
-#if WINDOWS
+
     public bool Handled { get { return origargs.Handled; } set { origargs.Handled = value; } }
-#else
-    public bool Handled { get; set; }
-#endif
+
     public DtWindowTabsDragDropModifiers Modifiers { get; protected set; }
     public object OriginalSource { get; protected set; }
-#if WINDOWS
+
     Microsoft.UI.Xaml.DragEventArgs origargs;
 
     public DtWindowTabsDragEventArgs(Microsoft.UI.Xaml.DragEventArgs args)
@@ -258,11 +247,10 @@ public class DtWindowTabsDragEventArgs
     {
         return origargs.GetPosition(relativeTo);
     }
-#endif
 
     public class DtWindowTabsStripDragOverEventArgs : DtWindowTabsDragEventArgs
     {
-        public DtWindowTabsStripDragOverEventArgs(DragEventArgs args):base(args)
+        public DtWindowTabsStripDragOverEventArgs(DragEventArgs args) : base(args)
         {
         }
     }
@@ -274,5 +262,4 @@ public class DtWindowTabsDragEventArgs
         }
     }
 }
-
-
+#endif

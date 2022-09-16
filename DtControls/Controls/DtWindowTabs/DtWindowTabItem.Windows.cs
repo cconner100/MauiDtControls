@@ -30,7 +30,7 @@ public partial class DtWindowTabItem : View, IElement
     private void TabViewItem_CloseRequested(TabViewItem sender, TabViewTabCloseRequestedEventArgs args)
     {
 #if WINDOWS
-        var eventargs = new DtTabWindowItemCloseRequestEventArgs(this, args);
+        var eventargs = new DtWindowTabItemCloseRequestEventArgs(this, args);
 #endif
         CloseRequested?.Invoke(this, eventargs);
     }

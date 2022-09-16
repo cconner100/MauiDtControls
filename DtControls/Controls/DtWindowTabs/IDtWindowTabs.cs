@@ -7,7 +7,9 @@ using System;
 using System.Collections.ObjectModel;
 
 using static DtControls.Controls.DtWindowTabs;
+#if WINDOWS
 using static DtControls.Models.DtWindowTabsDragEventArgs;
+#endif
 
 public interface IDtWindowTabs : IView
 {

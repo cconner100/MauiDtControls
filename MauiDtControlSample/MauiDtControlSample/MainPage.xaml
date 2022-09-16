@@ -9,7 +9,7 @@
         <dt:DtNavigation x:Name="NavView" 
                              Grid.Column="0"
                              Grid.Row="0"
-                             IsBackButtonEnabled="True" 
+                             IsBackButtonEnabled="False" 
                              IsBackButtonVisable="Auto" 
                              IsSettingsVisible="True"
                              PaneDisplayMode="LeftCompact"
@@ -23,7 +23,6 @@
                                 Loaded="ContentPage_Loaded"
                                 AddTabButtonClick="WindowTabView_AddTabButtonClick"
                                 TabCloseRequested="WindowTabView_TabCloseRequested">
-                <!--<dt:DtWindowTabItems x:Name="item1" Header="New Tab" IsClosable="False"/>-->
             </dt:DtWindowTabs>
 
         </dt:DtNavigation>

@@ -61,19 +61,16 @@ namespace DtControls.Handlers
             dtWindowTabItemViews.CollectionChanged -= DtWindowTabItemViews_CollectionChanged;
         }
 
-
         public override void SetMauiContext(IMauiContext mauiContext)
         {
             DtMauiContext.mauiContext = mauiContext;
             base.SetMauiContext(mauiContext);
         }
 
-
         void PlatformView_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
             VirtualView.HandleLoaded(this.VirtualView, e);
         }
-
 
         void PlatformView_TabStripDrop(object sender, Microsoft.UI.Xaml.DragEventArgs e)
         {
@@ -83,6 +80,7 @@ namespace DtControls.Handlers
         void PlatformView_TabStripDragOver(object sender, Microsoft.UI.Xaml.DragEventArgs e)
         {
             VirtualView.HandleTabStripDragOver(this.VirtualView, new DtWindowTabsStripDragOverEventArgs(e));
+
         }
 
 
@@ -93,33 +91,51 @@ namespace DtControls.Handlers
 
         void PlatformView_TabDroppedOutside(TabView sender, TabViewTabDroppedOutsideEventArgs args)
         {
-            // lookup tab item
-            VirtualView.HandleTabDroppedOutSide(this.VirtualView, new DtWindowTabsDroppedOutsideEventArgs(this, args));
+            var dtTabItem = FindTabItemFromView(args.Tab);
+            if (dtTabItem != null)
+            {
+                VirtualView.HandleTabDroppedOutSide(this.VirtualView, new DtWindowTabsDroppedOutsideEventArgs(dtTabItem, args));
+            }
         }
 
         void PlatformView_TabDragStarting(TabView sender, TabViewTabDragStartingEventArgs args)
         {
-            // lookup tabitem
-            VirtualView.HandleTabDragStarting(this.VirtualView, new DtWindowTabsDragStartingEventArgs(this.VirtualView, args));
+            var dtTabItem = FindTabItemFromView(args.Tab);
+            if (dtTabItem != null)
+            {
+                VirtualView.HandleTabDragStarting(this.VirtualView, new DtWindowTabsDragStartingEventArgs(dtTabItem, args));
+            }
         }
 
         void PlatformView_TabDragCompleted(TabView sender, TabViewTabDragCompletedEventArgs args)
         {
-            // Lookup tab
-            VirtualView.HandleTabDragCompleted(this.VirtualView, new DtWindowTabsItemDragCompletedEventArgs(args));
+            var dtTabItem = FindTabItemFromView(args.Tab);
+            if (dtTabItem != null)
+            {
+                VirtualView.HandleTabDragCompleted(this.VirtualView, new DtWindowTabsItemDragCompletedEventArgs(dtTabItem, args));
+            }
         }
 
         void PlatformView_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
         {
-            foreach(var t in VirtualView.TabItems)
+            var dtTabItem = FindTabItemFromView(args.Tab);
+            if (dtTabItem != null)
             {
-                if(args.Tab == t.GetTabViewItem())
+                VirtualView.HandleTabCloseRequested(this.VirtualView, new DtWindowTabItemCloseRequestEventArgs(dtTabItem, args));
+                return;
+            }
+        }
+
+        DtWindowTabItem FindTabItemFromView(TabViewItem tab)
+        {
+            foreach (var t in VirtualView.TabItems)
+            {
+                if (tab == t.GetTabViewItem())
                 {
-                    var eventargs = new DtWindowTabItemCloseRequestEventArgs(t, args);
-                    VirtualView.HandleTabCloseRequested(this.VirtualView, eventargs);
-                    return;
+                    return t;
                 }
             }
+            return null;
         }
 
         void PlatformView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -219,7 +235,7 @@ namespace DtControls.Handlers
                 if (e.OldItems != null)
                 {
                     var b = _tabView.TabItems.Remove(_tabView.SelectedItem);
-                    if(_tabView.TabItems.Count - 1 > 0)
+                    if (_tabView.TabItems.Count - 1 > 0)
                     {
                         _tabView.SelectedIndex = _tabView.TabItems.Count - 1;
                     }

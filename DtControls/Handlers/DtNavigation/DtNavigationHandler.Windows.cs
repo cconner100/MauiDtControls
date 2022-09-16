@@ -66,14 +66,12 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
 
     void PlatformView_Collapsed(NavigationView sender, NavigationViewItemCollapsedEventArgs args)
     {
-        var nargs = new DtNavigationItemCollapsedEventArgs { InvokedItem = args.CollapsedItem.ToString() };
-        VirtualView?.HandleCollapsed(sender, nargs);
+        VirtualView?.HandleCollapsed(sender, new DtNavigationItemCollapsedEventArgs(args));
     }
 
     void PlatformView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
     {
-        var nargs = new DtNavigationSelectionChangedEventArgs { InvokedItem = args.SelectedItem.ToString(), IsSettingsInvoked = args.IsSettingsSelected };
-        VirtualView?.HandleSelectionChanged(sender, nargs);
+        VirtualView?.HandleSelectionChanged(sender, new DtNavigationSelectionChangedEventArgs(args));
     }
 
     void PlatformView_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
@@ -88,12 +86,12 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
 
     void PlatformView_PaneOpened(NavigationView sender, object args)
     {
-        VirtualView?.HandlePaneOpening(sender, args);
+        VirtualView?.HandlePaneOpened(sender, args);
     }
 
     void PlatformView_PaneClosing(NavigationView sender, NavigationViewPaneClosingEventArgs args)
     {
-        VirtualView?.HandlePaneClosing(sender, args);
+        VirtualView?.HandlePaneClosing(sender, new DtNavigationPaneClosingEventArgs(args));
     }
 
     void PlatformView_PaneClosed(NavigationView sender, object args)
@@ -103,19 +101,17 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
 
     void PlatformView_Expanding(NavigationView sender, NavigationViewItemExpandingEventArgs args)
     {
-        var nargs = new DtNavigationItemExpandingEventArgs { InvokedItem = args.ExpandingItem.ToString() };
-        VirtualView?.HandleExpanding(sender, nargs);
+        VirtualView?.HandleExpanding(sender, new DtNavigationItemExpandingEventArgs(args));
     }
 
     void PlatformView_DisplayModeChanged(NavigationView sender, NavigationViewDisplayModeChangedEventArgs args)
     {
-        VirtualView?.HandleDisplayModeChanged(sender, args);
+        VirtualView?.HandleDisplayModeChanged(sender, new DtNavigationDisplayModeChangedEventArgs(args));
     }
 
     void PlatformView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
-    {
-        var narg = new DtNavigationItemInvokedEventArgs { InvokedItem = args.InvokedItem.ToString(), IsSettingsInvoked = args.IsSettingsInvoked };
-        VirtualView?.HandleItemInvoked(sender, narg);
+    {        
+        VirtualView?.HandleItemInvoked(sender, new DtNavigationItemInvokedEventArgs(args));
     }
     #endregion
 

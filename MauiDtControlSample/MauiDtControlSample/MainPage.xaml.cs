@@ -5,6 +5,7 @@ using DtControls.Controls;
 
 using MauiDtControlSample.ViewModels;
 
+
 public partial class MainPage : ContentPage
 {
 
@@ -40,6 +41,9 @@ public partial class MainPage : ContentPage
         NavView.PaneClosing += NavView_PaneClosing;
         NavView.PaneOpened += NavView_PaneOpened;
         NavView.PaneOpening += NavView_PaneOpening;
+
+        // Add first tab, not closeable
+        ((MainPageViewModel)BindingContext)?.AddFirstTab(WindowTabView);
         Console.WriteLine("DEBUG -- ContentPage_Loaded");
     }
 

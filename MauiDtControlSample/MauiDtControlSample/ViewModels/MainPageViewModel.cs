@@ -104,6 +104,19 @@ public partial class MainPageViewModel : IMainPageViewModel
         sender.TabItems.Add(newtab);
     }
 
+    public void AddFirstTab(DtWindowTabs tabView)
+    {
+        var newtab = new DtWindowTabItem();
+        var page = new TabPage1();
+#if WINDOWS
+        newtab.IconSource = new SymbolIconSource() { Symbol = Symbol.Document };
+#endif
+        newtab.Header = "Home Page";
+        newtab.Content = new NavigationPage(page);    // "New Page";
+        newtab.IsClosable = false;
+        tabView.TabItems.Add(newtab);
+        tabView.SelectedItem = 0;
+    }
     public void TabCloseRequested(DtWindowTabs sender, DtWindowTabItemCloseRequestEventArgs e)
     {
         sender.TabItems.Remove(e.Tab);
