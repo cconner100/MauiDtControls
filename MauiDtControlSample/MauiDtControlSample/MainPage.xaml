@@ -10,7 +10,7 @@
                              Grid.Column="0"
                              Grid.Row="0"
                              IsBackButtonEnabled="False" 
-                             IsBackButtonVisable="Auto" 
+                             IsBackButtonVisible="Auto" 
                              IsSettingsVisible="True"
                              PaneDisplayMode="LeftCompact"
                              OnLoaded="NavView_OnLoaded"

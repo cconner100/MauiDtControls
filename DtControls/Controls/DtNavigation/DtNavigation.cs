@@ -178,16 +178,16 @@ public partial class DtNavigation : View, IContentView, IDtNavigation
     }
 
 
-    public static readonly BindableProperty IsBackButtonVisableProperty = BindableProperty.Create("IsBackButtonVisable", typeof(BackButtonVisable), typeof(DtNavigation), BackButtonVisable.Auto);
-    public BackButtonVisable IsBackButtonVisable
+    public static readonly BindableProperty IsBackButtonVisibleProperty = BindableProperty.Create("IsBackButtonVisable", typeof(BackButtonVisable), typeof(DtNavigation), BackButtonVisable.Auto);
+    public BackButtonVisable IsBackButtonVisible
     {
         get
         {
-            return (BackButtonVisable)GetValue(IsBackButtonVisableProperty);
+            return (BackButtonVisable)GetValue(IsBackButtonVisibleProperty);
         }
         set
         {
-            SetValue(IsBackButtonVisableProperty, value);
+            SetValue(IsBackButtonVisibleProperty, value);
         }
     }
 

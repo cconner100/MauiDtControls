@@ -69,24 +69,22 @@ namespace DtControls.Handlers
 
         void PlatformView_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
-            VirtualView.HandleLoaded(this.VirtualView, e);
+            VirtualView.HandleLoaded(VirtualView, e);
         }
 
         void PlatformView_TabStripDrop(object sender, Microsoft.UI.Xaml.DragEventArgs e)
         {
-            VirtualView.HandleTabStripDrop(this.VirtualView, new DtWindowTabsStripDropEventArgs(e));
+            VirtualView.HandleTabStripDrop(VirtualView, new DtWindowTabsStripDropEventArgs(e));
         }
 
         void PlatformView_TabStripDragOver(object sender, Microsoft.UI.Xaml.DragEventArgs e)
         {
-            VirtualView.HandleTabStripDragOver(this.VirtualView, new DtWindowTabsStripDragOverEventArgs(e));
-
+            VirtualView.HandleTabStripDragOver(VirtualView, new DtWindowTabsStripDragOverEventArgs(e));
         }
-
 
         void PlatformView_TabItemsChanged(TabView sender, Windows.Foundation.Collections.IVectorChangedEventArgs args)
         {
-            VirtualView.HandleTabItemsChanged(this.VirtualView, new DtWindowTabsItemsChangedEventArgs(args));
+            VirtualView.HandleTabItemsChanged(VirtualView, new DtWindowTabsItemsChangedEventArgs(args));
         }
 
         void PlatformView_TabDroppedOutside(TabView sender, TabViewTabDroppedOutsideEventArgs args)
@@ -94,7 +92,7 @@ namespace DtControls.Handlers
             var dtTabItem = FindTabItemFromView(args.Tab);
             if (dtTabItem != null)
             {
-                VirtualView.HandleTabDroppedOutSide(this.VirtualView, new DtWindowTabsDroppedOutsideEventArgs(dtTabItem, args));
+                VirtualView.HandleTabDroppedOutSide(VirtualView, new DtWindowTabsDroppedOutsideEventArgs(dtTabItem, args));
             }
         }
 
@@ -103,7 +101,7 @@ namespace DtControls.Handlers
             var dtTabItem = FindTabItemFromView(args.Tab);
             if (dtTabItem != null)
             {
-                VirtualView.HandleTabDragStarting(this.VirtualView, new DtWindowTabsDragStartingEventArgs(dtTabItem, args));
+                VirtualView.HandleTabDragStarting(VirtualView, new DtWindowTabsDragStartingEventArgs(dtTabItem, args));
             }
         }
 
@@ -112,7 +110,7 @@ namespace DtControls.Handlers
             var dtTabItem = FindTabItemFromView(args.Tab);
             if (dtTabItem != null)
             {
-                VirtualView.HandleTabDragCompleted(this.VirtualView, new DtWindowTabsItemDragCompletedEventArgs(dtTabItem, args));
+                VirtualView.HandleTabDragCompleted(VirtualView, new DtWindowTabsItemDragCompletedEventArgs(dtTabItem, args));
             }
         }
 
@@ -121,7 +119,7 @@ namespace DtControls.Handlers
             var dtTabItem = FindTabItemFromView(args.Tab);
             if (dtTabItem != null)
             {
-                VirtualView.HandleTabCloseRequested(this.VirtualView, new DtWindowTabItemCloseRequestEventArgs(dtTabItem, args));
+                VirtualView.HandleTabCloseRequested(VirtualView, new DtWindowTabItemCloseRequestEventArgs(dtTabItem, args));
                 return;
             }
         }
@@ -140,12 +138,12 @@ namespace DtControls.Handlers
 
         void PlatformView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            VirtualView.HandleSelectionChanged(this.VirtualView, new DtWindowTabsSelectionChangedEventArgs(this.VirtualView, e));
+            VirtualView.HandleSelectionChanged(VirtualView, new DtWindowTabsSelectionChangedEventArgs(this.VirtualView, e));
         }
 
         private void PlatformView_AddTabButtonClick(TabView sender, object args)
         {
-            VirtualView.HandleAddTabButtonClick(this.VirtualView, args);
+            VirtualView.HandleAddTabButtonClick(VirtualView, args);
         }
 
         public static void MapAddTabButtonCommand(IDtWindowTabsHandler viewHandler, IDtWindowTabs virtualView)

@@ -65,7 +65,7 @@ public class DtWindowTabsDragStartingEventArgs
 
     public bool Cancel { get { return savedargs.Cancel; } set { savedargs.Cancel = value; } }
 
-    private TabViewTabDragStartingEventArgs savedargs { get; set; }
+    private TabViewTabDragStartingEventArgs savedargs { get; }
     public DtWindowTabsDragStartingEventArgs(DtWindowTabItem sender, TabViewTabDragStartingEventArgs args)
     {
         savedargs = args;

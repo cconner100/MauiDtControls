@@ -5,6 +5,8 @@ using DtControls.Models;
 
 using MauiDtControlSample.Models;
 
+using Microsoft.Extensions.Logging;
+
 #if WINDOWS
 
 using Microsoft.UI.Xaml.Controls;
@@ -20,12 +22,13 @@ public partial class MainPageViewModel : IMainPageViewModel
     SearchBar SearchBar;
     DtMenuData menu = new DtMenuData();
     MainPage page = null;
-
+    ILogger logger = null;
     private MainPageViewModel() { }
-    public MainPageViewModel(MainPage thePage, DtNavigation navView)
+    public MainPageViewModel(MainPage thePage, DtNavigation navView, ILogger Logger)
     {
         page = thePage;
         NavView = navView;
+        logger = Logger;
         menu.InitMenuData();
     }
 
@@ -72,11 +75,11 @@ public partial class MainPageViewModel : IMainPageViewModel
             var ret = NavView.SearchMenuItems(text);
             if (ret?.Count == 0)
             {
-                asb.ItemsSource = new string[] { "No result found" };
+                asb.ItemsSource = new[] { "No result found" };
             }
             else
             {
-                asb.ItemsSource = ret.Keys.ToArray<string>();
+                asb.ItemsSource = ret?.Keys.ToArray<string>();
             }
         }
 #endif

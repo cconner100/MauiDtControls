@@ -159,7 +159,7 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
     public static void MapIsBackButtonVisable(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
         NavigationViewBackButtonVisible vis = NavigationViewBackButtonVisible.Auto;
-        switch (virtualView.IsBackButtonVisable)
+        switch (virtualView.IsBackButtonVisible)
         {
             case DtNavigation.BackButtonVisable.Visible:
                 vis = NavigationViewBackButtonVisible.Visible;

@@ -4,20 +4,22 @@ using DtControls.Models;
 using DtControls.Controls;
 
 using MauiDtControlSample.ViewModels;
-
+using Microsoft.Extensions.Logging;
 
 public partial class MainPage : ContentPage
 {
+    ILogger logger;
 
-    public MainPage()
+    public MainPage(ILogger Logger)
     {
         InitializeComponent();
-        BindingContext = new MainPageViewModel(this, NavView);
+        logger = Logger;
+        BindingContext = new MainPageViewModel(this, NavView, logger);
     }
 
     private void WindowTabView_Loaded(object sender, EventArgs e)
     {
-        Console.WriteLine("DEBUG -- ContentPage_Appearing");
+        logger.LogTrace("ContentPage_Appearing");
     }
 
     bool loaded;
@@ -44,57 +46,57 @@ public partial class MainPage : ContentPage
 
         // Add first tab, not closeable
         ((MainPageViewModel)BindingContext)?.AddFirstTab(WindowTabView);
-        Console.WriteLine("DEBUG -- ContentPage_Loaded");
+        logger.LogTrace("ContentPage_Loaded");
     }
 
     private void NavView_PaneOpening(object sender, EventArgs e)
     {
-        Console.WriteLine("DEBUG -- PaneOpening");
+        logger.LogTrace("PaneOpening");
     }
 
     private void NavView_PaneOpened(object sender, EventArgs e)
     {
-        Console.WriteLine("DEBUG -- PaneOpened");
+        logger.LogTrace("PaneOpened");
     }
 
     private void NavView_PaneClosing(object sender, EventArgs e)
     {
-        Console.WriteLine("DEBUG -- PaneClosing");
+        logger.LogTrace("PaneClosing");
     }
 
     private void NavView_PaneClosed(object sender, EventArgs e)
     {
-        Console.WriteLine("DEBUG -- PaneClosed");
+        logger.LogTrace("PaneClosed");
     }
 
     private void NavView_Expanding(object sender, DtNavigationItemExpandingEventArgs e)
     {
-        Console.WriteLine("DEBUG -- Expanding");
+        logger.LogTrace("Expanding");
     }
 
     private void NavView_DisplayModeChanged(object sender, EventArgs e)
     {
-        Console.WriteLine("DEBUG -- DisplayModeChanged");
+        logger.LogTrace("DisplayModeChanged");
     }
 
     private void NavView_Collapsed(object sender, DtNavigationItemCollapsedEventArgs e)
     {
-        Console.WriteLine("DEBUG -- Collapsed");
+        logger.LogTrace("Collapsed");
     }
 
     private void NavView_BackRequested(object sender, EventArgs e)
     {
-        Console.WriteLine("DEBUG -- BackRequested");
+        logger.LogTrace("BackRequested");
     }
 
     private void NavView_SelectionChanged(object sender, DtNavigationSelectionChangedEventArgs e)
     {
-        Console.WriteLine("DEBUG -- SelectionChanged");
+        logger.LogTrace("SelectionChanged");
     }
 
     private void NavView_ItemInvoked(object sender, DtNavigationItemInvokedEventArgs e)
     {
-        Console.WriteLine("DEBUG -- ItemInvoked");
+        logger.LogTrace("ItemInvoked");
     }
 
     private void AutoSuggest_TextChanged(object sender, TextChangedEventArgs e)

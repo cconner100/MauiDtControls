@@ -97,10 +97,7 @@ public partial class DtWindowTabItem : View, IContentView, IElement, IDtWindowTa
             {
                 return np.CurrentPage;
             }
-            else
-            {
-                return (IView)Content;
-            }
+            return (IView)Content;
         }
     }
 

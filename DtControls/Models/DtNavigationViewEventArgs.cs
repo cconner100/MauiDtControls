@@ -14,7 +14,7 @@ public class DtNavigationItemCollapsedEventArgs
     public object CollapsedItem { get; protected set; }
 
 #if WINDOWS
-    NavigationViewItemBase CollapsedItemContainer { get; set; }
+    NavigationViewItemBase CollapsedItemContainer { get; }
 
     public DtNavigationItemCollapsedEventArgs(NavigationViewItemCollapsedEventArgs args)
     {
@@ -121,26 +121,13 @@ public class DtNavigationSelectionChangedEventArgs
     public object SelectedItem { get; protected set; }
 #if WINDOWS
     NavigationViewSelectionChangedEventArgs orgArgs;
-    public bool IsSettingsSelected
-    {
-        get
-        {
-            return orgArgs.IsSettingsSelected;
-        }
-        protected set
-        {
-            IsSettingsSelected = value;
-        }
-    }
+    public bool IsSettingsSelected => orgArgs.IsSettingsSelected;
+
     public NavigationTransitionInfo RecommendedNavigationTransitionInfo
     {
         get
         {
             return orgArgs.RecommendedNavigationTransitionInfo;
-        }
-        protected set
-        {
-            RecommendedNavigationTransitionInfo = value;
         }
     }
     public NavigationViewItemBase SelectedItemContainer
@@ -148,10 +135,6 @@ public class DtNavigationSelectionChangedEventArgs
         get
         {
             return orgArgs.SelectedItemContainer;
-        }
-        protected set
-        {
-            SelectedItemContainer = value;
         }
     }
 

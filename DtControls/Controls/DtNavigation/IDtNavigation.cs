@@ -64,7 +64,7 @@ public interface IDtNavigation : IContentView
 
     public SearchBar AutoSuggestBox { get; set; }
 
-    BackButtonVisable IsBackButtonVisable { get; set; }
+    BackButtonVisable IsBackButtonVisible { get; set; }
 
     bool IsBackButtonEnabled { get; set; }
 

@@ -68,21 +68,19 @@ public class DtMenuData : IDtMenu
                 mauiIconImage = null,
                 screen = typeof(TabPage1)
                 },
-                {
                 new DtMenuItem {
                     id = Guid.NewGuid(),
                     title = "Bus",
                     toolTip = "Red or Blue Line",
                     menuType = DtMenuItem.MenuType.Row,
 #if WINDOWS
-            platformImage = new SymbolIcon(Symbol.OtherUser),
+                    platformImage = new SymbolIcon(Symbol.OtherUser),
 #endif
 #if MACCATALYST
                     platformImage = UIImage.GetSystemImage("bus"),
 #endif
                     mauiIconImage = null,
                     screen = typeof(TabPage1)
-                    }
                 },
                 {
                 new DtMenuItem {
@@ -131,7 +129,6 @@ public class DtMenuData : IDtMenu
                         mauiIconImage = null,
                         screen = typeof(TabPage1)
                     },
-                    {
                     new DtMenuItem
                     {
                         id = Guid.NewGuid(),
@@ -145,8 +142,8 @@ public class DtMenuData : IDtMenu
                         platformImage = UIImage.GetSystemImage("ferry"),
 #endif
                         mauiIconImage = null,
-                        screen = typeof(TabPage1)}}
-                    },
+                        screen = typeof(TabPage1)}
+                },
                 }
             }
         }

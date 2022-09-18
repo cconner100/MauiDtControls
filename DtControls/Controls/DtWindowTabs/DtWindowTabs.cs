@@ -18,7 +18,7 @@ public partial class DtWindowTabs : View, IContentView, IDtWindowTabs
         Always,
         Auto,
         OnPointerOver
-    };
+    }
 
     public enum TabWidthModeEnum
     {

@@ -10,7 +10,7 @@ public partial class DtNavigationHandler
         [nameof(DtNavigation.Header)] = MapHeader,
         [nameof(DtNavigation.AlwaysShowHeader)] = MapAlwaysShowHeader,
         [nameof(DtNavigation.AutoSuggestBox)] = MapAutoSuggestBox,
-        [nameof(DtNavigation.IsBackButtonVisable)] = MapIsBackButtonVisable,
+        [nameof(DtNavigation.IsBackButtonVisible)] = MapIsBackButtonVisable,
         [nameof(DtNavigation.IsBackButtonEnabled)] = MapBackButtonEnabled,
         [nameof(DtNavigation.CompactModeThresholdWidth)] = MapCompactModeThresholdWidth,
         [nameof(DtNavigation.CompactPaneLength)] = MapCompactPaneLength,
