@@ -96,6 +96,14 @@ public partial class MainPage : ContentPage
 
     private void NavView_ItemInvoked(object sender, DtNavigationItemInvokedEventArgs e)
     {
+        if(e.ItemInvoked != null && e.ItemInvoked.screen != null)
+        {
+            // call viewmodel to load the page
+            if (BindingContext is MainPageViewModel viewModel)
+            {
+                viewModel.AddPage(e.ItemInvoked);
+            }
+        }
         logger.LogTrace("ItemInvoked");
     }
 

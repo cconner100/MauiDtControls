@@ -9,7 +9,6 @@ using Microsoft.Maui.Handlers;
 using Microsoft.Maui.Platform;
 using Microsoft.UI.Xaml.Controls;
 
-using System.Diagnostics;
 
 public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationView>, IDtNavigationHandler
 {
@@ -71,7 +70,7 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
 
     void PlatformView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
     {
-        VirtualView?.HandleSelectionChanged(sender, new DtNavigationSelectionChangedEventArgs(args));
+        VirtualView?.HandleSelectionChanged(sender, new DtNavigationSelectionChangedEventArgs(VirtualView, args));
     }
 
     void PlatformView_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
@@ -111,7 +110,7 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
 
     void PlatformView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
     {        
-        VirtualView?.HandleItemInvoked(sender, new DtNavigationItemInvokedEventArgs(args));
+        VirtualView?.HandleItemInvoked(sender, new DtNavigationItemInvokedEventArgs(VirtualView, args));
     }
     #endregion
 
@@ -394,7 +393,7 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
                 ret.Icon = iconSource.CreateIconElement();
             }
         }
-
+        item.InternalObject = ret;
 
         ToolTipService.SetToolTip(ret, tooltip);
         if (item.childrenItems.Any())

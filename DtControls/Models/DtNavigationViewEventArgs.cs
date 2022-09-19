@@ -73,21 +73,26 @@ public class DtNavigationItemExpandingEventArgs
 
 public class DtNavigationItemInvokedEventArgs
 {
-    public object ItemInvoked { get; protected set; }
+    public DtMenuItem ItemInvoked { get; protected set; }
     public bool IsSettingsInvoked { get; protected set; }
-#if WINDOWS
-    public NavigationViewItemBase InvokedItemContainer { get; protected set; }
-    public NavigationTransitionInfo RecommendedNavigationTransitionInfo { get; protected set; }
 
-    public DtNavigationItemInvokedEventArgs(NavigationViewItemInvokedEventArgs args)
+#if WINDOWS
+    NavigationViewItemBase InvokedItemContainer;
+    NavigationTransitionInfo RecommendedNavigationTransitionInfo;
+
+    public DtNavigationItemInvokedEventArgs(DtNavigation sender, NavigationViewItemInvokedEventArgs args)
     {
+        var menu = DtMenuItem.ResolveDtMenuItemFromNative(sender, args.InvokedItemContainer);
+        // change native to dtmenu
+        if (menu != null)
+        {
+            ItemInvoked = menu;
+        }
+
         InvokedItemContainer = args.InvokedItemContainer;
-        ItemInvoked = args.InvokedItem;
         IsSettingsInvoked = args.IsSettingsInvoked;
         RecommendedNavigationTransitionInfo = args.RecommendedNavigationTransitionInfo;
     }
-#else
-    public DtNavigationItemInvokedEventArgs(object args){}
 #endif
 }
 
@@ -118,31 +123,23 @@ public class DtNavigationPaneClosingEventArgs
 
 public class DtNavigationSelectionChangedEventArgs
 {
-    public object SelectedItem { get; protected set; }
+    public DtMenuItem SelectedItem { get; protected set; }
 #if WINDOWS
     NavigationViewSelectionChangedEventArgs orgArgs;
     public bool IsSettingsSelected => orgArgs.IsSettingsSelected;
 
-    public NavigationTransitionInfo RecommendedNavigationTransitionInfo
+    public DtNavigationSelectionChangedEventArgs(DtNavigation sender, NavigationViewSelectionChangedEventArgs args)
     {
-        get
+        var menu = DtMenuItem.ResolveDtMenuItemFromNative(sender, args.SelectedItem);
+        // change native to dtmenu
+        if (menu != null)
         {
-            return orgArgs.RecommendedNavigationTransitionInfo;
+            SelectedItem = menu;
         }
-    }
-    public NavigationViewItemBase SelectedItemContainer
-    {
-        get
-        {
-            return orgArgs.SelectedItemContainer;
-        }
-    }
-
-    public DtNavigationSelectionChangedEventArgs(NavigationViewSelectionChangedEventArgs args)
-    {
         orgArgs = args;
     }
 #else
+    public bool IsSettingsSelected {get;set;}
     public DtNavigationSelectionChangedEventArgs(object args) {}
 #endif
 }

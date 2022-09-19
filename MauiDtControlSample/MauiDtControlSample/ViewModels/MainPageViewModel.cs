@@ -91,6 +91,11 @@ public partial class MainPageViewModel : IMainPageViewModel
         NavView.FooterMenuItems = menu.GetFooterMenu(); 
     }
 
+    public void AddPage(DtMenuItem menuItem)
+    {
+        
+    }
+
     #endregion
 
     #region TabView
@@ -124,11 +129,11 @@ public partial class MainPageViewModel : IMainPageViewModel
     {
         sender.TabItems.Remove(e.Tab);
     }
-#endregion
+    #endregion
 
 
-#region TabViewItem
-#endregion
+    #region TabViewItem
+    #endregion
 
 
 }
