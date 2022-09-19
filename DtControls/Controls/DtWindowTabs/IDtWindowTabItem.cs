@@ -15,7 +15,9 @@ public interface IDtWindowTabItem : IContentView
     event EventHandler<DtWindowTabItemCloseRequestEventArgs> CloseRequested;
 
     void WinCloseRequested(DtWindowTabItem sender, DtWindowTabItemCloseRequestEventArgs args);
-#endregion
+    #endregion
+
+    bool CanGoBack();
 
     string Header { get; set; }
 

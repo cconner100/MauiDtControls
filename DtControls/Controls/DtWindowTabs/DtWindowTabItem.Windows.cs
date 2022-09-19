@@ -11,8 +11,18 @@ using System;
 
 public partial class DtWindowTabItem : View, IElement
 {
+    public bool CanGoBack()
+    {
+        if(ContentFrame != null)
+        {
+            return ContentFrame.CanGoBack;
+        }
+        return false;
+    }
+
     TabViewItem tabViewItem = new TabViewItem();
     
+    Frame ContentFrame { get; set; }
 
     public IView PresentedContent { get; }
 
@@ -66,6 +76,10 @@ public partial class DtWindowTabItem : View, IElement
                 np.ToHandler(DtMauiContext.mauiContext);
             }
             tabViewItem.Content = np.Handler.PlatformView;
+            if(np.Handler.PlatformView is Frame frame)
+            {
+                ContentFrame = frame;
+            }
         }
     }
    

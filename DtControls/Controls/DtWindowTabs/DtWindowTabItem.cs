@@ -150,6 +150,10 @@ public partial class DtWindowTabItem : View, IContentView, IElement, IDtWindowTa
 
 #if !ANDROID && !MACCATALYST && !IOS && !WINDOWS
     #region Properties    
+    public bool CanGoBack() 
+    {
+        throw new NotImplementedException();
+    }
     void Connect()
     {
         throw new NotImplementedException();
