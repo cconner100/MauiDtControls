@@ -12,5 +12,5 @@ public interface IMainPageViewModel
     void OnLoadOfNavView();
     void AddTabButtonClick(DtWindowTabs sender, EventArgs e);
     void TabCloseRequested(DtWindowTabs sender, DtWindowTabItemCloseRequestEventArgs e);
-    void AddPage(DtMenuItem menuItem);
+    Task AddPage(DtWindowTabs tabs, DtMenuItem menuItem);
 }

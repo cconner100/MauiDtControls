@@ -2,12 +2,12 @@
 
 using DtControls.Models;
 
-
-
 using System.Collections.Generic;
+using MauiDtControlSample.Pages;
 
 #if WINDOWS
 using Microsoft.UI.Xaml.Controls;
+
 #endif
 
 #if MACCATALYST
@@ -66,7 +66,7 @@ public class DtMenuData : IDtMenu
                 platformImage = UIImage.GetSystemImage("car"),
 #endif
                 mauiIconImage = null,
-                screen = typeof(TabPage1)
+                screen = typeof(CarPage)
                 },
                 new DtMenuItem {
                     id = Guid.NewGuid(),
@@ -80,7 +80,7 @@ public class DtMenuData : IDtMenu
                     platformImage = UIImage.GetSystemImage("bus"),
 #endif
                     mauiIconImage = null,
-                    screen = typeof(TabPage1)
+                    screen = typeof(BusPage)
                 },
                 {
                 new DtMenuItem {
@@ -95,7 +95,7 @@ public class DtMenuData : IDtMenu
                     platformImage = UIImage.GetSystemImage("cablecar"),
 #endif
                     mauiIconImage = null,
-                    screen = typeof(TabPage1)
+                    screen = typeof(CableCarPage)
                 }
             },
             {
@@ -127,7 +127,7 @@ public class DtMenuData : IDtMenu
                         platformImage = UIImage.GetSystemImage("airplane"),
 #endif
                         mauiIconImage = null,
-                        screen = typeof(TabPage1)
+                        screen = typeof(AirPlanePage)
                     },
                     new DtMenuItem
                     {
@@ -142,7 +142,7 @@ public class DtMenuData : IDtMenu
                         platformImage = UIImage.GetSystemImage("ferry"),
 #endif
                         mauiIconImage = null,
-                        screen = typeof(TabPage1)}
+                        screen = typeof(FerryPage)}
                 },
                 }
             }
@@ -163,7 +163,7 @@ public class DtMenuData : IDtMenu
             platformImage = UIImage.GetSystemImage("questionmark.circle"),
 #endif
             //mauiIconImage = "help.png",
-            screen = typeof(TabPage1)
+            screen = typeof(HelpPage)
         });
 
     }

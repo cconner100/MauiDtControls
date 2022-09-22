@@ -21,8 +21,8 @@ public partial class DtWindowTabItem : View, IContentView, IElement, IDtWindowTa
     }
 
     #region Properties
-    public NavigationPage navigationPage;
-    private bool disposedValue;
+    public NavigationPage navigationPage { get; set; }
+    bool disposedValue;
     public static readonly BindableProperty HeaderProperty = BindableProperty.Create("Header", typeof(string), typeof(DtWindowTabItem));
     public string Header
     {

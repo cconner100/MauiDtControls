@@ -20,7 +20,7 @@
                             TextChanged="AutoSuggest_TextChanged"/>
             </dt:DtNavigation.AutoSuggestBox>
             <dt:DtWindowTabs x:Name="WindowTabView" 
-                                Loaded="ContentPage_Loaded"
+                                Loaded="DtWindowTab_Loaded"
                                 AddTabButtonClick="WindowTabView_AddTabButtonClick"
                                 TabCloseRequested="WindowTabView_TabCloseRequested">
             </dt:DtWindowTabs>

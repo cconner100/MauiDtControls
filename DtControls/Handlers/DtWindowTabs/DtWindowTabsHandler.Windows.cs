@@ -220,7 +220,11 @@ namespace DtControls.Handlers
                     {
                         if (item is DtWindowTabItem tvi)
                         {
-
+                            
+                            if(tvi.Content is NavigationPage navpage)
+                            {
+                                tvi.navigationPage = navpage;
+                            }
                             _tabView.TabItems.Add(tvi.GetTabViewItem());
                             _tabView.SelectedIndex = _tabView.TabItems.Count - 1;
                         }

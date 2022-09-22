@@ -5,6 +5,7 @@ using DtControls.Controls;
 
 using MauiDtControlSample.ViewModels;
 using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 
 public partial class MainPage : ContentPage
 {
@@ -23,7 +24,7 @@ public partial class MainPage : ContentPage
     }
 
     bool loaded;
-    private void ContentPage_Loaded(object sender, EventArgs e)
+    private void DtWindowTab_Loaded(object sender, EventArgs e)
     {
         // strange bug on loading content page called 2 times
         if (loaded)
@@ -44,9 +45,52 @@ public partial class MainPage : ContentPage
         NavView.PaneOpened += NavView_PaneOpened;
         NavView.PaneOpening += NavView_PaneOpening;
 
+        // Window Tab events
+        WindowTabView.Focused += WindowTabView_Focused;
+        WindowTabView.SelectionChanged += WindowTabView_SelectionChanged;
+        WindowTabView.Focus();
         // Add first tab, not closeable
         ((MainPageViewModel)BindingContext)?.AddFirstTab(WindowTabView);
         logger.LogTrace("ContentPage_Loaded");
+    }
+
+    private void WindowTabView_SelectionChanged(object sender, DtWindowTabsSelectionChangedEventArgs e)
+    {
+        if (e.AddedItems.Any())
+        {
+            if (e.AddedItems[0] is DtWindowTabItem tab)
+            {
+                if (tab.CanGoBack())
+                {
+                    NavView.IsBackButtonEnabled = true;
+                    NavView.IsBackButtonVisible = DtNavigation.BackButtonVisable.Auto;
+                }
+                else
+                {
+                    NavView.IsBackButtonEnabled = false;
+                    NavView.IsBackButtonVisible = DtNavigation.BackButtonVisable.Auto;
+                }
+            }
+
+        }
+    }
+
+    private void WindowTabView_Focused(object sender, FocusEventArgs e)
+    {
+        if (e.IsFocused == true && e.VisualElement is DtWindowTabItem item)
+        {
+            if (item.CanGoBack())
+            {
+                NavView.IsBackButtonEnabled = true;
+                NavView.IsBackButtonVisible = DtNavigation.BackButtonVisable.Auto;
+            }
+            else
+            {
+                NavView.IsBackButtonEnabled = false;
+                NavView.IsBackButtonVisible = DtNavigation.BackButtonVisable.Auto;
+            }
+        }
+
     }
 
     private void NavView_PaneOpening(object sender, EventArgs e)
@@ -84,8 +128,13 @@ public partial class MainPage : ContentPage
         logger.LogTrace("Collapsed");
     }
 
-    private void NavView_BackRequested(object sender, EventArgs e)
+    private async void NavView_BackRequested(object sender, EventArgs e)
     {
+        if (BindingContext is MainPageViewModel viewModel)
+        {
+            await viewModel.PopPageInTab(WindowTabView);
+        }
+
         logger.LogTrace("BackRequested");
     }
 
@@ -96,12 +145,12 @@ public partial class MainPage : ContentPage
 
     private void NavView_ItemInvoked(object sender, DtNavigationItemInvokedEventArgs e)
     {
-        if(e.ItemInvoked != null && e.ItemInvoked.screen != null)
+        if (e.ItemInvoked != null && e.ItemInvoked.screen != null)
         {
             // call viewmodel to load the page
             if (BindingContext is MainPageViewModel viewModel)
             {
-                viewModel.AddPage(e.ItemInvoked);
+                viewModel.AddPage(WindowTabView, e.ItemInvoked);
             }
         }
         logger.LogTrace("ItemInvoked");
@@ -143,6 +192,11 @@ public partial class MainPage : ContentPage
         {
             viewModel.TabCloseRequested((DtWindowTabs)sender, e);
         }
+    }
+
+    private void ContentPage_Loaded(object sender, EventArgs e)
+    {
+
     }
 }
 

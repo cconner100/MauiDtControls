@@ -10,5 +10,6 @@
             Text="Hello TabPage 1"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Button x:Name="next" Text="Next Page" Clicked="next_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>

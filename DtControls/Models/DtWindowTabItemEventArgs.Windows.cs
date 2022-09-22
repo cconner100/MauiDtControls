@@ -3,6 +3,7 @@ namespace DtControls.Models;
 
 using DtControls.Controls;
 
+using Microsoft.Maui.Platform;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
@@ -128,17 +129,48 @@ public class DtWindowTabsItemsChangedEventArgs
 
 public class DtWindowTabsSelectionChangedEventArgs
 {
-    public IList<object> AddedItems { get; protected set; }
+    public IList<DtWindowTabItem> AddedItems { get; protected set; }
     public object OrginalSource { get; protected set; }
-    public IList<object> RemovedItems { get; protected set; }
+    public IList<DtWindowTabItem> RemovedItems { get; protected set; }
 
+
+    // find DtWindowTabItem for list
     public DtWindowTabsSelectionChangedEventArgs(DtWindowTabs tabs, SelectionChangedEventArgs args)
     {
-        AddedItems = args.AddedItems;
-        RemovedItems = args.RemovedItems;
+        AddedItems = FindDtWindowTabItem(tabs, args.AddedItems);
+        RemovedItems = FindDtWindowTabItem(tabs, args.RemovedItems);
         OrginalSource = args.OriginalSource;
     }
+
+    List<DtWindowTabItem> FindDtWindowTabItem(DtWindowTabs tabs, IList<object> source)
+    {
+        List<DtWindowTabItem> retItems = new List<DtWindowTabItem>();
+        if (!source.Any())
+        {
+            return retItems;
+        }
+        foreach (var sourceItem in source)
+        {
+            foreach (var item in tabs.TabItems)
+            {
+                if(item.GetTabViewItem() == null)
+                {
+                    try
+                    {
+                        item.ToHandler(DtMauiContext.mauiContext);
+                    }
+                    catch { }
+                }
+                if (item.GetTabViewItem() == (TabViewItem)sourceItem)
+                {
+                    retItems.Add(item);
+                }
+            }
+        }
+        return retItems;
+    }
 }
+
 
 public class DtWindowTabsDragEventArgs
 {
@@ -262,4 +294,5 @@ public class DtWindowTabsDragEventArgs
         }
     }
 }
+
 #endif
