@@ -366,10 +366,10 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
    
     NavigationViewItem MakeMenuItem(DtMenuItem item, IDtNavigation virtualView)
     {
-        var tooltip = new ToolTip
-        {
-            Content = item.toolTip
-        };
+        //var tooltip = new Microsoft.UI.Xaml.Controls.ToolTip
+        //{
+        //    Content = item.toolTip
+        //};
         var ret = new NavigationViewItem
         {
             Content = item.title,
@@ -395,7 +395,7 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
         }
         item.InternalObject = ret;
 
-        ToolTipService.SetToolTip(ret, tooltip);
+        //ToolTipService.SetToolTip(ret, tooltip);
         if (item.childrenItems.Any())
         {
             foreach (var child in item.childrenItems)

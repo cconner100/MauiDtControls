@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 using PlatformView = UIKit.UIView;
 #elif WINDOWS
 using PlatformView = Microsoft.UI.Xaml.Controls.TabView;
-#elif NETSTANDARD || (NET6_0 && !IOS && !ANDROID)
+#elif NETSTANDARD || (NET7_0 && !IOS && !ANDROID)
 using PlatformView = System.Object;
 #endif
 

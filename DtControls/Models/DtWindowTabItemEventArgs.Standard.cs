@@ -1,4 +1,4 @@
-﻿#if NET6_0 && !ANDROID && !IOS && !MACCATALYST && !WINDOWS
+﻿#if NET7_0 && !ANDROID && !IOS && !MACCATALYST && !WINDOWS
 
 namespace DtControls.Models
 {

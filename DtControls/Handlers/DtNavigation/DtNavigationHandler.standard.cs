@@ -1,10 +1,10 @@
-﻿#if NET6_0 && !ANDROID && !MACCATALYST && !WINDOWS
+﻿#if NET7_0 && !ANDROID && !MACCATALYST && !WINDOWS
 namespace DtControls.Handlers;
 
 using DtControls.Controls;
 
 using Microsoft.Maui.Handlers;
-using Microsoft.Maui.Platform;
+
 
 using System;
 
