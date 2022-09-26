@@ -143,14 +143,14 @@ public partial class MainPage : ContentPage
         logger.LogTrace("SelectionChanged");
     }
 
-    private void NavView_ItemInvoked(object sender, DtNavigationItemInvokedEventArgs e)
+    private async void NavView_ItemInvoked(object sender, DtNavigationItemInvokedEventArgs e)
     {
         if (e.ItemInvoked != null && e.ItemInvoked.screen != null)
         {
             // call viewmodel to load the page
             if (BindingContext is MainPageViewModel viewModel)
             {
-                viewModel.AddPage(WindowTabView, e.ItemInvoked);
+                await viewModel.AddPage(WindowTabView, e.ItemInvoked).ConfigureAwait(true);
             }
         }
         logger.LogTrace("ItemInvoked");
