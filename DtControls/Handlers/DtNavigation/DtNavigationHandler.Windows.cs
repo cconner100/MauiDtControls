@@ -9,7 +9,6 @@ using Microsoft.Maui.Handlers;
 using Microsoft.Maui.Platform;
 using Microsoft.UI.Xaml.Controls;
 
-using System.Diagnostics;
 
 public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationView>, IDtNavigationHandler
 {
@@ -59,63 +58,59 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
     #region Events
 
 
-    private void PlatformView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
+    void PlatformView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
     {
         VirtualView?.HandleBackRequested(sender, args);
     }
 
-    private void PlatformView_Collapsed(NavigationView sender, NavigationViewItemCollapsedEventArgs args)
+    void PlatformView_Collapsed(NavigationView sender, NavigationViewItemCollapsedEventArgs args)
     {
-        var nargs = new DtNavigationItemCollapsedEventArgs { InvokedItem = args.CollapsedItem.ToString() };
-        VirtualView?.HandleCollapsed(sender, nargs);
+        VirtualView?.HandleCollapsed(sender, new DtNavigationItemCollapsedEventArgs(args));
     }
 
-    private void PlatformView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+    void PlatformView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
     {
-        var nargs = new DtNavigationSelectionChangedEventArgs { InvokedItem = args.SelectedItem.ToString(), IsSettingsInvoked = args.IsSettingsSelected };
-        VirtualView?.HandleSelectionChanged(sender, nargs);
+        VirtualView?.HandleSelectionChanged(sender, new DtNavigationSelectionChangedEventArgs(VirtualView, args));
     }
 
-    private void PlatformView_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    void PlatformView_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         VirtualView?.HandleOnLoaded(this, null);
     }
 
-    private void PlatformView_PaneOpening(NavigationView sender, object args)
+    void PlatformView_PaneOpening(NavigationView sender, object args)
     {
         VirtualView?.HandlePaneOpening(sender, args);
     }
 
-    private void PlatformView_PaneOpened(NavigationView sender, object args)
+    void PlatformView_PaneOpened(NavigationView sender, object args)
     {
-        VirtualView?.HandlePaneOpening(sender, args);
+        VirtualView?.HandlePaneOpened(sender, args);
     }
 
-    private void PlatformView_PaneClosing(NavigationView sender, NavigationViewPaneClosingEventArgs args)
+    void PlatformView_PaneClosing(NavigationView sender, NavigationViewPaneClosingEventArgs args)
     {
-        VirtualView?.HandlePaneClosing(sender, args);
+        VirtualView?.HandlePaneClosing(sender, new DtNavigationPaneClosingEventArgs(args));
     }
 
-    private void PlatformView_PaneClosed(NavigationView sender, object args)
+    void PlatformView_PaneClosed(NavigationView sender, object args)
     {
         VirtualView?.HandlePaneClosed(sender, args);
     }
 
-    private void PlatformView_Expanding(NavigationView sender, NavigationViewItemExpandingEventArgs args)
+    void PlatformView_Expanding(NavigationView sender, NavigationViewItemExpandingEventArgs args)
     {
-        var nargs = new DtNavigationItemExpandingEventArgs { InvokedItem = args.ExpandingItem.ToString() };
-        VirtualView?.HandleExpanding(sender, nargs);
+        VirtualView?.HandleExpanding(sender, new DtNavigationItemExpandingEventArgs(args));
     }
 
-    private void PlatformView_DisplayModeChanged(NavigationView sender, NavigationViewDisplayModeChangedEventArgs args)
+    void PlatformView_DisplayModeChanged(NavigationView sender, NavigationViewDisplayModeChangedEventArgs args)
     {
-        VirtualView?.HandleDisplayModeChanged(sender, args);
+        VirtualView?.HandleDisplayModeChanged(sender, new DtNavigationDisplayModeChangedEventArgs(args));
     }
 
-    private void PlatformView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
-    {
-        var narg = new DtNavigationItemInvokedEventArgs { InvokedItem = args.InvokedItem.ToString(), IsSettingsInvoked = args.IsSettingsInvoked };
-        VirtualView?.HandleItemInvoked(sender, narg);
+    void PlatformView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+    {        
+        VirtualView?.HandleItemInvoked(sender, new DtNavigationItemInvokedEventArgs(VirtualView, args));
     }
     #endregion
 
@@ -163,7 +158,7 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
     public static void MapIsBackButtonVisable(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
         NavigationViewBackButtonVisible vis = NavigationViewBackButtonVisible.Auto;
-        switch (virtualView.IsBackButtonVisable)
+        switch (virtualView.IsBackButtonVisible)
         {
             case DtNavigation.BackButtonVisable.Visible:
                 vis = NavigationViewBackButtonVisible.Visible;
@@ -369,31 +364,38 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
     }
 
    
-    private NavigationViewItem MakeMenuItem(DtMenuItem item, IDtNavigation virtualView)
+    NavigationViewItem MakeMenuItem(DtMenuItem item, IDtNavigation virtualView)
     {
-        var tooltip = new ToolTip
-        {
-            Content = item.toolTip
-        };
+        //var tooltip = new Microsoft.UI.Xaml.Controls.ToolTip
+        //{
+        //    Content = item.toolTip
+        //};
         var ret = new NavigationViewItem
         {
             Content = item.title,
             Tag = item.screen
         };
-        if (item.iconImage != null)
+        if (item.platformImage != null)
         {
-            var iconSource = item.iconImage.ToIconSource(DtMauiContext.mauiContext!);
-            if (PlatformView.Resources.TryGetValue("NavigationViewItemForeground", out object nviForeground) &&
-                            nviForeground is Microsoft.UI.Xaml.Media.Brush brush)
-            {
-                iconSource.Foreground = brush;
-            }
-
-            ret.Icon = iconSource.CreateIconElement();
+            ret.Icon = (IconElement)item.platformImage;
         }
+        else
+        {
+            if (item.mauiIconImage != null)
+            {
+                var iconSource = item.mauiIconImage.ToIconSource(DtMauiContext.mauiContext!);
+                if (PlatformView.Resources.TryGetValue("NavigationViewItemForeground", out object nviForeground) &&
+                                nviForeground is Microsoft.UI.Xaml.Media.Brush brush)
+                {
+                    iconSource.Foreground = brush;
+                }
 
+                ret.Icon = iconSource.CreateIconElement();
+            }
+        }
+        item.InternalObject = ret;
 
-        ToolTipService.SetToolTip(ret, tooltip);
+        //ToolTipService.SetToolTip(ret, tooltip);
         if (item.childrenItems.Any())
         {
             foreach (var child in item.childrenItems)

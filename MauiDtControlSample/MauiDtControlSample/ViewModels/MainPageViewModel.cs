@@ -5,6 +5,9 @@ using DtControls.Models;
 
 using MauiDtControlSample.Models;
 
+using Microsoft.Extensions.Logging;
+using Microsoft.Maui.Controls;
+
 #if WINDOWS
 
 using Microsoft.UI.Xaml.Controls;
@@ -14,25 +17,30 @@ using Microsoft.UI.Xaml.Input;
 using System;
 using System.Linq;
 
+using Page = Page;
+
 public partial class MainPageViewModel : IMainPageViewModel
 {
     DtNavigation NavView;
     SearchBar SearchBar;
     DtMenuData menu = new DtMenuData();
     MainPage page = null;
+    ILogger logger = null;
 
-    private MainPageViewModel() { }
-    public MainPageViewModel(MainPage thePage, DtNavigation navView)
+    MainPageViewModel() { }
+
+    public MainPageViewModel(MainPage thePage, DtNavigation navView, ILogger Logger)
     {
         page = thePage;
         NavView = navView;
+        logger = Logger;
         menu.InitMenuData();
     }
 
-    #region NavigationView
+    #region DtNavigation
     public void SearchBarOnLoad(SearchBar searchBar)
     {
- #if WINDOWS
+#if WINDOWS
         SearchBar = searchBar;
         // need to setup callback for selected items
 
@@ -57,7 +65,7 @@ public partial class MainPageViewModel : IMainPageViewModel
     }
 
 #if WINDOWS
-    private void CtrlF_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
+    void CtrlF_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
     {
         SearchBar.Focus();
     }
@@ -72,11 +80,11 @@ public partial class MainPageViewModel : IMainPageViewModel
             var ret = NavView.SearchMenuItems(text);
             if (ret?.Count == 0)
             {
-                asb.ItemsSource = new string[] { "No result found" };
+                asb.ItemsSource = new[] { "No result found" };
             }
             else
             {
-                asb.ItemsSource = ret.Keys.ToArray<string>();
+                asb.ItemsSource = ret?.Keys.ToArray<string>();
             }
         }
 #endif
@@ -85,7 +93,44 @@ public partial class MainPageViewModel : IMainPageViewModel
     public void OnLoadOfNavView()
     {
         NavView.MenuItems = menu.GetMenu();
-        NavView.FooterMenuItems = menu.GetFooterMenu(); 
+        NavView.FooterMenuItems = menu.GetFooterMenu();
+    }
+
+    public async Task AddPage(DtWindowTabs tabs, DtMenuItem menuItem)
+    {
+        var tabindex = (int)tabs.SelectedItem;
+        var tabItem = tabs.TabItems[tabindex];
+        await tabItem.navigationPage.PushAsync((Page)Activator.CreateInstance(menuItem.screen)).ConfigureAwait(true);
+        tabItem.Focus();
+        UpdateBackButton(tabs);
+    }
+
+    public async Task PopPageInTab(DtWindowTabs tabs)
+    {
+        var tabindex = (int)tabs.SelectedItem;
+        var tabItem = tabs.TabItems[tabindex];
+        if (tabItem.CanGoBack())
+        {
+            await tabItem.navigationPage.PopAsync().ConfigureAwait(true);
+        }
+        tabItem.Focus();
+        UpdateBackButton(tabs);
+    }
+
+    void UpdateBackButton(DtWindowTabs tabs)
+    {
+        var tabindex = (int)tabs.SelectedItem;
+        var tabItem = tabs.TabItems[tabindex];
+        if (tabItem.CanGoBack())
+        {
+            NavView.IsBackButtonEnabled = true;
+            NavView.IsBackButtonVisible = DtNavigation.BackButtonVisable.Visible;
+        }
+        else
+        {
+            NavView.IsBackButtonEnabled = false;
+            NavView.IsBackButtonVisible = DtNavigation.BackButtonVisable.Collapsed;
+        }
     }
 
     #endregion
@@ -95,24 +140,84 @@ public partial class MainPageViewModel : IMainPageViewModel
     {
         var newtab = new DtWindowTabItem();
         var page = new TabPage1();
+        var navpage = new NavigationPage(page);
+        navpage.Focused += Navpage_Focused;
+        navpage.Pushed += Navpage_Pushed;
+        navpage.Popped += Navpage_Popped;
 #if WINDOWS
         newtab.IconSource = new SymbolIconSource() { Symbol = Symbol.Placeholder };
 #endif
         newtab.Header = "New Item";
-        newtab.Content = new NavigationPage(page);    // "New Page";
+        newtab.Content = navpage;    // "New Page";
+        newtab.Focused += Newtab_Focused;
 
         sender.TabItems.Add(newtab);
+        sender.SelectedIndex = sender.TabItems.Count - 1;
+        var tab = sender.TabItems[sender.SelectedIndex].Focus();
     }
 
-    public void TabCloseRequested(DtWindowTabs sender, EventArgs e)
+    void Navpage_Popped(object sender, NavigationEventArgs e)
     {
-        //sender.TabItems.Remove(e.tab);
+
     }
-#endregion
+
+    void Navpage_Pushed(object sender, NavigationEventArgs e)
+    {
+
+    }
+
+    void Navpage_Focused(object sender, FocusEventArgs e)
+    {
+        if (e.IsFocused && e.VisualElement is DtWindowTabItem tab)
+        {
+            UpdateTabBackButton(tab);
+        }
+    }
+
+    private void Newtab_Focused(object sender, FocusEventArgs e)
+    {
+        if (e.IsFocused && e.VisualElement is DtWindowTabItem tab)
+        {
+            UpdateTabBackButton(tab);
+        }
+    }
+
+    void UpdateTabBackButton(DtWindowTabItem tab)
+    {
+        if (tab.CanGoBack())
+        {
+            NavView.IsBackButtonEnabled = true;
+            NavView.IsBackButtonVisible = DtNavigation.BackButtonVisable.Visible;
+        }
+        else
+        {
+            NavView.IsBackButtonEnabled = false;
+            NavView.IsBackButtonVisible = DtNavigation.BackButtonVisable.Collapsed;
+        }
+    }
+    public void AddFirstTab(DtWindowTabs tabView)
+    {
+        var newtab = new DtWindowTabItem();
+        var page = new TabPage1();
+#if WINDOWS
+        newtab.IconSource = new SymbolIconSource() { Symbol = Symbol.Document };
+#endif
+        newtab.Header = "Home Page";
+        newtab.Content = new NavigationPage(page);    // "New Page";
+        newtab.IsClosable = false;
+        newtab.Focused += Newtab_Focused;
+        tabView.TabItems.Add(newtab);
+        tabView.SelectedItem = 0;
+    }
+    public void TabCloseRequested(DtWindowTabs sender, DtWindowTabItemCloseRequestEventArgs e)
+    {
+        sender.TabItems.Remove(e.Tab);
+    }
+    #endregion
 
 
-#region TabViewItem
-#endregion
+    #region TabViewItem
+    #endregion
 
 
 }

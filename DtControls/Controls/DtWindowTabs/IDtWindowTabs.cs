@@ -1,200 +1,86 @@
 ﻿
 namespace DtControls.Controls;
 
+using DtControls.Models;
+
 using System;
 using System.Collections.ObjectModel;
 
 using static DtControls.Controls.DtWindowTabs;
+#if WINDOWS
+using static DtControls.Models.DtWindowTabsDragEventArgs;
+#endif
 
-
-/// <summary>
-/// 
-/// </summary>
 public interface IDtWindowTabs : IView
 {
     #region Events
-    /// <summary>
-    /// 
-    /// </summary>
+
     event EventHandler AddTabButtonClick;
 
-    /// <summary>
-    /// 
-    /// </summary>
-    event EventHandler SelectionChanged;
+ 
+    event EventHandler<DtWindowTabsSelectionChangedEventArgs> SelectionChanged;
 
-    /// <summary>
-    /// 
-    /// </summary>
-    event EventHandler TabCloseRequested;
+    event EventHandler<DtWindowTabItemCloseRequestEventArgs> TabCloseRequested;
 
-    /// <summary>
-    /// 
-    /// </summary>
-    event EventHandler TabDragCompleted;
+    event EventHandler<DtWindowTabsItemDragCompletedEventArgs> TabDragCompleted;
 
-    /// <summary>
-    /// 
-    /// </summary>
-    event EventHandler TabDragStarting;
+    event EventHandler<DtWindowTabsDragStartingEventArgs> TabDragStarting;
 
-    /// <summary>
-    /// 
-    /// </summary>
-    event EventHandler TabDroppedOutSide;
+    event EventHandler<DtWindowTabsDroppedOutsideEventArgs> TabDroppedOutSide;
 
-    /// <summary>
-    /// 
-    /// </summary>
-    event EventHandler TabItemsChanged;
+    event EventHandler<DtWindowTabsItemsChangedEventArgs> TabItemsChanged;
 
-    /// <summary>
-    /// 
-    /// </summary>
-    event EventHandler TabStripDragOver;
+    event EventHandler<DtWindowTabsStripDragOverEventArgs> TabStripDragOver;
 
-    /// <summary>
-    /// 
-    /// </summary>
-    event EventHandler TabStripDrop;
+    event EventHandler<DtWindowTabsStripDropEventArgs> TabStripDrop;
 
+    void HandleLoaded(object sender, object args);
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="args"></param>
-    void WinLoaded(object sender, object args);
+    void HandleAddTabButtonClick(object sender, object args);
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="args"></param>
-    void WinAddTabButtonClick(object sender, object args);
+    void HandleSelectionChanged(object sender, DtWindowTabsSelectionChangedEventArgs args);
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="args"></param>
-    void WinSelectionChanged(object sender, object args);
+    void HandleTabCloseRequested(object sender, DtWindowTabItemCloseRequestEventArgs args);
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="args"></param>
-    void WinTabCloseRequested(object sender, object args);
+    void HandleTabDragCompleted(object sender, DtWindowTabsItemDragCompletedEventArgs args);
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="args"></param>
-    void WinTabDragCompleted(object sender, object args);
+    void HandleTabDragStarting(object sender, DtWindowTabsDragStartingEventArgs args);
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="args"></param>
-    void WinTabDragStarting(object sender, object args);
+    void HandleTabDroppedOutSide(object sender, DtWindowTabsDroppedOutsideEventArgs args);
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="args"></param>
-    void WinTabDroppedOutSide(object sender, object args);
+    void HandleTabItemsChanged(object sender, DtWindowTabsItemsChangedEventArgs args);
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="args"></param>
-    void WinTabItemsChanged(object sender, object args);
+    void HandleTabStripDragOver(object sender, DtWindowTabsStripDragOverEventArgs args);
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="args"></param>
-    void WinTabStripDragOver(object sender, object args);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="args"></param>
-    void WinTabStripDrop(object sender, object args);
-
-    /// <summary>
-    /// 
-    /// </summary>      
+    void HandleTabStripDrop(object sender, DtWindowTabsStripDropEventArgs args);
+ 
     object AddTabButtonCommand { get; set; }
 
-    /// <summary>
-    /// 
-    /// </summary>
     object AddTabButtonCommandParameter { get; set; }
 
-    /// <summary>
-    /// 
-    /// </summary>
     bool AllowDropTabs { get; set; }
 
-    /// <summary>
-    /// 
-    /// </summary>
     bool CanDragTabs { get; set; }
 
-    /// <summary>
-    /// 
-    /// </summary>
     bool CanReorderTabs { get; set; }
     #endregion
 
     #region Properties
 
-    /// <summary>
-    /// 
-    /// </summary>
     CloseButtonOverlayModeEnum CloseButtonOverlayMode { get; set; }
 
-    /// <summary>
-    /// 
-    /// </summary>
     bool IsAddTabButtonVisible { get; set; }
 
-    /// <summary>
-    /// 
-    /// </summary>
     int SelectedIndex { get; set; }
 
-    /// <summary>
-    /// 
-    /// </summary>
     object SelectedItem { get; set; }
 
-    /// <summary>
-    /// 
-    /// </summary>
     ObservableCollection<DtWindowTabItem> TabItems { get; set; }
 
-    /// <summary>
-    /// 
-    /// </summary>
     object TabItemsSource { get; set; }
 
-    /// <summary>
-    /// 
-    /// </summary>
     object TabStripFooter { get; set; }
 
-    /// <summary>
-    /// 
-    /// </summary>
     TabWidthModeEnum TabWidthMode { get; set; }
     #endregion
 }

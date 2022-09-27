@@ -2,7 +2,6 @@
 namespace DtControls.Handlers
 {
     using DtControls.Controls;
-    using Microsoft.Maui.Controls.PlatformConfiguration;
     using Microsoft.Maui.Handlers;
 
     using System;

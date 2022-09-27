@@ -1,6 +1,7 @@
 ﻿namespace MauiDtControlSample.ViewModels;
 
 using DtControls.Controls;
+using DtControls.Models;
 
 using System;
 
@@ -10,6 +11,6 @@ public interface IMainPageViewModel
     void TextToSearch(string text, SearchBar sb);
     void OnLoadOfNavView();
     void AddTabButtonClick(DtWindowTabs sender, EventArgs e);
-    void TabCloseRequested(DtWindowTabs sender, EventArgs e);
-
+    void TabCloseRequested(DtWindowTabs sender, DtWindowTabItemCloseRequestEventArgs e);
+    Task AddPage(DtWindowTabs tabs, DtMenuItem menuItem);
 }

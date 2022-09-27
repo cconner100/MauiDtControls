@@ -11,7 +11,7 @@ using PlatformView = Android.Widget.ImageView;
 #elif WINDOWS
 using Microsoft.UI.Xaml.Controls;
 using PlatformView = Microsoft.UI.Xaml.Controls.NavigationView;
-#elif NETSTANDARD || (NET6_0 && !MACCATALYST && !ANDROID && !WINDOWS)
+#elif NETSTANDARD || (NET7_0 && !MACCATALYST && !ANDROID && !WINDOWS)
 using PlatformView = System.Object;
 #endif
 
@@ -21,13 +21,9 @@ public interface IDtNavigationHandler : IViewHandler
     UISplitViewController splitView { get; }
     DtSidebarViewController Controller { get; }
 #endif
-    /// <summary>
-    /// 
-    /// </summary>
+
     new IDtNavigation VirtualView { get; }
-    /// <summary>
-    /// 
-    /// </summary>
+
     new PlatformView PlatformView { get; }
 
 #if WINDOWS
@@ -35,10 +31,10 @@ public interface IDtNavigationHandler : IViewHandler
 #endif
 
 #if MACCATALYST
-    List<DtMenuItem> BuildPlatformMenus(IList<DtMenuItem> menulist, IDtNavigation virtualView);
+    IList<DtMenuItem> BuildPlatformMenus(IList<DtMenuItem> menulist, IDtNavigation virtualView);
 #endif
 
-#if NETSTANDARD || (NET6_0 && !MACCATALYST && !ANDROID && !WINDOWS)
+#if NETSTANDARD || (NET7_0 && !MACCATALYST && !ANDROID && !WINDOWS)
     List<object> BuildPlatformMenus(IList<DtMenuItem> menuList, IDtNavigation virtualView);
 #endif
 

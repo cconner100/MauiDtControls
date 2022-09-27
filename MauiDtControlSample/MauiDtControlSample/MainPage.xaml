@@ -9,8 +9,8 @@
         <dt:DtNavigation x:Name="NavView" 
                              Grid.Column="0"
                              Grid.Row="0"
-                             IsBackButtonEnabled="True" 
-                             IsBackButtonVisable="Auto" 
+                             IsBackButtonEnabled="False" 
+                             IsBackButtonVisible="Auto" 
                              IsSettingsVisible="True"
                              PaneDisplayMode="LeftCompact"
                              OnLoaded="NavView_OnLoaded"
@@ -20,10 +20,9 @@
                             TextChanged="AutoSuggest_TextChanged"/>
             </dt:DtNavigation.AutoSuggestBox>
             <dt:DtWindowTabs x:Name="WindowTabView" 
-                                Loaded="ContentPage_Loaded"
+                                Loaded="DtWindowTab_Loaded"
                                 AddTabButtonClick="WindowTabView_AddTabButtonClick"
                                 TabCloseRequested="WindowTabView_TabCloseRequested">
-                <!--<dt:DtWindowTabItems x:Name="item1" Header="New Tab" IsClosable="False"/>-->
             </dt:DtWindowTabs>
 
         </dt:DtNavigation>

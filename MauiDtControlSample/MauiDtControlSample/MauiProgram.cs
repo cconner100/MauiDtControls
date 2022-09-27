@@ -2,11 +2,15 @@
 
 using DtControls.Controls;
 using DtControls.Handlers;
+
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Console;
 using Microsoft.Maui.Embedding;
 
 public static class MauiProgram
 {
 	public static IMauiContext mauiContext = null;
+	public static ILogger mauiLogger = null;	
 	public static MauiApp CreateMauiApp()
 	{
 		var builder = MauiApp.CreateBuilder();
@@ -22,9 +26,24 @@ public static class MauiProgram
 				handlers.AddHandler<DtNavigation, DtNavigationHandler>();
 				handlers.AddHandler<DtWindowTabs, DtWindowTabsHandler>();
 			});
-		builder.UseMauiEmbedding<Application>();
-		var mauiapp = builder.Build();
+
+#if DEBUG
+        builder.Services.AddLogging(configure =>
+        {
+			configure.AddDebug();
+            configure.AddConsole();
+        });
+#endif
+        builder.UseMauiEmbedding<Application>();
+
+        using var loggerFactory = LoggerFactory.Create(builder =>
+        {
+            builder.AddSimpleConsole(i => i.ColorBehavior = LoggerColorBehavior.Disabled);
+        });
+
+        var mauiapp = builder.Build();
         mauiContext = new MauiContext(mauiapp.Services);
+		mauiLogger = loggerFactory.CreateLogger<MauiApp>();
 		return mauiapp;
 
 	}

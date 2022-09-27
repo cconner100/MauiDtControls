@@ -3,9 +3,6 @@ namespace DtControls.Handlers;
 
 using DtControls.Controls;
 
-/// <summary>
-/// 
-/// </summary>
 public partial class DtWindowTabsHandler
 {
 

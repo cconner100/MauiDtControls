@@ -211,54 +211,9 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIView>, I
 
     #endregion
 
-    public List<DtMenuItem> BuildPlatformMenus(IList<DtMenuItem> menulist, IDtNavigation virtualView)
+    public IList<DtMenuItem> BuildPlatformMenus(IList<DtMenuItem> menulist, IDtNavigation virtualView)
     {
-        List<DtMenuItem> menu = new List<DtMenuItem>();
-
-        foreach (var item in menulist)
-        {
-            if (item.menuType == DtMenuItem.MenuType.Header)
-            {
-                menu.Add(item);
-                continue;
-            }
-            if (item.menuType == DtMenuItem.MenuType.ExpandableRow)
-            {
-                menu.Add(item);
-                if (item.childrenItems.Any())
-                {
-                    AddChildren(menu, item.childrenItems, virtualView);
-                    if (item.menuType == DtMenuItem.MenuType.Row)
-                    {
-                        virtualView.MenuNames.Add(item.title, item);
-                    }
-                    continue;
-                }
-            }
-            // must be a row
-            menu.Add(item);
-            if (item.menuType == DtMenuItem.MenuType.Row)
-            {
-                virtualView.MenuNames.Add(item.title, item);
-            }
-        }
-        return menu;
-    }
-
-    void AddChildren(List<DtMenuItem> menu, List<DtMenuItem> items, IDtNavigation virtualView)
-    {
-        foreach (var item in items)
-        {
-            menu.Add(item);
-            if (item.menuType == DtMenuItem.MenuType.Row)
-            {
-                virtualView.MenuNames.Add(item.title, item);
-            }
-            if (item.childrenItems.Any())
-            {
-                AddChildren(menu, item.childrenItems, virtualView);
-            }
-        }
+        return menulist;
     }
 }
 #endif

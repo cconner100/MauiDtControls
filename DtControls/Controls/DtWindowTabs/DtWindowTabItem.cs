@@ -2,8 +2,15 @@
 namespace DtControls.Controls;
 
 using DtControls.Control;
+using DtControls.Models;
+
+#if WINDOWS
+using Windows.Foundation;
+#endif
 
 using System;
+
+
 
 [ContentProperty("Content")]
 public partial class DtWindowTabItem : View, IContentView, IElement, IDtWindowTabItem, IDisposable
@@ -12,9 +19,10 @@ public partial class DtWindowTabItem : View, IContentView, IElement, IDtWindowTa
     {
         Connect();
     }
+
     #region Properties
-    public NavigationPage navigationPage;
-    private bool disposedValue;
+    public NavigationPage navigationPage { get; set; }
+    bool disposedValue;
     public static readonly BindableProperty HeaderProperty = BindableProperty.Create("Header", typeof(string), typeof(DtWindowTabItem));
     public string Header
     {
@@ -70,19 +78,12 @@ public partial class DtWindowTabItem : View, IContentView, IElement, IDtWindowTa
     #endregion
     #region Events
 
-    /// <summary>
-    /// 
-    /// </summary>
-    public event EventHandler CloseRequested;
+    public event EventHandler<DtWindowTabItemCloseRequestEventArgs> CloseRequested;
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="args"></param>
-    public void WinCloseRequested(object sender, object args)
+
+    public void WinCloseRequested(DtWindowTabItem sender, DtWindowTabItemCloseRequestEventArgs args)
     {
-        CloseRequested?.Invoke(sender, (EventArgs)args);
+        CloseRequested?.Invoke(sender, args);
     }
     #endregion
 
@@ -96,10 +97,7 @@ public partial class DtWindowTabItem : View, IContentView, IElement, IDtWindowTa
             {
                 return np.CurrentPage;
             }
-            else
-            {
-                return (IView)Content;
-            }
+            return (IView)Content;
         }
     }
 
@@ -139,8 +137,23 @@ public partial class DtWindowTabItem : View, IContentView, IElement, IDtWindowTa
         GC.SuppressFinalize(this);
     }
 
+#if WINDOWS
+    public Microsoft.Maui.Graphics.Size CrossPlatformArrange(Microsoft.Maui.Graphics.Rect bounds)
+    {
+        throw new NotImplementedException();
+    }
+#endif
+    Microsoft.Maui.Graphics.Size IContentView.CrossPlatformMeasure(double widthConstraint, double heightConstraint)
+    {
+        throw new NotImplementedException();
+    }
+
 #if !ANDROID && !MACCATALYST && !IOS && !WINDOWS
     #region Properties    
+    public bool CanGoBack() 
+    {
+        throw new NotImplementedException();
+    }
     void Connect()
     {
         throw new NotImplementedException();

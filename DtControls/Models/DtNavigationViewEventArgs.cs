@@ -1,42 +1,151 @@
 ﻿namespace DtControls.Models;
 
-/// <summary>
-/// Base class for event arguments
-/// </summary>
-public class DtNavigationEventArgs
-{
-    /// <summary>
-    /// String name of item invoked
-    /// </summary>
-    public string InvokedItem { get; set; }
+using DtControls.Controls;
 
-    /// <summary>
-    /// If setting or not
-    /// </summary>
-    public bool IsSettingsInvoked { get; set; }
+#if WINDOWS
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media.Animation;
+#endif
+
+public class DtNavigationBackRequestedEventArgs : object { }
+
+public class DtNavigationItemCollapsedEventArgs
+{
+    public object CollapsedItem { get; protected set; }
+
+#if WINDOWS
+    NavigationViewItemBase CollapsedItemContainer { get; }
+
+    public DtNavigationItemCollapsedEventArgs(NavigationViewItemCollapsedEventArgs args)
+    {
+        CollapsedItem = args.CollapsedItem;
+        CollapsedItemContainer = args.CollapsedItemContainer;
+    }
+
+#else
+    public DtNavigationItemCollapsedEventArgs(object args){}
+#endif
 }
 
-/// <summary>
-/// Used to convert items invoked args
-/// </summary>
-public class DtNavigationItemInvokedEventArgs : DtNavigationEventArgs { }
+public class DtNavigationDisplayModeChangedEventArgs
+{
+    public enum DtNavigationDisplayMode
+    {
+        Compact = 1,
+        Expanded = 2,
+        Minimal = 3
+    }
 
-/// <summary>
-/// Used to change selection
-/// </summary>
-public class DtNavigationSelectionChangedEventArgs : DtNavigationEventArgs { }
+    public DtNavigationDisplayMode DisplayMode { get; protected set; }
+#if WINDOWS
+    public DtNavigationDisplayModeChangedEventArgs(NavigationViewDisplayModeChangedEventArgs args)
+    {
+        switch (args.DisplayMode)
+        {
+            case NavigationViewDisplayMode.Compact:
+                DisplayMode = DtNavigationDisplayMode.Compact;
+                break;
+            case NavigationViewDisplayMode.Expanded:
+                DisplayMode = DtNavigationDisplayMode.Expanded;
+                break;
+            case NavigationViewDisplayMode.Minimal:
+                DisplayMode = DtNavigationDisplayMode.Minimal;
+                break;
+        }
+    }
+#endif
+}
+public class DtNavigationItemExpandingEventArgs
+{
+    public object ExpandingItem { get; protected set; }
+#if WINDOWS
+    NavigationViewItemBase ExpandingItemContainer { get; set; }
 
-/// <summary>
-/// Expanding arguments
-/// </summary>
-public class DtNavigationItemExpandingEventArgs : DtNavigationEventArgs { }
+    public DtNavigationItemExpandingEventArgs(NavigationViewItemExpandingEventArgs args)
+    {
+        ExpandingItem = args.ExpandingItem;
+        ExpandingItemContainer = args.ExpandingItemContainer;
+    }
+#else
+    public DtNavigationItemExpandingEventArgs(object args){}
+#endif
+}
 
-/// <summary>
-/// Request back event for page stack
-/// </summary>
-public class DtNavigationBackRequestedEventArgs : DtNavigationEventArgs { }
+public class DtNavigationItemInvokedEventArgs
+{
+    public DtMenuItem ItemInvoked { get; protected set; }
+    public bool IsSettingsInvoked { get; protected set; }
 
-/// <summary>
-/// Menu items collapsed
-/// </summary>
-public class DtNavigationItemCollapsedEventArgs : DtNavigationEventArgs { }
+#if WINDOWS
+    NavigationViewItemBase InvokedItemContainer;
+    NavigationTransitionInfo RecommendedNavigationTransitionInfo;
+
+    public DtNavigationItemInvokedEventArgs(DtNavigation sender, NavigationViewItemInvokedEventArgs args)
+    {
+        var menu = DtMenuItem.ResolveDtMenuItemFromNative(sender, args.InvokedItemContainer);
+        // change native to dtmenu
+        if (menu != null)
+        {
+            ItemInvoked = menu;
+        }
+
+        InvokedItemContainer = args.InvokedItemContainer;
+        IsSettingsInvoked = args.IsSettingsInvoked;
+        RecommendedNavigationTransitionInfo = args.RecommendedNavigationTransitionInfo;
+    }
+#endif
+}
+
+public class DtNavigationPaneClosingEventArgs
+{
+#if WINDOWS
+    NavigationViewPaneClosingEventArgs orgArgs;
+
+    public bool Cancel
+    {
+        get
+        {
+            return orgArgs.Cancel;
+        }
+        set
+        {
+            orgArgs.Cancel = value;
+        }
+    }
+    public DtNavigationPaneClosingEventArgs(NavigationViewPaneClosingEventArgs args)
+    {
+        orgArgs = args;
+    }
+#else
+    public bool Cancel {get;set;}
+#endif
+}
+
+public class DtNavigationSelectionChangedEventArgs
+{
+    public DtMenuItem SelectedItem { get; protected set; }
+#if WINDOWS
+    NavigationViewSelectionChangedEventArgs orgArgs;
+    public bool IsSettingsSelected => orgArgs.IsSettingsSelected;
+
+    public DtNavigationSelectionChangedEventArgs(DtNavigation sender, NavigationViewSelectionChangedEventArgs args)
+    {
+        var menu = DtMenuItem.ResolveDtMenuItemFromNative(sender, args.SelectedItem);
+        // change native to dtmenu
+        if (menu != null)
+        {
+            SelectedItem = menu;
+        }
+        orgArgs = args;
+    }
+#else
+    public bool IsSettingsSelected {get;set;}
+    public DtNavigationSelectionChangedEventArgs(object args) {}
+#endif
+}
+
+
+
+
+
+

@@ -2,44 +2,29 @@
 
 namespace DtControls.Control;
 
-/// <summary>
-/// 
-/// </summary>
+using DtControls.Controls;
+using DtControls.Models;
+#if WINDOWS
+using Windows.Foundation;
+#endif
+
 public interface IDtWindowTabItem : IContentView
 {
     #region Events
 
-    /// <summary>
-    /// 
-    /// </summary>
-    event EventHandler CloseRequested;
+    event EventHandler<DtWindowTabItemCloseRequestEventArgs> CloseRequested;
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="args"></param>
-    void WinCloseRequested(object sender, object args);
+    void WinCloseRequested(DtWindowTabItem sender, DtWindowTabItemCloseRequestEventArgs args);
     #endregion
 
+    bool CanGoBack();
+    NavigationPage navigationPage { get; set; }
 
-    /// <summary>
-    /// 
-    /// </summary>
     string Header { get; set; }
 
-    /// <summary>
-    /// 
-    /// </summary>
     object IconSource { get; set; }
 
-    /// <summary>
-    /// 
-    /// </summary>
     bool IsClosable { get; set; }
 
-    /// <summary>
-    /// 
-    /// </summary>
     object PlatformObject { get; set; }
 }

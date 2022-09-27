@@ -44,6 +44,11 @@ namespace DtControls.Controls
 
         
         #endregion
+
+        public bool CanGoBack()
+        {
+            return false;
+        }
     }
 }
 #endif
