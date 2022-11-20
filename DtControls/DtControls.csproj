@@ -1,14 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net7.0;net7.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks>net7.0;net7.0-maccatalyst;net7.0-ios16.0</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net6.0-tizen</TargetFrameworks> -->
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
-
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
@@ -27,20 +26,13 @@
 		<ProduceReferenceAssembly>False</ProduceReferenceAssembly>
 	</PropertyGroup>
 
-	<!-- Both iOS and Mac Catalyst 
-	<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-ios')) != true AND $(TargetFramework.StartsWith('net6.0-maccatalyst')) != true">
+	<!-- Both iOS and Mac Catalyst -->
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios16.0|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	</PropertyGroup>
+	<ItemGroup Condition="$(TargetFramework.StartsWith('net7.0-ios')) != true AND $(TargetFramework.StartsWith('net7.0-maccatalyst')) != true">
 		<Compile Remove="**\**\*.MaciOS.cs" />
 		<None Include="**\**\*.MaciOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
-		<Compile Remove="**\MaciOS\**\*.cs" />
-		<None Include="**\MaciOS\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
-	</ItemGroup>-->
-
-	<!-- Mac Catalyst -->
-	<ItemGroup Condition="$(TargetFramework.StartsWith('net7.0-maccatalyst')) != true">
-		<Compile Remove="**\**\*.MacCatalyst.cs" />
-		<None Include="**\**\*.MacCatalyst.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
-		<Compile Remove="**\MacCatalyst\**\*.cs" />
-		<None Include="**\MacCatalyst\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 	</ItemGroup>
 
 	<!-- Windows -->
@@ -50,16 +42,19 @@
 		<Compile Remove="**\Windows\**\*.cs" />
 		<None Include="**\Windows\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 	</ItemGroup>
-	
 	<ItemGroup>
-	  <Compile Remove="Platforms\**" />
-	  <EmbeddedResource Remove="Platforms\**" />
-	  <MauiCss Remove="Platforms\**" />
-	  <MauiXaml Remove="Platforms\**" />
-	  <None Remove="Platforms\**" />
-	</ItemGroup>	
+		<Compile Remove="Platforms\**" />
+		<EmbeddedResource Remove="Platforms\**" />
+		<MauiCss Remove="Platforms\**" />
+		<MauiXaml Remove="Platforms\**" />
+		<None Remove="Platforms\**" />
+		<None Remove="Microsoft.Maui.Graphics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Common" Version="8.0.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Reference Include="Microsoft.Maui.Graphics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
 	</ItemGroup>
 </Project>

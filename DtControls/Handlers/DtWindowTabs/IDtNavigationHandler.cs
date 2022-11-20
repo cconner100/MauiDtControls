@@ -3,7 +3,7 @@
 using DtControls.Controls;
 using DtControls.Models;
 
-#if MACCATALYST
+#if MACCATALYST || IOS
 using UIKit;
 using PlatformView = UIKit.UIView;
 #elif ANDROID
@@ -17,7 +17,7 @@ using PlatformView = System.Object;
 
 public interface IDtNavigationHandler : IViewHandler
 {
-#if MACCATALYST
+#if MACCATALYST || IOS
     UISplitViewController splitView { get; }
     DtSidebarViewController Controller { get; }
 #endif
@@ -30,11 +30,11 @@ public interface IDtNavigationHandler : IViewHandler
     List<NavigationViewItem> BuildPlatformMenus(IList<DtMenuItem> menuList, IDtNavigation virtualView);
 #endif
 
-#if MACCATALYST
+#if MACCATALYST || IOS
     IList<DtMenuItem> BuildPlatformMenus(IList<DtMenuItem> menulist, IDtNavigation virtualView);
 #endif
 
-#if NETSTANDARD || (NET7_0 && !MACCATALYST && !ANDROID && !WINDOWS)
+#if NETSTANDARD || (NET7_0 && !MACCATALYST && !IOS && !ANDROID && !WINDOWS)
     List<object> BuildPlatformMenus(IList<DtMenuItem> menuList, IDtNavigation virtualView);
 #endif
 

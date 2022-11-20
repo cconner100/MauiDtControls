@@ -1,4 +1,4 @@
-﻿#if MACCATALYST
+﻿
 namespace DtControls.Models;
 
 using DtControls.Controls;
@@ -49,7 +49,6 @@ public class DtWindowTabsStripDragOverEventArgs
 public class DtWindowTabsStripDropEventArgs
 {
 }
-#endif
 
 
 

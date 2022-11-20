@@ -1,4 +1,4 @@
-﻿#if NET7_0 && !ANDROID && !MACCATALYST && !WINDOWS
+﻿#if NET7_0 && !ANDROID && !MACCATALYST && !IOS && !WINDOWS
 namespace DtControls.Handlers;
 
 using DtControls.Controls;

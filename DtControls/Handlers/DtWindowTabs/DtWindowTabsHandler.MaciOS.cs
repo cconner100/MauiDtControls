@@ -1,4 +1,4 @@
-﻿#if MACCATALYST || IOS
+﻿
 namespace DtControls.Handlers
 {
     using DtControls.Controls;
@@ -87,4 +87,3 @@ namespace DtControls.Handlers
         }
     }
 }
-#endif

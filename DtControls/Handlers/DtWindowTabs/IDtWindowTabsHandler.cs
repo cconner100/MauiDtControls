@@ -4,11 +4,11 @@ namespace DtControls.Handlers;
 using DtControls.Controls;
 
 using System.Collections.ObjectModel;
-#if MACCATALYST
+#if MACCATALYST || IOS
 using PlatformView = UIKit.UIView;
 #elif WINDOWS
 using PlatformView = Microsoft.UI.Xaml.Controls.TabView;
-#elif NETSTANDARD || (NET7_0 && !IOS && !ANDROID)
+#elif NETSTANDARD || (NET7_0 && !ANDROID)
 using PlatformView = System.Object;
 #endif
 

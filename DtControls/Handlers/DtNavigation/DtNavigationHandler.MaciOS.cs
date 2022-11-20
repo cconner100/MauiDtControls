@@ -1,4 +1,4 @@
-﻿#if MACCATALYST
+﻿
 
 namespace DtControls.Handlers;
 
@@ -216,4 +216,3 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIView>, I
         return menulist;
     }
 }
-#endif

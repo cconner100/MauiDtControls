@@ -1,4 +1,4 @@
-﻿#if MACCATALYST
+﻿
 namespace DtControls.Handlers;
 
 using DtControls.Controls;
@@ -310,5 +310,3 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
         OnSettingsSelect?.Invoke(this, EventArgs.Empty);
     }
 }
-
-#endif

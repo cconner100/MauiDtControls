@@ -1,4 +1,4 @@
-﻿#if MACCATALYST
+﻿
 namespace DtControls.Controls
 {
 
@@ -51,4 +51,3 @@ namespace DtControls.Controls
         }
     }
 }
-#endif
