@@ -26,14 +26,7 @@ public static class MauiProgram
 				handlers.AddHandler<DtNavigation, DtNavigationHandler>();
 				handlers.AddHandler<DtWindowTabs, DtWindowTabsHandler>();
 			});
-
-#if DEBUG
-        builder.Services.AddLogging(configure =>
-        {
-			configure.AddDebug();
-            configure.AddConsole();
-        });
-#endif
+        
         builder.UseMauiEmbedding<Application>();
 
         using var loggerFactory = LoggerFactory.Create(builder =>

@@ -13,7 +13,7 @@ using PlatformObject = System.Object;
 
 
 public class DtMenuItem
-#if MACCATALYST
+#if MACCATALYST || IOS
     : Foundation.NSObject
 #endif
 {
