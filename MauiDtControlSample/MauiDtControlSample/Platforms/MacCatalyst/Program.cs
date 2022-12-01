@@ -1,7 +1,7 @@
-﻿using ObjCRuntime;
-using UIKit;
+﻿namespace MauiDtControlSample;
+using ObjCRuntime;
 
-namespace MauiDtControlSample;
+using UIKit;
 
 public class Program
 {

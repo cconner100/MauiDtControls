@@ -19,14 +19,14 @@ public class DtMenuItem
 {
     public Guid id { get; set; }
     public MenuType menuType { get; set; }
-    public List<DtMenuItem> childrenItems { get; set; } = new List<DtMenuItem>();
+    public List<DtMenuItem> ChildrenItems { get; set; } = new List<DtMenuItem>();
     
     public string title { get; set; }
     /// <summary>
     /// Only on maccatalyst
     /// </summary>
     public string subTitle { get; set; }
-    public ImageSource mauiIconImage { get; set; }
+    public ImageSource MauiIconImage { get; set; }
     public object platformImage { get; set; }
     /// <summary>
     /// only on winui
@@ -51,9 +51,9 @@ public class DtMenuItem
             {
                 return menu;
             }
-            if(menu.childrenItems.Any())
+            if(menu.ChildrenItems.Any())
             {
-                var retmenu = FindMenuFromChildren(menu.childrenItems, nativeMenuItem);
+                var retmenu = FindMenuFromChildren(menu.ChildrenItems, nativeMenuItem);
                 if(retmenu != null)
                 {
                     return retmenu;
@@ -70,9 +70,9 @@ public class DtMenuItem
             {
                 return menu;
             }
-            if (menu.childrenItems.Any())
+            if (menu.ChildrenItems.Any())
             {
-                var childmenu = FindMenuFromChildren(menu.childrenItems, nativeMenuItem);
+                var childmenu = FindMenuFromChildren(menu.ChildrenItems, nativeMenuItem);
                 if (childmenu != null)
                 {
                     return childmenu;

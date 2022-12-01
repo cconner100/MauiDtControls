@@ -81,11 +81,11 @@ public partial class DtNavigation : View, IContentView, IDtNavigation
     public event EventHandler<DtNavigationSelectionChangedEventArgs> SelectionChanged;
     #endregion
 
-    public IMauiContext mauiContext
+    public static IMauiContext mauiContext
     {
         get
         {
-            return DtMauiContext.mauiContext;
+            return DtMauiContext.MauiContext;
         }
     }
 

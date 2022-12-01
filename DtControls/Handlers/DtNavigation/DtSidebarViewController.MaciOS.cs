@@ -11,7 +11,7 @@ using static Microsoft.Maui.Controls.Platform.Compatibility.ShellPageRendererTra
 
 public class DtSidebarViewController : UIViewController, IUICollectionViewDelegate
 {
-    IDtNavigation dtNavigationView;
+    readonly IDtNavigation dtNavigationView;
     public event EventHandler OnSettingsSelect;
     UICollectionView collectionView;
     UICollectionViewDiffableDataSource<NSString, DtMenuItem> dataSource;
@@ -119,15 +119,15 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
     void ApplyChildren(DtMenuItem parent, NSDiffableDataSourceSectionSnapshot<DtMenuItem> snapshot)
     {
         List<DtMenuItem> dtMenuItems = new();
-        foreach(var row in parent.childrenItems)
+        foreach(var row in parent.ChildrenItems)
         {
             dtMenuItems.Add(row);
         }
         snapshot.AppendItems(dtMenuItems.ToArray(), parent);
 
-        foreach(var row in parent.childrenItems)
+        foreach(var row in parent.ChildrenItems)
         {
-            if(row.childrenItems.Any())
+            if(row.ChildrenItems.Any())
             {
                 ApplyChildren(row, snapshot);
             }
@@ -155,13 +155,13 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
                 }
                 else
                 {
-                    if (sidebarItem.mauiIconImage == null)
+                    if (sidebarItem.MauiIconImage == null)
                     {
                         cfg.Image = null;
                     }
                     else
                     {
-                        sidebarItem.mauiIconImage.LoadImage(DtMauiContext.mauiContext, result =>
+                        sidebarItem.MauiIconImage.LoadImage(DtMauiContext.MauiContext, result =>
                         {
                             var image = result?.Value;
                             try
@@ -197,13 +197,13 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
                 }
                 else
                 {
-                    if (sidebarItem.mauiIconImage == null)
+                    if (sidebarItem.MauiIconImage == null)
                     {
                         cfg.Image = null;
                     }
                     else
                     {
-                        sidebarItem.mauiIconImage.LoadImage(DtMauiContext.mauiContext, result =>
+                        sidebarItem.MauiIconImage.LoadImage(DtMauiContext.MauiContext, result =>
                         {
                             var image = result?.Value;
                             try
@@ -241,13 +241,13 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
                 }
                 else
                 {
-                    if (sidebarItem.mauiIconImage == null)
+                    if (sidebarItem.MauiIconImage == null)
                     {
                         cfg.Image = null;
                     }
                     else
                     {
-                        sidebarItem.mauiIconImage.LoadImage(DtMauiContext.mauiContext, result =>
+                        sidebarItem.MauiIconImage.LoadImage(DtMauiContext.MauiContext, result =>
                         {
                             var image = result?.Value;
                             try

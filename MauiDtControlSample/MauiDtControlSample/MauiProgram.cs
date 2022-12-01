@@ -3,6 +3,8 @@
 using DtControls.Controls;
 using DtControls.Handlers;
 
+using MauiDtControlSample.ViewModels;
+
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
 using Microsoft.Maui.Embedding;
@@ -18,8 +20,8 @@ public static class MauiProgram
 			.UseMauiApp<App>()
 			.ConfigureFonts(fonts =>
 			{
-				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+				_= fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+				_ = fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			})
             .ConfigureMauiHandlers(handlers =>
 			{
@@ -28,6 +30,8 @@ public static class MauiProgram
 			});
         
         builder.UseMauiEmbedding<Application>();
+		builder.Services.AddSingleton<MainPage>();
+		builder.Services.AddSingleton<MainPageViewModel>();
 
         using var loggerFactory = LoggerFactory.Create(builder =>
         {

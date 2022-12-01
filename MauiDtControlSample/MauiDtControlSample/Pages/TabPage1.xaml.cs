@@ -5,7 +5,7 @@ public partial class TabPage1 : ContentPage
 	public TabPage1()
 	{
 		InitializeComponent();
-        next.Focus();
+        _ = next.Focus();
     }
 
 	private void ContentPage_Appearing(object sender, EventArgs e)
@@ -15,6 +15,9 @@ public partial class TabPage1 : ContentPage
 
 	private void ContentPage_Loaded(object sender, EventArgs e)
 	{
+		var mp = ServiceProvider.Current.GetService<MainPage>();
+		var tab = mp.GetCurrentTab();
+		tab.Header = Title; 
 		Console.WriteLine("ContentPage_Loaded");
     }
 

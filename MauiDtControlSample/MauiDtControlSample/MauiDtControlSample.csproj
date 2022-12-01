@@ -55,26 +55,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Microsoft.Extensions.Configuration" />
-	  <None Remove="Microsoft.Extensions.DependencyInjection" />
-	  <None Remove="Microsoft.Extensions.Logging" />
-	  <None Remove="Microsoft.Extensions.Logging.Abstractions" />
-	  <None Remove="Microsoft.Maui.Graphics" />
-	  <None Remove="Microsoft.Extensions.Logging.Console" />
-	  <None Remove="Platforms\iOS\" />
-	</ItemGroup>
-	<ItemGroup>
 	  <None Include="..\.editorconfig" Link=".editorconfig" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Common" Version="8.0.0" />
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
-	  <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
-	  <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
-	  <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
-	  <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
-	  <PackageReference Include="Microsoft.Maui.Graphics" Version="7.0.49" />
 	  <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
 	</ItemGroup>
 

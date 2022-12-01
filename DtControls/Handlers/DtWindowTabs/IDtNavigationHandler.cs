@@ -18,7 +18,7 @@ using PlatformView = System.Object;
 public interface IDtNavigationHandler : IViewHandler
 {
 #if MACCATALYST || IOS
-    UISplitViewController splitView { get; }
+    UISplitViewController SplitView { get; }
     DtSidebarViewController Controller { get; }
 #endif
 

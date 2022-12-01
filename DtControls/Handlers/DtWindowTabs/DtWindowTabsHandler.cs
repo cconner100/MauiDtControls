@@ -23,7 +23,7 @@ public partial class DtWindowTabsHandler
         [nameof(IDtWindowTabs.TabWidthMode)] = MapTabWidthMode,
     };
 
-    public static CommandMapper<IDtWindowTabs, IDtWindowTabsHandler> DtWindowTabsCommandMapper => new CommandMapper<IDtWindowTabs, IDtWindowTabsHandler>();
+    public static CommandMapper<IDtWindowTabs, IDtWindowTabsHandler> DtWindowTabsCommandMapper => new();
 
     public DtWindowTabsHandler() : base(DtWindowTabsPropertyMapper, DtWindowTabsCommandMapper)
     {

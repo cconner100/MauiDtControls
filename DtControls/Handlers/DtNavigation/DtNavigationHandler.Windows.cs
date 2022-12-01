@@ -12,7 +12,7 @@ using Microsoft.UI.Xaml.Controls;
 
 public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationView>, IDtNavigationHandler
 {
-    NavigationView _navigationView = new NavigationView();
+    readonly NavigationView _navigationView = new();
 
     IDtNavigation IDtNavigationHandler.VirtualView => VirtualView;
 
@@ -131,7 +131,7 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
 
     public override void SetMauiContext(IMauiContext mauiContext)
     {
-        DtMauiContext.mauiContext = mauiContext;
+        DtMauiContext.MauiContext = mauiContext;
         base.SetMauiContext(mauiContext);
     }
 
@@ -151,7 +151,7 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
     {
         if (virtualView.AutoSuggestBox != null)
         {
-            ((NavigationView)(viewHandler?.PlatformView)).AutoSuggestBox = (AutoSuggestBox)virtualView.AutoSuggestBox.ToHandler(DtMauiContext.mauiContext).PlatformView;
+            ((NavigationView)(viewHandler?.PlatformView)).AutoSuggestBox = (AutoSuggestBox)virtualView.AutoSuggestBox.ToHandler(DtMauiContext.MauiContext).PlatformView;
         }
     }
 
@@ -381,9 +381,9 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
         }
         else
         {
-            if (item.mauiIconImage != null)
+            if (item.MauiIconImage != null)
             {
-                var iconSource = item.mauiIconImage.ToIconSource(DtMauiContext.mauiContext!);
+                var iconSource = item.MauiIconImage.ToIconSource(DtMauiContext.MauiContext!);
                 if (PlatformView.Resources.TryGetValue("NavigationViewItemForeground", out object nviForeground) &&
                                 nviForeground is Microsoft.UI.Xaml.Media.Brush brush)
                 {
@@ -396,9 +396,9 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
         item.InternalObject = ret;
 
         //ToolTipService.SetToolTip(ret, tooltip);
-        if (item.childrenItems.Any())
+        if (item.ChildrenItems.Any())
         {
-            foreach (var child in item.childrenItems)
+            foreach (var child in item.ChildrenItems)
             {
                 ret.MenuItems.Add(MakeMenuItem(child, virtualView));
             }

@@ -49,9 +49,9 @@ public class DtMenuData : IDtMenu
 #if MACCATALYST
             platformImage = UIImage.GetSystemImage("figure.wave"),
 #endif
-            mauiIconImage = null,
+            MauiIconImage = null,
             menuType = DtMenuItem.MenuType.ExpandableRow,
-            childrenItems =
+            ChildrenItems =
             {
                 new DtMenuItem
                 {id=Guid.NewGuid(),
@@ -65,7 +65,7 @@ public class DtMenuData : IDtMenu
 #if MACCATALYST
                 platformImage = UIImage.GetSystemImage("car"),
 #endif
-                mauiIconImage = null,
+                MauiIconImage = null,
                 screen = typeof(CarPage)
                 },
                 new DtMenuItem {
@@ -79,7 +79,7 @@ public class DtMenuData : IDtMenu
 #if MACCATALYST
                     platformImage = UIImage.GetSystemImage("bus"),
 #endif
-                    mauiIconImage = null,
+                    MauiIconImage = null,
                     screen = typeof(BusPage)
                 },
                 {
@@ -94,7 +94,7 @@ public class DtMenuData : IDtMenu
 #if MACCATALYST
                     platformImage = UIImage.GetSystemImage("cablecar"),
 #endif
-                    mauiIconImage = null,
+                    MauiIconImage = null,
                     screen = typeof(CableCarPage)
                 }
             },
@@ -111,8 +111,8 @@ public class DtMenuData : IDtMenu
 #if MACCATALYST
                 platformImage = UIImage.GetSystemImage("fuelpump"),
 #endif
-                mauiIconImage = null,
-                childrenItems =
+                MauiIconImage = null,
+                ChildrenItems =
                 {
                     new DtMenuItem
                     {
@@ -126,7 +126,7 @@ public class DtMenuData : IDtMenu
 #if MACCATALYST
                         platformImage = UIImage.GetSystemImage("airplane"),
 #endif
-                        mauiIconImage = null,
+                        MauiIconImage = null,
                         screen = typeof(AirPlanePage)
                     },
                     new DtMenuItem
@@ -141,7 +141,7 @@ public class DtMenuData : IDtMenu
 #if MACCATALYST
                         platformImage = UIImage.GetSystemImage("ferry"),
 #endif
-                        mauiIconImage = null,
+                        MauiIconImage = null,
                         screen = typeof(FerryPage)}
                 },
                 }

@@ -21,11 +21,11 @@ using Page = Page;
 
 public partial class MainPageViewModel : IMainPageViewModel
 {
-    DtNavigation NavView;
+    readonly DtNavigation NavView;
     SearchBar SearchBar;
-    DtMenuData menu = new DtMenuData();
-    MainPage page = null;
-    ILogger logger = null;
+    readonly DtMenuData menu = new();
+    readonly MainPage page;
+    readonly ILogger logger;
 
     MainPageViewModel() { }
 
@@ -67,7 +67,7 @@ public partial class MainPageViewModel : IMainPageViewModel
 #if WINDOWS
     void CtrlF_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
     {
-        SearchBar.Focus();
+        _= SearchBar.Focus();
     }
 #endif
 
@@ -78,14 +78,7 @@ public partial class MainPageViewModel : IMainPageViewModel
         {
             // get the real control here and use it
             var ret = NavView.SearchMenuItems(text);
-            if (ret?.Count == 0)
-            {
-                asb.ItemsSource = new[] { "No result found" };
-            }
-            else
-            {
-                asb.ItemsSource = ret?.Keys.ToArray<string>();
-            }
+            asb.ItemsSource = ret?.Count == 0 ? (new[] { "No result found" }) : (object)(ret?.Keys.ToArray<string>());
         }
 #endif
     }
@@ -100,8 +93,8 @@ public partial class MainPageViewModel : IMainPageViewModel
     {
         var tabindex = (int)tabs.SelectedItem;
         var tabItem = tabs.TabItems[tabindex];
-        await tabItem.navigationPage.PushAsync((Page)Activator.CreateInstance(menuItem.screen)).ConfigureAwait(true);
-        tabItem.Focus();
+        await tabItem.NavigationPage.PushAsync((Page)Activator.CreateInstance(menuItem.screen)).ConfigureAwait(true);
+        _= tabItem.Focus();
         UpdateBackButton(tabs);
     }
 
@@ -111,9 +104,9 @@ public partial class MainPageViewModel : IMainPageViewModel
         var tabItem = tabs.TabItems[tabindex];
         if (tabItem.CanGoBack())
         {
-            await tabItem.navigationPage.PopAsync().ConfigureAwait(true);
+            _= await tabItem.NavigationPage.PopAsync().ConfigureAwait(true);
         }
-        tabItem.Focus();
+        _= tabItem.Focus();
         UpdateBackButton(tabs);
     }
 
@@ -211,7 +204,7 @@ public partial class MainPageViewModel : IMainPageViewModel
     }
     public void TabCloseRequested(DtWindowTabs sender, DtWindowTabItemCloseRequestEventArgs e)
     {
-        sender.TabItems.Remove(e.Tab);
+        _ = sender.TabItems.Remove(e.Tab);
     }
     #endregion
 

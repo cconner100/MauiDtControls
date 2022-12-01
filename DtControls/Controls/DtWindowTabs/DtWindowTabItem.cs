@@ -21,7 +21,7 @@ public partial class DtWindowTabItem : View, IContentView, IElement, IDtWindowTa
     }
 
     #region Properties
-    public NavigationPage navigationPage { get; set; }
+    public NavigationPage NavigationPage { get; set; }
     bool disposedValue;
     public static readonly BindableProperty HeaderProperty = BindableProperty.Create("Header", typeof(string), typeof(DtWindowTabItem));
     public string Header
@@ -93,11 +93,7 @@ public partial class DtWindowTabItem : View, IContentView, IElement, IDtWindowTa
     {
         get
         {
-            if (Content is NavigationPage np)
-            {
-                return np.CurrentPage;
-            }
-            return (IView)Content;
+            return Content is NavigationPage np ? np.CurrentPage : (IView)Content;
         }
     }
 

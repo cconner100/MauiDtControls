@@ -34,7 +34,7 @@ public partial class DtNavigationHandler
         [nameof(DtNavigation.SelectedItem)] = MapSelectedItem,
     };
 
-    public static CommandMapper<IDtNavigation, IDtNavigationHandler> DtNavigationCommandMapper => new CommandMapper<IDtNavigation, IDtNavigationHandler>();
+    public static CommandMapper<IDtNavigation, IDtNavigationHandler> DtNavigationCommandMapper => new();
 
 
     public DtNavigationHandler() : base(DtNavigationMapper, DtNavigationCommandMapper)

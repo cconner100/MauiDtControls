@@ -1,53 +1,52 @@
 ﻿
-namespace DtControls.Controls
+namespace DtControls.Controls;
+
+
+public partial class DtWindowTabItem
 {
-
-    public partial class DtWindowTabItem
+    void Connect()
     {
-        void Connect()
-        {
-            throw new NotImplementedException();
-        }
-        void Disconnect()
-        {
-            throw new NotImplementedException();
-        }
+        throw new NotImplementedException();
+    }
+    void Disconnect()
+    {
+        throw new NotImplementedException();
+    }
 
-        #region Events
+    #region Events
 
-        #endregion
+    #endregion
 
-        #region Properties
-        void HeadingChanged(string value)
-        {
-            throw new NotImplementedException();
-        }
+    #region Properties
+    void HeadingChanged(string value)
+    {
+        throw new NotImplementedException();
+    }
 
-        void IconSourceChanged(object value)
-        {
-            throw new NotImplementedException();
-        }
+    void IconSourceChanged(object value)
+    {
+        throw new NotImplementedException();
+    }
 
-        void IsClosableChanged(bool value)
-        {
-            throw new NotImplementedException();
-        }
+    void IsClosableChanged(bool value)
+    {
+        throw new NotImplementedException();
+    }
 
-        void ContentChanged(object value)
-        {
-            throw new NotImplementedException();
-        }
-        void TabNavigate(ContentPage page)
-        {
-            throw new NotImplementedException();
-        }
+    void ContentChanged(object value)
+    {
+        throw new NotImplementedException();
+    }
+    void TabNavigate(ContentPage page)
+    {
+        throw new NotImplementedException();
+    }
 
-        
-        #endregion
+    
+    #endregion
 
-        public bool CanGoBack()
-        {
-            return false;
-        }
+    public bool CanGoBack()
+    {
+        return false;
     }
 }

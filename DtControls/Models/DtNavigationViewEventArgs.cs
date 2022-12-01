@@ -99,7 +99,7 @@ public class DtNavigationItemInvokedEventArgs
 public class DtNavigationPaneClosingEventArgs
 {
 #if WINDOWS
-    NavigationViewPaneClosingEventArgs orgArgs;
+    readonly NavigationViewPaneClosingEventArgs orgArgs;
 
     public bool Cancel
     {
@@ -125,7 +125,7 @@ public class DtNavigationSelectionChangedEventArgs
 {
     public DtMenuItem SelectedItem { get; protected set; }
 #if WINDOWS
-    NavigationViewSelectionChangedEventArgs orgArgs;
+    readonly NavigationViewSelectionChangedEventArgs orgArgs;
     public bool IsSettingsSelected => orgArgs.IsSettingsSelected;
 
     public DtNavigationSelectionChangedEventArgs(DtNavigation sender, NavigationViewSelectionChangedEventArgs args)

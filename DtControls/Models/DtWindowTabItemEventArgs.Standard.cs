@@ -1,7 +1,6 @@
 ﻿#if NET7_0 && !ANDROID && !IOS && !MACCATALYST && !WINDOWS
 
-namespace DtControls.Models
-{
+namespace DtControls.Models;
 
     public class DtWindowTabItemCloseRequestEventArgs
     {
@@ -46,6 +45,4 @@ namespace DtControls.Models
     public class DtWindowTabsStripDropEventArgs
     {
     }
-
-}
 #endif

@@ -120,51 +120,91 @@ public partial class DtWindowTabs : View, IContentView, IDtWindowTabs
 
     #region Properties
 
-    public static readonly BindableProperty AddTabButtonCommandProperty = BindableProperty.Create("AddTabButtonCommand", typeof(object), typeof(DtWindowTabs));
+    public static readonly BindableProperty AddTabButtonCommandProperty = BindableProperty.Create(nameof(AddTabButtonCommand), typeof(object), typeof(DtWindowTabs));
 
     public object AddTabButtonCommand { get; set; }
 
-    public static readonly BindableProperty AddTabButtonCommandParameterProperty = BindableProperty.Create("AddTabButtonCommandParameter", typeof(object), typeof(DtWindowTabs));
+    public static readonly BindableProperty AddTabButtonCommandParameterProperty = BindableProperty.Create(nameof(AddTabButtonCommandParameter), typeof(object), typeof(DtWindowTabs));
 
     public object AddTabButtonCommandParameter { get; set; }
 
-    public static readonly BindableProperty AllowDropTabsProperty = BindableProperty.Create("AllowDropTabs", typeof(bool), typeof(DtWindowTabs), true);
+    public static readonly BindableProperty AllowDropTabsProperty = BindableProperty.Create(nameof(AllowDropTabs), typeof(bool), typeof(DtWindowTabs), true);
 
     public bool AllowDropTabs { get; set; } = true;
 
-    public static readonly BindableProperty CanDragTabsProperty = BindableProperty.Create("CanDragTabs", typeof(bool), typeof(DtWindowTabs), false);
+    public static readonly BindableProperty CanDragTabsProperty = BindableProperty.Create(nameof(CanDragTabs), typeof(bool), typeof(DtWindowTabs), false);
 
     public bool CanDragTabs { get; set; } = false;
 
-    public static readonly BindableProperty CanReorderTabsProperty = BindableProperty.Create("CanReorderTabs", typeof(bool), typeof(DtWindowTabs), true);
+    public static readonly BindableProperty CanReorderTabsProperty = BindableProperty.Create(nameof(CanReorderTabs), typeof(bool), typeof(DtWindowTabs), true);
 
     public bool CanReorderTabs { get; set; } = true;
 
-    public static readonly BindableProperty CloseButtonOverlayModeProperty = BindableProperty.Create("CloseButtonOverlayMode", typeof(CloseButtonOverlayModeEnum), typeof(DtWindowTabs), CloseButtonOverlayModeEnum.Auto);
+    public static readonly BindableProperty CloseButtonOverlayModeProperty = BindableProperty.Create(nameof(CloseButtonOverlayMode), typeof(CloseButtonOverlayModeEnum), typeof(DtWindowTabs), CloseButtonOverlayModeEnum.Auto);
 
     public CloseButtonOverlayModeEnum CloseButtonOverlayMode { get; set; } = CloseButtonOverlayModeEnum.Auto;
 
-    public static readonly BindableProperty IsAddTabButtonVisibleProperty = BindableProperty.Create("IsAddTabButtonVisible", typeof(bool), typeof(DtWindowTabs), true);
+    public static readonly BindableProperty IsAddTabButtonVisibleProperty = BindableProperty.Create(nameof(IsAddTabButtonVisible), typeof(bool), typeof(DtWindowTabs), true);
 
-    public bool IsAddTabButtonVisible { get; set; } = true;
+    public bool IsAddTabButtonVisible
+    {
+        get
+        {
+            return (bool)GetValue(IsAddTabButtonVisibleProperty);
+        }
+        set
+        {
+            SetValue(IsAddTabButtonVisibleProperty, value);
+        }
+    }
 
-    public static readonly BindableProperty SelectedIndexProperty = BindableProperty.Create("SelectedIndex", typeof(int), typeof(DtWindowTabs));
+    public static readonly BindableProperty SelectedIndexProperty = BindableProperty.Create(nameof(SelectedIndex), typeof(int), typeof(DtWindowTabs));
 
-    public int SelectedIndex { get; set; }
+    public int SelectedIndex
+    {
+        get
+        {
+            return (int)GetValue(SelectedIndexProperty);
+        }
+        set
+        {
+            SetValue(SelectedIndexProperty, value);
+        }
+    }
 
-    public static readonly BindableProperty SelectedItemProperty = BindableProperty.Create("SelectedItem", typeof(object), typeof(DtWindowTabs));
+    public static readonly BindableProperty SelectedItemProperty = BindableProperty.Create(nameof(SelectedItem), typeof(object), typeof(DtWindowTabs));
 
-    public object SelectedItem { get; set; }
+    public object SelectedItem
+    {
+        get
+        {
+            return GetValue(SelectedItemProperty);
+        }
+        set
+        {
+            SetValue(SelectedItemProperty, value);
+        }
+    }
 
-    public static readonly BindableProperty TabItemsProperty = BindableProperty.Create("TabItems", typeof(ObservableCollection<object>), typeof(DtWindowTabs));
+    public static readonly BindableProperty TabItemsProperty = BindableProperty.Create(nameof(TabItems), typeof(ObservableCollection<object>), typeof(DtWindowTabs));
 
     public ObservableCollection<DtWindowTabItem> TabItems { get; set; }
 
-    public static readonly BindableProperty TabItemsSourceProperty = BindableProperty.Create("TabItemsSource", typeof(object), typeof(DtWindowTabs));
+    public static readonly BindableProperty TabItemsSourceProperty = BindableProperty.Create(nameof(TabItemsSource), typeof(object), typeof(DtWindowTabs));
 
-    public object TabItemsSource { get; set; }
+    public object TabItemsSource
+    {
+        get
+        {
+            return GetValue(TabItemsSourceProperty);
+        }
+        set
+        {
+            SetValue(TabItemsSourceProperty, value);
+        }
+    }
 
-    public static readonly BindableProperty TabStripFooterProperty = BindableProperty.Create("TabStripFooter", typeof(object), typeof(DtWindowTabs));
+    public static readonly BindableProperty TabStripFooterProperty = BindableProperty.Create(nameof(TabStripFooter), typeof(object), typeof(DtWindowTabs));
 
     public object TabStripFooter { get; set; }
 
@@ -172,7 +212,7 @@ public partial class DtWindowTabs : View, IContentView, IDtWindowTabs
 
     public TabWidthModeEnum TabWidthMode { get; set; } = TabWidthModeEnum.Equal;
 
-    public static readonly BindableProperty ContentProperty = BindableProperty.Create("Content", typeof(object), typeof(DtNavigation));
+    public static readonly BindableProperty ContentProperty = BindableProperty.Create(nameof(Content), typeof(object), typeof(DtNavigation));
 
     public object Content
     {

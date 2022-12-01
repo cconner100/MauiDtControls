@@ -142,9 +142,9 @@ public class DtWindowTabsSelectionChangedEventArgs
         OrginalSource = args.OriginalSource;
     }
 
-    List<DtWindowTabItem> FindDtWindowTabItem(DtWindowTabs tabs, IList<object> source)
+    static List<DtWindowTabItem> FindDtWindowTabItem(DtWindowTabs tabs, IList<object> source)
     {
-        List<DtWindowTabItem> retItems = new List<DtWindowTabItem>();
+        List<DtWindowTabItem> retItems = new();
         if (!source.Any())
         {
             return retItems;
@@ -157,7 +157,7 @@ public class DtWindowTabsSelectionChangedEventArgs
                 {
                     try
                     {
-                        item.ToHandler(DtMauiContext.mauiContext);
+                        _= item.ToHandler(DtMauiContext.MauiContext);
                     }
                     catch { }
                 }
@@ -204,7 +204,7 @@ public class DtWindowTabsDragEventArgs
     public DtWindowTabsDragDropModifiers Modifiers { get; protected set; }
     public object OriginalSource { get; protected set; }
 
-    Microsoft.UI.Xaml.DragEventArgs origargs;
+    readonly Microsoft.UI.Xaml.DragEventArgs origargs;
 
     public DtWindowTabsDragEventArgs(Microsoft.UI.Xaml.DragEventArgs args)
     {

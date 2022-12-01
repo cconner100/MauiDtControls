@@ -4,10 +4,10 @@
              x:Class="MauiDtControlSample.TabPage1"
              Appearing="ContentPage_Appearing"
              Loaded="ContentPage_Loaded"
-             Title="TabPage1">
+             Title="Home Page">
     <VerticalStackLayout>
         <Label x:Name="textbox"
-            Text="Hello TabPage 1"
+            Text="Home Page"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <Button x:Name="next" Text="Next Page" Clicked="next_Clicked"/>

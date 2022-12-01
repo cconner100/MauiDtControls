@@ -3,24 +3,17 @@ namespace DtControls.Controls;
 
 using DtControls.Models;
 
-using Microsoft.Maui.Graphics;
 using Microsoft.Maui.Platform;
 using Microsoft.UI.Xaml.Controls;
-
-using System;
 
 public partial class DtWindowTabItem : View, IElement
 {
     public bool CanGoBack()
     {
-        if(ContentFrame != null)
-        {
-            return ContentFrame.CanGoBack;
-        }
-        return false;
+        return ContentFrame != null && ContentFrame.CanGoBack;
     }
 
-    TabViewItem tabViewItem = new TabViewItem();
+    readonly TabViewItem tabViewItem = new();
     
     Frame ContentFrame { get; set; }
 
@@ -73,7 +66,7 @@ public partial class DtWindowTabItem : View, IElement
         {
             if(np.Handler == null)
             {
-                np.ToHandler(DtMauiContext.mauiContext);
+                _ = np.ToHandler(DtMauiContext.MauiContext);
             }
             tabViewItem.Content = np.Handler.PlatformView;
             if(np.Handler.PlatformView is Frame frame)

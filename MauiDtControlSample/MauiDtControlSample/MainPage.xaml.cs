@@ -1,15 +1,17 @@
 ﻿namespace MauiDtControlSample;
 
-using DtControls.Models;
 using DtControls.Controls;
+using DtControls.Models;
 
 using MauiDtControlSample.ViewModels;
+
 using Microsoft.Extensions.Logging;
+
 using System.Diagnostics;
 
 public partial class MainPage : ContentPage
 {
-    ILogger logger;
+    readonly ILogger logger;
 
     public MainPage(ILogger Logger)
     {
@@ -18,13 +20,22 @@ public partial class MainPage : ContentPage
         BindingContext = new MainPageViewModel(this, NavView, logger);
     }
 
-    private void WindowTabView_Loaded(object sender, EventArgs e)
+    public DtWindowTabItem? GetCurrentTab()
     {
-        logger.LogTrace("ContentPage_Appearing");
+        if (WindowTabView is null)
+        {
+            return null;
+        }
+        return WindowTabView.SelectedItem as DtWindowTabItem;
+    }
+
+    void WindowTabView_Loaded(object sender, EventArgs e)
+    {
+        Debug.WriteLine("WindowTabView_Loaded");
     }
 
     bool loaded;
-    private void DtWindowTab_Loaded(object sender, EventArgs e)
+    void DtWindowTab_Loaded(object sender, EventArgs e)
     {
         // strange bug on loading content page called 2 times
         if (loaded)
@@ -48,13 +59,18 @@ public partial class MainPage : ContentPage
         // Window Tab events
         WindowTabView.Focused += WindowTabView_Focused;
         WindowTabView.SelectionChanged += WindowTabView_SelectionChanged;
-        WindowTabView.Focus();
+
         // Add first tab, not closeable
         ((MainPageViewModel)BindingContext)?.AddFirstTab(WindowTabView);
-        logger.LogTrace("ContentPage_Loaded");
+
+        _ = WindowTabView.Focus();
+        //WindowTabView.SelectedItem = 0;
+        WindowTabView.SelectedIndex = 0;
+
+        Debug.WriteLine("DtWindowTab_Loaded");
     }
 
-    private void WindowTabView_SelectionChanged(object sender, DtWindowTabsSelectionChangedEventArgs e)
+    void WindowTabView_SelectionChanged(object sender, DtWindowTabsSelectionChangedEventArgs e)
     {
         if (e.AddedItems.Any())
         {
@@ -73,77 +89,79 @@ public partial class MainPage : ContentPage
             }
 
         }
+        Debug.WriteLine("WindowTabView_SelectionChanged");
     }
 
-    private void WindowTabView_Focused(object sender, FocusEventArgs e)
+    void WindowTabView_Focused(object sender, FocusEventArgs e)
     {
         if (e.IsFocused == true && e.VisualElement is DtWindowTabItem item)
         {
             if (item.CanGoBack())
             {
                 NavView.IsBackButtonEnabled = true;
-                NavView.IsBackButtonVisible = DtNavigation.BackButtonVisable.Auto;
+                NavView.IsBackButtonVisible = DtNavigation.BackButtonVisable.Visible;
             }
             else
             {
                 NavView.IsBackButtonEnabled = false;
-                NavView.IsBackButtonVisible = DtNavigation.BackButtonVisable.Auto;
+                NavView.IsBackButtonVisible = DtNavigation.BackButtonVisable.Collapsed;
             }
         }
+        Debug.WriteLine("WindowTabView_Focused");
 
     }
 
-    private void NavView_PaneOpening(object sender, EventArgs e)
+    void NavView_PaneOpening(object sender, EventArgs e)
     {
-        logger.LogTrace("PaneOpening");
+        Debug.WriteLine("NavView_PaneOpening");
     }
 
-    private void NavView_PaneOpened(object sender, EventArgs e)
+    void NavView_PaneOpened(object sender, EventArgs e)
     {
-        logger.LogTrace("PaneOpened");
+        Debug.WriteLine("NavView_PaneOpened");
     }
 
-    private void NavView_PaneClosing(object sender, EventArgs e)
+    void NavView_PaneClosing(object sender, EventArgs e)
     {
-        logger.LogTrace("PaneClosing");
+        Debug.WriteLine("NavView_PaneClosing");
     }
 
     private void NavView_PaneClosed(object sender, EventArgs e)
     {
-        logger.LogTrace("PaneClosed");
+        Debug.WriteLine("NavView_PaneClosed");
     }
 
-    private void NavView_Expanding(object sender, DtNavigationItemExpandingEventArgs e)
+    void NavView_Expanding(object sender, DtNavigationItemExpandingEventArgs e)
     {
-        logger.LogTrace("Expanding");
+        Debug.WriteLine("NavView_Expanding(");
     }
 
-    private void NavView_DisplayModeChanged(object sender, EventArgs e)
+    void NavView_DisplayModeChanged(object sender, EventArgs e)
     {
-        logger.LogTrace("DisplayModeChanged");
+        Debug.WriteLine("NavView_DisplayModeChanged");
     }
 
-    private void NavView_Collapsed(object sender, DtNavigationItemCollapsedEventArgs e)
+    void NavView_Collapsed(object sender, DtNavigationItemCollapsedEventArgs e)
     {
-        logger.LogTrace("Collapsed");
+        Debug.WriteLine("NavView_Collapsed");
     }
 
-    private async void NavView_BackRequested(object sender, EventArgs e)
+    async void NavView_BackRequested(object sender, EventArgs e)
     {
         if (BindingContext is MainPageViewModel viewModel)
         {
             await viewModel.PopPageInTab(WindowTabView);
         }
 
-        logger.LogTrace("BackRequested");
+        Debug.WriteLine("NavView_BackRequested");
     }
 
-    private void NavView_SelectionChanged(object sender, DtNavigationSelectionChangedEventArgs e)
+    void NavView_SelectionChanged(object sender, DtNavigationSelectionChangedEventArgs e)
     {
-        logger.LogTrace("SelectionChanged");
+        Debug.WriteLine("NavView_SelectionChanged");
     }
 
-    private async void NavView_ItemInvoked(object sender, DtNavigationItemInvokedEventArgs e)
+    async void NavView_ItemInvoked(object sender, DtNavigationItemInvokedEventArgs e)
     {
         if (e.ItemInvoked != null && e.ItemInvoked.screen != null)
         {
@@ -153,10 +171,10 @@ public partial class MainPage : ContentPage
                 await viewModel.AddPage(WindowTabView, e.ItemInvoked).ConfigureAwait(true);
             }
         }
-        logger.LogTrace("ItemInvoked");
+        Debug.WriteLine("NavView_ItemInvoked");
     }
 
-    private void AutoSuggest_TextChanged(object sender, TextChangedEventArgs e)
+    void AutoSuggest_TextChanged(object sender, TextChangedEventArgs e)
     {
         if (e.NewTextValue == e.OldTextValue)
         {
@@ -167,14 +185,16 @@ public partial class MainPage : ContentPage
         {
             viewModel.TextToSearch(e.NewTextValue, AutoSuggest);
         }
+        Debug.WriteLine("AutoSuggest_TextChanged");
     }
 
-    private void WindowTabView_AddTabButtonClick(object sender, EventArgs e)
+    void WindowTabView_AddTabButtonClick(object sender, EventArgs e)
     {
         if (BindingContext is MainPageViewModel viewModel)
         {
             viewModel.AddTabButtonClick((DtWindowTabs)sender, e);
         }
+        Debug.WriteLine("WindowTabView_AddTabButtonClick");
     }
 
     void NavView_OnLoaded(System.Object sender, System.EventArgs e)
@@ -184,19 +204,21 @@ public partial class MainPage : ContentPage
             viewModel.OnLoadOfNavView();
             viewModel.SearchBarOnLoad(AutoSuggest);
         }
+        Debug.WriteLine("NavView_OnLoaded");
     }
 
-    private void WindowTabView_TabCloseRequested(object sender, DtWindowTabItemCloseRequestEventArgs e)
+    void WindowTabView_TabCloseRequested(object sender, DtWindowTabItemCloseRequestEventArgs e)
     {
         if (BindingContext is MainPageViewModel viewModel)
         {
             viewModel.TabCloseRequested((DtWindowTabs)sender, e);
         }
+        Debug.WriteLine("WindowTabView_TabCloseRequested");
     }
 
-    private void ContentPage_Loaded(object sender, EventArgs e)
+    void ContentPage_Loaded(object sender, EventArgs e)
     {
-
+        Debug.Write("ContentPage_Loaded");
     }
 }
 

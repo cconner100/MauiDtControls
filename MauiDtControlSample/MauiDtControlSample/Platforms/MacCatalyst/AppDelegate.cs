@@ -1,6 +1,5 @@
-﻿using Foundation;
-
-namespace MauiDtControlSample;
+﻿namespace MauiDtControlSample;
+using Foundation;
 
 [Register("AppDelegate")]
 public class AppDelegate : MauiUIApplicationDelegate
