@@ -16,7 +16,7 @@ public static class MauiProgram
 	public static MauiApp CreateMauiApp()
 	{
 		var builder = MauiApp.CreateBuilder();
-		builder
+		_= builder
 			.UseMauiApp<App>()
 			.ConfigureFonts(fonts =>
 			{
@@ -25,17 +25,17 @@ public static class MauiProgram
 			})
             .ConfigureMauiHandlers(handlers =>
 			{
-				handlers.AddHandler<DtNavigation, DtNavigationHandler>();
-				handlers.AddHandler<DtWindowTabs, DtWindowTabsHandler>();
+				_= handlers.AddHandler<DtNavigation, DtNavigationHandler>();
+				_= handlers.AddHandler<DtWindowTabs, DtWindowTabsHandler>();
 			});
         
-        builder.UseMauiEmbedding<Application>();
-		builder.Services.AddSingleton<MainPage>();
-		builder.Services.AddSingleton<MainPageViewModel>();
+        _= builder.UseMauiEmbedding<Application>();
+		_= builder.Services.AddSingleton<MainPage>();
+		_ = builder.Services.AddSingleton<MainPageViewModel>();
 
         using var loggerFactory = LoggerFactory.Create(builder =>
         {
-            builder.AddSimpleConsole(i => i.ColorBehavior = LoggerColorBehavior.Disabled);
+            _= builder.AddSimpleConsole(i => i.ColorBehavior = LoggerColorBehavior.Disabled);
         });
 
         var mauiapp = builder.Build();

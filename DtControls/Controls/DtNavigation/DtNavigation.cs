@@ -156,14 +156,14 @@ public partial class DtNavigation : View, IContentView, IDtNavigation
 
     #region Properties
 
-    public static readonly BindableProperty AlwaysShowHeaderProperty = BindableProperty.Create("AlwaysShowHeader", typeof(bool), typeof(DtNavigation), true);
+    public static readonly BindableProperty AlwaysShowHeaderProperty = BindableProperty.Create(nameof(AlwaysShowHeader), typeof(bool), typeof(DtNavigation), true);
     public bool AlwaysShowHeader
     {
         get { return (bool)GetValue(AlwaysShowHeaderProperty); }
         set { SetValue(AlwaysShowHeaderProperty, value); }
     }
 
-    public static readonly BindableProperty AutoSuggestBoxProperty = BindableProperty.Create("AutoSuggestBox", typeof(SearchBar), typeof(DtNavigation));
+    public static readonly BindableProperty AutoSuggestBoxProperty = BindableProperty.Create(nameof(AutoSuggestBox), typeof(SearchBar), typeof(DtNavigation));
     public SearchBar? AutoSuggestBox
     {
         get { return (SearchBar)GetValue(AutoSuggestBoxProperty); }
@@ -441,7 +441,7 @@ public partial class DtNavigation : View, IContentView, IDtNavigation
     }
 
 
-    public static readonly BindableProperty SelectedItemProperty = BindableProperty.Create("SelectedItem", typeof(DtMenuItem), typeof(DtNavigation));
+    public static readonly BindableProperty SelectedItemProperty = BindableProperty.Create(nameof(SelectedItem), typeof(DtMenuItem), typeof(DtNavigation));
     public DtMenuItem SelectedItem
     {
         get

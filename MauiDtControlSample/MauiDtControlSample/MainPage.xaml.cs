@@ -22,11 +22,7 @@ public partial class MainPage : ContentPage
 
     public DtWindowTabItem? GetCurrentTab()
     {
-        if (WindowTabView is null)
-        {
-            return null;
-        }
-        return WindowTabView.SelectedItem as DtWindowTabItem;
+        return WindowTabView is null ? null : WindowTabView.SelectedItem as DtWindowTabItem;
     }
 
     void WindowTabView_Loaded(object sender, EventArgs e)

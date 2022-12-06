@@ -48,9 +48,9 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIView>, I
 
     public static void MapContent(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        if (virtualView.Content is UIView)
+        if (virtualView.Content is UIView view)
         {
-            viewHandler.SplitView.Add((UIView)virtualView.Content);
+            viewHandler.SplitView.Add(view);
         }
     }
 

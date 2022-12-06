@@ -23,7 +23,7 @@ public partial class DtWindowTabItem : View, IContentView, IElement, IDtWindowTa
     #region Properties
     public NavigationPage? NavigationPage { get; set; }
     bool disposedValue;
-    public static readonly BindableProperty HeaderProperty = BindableProperty.Create("Header", typeof(string), typeof(DtWindowTabItem));
+    public static readonly BindableProperty HeaderProperty = BindableProperty.Create(nameof(Header), typeof(string), typeof(DtWindowTabItem));
     public string Header
     {
         get { return (string)GetValue(HeaderProperty); }
@@ -35,7 +35,7 @@ public partial class DtWindowTabItem : View, IContentView, IElement, IDtWindowTa
     }
 
 
-    public static readonly BindableProperty IconSourceProperty = BindableProperty.Create("IconSource", typeof(object), typeof(DtWindowTabItem));
+    public static readonly BindableProperty IconSourceProperty = BindableProperty.Create(nameof(IconSource), typeof(object), typeof(DtWindowTabItem));
     public object IconSource
     {
         get { return GetValue(IconSourceProperty); }
@@ -46,7 +46,7 @@ public partial class DtWindowTabItem : View, IContentView, IElement, IDtWindowTa
         }
     }
 
-    public static readonly BindableProperty IsClosableProperty = BindableProperty.Create("IsClosable", typeof(bool), typeof(DtWindowTabItem));
+    public static readonly BindableProperty IsClosableProperty = BindableProperty.Create(nameof(IsClosable), typeof(bool), typeof(DtWindowTabItem));
     public bool IsClosable
     {
         get { return (bool)GetValue(IsClosableProperty); }
@@ -57,7 +57,7 @@ public partial class DtWindowTabItem : View, IContentView, IElement, IDtWindowTa
         }
     }
 
-    public static readonly BindableProperty ContentProperty = BindableProperty.Create("Content", typeof(object), typeof(DtWindowTabItem));
+    public static readonly BindableProperty ContentProperty = BindableProperty.Create(nameof(Content), typeof(object), typeof(DtWindowTabItem));
     public object Content
     {
         get { return GetValue(ContentProperty); }
@@ -68,7 +68,7 @@ public partial class DtWindowTabItem : View, IContentView, IElement, IDtWindowTa
         }
     }
 
-    public static readonly BindableProperty PlatformObjectProperty = BindableProperty.Create("PlatformObject", typeof(object), typeof(DtWindowTabItem));
+    public static readonly BindableProperty PlatformObjectProperty = BindableProperty.Create(nameof(PlatformObject), typeof(object), typeof(DtWindowTabItem));
     public object PlatformObject
     {
         get { return GetValue(PlatformObjectProperty); }
