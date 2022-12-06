@@ -11,7 +11,7 @@ public class DtNavigationBackRequestedEventArgs : object { }
 
 public class DtNavigationItemCollapsedEventArgs
 {
-    public object CollapsedItem { get; protected set; }
+    public object? CollapsedItem { get; protected set; }
 
 #if WINDOWS
     NavigationViewItemBase CollapsedItemContainer { get; }
@@ -57,7 +57,7 @@ public class DtNavigationDisplayModeChangedEventArgs
 }
 public class DtNavigationItemExpandingEventArgs
 {
-    public object ExpandingItem { get; protected set; }
+    public object? ExpandingItem { get; protected set; }
 #if WINDOWS
     NavigationViewItemBase ExpandingItemContainer { get; set; }
 
@@ -73,7 +73,7 @@ public class DtNavigationItemExpandingEventArgs
 
 public class DtNavigationItemInvokedEventArgs
 {
-    public DtMenuItem ItemInvoked { get; protected set; }
+    public DtMenuItem? ItemInvoked { get; protected set; }
     public bool IsSettingsInvoked { get; protected set; }
 
 #if WINDOWS
@@ -123,7 +123,7 @@ public class DtNavigationPaneClosingEventArgs
 
 public class DtNavigationSelectionChangedEventArgs
 {
-    public DtMenuItem SelectedItem { get; protected set; }
+    public DtMenuItem? SelectedItem { get; protected set; }
 #if WINDOWS
     readonly NavigationViewSelectionChangedEventArgs orgArgs;
     public bool IsSettingsSelected => orgArgs.IsSettingsSelected;

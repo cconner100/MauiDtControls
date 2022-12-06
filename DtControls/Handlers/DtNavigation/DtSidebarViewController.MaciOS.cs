@@ -12,9 +12,9 @@ using static Microsoft.Maui.Controls.Platform.Compatibility.ShellPageRendererTra
 public class DtSidebarViewController : UIViewController, IUICollectionViewDelegate
 {
     readonly IDtNavigation dtNavigationView;
-    public event EventHandler OnSettingsSelect;
-    UICollectionView collectionView;
-    UICollectionViewDiffableDataSource<NSString, DtMenuItem> dataSource;
+    public event EventHandler? OnSettingsSelect;
+    UICollectionView? collectionView;
+    UICollectionViewDiffableDataSource<NSString, DtMenuItem>? dataSource;
 
     public DtSidebarViewController(IDtNavigation dtview)
     {
@@ -57,13 +57,19 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
 
         }
 
-        SplitViewController.PreferredDisplayMode = UISplitViewControllerDisplayMode.Automatic;
+        if (SplitViewController != null)
+        {
+            SplitViewController.PreferredDisplayMode = UISplitViewControllerDisplayMode.Automatic;
+        }
 
-        // triger control loaded
-        dtNavigationView.HandleOnLoaded(dtNavigationView, null);
+        if (dtNavigationView != null)
+        {
+            // triger control loaded
+            dtNavigationView.HandleOnLoaded(dtNavigationView, null);
+        }
     }
 
-    public void SetHeader(string header)
+    public void SetHeader(string? header)
     {
         Title = header;
     }
@@ -73,7 +79,7 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
     {
         if (dtNavigationView?.IsSettingsVisible == true)
         {
-            var settingsButton = new UIBarButtonItem(UIImage.GetSystemImage("gear"), UIBarButtonItemStyle.Plain, OpenSettings)
+            var settingsButton = new UIBarButtonItem(UIImage.GetSystemImage("gear"), UIBarButtonItemStyle.Plain, OpenSettings!)
             {
                 AccessibilityLabel = "Settings"
             };
@@ -81,7 +87,7 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
         }
     }
 
-    public void SetupNavigationItems(NSDiffableDataSourceSectionSnapshot<DtMenuItem> snapshot)
+    public void SetupNavigationItems(NSDiffableDataSourceSectionSnapshot<DtMenuItem>? snapshot)
     {
         if (dataSource is null)
         {
@@ -90,7 +96,7 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
 
         // Add base sidebar items
         var sectionIdentifier = new NSString("base");
-        dataSource.ApplySnapshot(snapshot, sectionIdentifier, false);
+        dataSource.ApplySnapshot(snapshot!, sectionIdentifier, false);
     }
 
     public NSDiffableDataSourceSectionSnapshot<DtMenuItem> GetNavigationSnapshot(IEnumerable<DtMenuItem> items)
@@ -138,6 +144,11 @@ public class DtSidebarViewController : UIViewController, IUICollectionViewDelega
 
     void ConfigureRowSources()
     {
+        if (DtMauiContext.MauiContext is null)
+        {
+            throw new Exception("Maui Context is null");
+        }
+
         var headerRegistration = UICollectionViewCellRegistration.GetRegistration(typeof(UICollectionViewListCell),
             new UICollectionViewCellRegistrationConfigurationHandler((cell, indexpath, item) =>
             {

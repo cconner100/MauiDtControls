@@ -3,5 +3,5 @@
 
 static class DtMauiContext
 {
-    public static IMauiContext MauiContext { get; set; }
+    public static IMauiContext? MauiContext { get; set; }
 }

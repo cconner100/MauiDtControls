@@ -16,12 +16,18 @@ public partial class TabPage1 : ContentPage
 	private void ContentPage_Loaded(object sender, EventArgs e)
 	{
 		var mp = ServiceProvider.Current.GetService<MainPage>();
-		var tab = mp.GetCurrentTab();
-		tab.Header = Title; 
+		if (mp != null)
+		{
+			var tab = mp.GetCurrentTab();
+			if (tab != null)
+			{
+				tab.Header = Title;
+			}
+		}
 		Console.WriteLine("ContentPage_Loaded");
     }
 
-	private async void next_Clicked(object sender, EventArgs e)
+	private async void Next_Clicked(object sender, EventArgs e)
 	{
 		await Navigation.PushAsync(new TabPage2()).ConfigureAwait(true);
 	}

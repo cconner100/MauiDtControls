@@ -11,8 +11,8 @@ using Microsoft.Maui.Embedding;
 
 public static class MauiProgram
 {
-	public static IMauiContext mauiContext = null;
-	public static ILogger mauiLogger = null;	
+	public static IMauiContext? mauiContext;
+	public static ILogger? mauiLogger;	
 	public static MauiApp CreateMauiApp()
 	{
 		var builder = MauiApp.CreateBuilder();

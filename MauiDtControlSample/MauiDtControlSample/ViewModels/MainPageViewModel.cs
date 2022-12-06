@@ -21,11 +21,11 @@ using Page = Page;
 
 public partial class MainPageViewModel : IMainPageViewModel
 {
-    readonly DtNavigation NavView;
-    SearchBar SearchBar;
+    readonly DtNavigation? NavView;
+    SearchBar? SearchBar;
     readonly DtMenuData menu = new();
-    readonly MainPage page;
-    readonly ILogger logger;
+    readonly MainPage? page;
+    readonly ILogger? logger;
 
     MainPageViewModel() { }
 
@@ -44,7 +44,7 @@ public partial class MainPageViewModel : IMainPageViewModel
         SearchBar = searchBar;
         // need to setup callback for selected items
 
-        if (searchBar.Handler.PlatformView is AutoSuggestBox asb)
+        if (searchBar?.Handler?.PlatformView is AutoSuggestBox asb)
         {
             // TODO: Not sure why i cant get the accelerator key to work, ctrl-F but it does not seem to fire the event
 
@@ -67,42 +67,57 @@ public partial class MainPageViewModel : IMainPageViewModel
 #if WINDOWS
     void CtrlF_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
     {
-        _= SearchBar.Focus();
+        _= SearchBar?.Focus();
     }
 #endif
 
     public void TextToSearch(string text, SearchBar sb)
     {
+        if (NavView is null)
+        {
+            throw new Exception("NavView is null");
+        }
 #if WINDOWS
-        if (sb.Handler.PlatformView is AutoSuggestBox asb)
+        if (sb.Handler?.PlatformView is AutoSuggestBox asb)
         {
             // get the real control here and use it
             var ret = NavView.SearchMenuItems(text);
-            asb.ItemsSource = ret?.Count == 0 ? (new[] { "No result found" }) : (object)(ret?.Keys.ToArray<string>());
+            asb.ItemsSource = ret?.Count == 0 ? (new[] { "No result found" }) : (object)(ret?.Keys?.ToArray<string>()!);
         }
 #endif
     }
 
     public void OnLoadOfNavView()
     {
+        if (NavView is null)
+        {
+            throw new Exception("NavView is null");
+        }
         NavView.MenuItems = menu.GetMenu();
         NavView.FooterMenuItems = menu.GetFooterMenu();
     }
 
     public async Task AddPage(DtWindowTabs tabs, DtMenuItem menuItem)
     {
-        var tabindex = (int)tabs.SelectedItem;
+        var tabindex = (int)tabs.SelectedIndex;
         var tabItem = tabs.TabItems[tabindex];
-        await tabItem.NavigationPage.PushAsync((Page)Activator.CreateInstance(menuItem.screen)).ConfigureAwait(true);
-        _= tabItem.Focus();
-        UpdateBackButton(tabs);
+        if (tabItem.NavigationPage is not null)
+        {
+            var screen = (Page)Activator.CreateInstance(menuItem.screen);
+            if (screen is not null)
+            {
+                await tabItem.NavigationPage.PushAsync(screen).ConfigureAwait(true);
+                _ = tabItem.Focus();
+                UpdateBackButton(tabs);
+            }            
+        }
     }
 
     public async Task PopPageInTab(DtWindowTabs tabs)
     {
-        var tabindex = (int)tabs.SelectedItem;
+        var tabindex = (int)tabs.SelectedIndex;
         var tabItem = tabs.TabItems[tabindex];
-        if (tabItem.CanGoBack())
+        if (tabItem.CanGoBack() && tabItem.NavigationPage != null)
         {
             _= await tabItem.NavigationPage.PopAsync().ConfigureAwait(true);
         }
@@ -112,7 +127,11 @@ public partial class MainPageViewModel : IMainPageViewModel
 
     void UpdateBackButton(DtWindowTabs tabs)
     {
-        var tabindex = (int)tabs.SelectedItem;
+        if(NavView is null)
+        {
+            throw new Exception("NavView is null");
+        }
+        var tabindex = (int)tabs.SelectedIndex;
         var tabItem = tabs.TabItems[tabindex];
         if (tabItem.CanGoBack())
         {
@@ -149,17 +168,17 @@ public partial class MainPageViewModel : IMainPageViewModel
         var tab = sender.TabItems[sender.SelectedIndex].Focus();
     }
 
-    void Navpage_Popped(object sender, NavigationEventArgs e)
+    void Navpage_Popped(object? sender, NavigationEventArgs e)
     {
 
     }
 
-    void Navpage_Pushed(object sender, NavigationEventArgs e)
+    void Navpage_Pushed(object? sender, NavigationEventArgs e)
     {
 
     }
 
-    void Navpage_Focused(object sender, FocusEventArgs e)
+    void Navpage_Focused(object? sender, FocusEventArgs e)
     {
         if (e.IsFocused && e.VisualElement is DtWindowTabItem tab)
         {
@@ -167,7 +186,7 @@ public partial class MainPageViewModel : IMainPageViewModel
         }
     }
 
-    private void Newtab_Focused(object sender, FocusEventArgs e)
+    private void Newtab_Focused(object? sender, FocusEventArgs e)
     {
         if (e.IsFocused && e.VisualElement is DtWindowTabItem tab)
         {
@@ -177,6 +196,10 @@ public partial class MainPageViewModel : IMainPageViewModel
 
     void UpdateTabBackButton(DtWindowTabItem tab)
     {
+        if (NavView is null)
+        {
+            throw new Exception("NavView is null");
+        }
         if (tab.CanGoBack())
         {
             NavView.IsBackButtonEnabled = true;
@@ -200,10 +223,14 @@ public partial class MainPageViewModel : IMainPageViewModel
         newtab.IsClosable = false;
         newtab.Focused += Newtab_Focused;
         tabView.TabItems.Add(newtab);
-        tabView.SelectedItem = 0;
+        tabView.SelectedIndex = 0;
     }
     public void TabCloseRequested(DtWindowTabs sender, DtWindowTabItemCloseRequestEventArgs e)
     {
+        if(e is null)
+        {
+            return;
+        }
         _ = sender.TabItems.Remove(e.Tab);
     }
     #endregion

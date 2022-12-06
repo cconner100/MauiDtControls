@@ -18,7 +18,7 @@ public interface IDtWindowTabItem : IContentView
     #endregion
 
     bool CanGoBack();
-    NavigationPage NavigationPage { get; set; }
+    NavigationPage? NavigationPage { get; set; }
 
     string Header { get; set; }
 

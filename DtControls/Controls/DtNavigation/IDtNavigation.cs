@@ -11,32 +11,32 @@ public interface IDtNavigation : IContentView
 
     #region Events
 
-    event EventHandler OnLoaded;
+    event EventHandler? OnLoaded;
 
-    event EventHandler BackRequested;
+    event EventHandler? BackRequested;
 
-    event EventHandler<DtNavigationItemCollapsedEventArgs> Collapsed;
+    event EventHandler<DtNavigationItemCollapsedEventArgs>? Collapsed;
 
-    event EventHandler DisplayModeChanged;
+    event EventHandler? DisplayModeChanged;
 
-    event EventHandler<DtNavigationItemExpandingEventArgs> Expanding;
+    event EventHandler<DtNavigationItemExpandingEventArgs>? Expanding;
 
-    event EventHandler<DtNavigationItemInvokedEventArgs> ItemInvoked;
+    event EventHandler<DtNavigationItemInvokedEventArgs>? ItemInvoked;
 
-    event EventHandler PaneClosed;
+    event EventHandler? PaneClosed;
 
-    event EventHandler PaneClosing;
+    event EventHandler? PaneClosing;
 
-    event EventHandler PaneOpened;
+    event EventHandler? PaneOpened;
 
-    event EventHandler PaneOpening;
+    event EventHandler? PaneOpening;
 
-    event EventHandler<DtNavigationSelectionChangedEventArgs> SelectionChanged;
+    event EventHandler<DtNavigationSelectionChangedEventArgs>? SelectionChanged;
     #endregion
 
-    void HandleOnLoaded(object sender, object args);
+    void HandleOnLoaded(object sender, object? args);
 
-    void HandleBackRequested(object sender, object args);
+    void HandleBackRequested(object sender, object? args);
 
     void HandleCollapsed(object sender, DtNavigationItemCollapsedEventArgs args);
 
@@ -58,11 +58,11 @@ public interface IDtNavigation : IContentView
 
     #region Properties
 
-    string Header { get; set; }
+    string? Header { get; set; }
 
     bool AlwaysShowHeader { get; set; }
 
-    public SearchBar AutoSuggestBox { get; set; }
+    public SearchBar? AutoSuggestBox { get; set; }
 
     BackButtonVisable IsBackButtonVisible { get; set; }
 
@@ -80,7 +80,7 @@ public interface IDtNavigation : IContentView
 
     object FooterMenuItemsSource { get; set; }
 
-    DataTemplate HeaderTemplate { get; set; }
+    DataTemplate? HeaderTemplate { get; set; }
 
     bool IsPaneOpen { get; set; }
 
@@ -96,7 +96,7 @@ public interface IDtNavigation : IContentView
 
     object MenuItemsSource { get; set; }
 
-    DataTemplate MenuItemsTemplate { get; set; }
+    DataTemplate? MenuItemsTemplate { get; set; }
 
     double OpenPaneLength { get; set; }
 

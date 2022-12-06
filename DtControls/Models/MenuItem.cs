@@ -21,18 +21,18 @@ public class DtMenuItem
     public MenuType menuType { get; set; }
     public List<DtMenuItem> ChildrenItems { get; set; } = new List<DtMenuItem>();
     
-    public string title { get; set; }
+    public string? title { get; set; }
     /// <summary>
     /// Only on maccatalyst
     /// </summary>
-    public string subTitle { get; set; }
-    public ImageSource MauiIconImage { get; set; }
-    public object platformImage { get; set; }
+    public string? subTitle { get; set; }
+    public ImageSource? MauiIconImage { get; set; }
+    public object? platformImage { get; set; }
     /// <summary>
     /// only on winui
     /// </summary>
-    public string toolTip { get; set; }
-    public Type screen { get; set; }
+    public string? ToolTip { get; set; }
+    public Type? screen { get; set; }
 
     public enum MenuType
     {
@@ -43,7 +43,7 @@ public class DtMenuItem
         Seperator
     }
 
-    public static DtMenuItem ResolveDtMenuItemFromNative(DtNavigation navigation, object nativeMenuItem)
+    public static DtMenuItem? ResolveDtMenuItemFromNative(DtNavigation navigation, object nativeMenuItem)
     {
         foreach (var menu in navigation.MenuItems)
         {
@@ -62,7 +62,7 @@ public class DtMenuItem
         }
         return null;
     }
-    static DtMenuItem FindMenuFromChildren(List<DtMenuItem> children, object nativeMenuItem)
+    static DtMenuItem? FindMenuFromChildren(List<DtMenuItem> children, object nativeMenuItem)
     {
         foreach (var menu in children)
         {
@@ -81,6 +81,6 @@ public class DtMenuItem
         }
         return null;
     }
-    public PlatformObject InternalObject { get; set; }
+    public PlatformObject? InternalObject { get; set; }
 }
 

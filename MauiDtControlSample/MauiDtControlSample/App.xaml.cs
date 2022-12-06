@@ -8,7 +8,7 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new MainPage(MauiProgram.mauiLogger);		
+		MainPage = new MainPage(MauiProgram.mauiLogger!);		
 	}
 
 }

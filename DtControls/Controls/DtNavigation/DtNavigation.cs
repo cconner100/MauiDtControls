@@ -58,30 +58,30 @@ public partial class DtNavigation : View, IContentView, IDtNavigation
         footer
     }
     #region Events
-    public event EventHandler OnLoaded;
+    public event EventHandler? OnLoaded;
 
-    public event EventHandler BackRequested;
+    public event EventHandler? BackRequested;
 
-    public event EventHandler<DtNavigationItemCollapsedEventArgs> Collapsed;
+    public event EventHandler<DtNavigationItemCollapsedEventArgs>? Collapsed;
 
-    public event EventHandler DisplayModeChanged;
+    public event EventHandler? DisplayModeChanged;
 
-    public event EventHandler<DtNavigationItemExpandingEventArgs> Expanding;
+    public event EventHandler<DtNavigationItemExpandingEventArgs>? Expanding;
 
-    public event EventHandler<DtNavigationItemInvokedEventArgs> ItemInvoked;
+    public event EventHandler<DtNavigationItemInvokedEventArgs>? ItemInvoked;
 
-    public event EventHandler PaneClosed;
+    public event EventHandler? PaneClosed;
 
-    public event EventHandler PaneClosing;
+    public event EventHandler? PaneClosing;
 
-    public event EventHandler PaneOpened;
+    public event EventHandler? PaneOpened;
 
-    public event EventHandler PaneOpening;
+    public event EventHandler? PaneOpening;
 
-    public event EventHandler<DtNavigationSelectionChangedEventArgs> SelectionChanged;
+    public event EventHandler<DtNavigationSelectionChangedEventArgs>? SelectionChanged;
     #endregion
 
-    public static IMauiContext mauiContext
+    public static IMauiContext? mauiContext
     {
         get
         {
@@ -89,14 +89,14 @@ public partial class DtNavigation : View, IContentView, IDtNavigation
         }
     }
 
-    public void HandleOnLoaded(object sender, object args)
+    public void HandleOnLoaded(object sender, object? args)
     {
-        OnLoaded?.Invoke(sender, null);
+        OnLoaded?.Invoke(sender, null!);
     }
 
-    public void HandleBackRequested(object sender, object args)
+    public void HandleBackRequested(object sender, object? args)
     {
-        BackRequested?.Invoke(sender, null);
+        BackRequested?.Invoke(sender, null!);
     }
 
     public void HandleCollapsed(object sender, DtNavigationItemCollapsedEventArgs args)
@@ -126,7 +126,7 @@ public partial class DtNavigation : View, IContentView, IDtNavigation
 
     public void HandlePaneClosing(object sender, object args)
     {
-        PaneClosing?.Invoke(sender, null);
+        PaneClosing?.Invoke(sender, null!);
     }
 
     public void HandlePaneOpened(object sender, object args)
@@ -164,14 +164,14 @@ public partial class DtNavigation : View, IContentView, IDtNavigation
     }
 
     public static readonly BindableProperty AutoSuggestBoxProperty = BindableProperty.Create("AutoSuggestBox", typeof(SearchBar), typeof(DtNavigation));
-    public SearchBar AutoSuggestBox
+    public SearchBar? AutoSuggestBox
     {
         get { return (SearchBar)GetValue(AutoSuggestBoxProperty); }
         set { SetValue(AutoSuggestBoxProperty, value); }
     }
 
     public static readonly BindableProperty HeaderProperty = BindableProperty.Create("Header", typeof(string), typeof(DtNavigation));
-    public string Header
+    public string? Header
     {
         get { return (string)GetValue(HeaderProperty); }
         set { SetValue(HeaderProperty, value); }
@@ -302,7 +302,7 @@ public partial class DtNavigation : View, IContentView, IDtNavigation
         }
     }
 
-    public DataTemplate HeaderTemplate { get; set; }
+    public DataTemplate? HeaderTemplate { get; set; }
 
     public static readonly BindableProperty IsPaneOpenProperty = BindableProperty.Create("IsPaneOpen", typeof(bool), typeof(DtNavigation), true);
     public bool IsPaneOpen
@@ -396,7 +396,7 @@ public partial class DtNavigation : View, IContentView, IDtNavigation
         }
     }
 
-    public DataTemplate MenuItemsTemplate { get; set; }
+    public DataTemplate? MenuItemsTemplate { get; set; }
 
     public static readonly BindableProperty OpenPaneLengthProperty = BindableProperty.Create("OpenPaneLength", typeof(double), typeof(DtNavigation), 320.0);
     public double OpenPaneLength

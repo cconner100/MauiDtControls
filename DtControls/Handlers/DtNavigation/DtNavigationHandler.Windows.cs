@@ -137,13 +137,13 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
 
     public static void MapHeader(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        ((NavigationView)(viewHandler?.PlatformView)).Header = virtualView.Header;
+        (viewHandler.PlatformView).Header = virtualView.Header;
     }
 
 
     public static void MapAlwaysShowHeader(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        ((NavigationView)(viewHandler?.PlatformView)).AlwaysShowHeader = virtualView.AlwaysShowHeader;
+        (viewHandler.PlatformView).AlwaysShowHeader = virtualView.AlwaysShowHeader;
     }
 
 
@@ -151,7 +151,11 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
     {
         if (virtualView.AutoSuggestBox != null)
         {
-            ((NavigationView)(viewHandler?.PlatformView)).AutoSuggestBox = (AutoSuggestBox)virtualView.AutoSuggestBox.ToHandler(DtMauiContext.MauiContext).PlatformView;
+            if (DtMauiContext.MauiContext is null)
+            {
+                throw new Exception("Maui Context is null");
+            }
+            (viewHandler.PlatformView).AutoSuggestBox = (AutoSuggestBox)virtualView.AutoSuggestBox.ToHandler(DtMauiContext.MauiContext).PlatformView!;
         }
     }
 
@@ -170,27 +174,27 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
                 vis = NavigationViewBackButtonVisible.Auto;
                 break;
         }
-        ((NavigationView)(viewHandler?.PlatformView)).IsBackButtonVisible = vis;
+        (viewHandler.PlatformView).IsBackButtonVisible = vis;
     }
 
     public static void MapBackButtonEnabled(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        ((NavigationView)(viewHandler?.PlatformView)).IsBackEnabled = virtualView.IsBackButtonEnabled;
+        (viewHandler.PlatformView).IsBackEnabled = virtualView.IsBackButtonEnabled;
     }
 
     public static void MapCompactModeThresholdWidth(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        ((NavigationView)(viewHandler?.PlatformView)).CompactModeThresholdWidth = virtualView.CompactModeThresholdWidth;
+        (viewHandler.PlatformView).CompactModeThresholdWidth = virtualView.CompactModeThresholdWidth;
     }
 
     public static void MapCompactPaneLength(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        ((NavigationView)(viewHandler?.PlatformView)).CompactPaneLength = virtualView.CompactPaneLength;
+        (viewHandler.PlatformView).CompactPaneLength = virtualView.CompactPaneLength;
     }
 
     public static void MapDisplayMode(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        switch (((NavigationView)(viewHandler?.PlatformView)).DisplayMode)
+        switch ((viewHandler.PlatformView).DisplayMode)
         {
             case NavigationViewDisplayMode.Compact:
                 virtualView.DisplayMode = DtNavigation.ViewDisplayMode.Compact;
@@ -206,7 +210,7 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
 
     public static void MapExpandedModeThresholdWidth(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        ((NavigationView)(viewHandler?.PlatformView)).ExpandedModeThresholdWidth = virtualView.ExpandedModeThresholdWidth;
+        (viewHandler.PlatformView).ExpandedModeThresholdWidth = virtualView.ExpandedModeThresholdWidth;
     }
 
     public static void MapFooterMenuItems(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
@@ -215,13 +219,13 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
         {
             return;
         }
-        ((NavigationView)(viewHandler?.PlatformView)).FooterMenuItems.Clear();
+        (viewHandler.PlatformView).FooterMenuItems.Clear();
         var menu = viewHandler.BuildPlatformMenus(virtualView.FooterMenuItems, virtualView);
         if (menu != null)
         {
             foreach (var menuItem in menu)
             {
-                ((NavigationView)(viewHandler?.PlatformView)).FooterMenuItems.Add(menuItem);
+                (viewHandler.PlatformView).FooterMenuItems.Add(menuItem);
             }
 
         }
@@ -230,7 +234,7 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
 
     public static void MapFooterMenuItemsSource(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        ((NavigationView)(viewHandler?.PlatformView)).FooterMenuItemsSource = virtualView.FooterMenuItemsSource;
+        (viewHandler.PlatformView).FooterMenuItemsSource = virtualView.FooterMenuItemsSource;
     }
 
     //public static void MapHeaderTemplate(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
@@ -240,23 +244,23 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
 
     public static void MapIsPaneOpen(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        ((NavigationView)(viewHandler?.PlatformView)).IsPaneOpen = virtualView.IsPaneOpen;
+        (viewHandler.PlatformView).IsPaneOpen = virtualView.IsPaneOpen;
     }
 
     public static void MapIsPaneToggleButtonVisible(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        ((NavigationView)(viewHandler?.PlatformView)).IsPaneToggleButtonVisible = virtualView.IsPaneToggleButtonVisible;
+        (viewHandler.PlatformView).IsPaneToggleButtonVisible = virtualView.IsPaneToggleButtonVisible;
     }
 
     public static void MapIsSettingsVisible(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        ((NavigationView)(viewHandler?.PlatformView)).IsSettingsVisible = virtualView.IsSettingsVisible;
+        ((NavigationView)(viewHandler.PlatformView)).IsSettingsVisible = virtualView.IsSettingsVisible;
     }
 
 
     public static void MapIsTitleBarAutoPaddingEnabled(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        ((NavigationView)(viewHandler?.PlatformView)).IsTitleBarAutoPaddingEnabled = virtualView.IsTitleBarAutoPaddingEnabled;
+        ((NavigationView)(viewHandler.PlatformView)).IsTitleBarAutoPaddingEnabled = virtualView.IsTitleBarAutoPaddingEnabled;
     }
 
     //public static void MapMenuItemContainerStyle(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
@@ -276,7 +280,7 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
         {
             foreach (var menuItem in menus)
             {
-                ((NavigationView)(viewHandler?.PlatformView)).MenuItems.Add(menuItem);
+                (viewHandler.PlatformView).MenuItems.Add(menuItem);
             }
 
         }
@@ -284,7 +288,7 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
 
     public static void MapMenuItemsSource(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        ((NavigationView)(viewHandler?.PlatformView)).MenuItemsSource = virtualView.MenuItemsSource;
+        (viewHandler.PlatformView).MenuItemsSource = virtualView.MenuItemsSource;
     }
 
     //public static void MapMenuItemsTemplate(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
@@ -294,7 +298,7 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
 
     public static void MapOpenPaneLength(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
-        ((NavigationView)(viewHandler?.PlatformView)).OpenPaneLength = virtualView.OpenPaneLength;
+        (viewHandler.PlatformView).OpenPaneLength = virtualView.OpenPaneLength;
     }
 
 
@@ -320,7 +324,7 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
                 break;
         }
 
-        ((NavigationView)(viewHandler?.PlatformView)).PaneDisplayMode = mode;
+        (viewHandler.PlatformView).PaneDisplayMode = mode;
     }
 
     public static void MapOverflowLabelMode(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
@@ -337,19 +341,19 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
                 break;
         }
 
-        ((NavigationView)(viewHandler?.PlatformView)).OverflowLabelMode = mode;
+        (viewHandler.PlatformView).OverflowLabelMode = mode;
     }
 
     public static void MapSelectedItem(IDtNavigationHandler viewHandler, IDtNavigation virtualView)
     {
         if (virtualView.SelectedItem != null)
         {
-            ((NavigationView)(viewHandler?.PlatformView)).SelectedItem = virtualView.SelectedItem;
+            (viewHandler.PlatformView).SelectedItem = virtualView.SelectedItem;
         }
     }
     #endregion
 
-    public List<NavigationViewItem> BuildPlatformMenus(IList<DtMenuItem> menulist, IDtNavigation virtualView)
+    public List<NavigationViewItem>? BuildPlatformMenus(IList<DtMenuItem> menulist, IDtNavigation virtualView)
     {
         if (menulist == null)
         {
@@ -384,13 +388,16 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
             if (item.MauiIconImage != null)
             {
                 var iconSource = item.MauiIconImage.ToIconSource(DtMauiContext.MauiContext!);
-                if (PlatformView.Resources.TryGetValue("NavigationViewItemForeground", out object nviForeground) &&
-                                nviForeground is Microsoft.UI.Xaml.Media.Brush brush)
+                if (iconSource != null)
                 {
-                    iconSource.Foreground = brush;
-                }
+                    if (PlatformView.Resources.TryGetValue("NavigationViewItemForeground", out object nviForeground) &&
+                                    nviForeground is Microsoft.UI.Xaml.Media.Brush brush)
+                    {
+                        iconSource.Foreground = brush;
+                    }
 
-                ret.Icon = iconSource.CreateIconElement();
+                    ret.Icon = iconSource.CreateIconElement();
+                }
             }
         }
         item.InternalObject = ret;
@@ -405,7 +412,10 @@ public partial class DtNavigationHandler : ViewHandler<DtNavigation, NavigationV
         }
         if (item.menuType == DtMenuItem.MenuType.Row)
         {
-            virtualView.MenuNames.Add(ret.Content.ToString(), item);
+            if (ret.Content != null)
+            {
+                virtualView.MenuNames.Add(ret.Content.ToString()!, item);
+            }
         }
         return ret;
     }

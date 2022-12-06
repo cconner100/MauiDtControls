@@ -64,12 +64,12 @@ public class DtWindowTabsDragStartingEventArgs
     public object Item { get; protected set; }
     public DtWindowTabItem Tab { get; protected set; }
 
-    public bool Cancel { get { return savedargs.Cancel; } set { savedargs.Cancel = value; } }
+    public bool Cancel { get { return Savedargs.Cancel; } set { Savedargs.Cancel = value; } }
 
-    private TabViewTabDragStartingEventArgs savedargs { get; }
+    private TabViewTabDragStartingEventArgs Savedargs { get; }
     public DtWindowTabsDragStartingEventArgs(DtWindowTabItem sender, TabViewTabDragStartingEventArgs args)
     {
-        savedargs = args;
+        Savedargs = args;
         Cancel = args.Cancel;
         Data = args.Data;
         Item = args.Item;
@@ -144,6 +144,11 @@ public class DtWindowTabsSelectionChangedEventArgs
 
     static List<DtWindowTabItem> FindDtWindowTabItem(DtWindowTabs tabs, IList<object> source)
     {
+        if(DtMauiContext.MauiContext is null)
+        {
+            throw new Exception("Maui Context is null");
+        }
+
         List<DtWindowTabItem> retItems = new();
         if (!source.Any())
         {
@@ -196,7 +201,7 @@ public class DtWindowTabsDragEventArgs
     public DtWindowTabsDataPackageOperation AcceptOperations { get; set; }
     public DtWindowTabsDataPackageOperation AllowedOperations { get; protected set; }
     public object Data { get; set; }
-    public object DataView { get; protected set; }
+    public object? DataView { get; protected set; }
     public object DragUIOverride { get; protected set; }
 
     public bool Handled { get { return origargs.Handled; } set { origargs.Handled = value; } }

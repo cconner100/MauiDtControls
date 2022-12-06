@@ -30,7 +30,7 @@ public partial class DtWindowTabsHandler
 
     }
 
-    public DtWindowTabsHandler(IPropertyMapper mapper = null) : base(mapper ?? DtWindowTabsPropertyMapper, DtWindowTabsCommandMapper)
+    public DtWindowTabsHandler(IPropertyMapper? mapper = null) : base(mapper ?? DtWindowTabsPropertyMapper, DtWindowTabsCommandMapper)
     {
     }
 }

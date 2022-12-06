@@ -42,7 +42,7 @@ public class DtMenuData : IDtMenu
             id = Guid.NewGuid(),
             title = "Ground",
             subTitle = "Traveling on the ground",
-            toolTip = "Traveling on the ground",
+            ToolTip = "Traveling on the ground",
 #if WINDOWS
             platformImage = new SymbolIcon(Symbol.World),
 #endif
@@ -57,7 +57,7 @@ public class DtMenuData : IDtMenu
                 {id=Guid.NewGuid(),
                 title = "Car",
                 subTitle = null,
-                toolTip ="Ford?",
+                ToolTip ="Ford?",
                 menuType = DtMenuItem.MenuType.Row,
 #if WINDOWS
             platformImage = new SymbolIcon(Symbol.Repair),
@@ -71,7 +71,7 @@ public class DtMenuData : IDtMenu
                 new DtMenuItem {
                     id = Guid.NewGuid(),
                     title = "Bus",
-                    toolTip = "Red or Blue Line",
+                    ToolTip = "Red or Blue Line",
                     menuType = DtMenuItem.MenuType.Row,
 #if WINDOWS
                     platformImage = new SymbolIcon(Symbol.OtherUser),
@@ -86,7 +86,7 @@ public class DtMenuData : IDtMenu
                 new DtMenuItem {
                     id = Guid.NewGuid(),
                     title = "Cable Car",
-                    toolTip = "Southern Pacific",
+                    ToolTip = "Southern Pacific",
                     menuType = DtMenuItem.MenuType.Row,
 #if WINDOWS
                     platformImage = new SymbolIcon(Symbol.Phone),
@@ -103,7 +103,7 @@ public class DtMenuData : IDtMenu
             {
                 id = Guid.NewGuid(),
                 title = "Other",
-                toolTip = "Water, Air",
+                ToolTip = "Water, Air",
                 menuType = DtMenuItem.MenuType.ExpandableRow,
 #if WINDOWS
             platformImage = new SymbolIcon(Symbol.PhoneBook),
@@ -118,7 +118,7 @@ public class DtMenuData : IDtMenu
                     {
                         id = Guid.NewGuid(),
                         title = "Airplane",
-                        toolTip = null,
+                        ToolTip = null,
                         menuType = DtMenuItem.MenuType.Row,
 #if WINDOWS
                         platformImage = new SymbolIcon(Symbol.Pin),
@@ -133,7 +133,7 @@ public class DtMenuData : IDtMenu
                     {
                         id = Guid.NewGuid(),
                         title = "Ferry",
-                        toolTip = "Maybe take your car",
+                        ToolTip = "Maybe take your car",
                         menuType = DtMenuItem.MenuType.Row,
 #if WINDOWS
                         platformImage = new SymbolIcon(Symbol.Contact2),

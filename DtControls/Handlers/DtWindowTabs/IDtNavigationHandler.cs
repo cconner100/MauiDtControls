@@ -27,7 +27,7 @@ public interface IDtNavigationHandler : IViewHandler
     new PlatformView PlatformView { get; }
 
 #if WINDOWS
-    List<NavigationViewItem> BuildPlatformMenus(IList<DtMenuItem> menuList, IDtNavigation virtualView);
+    List<NavigationViewItem>? BuildPlatformMenus(IList<DtMenuItem> menuList, IDtNavigation virtualView);
 #endif
 
 #if MACCATALYST || IOS

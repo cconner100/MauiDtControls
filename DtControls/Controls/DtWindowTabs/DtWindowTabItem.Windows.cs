@@ -15,7 +15,7 @@ public partial class DtWindowTabItem : View, IElement
 
     readonly TabViewItem tabViewItem = new();
     
-    Frame ContentFrame { get; set; }
+    Frame? ContentFrame { get; set; }
 
     public IView PresentedContent { get; }
 
@@ -66,10 +66,14 @@ public partial class DtWindowTabItem : View, IElement
         {
             if(np.Handler == null)
             {
+                if (DtMauiContext.MauiContext is null)
+                {
+                    throw new Exception("Maui Context is null");
+                }
                 _ = np.ToHandler(DtMauiContext.MauiContext);
             }
-            tabViewItem.Content = np.Handler.PlatformView;
-            if(np.Handler.PlatformView is Frame frame)
+            tabViewItem.Content = np.Handler?.PlatformView;
+            if(np.Handler?.PlatformView is Frame frame)
             {
                 ContentFrame = frame;
             }

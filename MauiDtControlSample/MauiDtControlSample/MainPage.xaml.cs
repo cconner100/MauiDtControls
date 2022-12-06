@@ -70,7 +70,7 @@ public partial class MainPage : ContentPage
         Debug.WriteLine("DtWindowTab_Loaded");
     }
 
-    void WindowTabView_SelectionChanged(object sender, DtWindowTabsSelectionChangedEventArgs e)
+    void WindowTabView_SelectionChanged(object? sender, DtWindowTabsSelectionChangedEventArgs e)
     {
         if (e.AddedItems.Any())
         {
@@ -92,7 +92,7 @@ public partial class MainPage : ContentPage
         Debug.WriteLine("WindowTabView_SelectionChanged");
     }
 
-    void WindowTabView_Focused(object sender, FocusEventArgs e)
+    void WindowTabView_Focused(object? sender, FocusEventArgs e)
     {
         if (e.IsFocused == true && e.VisualElement is DtWindowTabItem item)
         {
@@ -111,42 +111,42 @@ public partial class MainPage : ContentPage
 
     }
 
-    void NavView_PaneOpening(object sender, EventArgs e)
+    void NavView_PaneOpening(object? sender, EventArgs e)
     {
         Debug.WriteLine("NavView_PaneOpening");
     }
 
-    void NavView_PaneOpened(object sender, EventArgs e)
+    void NavView_PaneOpened(object? sender, EventArgs e)
     {
         Debug.WriteLine("NavView_PaneOpened");
     }
 
-    void NavView_PaneClosing(object sender, EventArgs e)
+    void NavView_PaneClosing(object? sender, EventArgs e)
     {
         Debug.WriteLine("NavView_PaneClosing");
     }
 
-    private void NavView_PaneClosed(object sender, EventArgs e)
+    private void NavView_PaneClosed(object? sender, EventArgs e)
     {
         Debug.WriteLine("NavView_PaneClosed");
     }
 
-    void NavView_Expanding(object sender, DtNavigationItemExpandingEventArgs e)
+    void NavView_Expanding(object? sender, DtNavigationItemExpandingEventArgs e)
     {
         Debug.WriteLine("NavView_Expanding(");
     }
 
-    void NavView_DisplayModeChanged(object sender, EventArgs e)
+    void NavView_DisplayModeChanged(object? sender, EventArgs e)
     {
         Debug.WriteLine("NavView_DisplayModeChanged");
     }
 
-    void NavView_Collapsed(object sender, DtNavigationItemCollapsedEventArgs e)
+    void NavView_Collapsed(object? sender, DtNavigationItemCollapsedEventArgs e)
     {
         Debug.WriteLine("NavView_Collapsed");
     }
 
-    async void NavView_BackRequested(object sender, EventArgs e)
+    async void NavView_BackRequested(object? sender, EventArgs e)
     {
         if (BindingContext is MainPageViewModel viewModel)
         {
@@ -156,12 +156,12 @@ public partial class MainPage : ContentPage
         Debug.WriteLine("NavView_BackRequested");
     }
 
-    void NavView_SelectionChanged(object sender, DtNavigationSelectionChangedEventArgs e)
+    void NavView_SelectionChanged(object? sender, DtNavigationSelectionChangedEventArgs e)
     {
         Debug.WriteLine("NavView_SelectionChanged");
     }
 
-    async void NavView_ItemInvoked(object sender, DtNavigationItemInvokedEventArgs e)
+    async void NavView_ItemInvoked(object? sender, DtNavigationItemInvokedEventArgs e)
     {
         if (e.ItemInvoked != null && e.ItemInvoked.screen != null)
         {

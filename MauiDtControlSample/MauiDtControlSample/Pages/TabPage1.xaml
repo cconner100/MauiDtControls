@@ -10,6 +10,6 @@
             Text="Home Page"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <Button x:Name="next" Text="Next Page" Clicked="next_Clicked"/>
+        <Button x:Name="next" Text="Next Page" Clicked="Next_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>

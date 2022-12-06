@@ -13,15 +13,15 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIView>, I
 {
     IDtNavigation IDtNavigationHandler.VirtualView => VirtualView;
 
-    UISplitViewController IDtNavigationHandler.SplitView => splitView;
-    UISplitViewController splitView;
-    DtSidebarViewController dtSidebarViewController;
+    UISplitViewController IDtNavigationHandler.SplitView => splitView!;
+    UISplitViewController? splitView;
+    DtSidebarViewController? dtSidebarViewController;
 
-    public DtNavigationHandler(IPropertyMapper mapper, CommandMapper commandMapper = null) : base(mapper, commandMapper)
+    public DtNavigationHandler(IPropertyMapper mapper, CommandMapper? commandMapper = null) : base(mapper, commandMapper)
     {
     }
 
-    DtSidebarViewController IDtNavigationHandler.Controller => dtSidebarViewController;
+    DtSidebarViewController IDtNavigationHandler.Controller => dtSidebarViewController!;
 
     public override void SetMauiContext(IMauiContext mauiContext)
     {
@@ -42,7 +42,7 @@ public partial class DtNavigationHandler : ViewHandler<IDtNavigation, UIView>, I
         splitView.ViewControllers = new UIViewController[] { new UINavigationController(dtSidebarViewController) };
         ViewController = dtSidebarViewController;
         
-        return splitView?.View;
+        return splitView?.View!;
     }
 
 

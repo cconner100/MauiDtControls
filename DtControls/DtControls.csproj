@@ -22,7 +22,7 @@
 		<Description>Maui Desktop Controls</Description>
 		<Copyright>Ziios Thailand LLC</Copyright>
 		<IncludeSymbols>True</IncludeSymbols>
-		<Nullable>disable</Nullable>
+		<Nullable>enable</Nullable>
 		<ProduceReferenceAssembly>False</ProduceReferenceAssembly>
 	</PropertyGroup>
 

@@ -42,7 +42,7 @@ public partial class DtNavigationHandler
 
     }
 
-    public DtNavigationHandler(IPropertyMapper mapper = null) : base(mapper ?? DtNavigationMapper, DtNavigationCommandMapper)
+    public DtNavigationHandler(IPropertyMapper? mapper = null) : base(mapper ?? DtNavigationMapper, DtNavigationCommandMapper)
     {
     }
 }

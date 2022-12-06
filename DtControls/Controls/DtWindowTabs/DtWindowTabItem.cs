@@ -21,7 +21,7 @@ public partial class DtWindowTabItem : View, IContentView, IElement, IDtWindowTa
     }
 
     #region Properties
-    public NavigationPage NavigationPage { get; set; }
+    public NavigationPage? NavigationPage { get; set; }
     bool disposedValue;
     public static readonly BindableProperty HeaderProperty = BindableProperty.Create("Header", typeof(string), typeof(DtWindowTabItem));
     public string Header
@@ -78,7 +78,7 @@ public partial class DtWindowTabItem : View, IContentView, IElement, IDtWindowTa
     #endregion
     #region Events
 
-    public event EventHandler<DtWindowTabItemCloseRequestEventArgs> CloseRequested;
+    public event EventHandler<DtWindowTabItemCloseRequestEventArgs>? CloseRequested;
 
 
     public void WinCloseRequested(DtWindowTabItem sender, DtWindowTabItemCloseRequestEventArgs args)
