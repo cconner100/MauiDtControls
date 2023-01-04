@@ -51,7 +51,7 @@ public partial class MainPage : ContentPage
         NavView.PaneClosing += NavView_PaneClosing;
         NavView.PaneOpened += NavView_PaneOpened;
         NavView.PaneOpening += NavView_PaneOpening;
-
+        
         // Window Tab events
         WindowTabView.Focused += WindowTabView_Focused;
         WindowTabView.SelectionChanged += WindowTabView_SelectionChanged;
@@ -59,28 +59,24 @@ public partial class MainPage : ContentPage
         // Add first tab, not closeable
         ((MainPageViewModel)BindingContext)?.AddFirstTab(WindowTabView);
 
-        _ = WindowTabView.Focus();
-        //WindowTabView.SelectedItem = 0;
-        WindowTabView.SelectedIndex = 0;
-
         Debug.WriteLine("DtWindowTab_Loaded");
     }
 
     void WindowTabView_SelectionChanged(object? sender, DtWindowTabsSelectionChangedEventArgs e)
     {
-        if (e.AddedItems.Any())
+        if (e != null && e.AddedItems != null && e.AddedItems.Any())
         {
             if (e.AddedItems[0] is DtWindowTabItem tab)
             {
                 if (tab.CanGoBack())
                 {
                     NavView.IsBackButtonEnabled = true;
-                    NavView.IsBackButtonVisible = DtNavigation.BackButtonVisable.Auto;
+                    NavView.IsBackButtonVisible = DtNavigation.BackButtonVisable.Visible;
                 }
                 else
                 {
                     NavView.IsBackButtonEnabled = false;
-                    NavView.IsBackButtonVisible = DtNavigation.BackButtonVisable.Auto;
+                    NavView.IsBackButtonVisible = DtNavigation.BackButtonVisable.Collapsed;
                 }
             }
 
@@ -90,8 +86,10 @@ public partial class MainPage : ContentPage
 
     void WindowTabView_Focused(object? sender, FocusEventArgs e)
     {
-        if (e.IsFocused == true && e.VisualElement is DtWindowTabItem item)
+        if (e.IsFocused == true && e.VisualElement is DtWindowTabs tabWindow)
         {
+            var item = tabWindow.TabItems[tabWindow.SelectedIndex];
+            Debug.WriteLine($"Can go back {item.CanGoBack()}");
             if (item.CanGoBack())
             {
                 NavView.IsBackButtonEnabled = true;

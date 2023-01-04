@@ -6,7 +6,9 @@ using DtControls.Models;
 
 using Microsoft.Maui.Graphics;
 
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 using static DtControls.Models.DtWindowTabsDragEventArgs;
 
@@ -114,6 +116,68 @@ public partial class DtWindowTabs : View, IContentView, IDtWindowTabs
     public Size CrossPlatformArrange(Rect bounds)
     {
         throw new NotImplementedException();
+    }
+
+    public void InsertPageBefore(Page page, Page before)
+    {
+        Navigation.InsertPageBefore(page, before);
+    }
+
+    public async Task<Page> PopAsync()
+    {
+        return await PopAsync(false).ConfigureAwait(true);
+    }
+
+    public async Task<Page> PopAsync(bool animated)
+    {
+        return await Navigation.PopAsync(animated).ConfigureAwait(true);
+    }
+
+    public async Task<Page> PopModalAsync()
+    {
+        return await PopModalAsync(false).ConfigureAwait(true);
+    }
+
+    public async Task<Page> PopModalAsync(bool animated)
+    {
+        return await Navigation.PopModalAsync(animated).ConfigureAwait(true);
+    }
+
+    public async Task PopToRootAsync()
+    {
+        await PopToRootAsync(false).ConfigureAwait(true);
+    }
+
+    public async Task PopToRootAsync(bool animated)
+    {
+        await Navigation.PopToRootAsync(animated).ConfigureAwait(true);
+    }
+
+    public async Task PushAsync(Page page)
+    {
+        await PushAsync(page, false).ConfigureAwait(true);
+    }
+
+    public async Task PushAsync(Page page, bool animated)
+    {
+        await Navigation.PushAsync(page, animated).ConfigureAwait(true);
+        // check to see if back button is enabled
+
+    }
+
+    public async Task PushModalAsync(Page page)
+    {
+        await PushModalAsync(page, false).ConfigureAwait(true);
+    }
+
+    public async Task PushModalAsync(Page page, bool animated)
+    {
+        await Navigation.PushModalAsync(page, animated).ConfigureAwait(true);
+    }
+
+    public void RemovePage(Page page)
+    {
+        Navigation.RemovePage(page);
     }
     #endregion
 
@@ -311,12 +375,14 @@ public partial class DtWindowTabs : View, IContentView, IDtWindowTabs
     }
     #endregion
 
-#nullable enable
+
 
     object? IContentView.Content => Content;
 
     IView? IContentView.PresentedContent => (View)Content;
 
     public Thickness Padding { get; }
-#nullable disable
+    public IReadOnlyList<Page>? ModalStack { get; }
+    public IReadOnlyList<Page>? NavigationStack { get; }
+
 }

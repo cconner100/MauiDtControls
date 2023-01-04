@@ -11,7 +11,7 @@ using static DtControls.Controls.DtWindowTabs;
 using static DtControls.Models.DtWindowTabsDragEventArgs;
 #endif
 
-public interface IDtWindowTabs : IView
+public interface IDtWindowTabs : IView, INavigation
 {
     #region Events
 

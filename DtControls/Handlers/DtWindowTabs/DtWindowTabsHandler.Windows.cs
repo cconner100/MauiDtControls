@@ -8,6 +8,7 @@ using Microsoft.Maui.Handlers;
 using Microsoft.UI.Xaml.Controls;
 
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Windows.Input;
 
 using static DtControls.Models.DtWindowTabsDragEventArgs;
@@ -84,7 +85,9 @@ public partial class DtWindowTabsHandler : ViewHandler<DtWindowTabs, TabView>, I
 
     void PlatformView_TabItemsChanged(TabView sender, Windows.Foundation.Collections.IVectorChangedEventArgs args)
     {
-        VirtualView.HandleTabItemsChanged(VirtualView, new DtWindowTabsItemsChangedEventArgs(args));
+        var virtualArgs = new DtWindowTabsItemsChangedEventArgs(args);
+        VirtualView.HandleTabItemsChanged(VirtualView, virtualArgs);
+        VirtualView.SelectedIndex = (int)virtualArgs.Index;
     }
 
     void PlatformView_TabDroppedOutside(TabView sender, TabViewTabDroppedOutsideEventArgs args)
@@ -138,6 +141,8 @@ public partial class DtWindowTabsHandler : ViewHandler<DtWindowTabs, TabView>, I
 
     void PlatformView_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
+        VirtualView.SelectedIndex = ((TabView)sender).SelectedIndex;
+        VirtualView.SelectedItem = ((TabView)sender).SelectedItem;
         VirtualView.HandleSelectionChanged(VirtualView, new DtWindowTabsSelectionChangedEventArgs(this.VirtualView, e));
     }
 
@@ -197,6 +202,7 @@ public partial class DtWindowTabsHandler : ViewHandler<DtWindowTabs, TabView>, I
 
     public static void MapSelectedIndex(IDtWindowTabsHandler viewHandler, IDtWindowTabs virtualView)
     {
+        Debug.WriteLine("MapSelectedIndex");
         (viewHandler.PlatformView).SelectedIndex = virtualView.SelectedIndex;
     }
 
@@ -231,7 +237,8 @@ public partial class DtWindowTabsHandler : ViewHandler<DtWindowTabs, TabView>, I
                             tvi.NavigationPage = navpage;
                         }
                         _tabView.TabItems.Add(tvi.GetTabViewItem());
-                        _tabView.SelectedIndex = _tabView.TabItems.Count - 1;
+                        _tabView.SelectedItem = tvi.GetTabViewItem();
+                        _tabView.Focus(Microsoft.UI.Xaml.FocusState.Keyboard);
                     }
                 }
             }
@@ -243,6 +250,7 @@ public partial class DtWindowTabsHandler : ViewHandler<DtWindowTabs, TabView>, I
             {
                 _ = _tabView.TabItems.Remove(_tabView.SelectedItem);
                 _tabView.SelectedIndex = _tabView.TabItems.Count - 1 > 0 ? _tabView.TabItems.Count - 1 : 0;
+                _tabView.Focus(Microsoft.UI.Xaml.FocusState.Keyboard);
             }
         }
     }

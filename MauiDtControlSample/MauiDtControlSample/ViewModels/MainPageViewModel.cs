@@ -103,7 +103,11 @@ public partial class MainPageViewModel : IMainPageViewModel
         var tabItem = tabs.TabItems[tabindex];
         if (tabItem.NavigationPage is not null)
         {
-            var screen = (Page)Activator.CreateInstance(menuItem.screen);
+            if(menuItem.screen == null)
+            {
+                return;
+            }
+            Page? screen = (Page)Activator.CreateInstance(menuItem.screen)!;
             if (screen is not null)
             {
                 await tabItem.NavigationPage.PushAsync(screen).ConfigureAwait(true);
@@ -223,11 +227,11 @@ public partial class MainPageViewModel : IMainPageViewModel
         newtab.IsClosable = false;
         newtab.Focused += Newtab_Focused;
         tabView.TabItems.Add(newtab);
-        tabView.SelectedIndex = 0;
+        tabView.SelectedItem = newtab;
     }
     public void TabCloseRequested(DtWindowTabs sender, DtWindowTabItemCloseRequestEventArgs e)
     {
-        if(e is null)
+        if(e is null || e.Tab == null)
         {
             return;
         }

@@ -4,6 +4,7 @@ namespace DtControls.Controls;
 using DtControls.Models;
 
 using Microsoft.Maui.Platform;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
 public partial class DtWindowTabItem : View, IElement
@@ -76,6 +77,7 @@ public partial class DtWindowTabItem : View, IElement
             if(np.Handler?.PlatformView is Frame frame)
             {
                 ContentFrame = frame;
+                ContentFrame.Focus(FocusState.Keyboard);
             }
         }
     }
